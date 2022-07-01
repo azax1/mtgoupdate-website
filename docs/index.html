@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>MTGO Weekly Schedule</title>
+  </head>
+  <style>
+  	h1 {
+  		text-align: center;
+  	}
+  	#info {
+  		position: absolute;
+  		top: 10px;
+  		right: 10px;
+  		font-size: 24px;
+  	}
+  	.bottom {
+  		position: fixed;
+  		bottom: 0;
+  		width: 100%;
+  		text-align: center;
+  	}
+  	.modal {
+  		display: none;
+  		position: fixed;
+  		z-index: 1;
+  		left: 0;
+  		top: 0;
+  		width: 100%;
+  		height: 100%;
+  		overflow: auto;
+  		background-color: rgb(0,0,0);
+  		background-color: rgba(0,0,0,0.4);
+	}
+	.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	}
+	.everything {
+		display: flex;
+		position: relative;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100vh;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		gap: 8px 4px;
+		flex-wrap: wrap;
+	}
+	.footer {
+		bottom: 0;
+		text-align: center;
+	}
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+  <body>
+    <div class="everything">
+    <div>
+    <h1>Prelim and Challenge Schedule</h1>
+    <button id="info">&#8505;</button>
+    <div id="faq" class="modal">
+    	<div class="modal-content">
+    		<span class="close">&times;</span>
+    		<p>
+    		<b>FAQ</b><br><br>
+    		<b>What is this website for?</b><br><br>
+    		It's hard to know when Prelims and Challenges are being held on MTGO. This site, an outgrowth of the @mtgoupdate family of Twitter accounts,
+    		provides that information to you in your home time zone.<br><br>
+    		
+    		<b>Prelims and Challenges? What about Showcase Challenges, MOCS Opens, RCQs, etc.?</b><br><br>
+    		No, at least for the moment. Prelims and Challenges occur at the same time every week, so to get them right I just have to
+    		teach the website what a week is. All those other events happen much more rarely, so I'd have to teach it all about calendars to include them.<br><br>
+    		
+    		Complete information for these special events, in three time zones, can be found on Twitter 
+    		<a href="https://www.twitter.com/mtgoupdate">@mtgoupdate</a>, 
+    		<a href="https://www.twitter.com/mtgoupdate_eu">@mtgoupdate_eu</a>, and 
+    		<a href="https://www.twitter.com/mtgoupdate_jp">@mtgoupdate_jp</a>.<br><br>
+    		
+    		<b>I live outside the United States and am about to change my clocks for Daylight Saving Time, <i>or</i> the US is changing
+    		its clocks soon but I live elsewhere and will not be changing mine. Is the information on this page accurate for after the change?</b><br><br>
+    		
+    		No. Check back again after the clocks change.<br><br>
+
+			<b>I live in one of those extremely fancy time zones that's a half or quarter hour offset from GMT/UTC.
+			Does your website work for me?</b><br><br>
+			
+			AAAAAAAAAAHHHHHHH<br><br>
+			
+			<b>That's not an answer.</b><br><br>
+			The answer is no.<br><br>
+			
+			<b>Will that ever change?</b><br><br>
+			For the sake of my sanity I really hope not. If you exist and deeply want this, <a href="mailto:admin at mtgoupdate dot com">email me</a> and we can talk about it.<br><br>
+			
+			<b>You seem like a cool person and I've benefited from the work you've done. Will you take my money?</b><br><br>
+			
+			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a>.<br><br>
+			</p>
+    	</div>
+    </div>
+    <script type="text/javascript">
+    var now = new Date();
+    var offset =  7 - now.getTimezoneOffset() / 60;
+    const schedule = ["Pioneer Prelim", null, null, "Limited Prelim", null, null, null, "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
+    null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
+    "Pauper Prelim", null, null, "Modern Prelim", null, null, null, "Pioneer Prelim", null, "Limited Prelim", null, "Pauper Prelim",
+    null, null, null, "Standard Prelim", "Limited Prelim", null, null, "Legacy Prelim", null, null, null, null,
+    "Limited Prelim", null, null, "Legacy Prelim", null, null, null, "Standard Prelim", null, null, null, "Pioneer Prelim",
+    null, null, null, "Modern Prelim", "Limited Prelim", null, null, "Vintage Prelim", null, null, null, null,
+    "Modern Prelim", null, null, "Pioneer Prelim", null, null, null, "Pauper Prelim", null, null, null, "Modern Prelim",
+    "Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
+    "Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
+    null, null, null, "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
+    "Pioneer Prelim", "Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", null, "Modern Challenge", null, "Vintage Challenge", null,
+    "Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null,
+    "Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", null, "Legacy Challenge", null, "Pauper Challenge", null,
+    "Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null]
+    
+	const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+	const maxes = [-1, -1, -1, -1, -1, -1, -1];
+	const tweets = [null, null, null, null, null, null, null];
+	var max = -1;
+    for (let i = 0; i < 7; i++) {
+    	let thisMax = 0;
+    	let thisText = "";
+    	for (let j = 0; j <= 24; j++) {
+     		let prettyTime = "";
+     		if (j == 0) {
+     			prettyTime = "12am";
+     		} else if (j < 12) {
+     			prettyTime = j + "am";
+     		} else if (j == 12) {
+     			prettyTime = "Noon";
+     		} else if (j < 24) {
+     			prettyTime = (j - 12) + "pm";
+     		} else {
+     			prettyTime = "Midnight";
+     		}
+     		let k = ((24 * i + j) - offset + 168) % 168;
+     		if (schedule[k] != null) {
+     			let line = prettyTime + " " + schedule[k] + "<br>";
+     			if (j < 24) {
+     				thisText += line;
+     			} else {
+     				thisText += "<span style=\"color:#808080\">" + line + "</span>";
+     			}
+     			thisMax++;
+     		}
+     	}
+     	tweets[i] = thisText;
+     	maxes[i] = thisMax;
+	    if (thisMax > max) {
+	    	max = thisMax;
+	    }
+     }
+     document.write("<div class=\"container\">");
+     for (let i = 0; i < 7; i++) {
+     	document.write("<fieldset style=\"border: 1px black solid; display: inline-block; min-width: 280px;\">");
+     	document.write("<legend style=\"border: 1px black solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">" + days[i] + "</legend>");
+	    document.write(tweets[i]);
+	    for (let j = maxes[i]; j < max; j++) {
+	    document.write("<br>");
+	    }
+	   	document.write("</fieldset>");
+     }
+     var localTime = now.toString();
+     document.write("<center><p><strong>Detected local time:</strong> " + localTime + "</p></center>");
+     document.write("</div></div>");
+     document.write("<p class=\"footer\">Web hosting and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
+     document.write("</div>");
+     
+     var modal = document.getElementById("faq");
+     var button = document.getElementById("info");
+     var span = document.getElementsByClassName("close")[0];
+     
+     button.onclick = function() { modal.style.display = "block"; };
+     span.onclick = function() { modal.style.display = "none"; };
+     window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+   </script>
+  </body>
+</html>
