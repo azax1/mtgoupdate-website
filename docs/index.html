@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    <title>MTGO Event Schedule</title>
+    <title>mtgoupdate</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"></script>
 	<script>
@@ -86,7 +86,7 @@
   	<noscript><div>Please enable JavaScript</div></noscript>
     <div class="everything">
     <div><div>
-    <h1>Prelim and Challenge Schedule</h1>
+    <h1>Scheduled Events on MTGO</h1>
     <button id="info">&#8505;</button>
     <div id="faq" class="modal">
     	<div class="modal-content">
@@ -94,18 +94,9 @@
     		<p>
     		<b>FAQ</b><br><br>
     		<b>What is this website for?</b><br><br>
-    		It's hard to know when Prelims and Challenges are being held on MTGO. This site, an outgrowth of the @mtgoupdate family of Twitter accounts,
+    		It's hard to know when scheduled events are being held on MTGO. This site, an outgrowth of the @mtgoupdate family of Twitter accounts,
     		provides that information to you in your home time zone.<br><br>
-    		
-    		<b>Prelims and Challenges? What about Showcase Challenges, MOCS Opens, RCQs, etc.?</b><br><br>
-    		No, at least for the moment. Prelims and Challenges occur at the same time every week, so to get them right I just have to
-    		teach the website what a week is. All those other events happen much more rarely, so I'd have to teach it all about calendars to include them.<br><br>
-    		
-    		Complete information for these special events, in three time zones, can be found on Twitter 
-    		<a href="https://www.twitter.com/mtgoupdate">@mtgoupdate</a>, 
-    		<a href="https://www.twitter.com/mtgoupdate_eu">@mtgoupdate_eu</a>, and 
-    		<a href="https://www.twitter.com/mtgoupdate_jp">@mtgoupdate_jp</a>.<br><br>
-    		
+
     		<b>I live outside the United States and am about to change my clocks for Daylight Saving Time, <i>or</i> the US is changing
     		its clocks soon but I live elsewhere and will not be changing mine. Is the information on this page accurate for after the change?</b><br><br>
     		
@@ -131,7 +122,9 @@
     <script type="text/javascript">
     var now = new Date();
     var offset =  7 - now.getTimezoneOffset() / 60;
-    const schedule = ["Pioneer Prelim", null, null, "Limited Prelim", null, null, null, "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
+    const schedule = ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", "Modern Super Qualifier", "Legacy Challenge", null, "Pauper Challenge", null,
+    "Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
+    "Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
     null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
     "Pauper Prelim", null, null, "Modern Prelim", null, null, null, "Pioneer Prelim", null, "Limited Prelim", null, "Pauper Prelim",
     null, null, null, "Standard Prelim", "Limited Prelim", null, null, "Legacy Prelim", null, null, null, null,
@@ -140,21 +133,26 @@
     "Modern Prelim", null, null, "Pioneer Prelim", null, null, null, "Pauper Prelim", null, null, null, "Modern Prelim",
     "Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
     "Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
-    null, null, null, "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
-    "Pioneer Prelim", "Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", null, "Modern Challenge", null, "Vintage Challenge", null,
-    "Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null,
-    "Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", null, "Legacy Challenge", null, "Pauper Challenge", null,
-    "Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null]
+    null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
+    "Pioneer Prelim", "Limited (SNC) Qualifier", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
+    "Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null]
     
-	const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	const maxes = [-1, -1, -1, -1, -1, -1, -1];
-	const tweets = [null, null, null, null, null, null, null];
-	var max = -1;
-	let day = now.getDay() || 7;
-    for (let k = day - 1; k < day + 6; k++) {
-    	i = k % 7;
-    	let thisMax = 0;
-    	let thisText = "";
+    var dict = {};
+    dict[7] = [new Date(2022, 6, 3, 14), "Limited (SNC) Super Qualifier"];
+    dict[30] = [new Date(2022, 6, 4, 13), null];
+    dict[134] = [new Date(2022, 6, 8, 21), null];
+    dict[151] = [new Date(2022, 6, 2, 14), null];
+    dict[145] = [new Date(2022, 6, 9, 8), "Limited Prelim"];
+		
+	function areConsecutiveOrSame(date1, date2) {
+		let val1 = (date1 < date2) && (date2 < (new Date(date1)).setDate(date1.getDate() + 2));
+		let val2 = (date2 < date1) && (date1 < (new Date(date2)).setDate(date2.getDate() + 2));
+		return val1 || val2;
+	}
+	
+	function getScheduleForDay(day) {
+		let i = day.getDay();
+		let thisText = "";
     	for (let j = 0; j <= 24; j++) {
      		let prettyTime = "";
      		if (j == 0) {
@@ -171,20 +169,39 @@
      		let k = ((24 * i + j) - offset + 168) % 168;
      		let event = schedule[k];
      		if (event != null) {
-     			color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
+     			if (event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) {
+     				if (!areConsecutiveOrSame(day, dict[k][0])) {
+     					event = dict[k][1];
+     				}
+     			}
+     		}
+     		if (event != null) {
+     			color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
      			thisText += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
-     			thisMax++;
      		}
      	}
-     	tweets[i] = thisText;
-     	maxes[i] = thisMax;
+     	return thisText;
+	}
+	
+	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	const lengths = [-1, -1, -1, -1, -1, -1, -1];
+	const tweets = [null, null, null, null, null, null, null];
+	
+	var day = new Date(now);
+	var max = -1;
+	var thisMax = 0;
+    for (let k = 0; k < 7; k++) {
+    	let i = day.getDay();
+     	tweets[i] = getScheduleForDay(day);
+     	lengths[i] = thisMax;
 	    if (thisMax > max) {
 	    	max = thisMax;
 	    }
+	    day.setDate(day.getDate() + 1);
      }
      document.write("<div class=\"container\">");
      let today = new Date(now);
-     for (let k = day - 1; k < day + 6; k++) {
+     for (let k = 0; k < 7; k++) {
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
      		suffix = "st";
@@ -193,12 +210,12 @@
      	} else if (today.getDate() % 20 == 3) {
      		suffix = "rd";
      	}
-     	i = k % 7;
-     	let color = i > 4 ? "blue" : "black";
+     	i = today.getDay();
+     	let color = (i == 0 || i == 6) ? "blue" : "black";
      	document.write("<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">");
      	document.write("<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">" + days[i] + " " + today.getDate() + suffix + "</legend>");
 	    document.write(tweets[i]);
-	    for (let j = maxes[i]; j < max; j++) {
+	    for (let j = lengths[i]; j < max; j++) {
 	    document.write("<br>");
 	    }
 	   	document.write("</fieldset>");
