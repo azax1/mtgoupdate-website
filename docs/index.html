@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    <title>MTGO Schedule</title>
+    <title>MTGO Event Schedule</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"></script>
 	<script>
@@ -85,7 +85,7 @@
   <body>
     <div class="everything">
     <div><div>
-    <h1>Prelim and Challenge Schedule</h1>
+    <h1>Prelim, Challenge, and RCQ Schedule</h1>
     <button id="info">&#8505;</button>
     <div id="faq" class="modal">
     	<div class="modal-content">
@@ -170,13 +170,8 @@
      		let k = ((24 * i + j) - offset + 168) % 168;
      		let event = schedule[k];
      		if (event != null) {
-     			color = event.includes("Qualifier") ? "red" : (event.includes("Challenge") ? "green" : "black");
-     			let line = "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
-     			if (j < 24) {
-     				thisText += line;
-     			} else {
-     				thisText += "<span style=\"color:#808080\">" + line + "</span>";
-     			}
+     			color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
+     			thisText += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
      			thisMax++;
      		}
      	}
@@ -187,7 +182,7 @@
 	    }
      }
      document.write("<div class=\"container\">");
-	let today = new Date(now);
+     let today = new Date(now);
      for (let k = day - 1; k < day + 6; k++) {
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
@@ -211,7 +206,7 @@
      var localTime = now.toString();
      document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center>");
      document.write("</div></div>");
-     document.write("<p class=\"footer\">Web hosting and developer time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
+     document.write("<p class=\"footer\">Web hosting and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
      document.write("</div>");
      
      var modal = document.getElementById("faq");
