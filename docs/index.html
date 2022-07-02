@@ -140,7 +140,9 @@
 	const maxes = [-1, -1, -1, -1, -1, -1, -1];
 	const tweets = [null, null, null, null, null, null, null];
 	var max = -1;
-    for (let i = 0; i < 7; i++) {
+	let day = now.getDay() || 7;
+    for (let k = day - 1; k < day + 6; k++) {
+    	i = k % 7;
     	let thisMax = 0;
     	let thisText = "";
     	for (let j = 0; j <= 24; j++) {
@@ -174,14 +176,26 @@
 	    }
      }
      document.write("<div class=\"container\">");
-     for (let i = 0; i < 7; i++) {
-     	document.write("<fieldset style=\"border: 1px black solid; display: inline-block; min-width: 280px;\">");
-     	document.write("<legend style=\"border: 1px black solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">" + days[i] + "</legend>");
+	let today = new Date(now);
+     for (let k = day - 1; k < day + 6; k++) {
+     	let suffix = "th";
+     	if (today.getDate() % 20 == 1) {
+     		suffix = "st";
+     	} else if (today.getDate() % 20 == 2) {
+     		suffix = "nd";
+     	} else if (today.getDate() % 20 == 3) {
+     		suffix = "rd";
+     	}
+     	i = k % 7;
+     	let color = i > 4 ? "blue" : "black";
+     	document.write("<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">");
+     	document.write("<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">" + days[i] + " " + today.getDate() + suffix + "</legend>");
 	    document.write(tweets[i]);
 	    for (let j = maxes[i]; j < max; j++) {
 	    document.write("<br>");
 	    }
 	   	document.write("</fieldset>");
+	   	today.setDate(today.getDate() + 1);
      }
      var localTime = now.toString();
      document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center>");
