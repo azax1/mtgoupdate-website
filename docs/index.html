@@ -188,7 +188,7 @@
 	let today = new Date(now);
      for (let k = day - 1; k < day + 6; k++) {
      	let suffix = "th";
-     	if (today.getDate() % 20 == 1) {
+     	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
      		suffix = "st";
      	} else if (today.getDate() % 20 == 2) {
      		suffix = "nd";
