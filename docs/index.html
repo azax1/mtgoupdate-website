@@ -214,9 +214,11 @@
     }
     
     function areConsecutiveOrSame(date1, date2) {
-		let val1 = (date1 < date2) && (date2 < (new Date(date1)).setDate(date1.getDate() + 2));
-		let val2 = (date2 < date1) && (date1 < (new Date(date2)).setDate(date2.getDate() + 2));
-		return val1 || val2;
+		return isSameDayOrJustAfter(date1, date2) || isSameDayOrJustAfter(date2, date1);
+	}
+	
+	function isSameDayOrJustAfter(date1, date2) {
+		return (date1 <= date2) && (date2 <= (new Date(date1)).setDate(date1.getDate() + 2));
 	}
 	
 	function isPremier(event) {
