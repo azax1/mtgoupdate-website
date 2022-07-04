@@ -124,10 +124,11 @@
     var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
     var isClientSomeJerkFromAustralia = (today.getTimezoneOffset() % 60) != 0;
-    const schedule = getSchedule();
+    var tuesdayMorning = 1657004401000; // 12:00:01am PDT July 5th, gentle hack to get the 7am Sunday premier event right (Modern SPTQ -> Limited SPTQ -> none)
+    const schedule = getSchedule(today);
 	
+    let fallbacks = getFallbackEvents(today);
     document.write("<div class=\"container\">");
-    let fallbacks = getFallbackEvents();
     for (let k = 0; k < 7; k++) {
      	document.write(generateTextboxForDay(today, fallbacks));
 	   	today.setDate(today.getDate() + 1);
@@ -186,8 +187,9 @@
      	return ret;
 	}
      
-	function getSchedule() {
-		return ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", "Modern Super Qualifier", "Legacy Challenge", null, "Pauper Challenge", null,
+	function getSchedule(today) {
+		let sunday7AmEvent = (today.getTime() < tuesdayMorning) ? "Modern Super Qualifier" : "Limited (SNC) Super Qualifier";
+		return ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", sunday7AmEvent, "Legacy Challenge", null, "Pauper Challenge", null,
     		"Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
     		"Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
     		null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
@@ -203,9 +205,11 @@
     		"Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null];
     }
     
-    function getFallbackEvents() {
+    function getFallbackEvents(today) {
     	let dict = {};
-    	dict[7] = [new Date(2022, 6, 3, 14), "Limited (SNC) Super Qualifier"];
+    	let sunday7AmFallback = (today.getTime() < tuesdayMorning) ? "Limited (SNC) Super Qualifier"  : null;
+    	let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) : new Date(2022, 6, 10, 14);
+    	dict[7] = [sundayPremierEventDate, sunday7AmFallback];
     	dict[30] = [new Date(2022, 6, 4, 13), null];
     	dict[134] = [new Date(2022, 6, 8, 21), null];
     	dict[151] = [new Date(2022, 6, 2, 14), null];
