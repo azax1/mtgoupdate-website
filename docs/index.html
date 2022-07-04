@@ -120,40 +120,34 @@
     	</div>
     </div>
     <script type="text/javascript">
-    var now = new Date();
-    var PTOffset = (now.getTime() > 1667725199000) ? 8 : 7;
-    var offset =  PTOffset - now.getTimezoneOffset() / 60;
-    const schedule = ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", "Modern Super Qualifier", "Legacy Challenge", null, "Pauper Challenge", null,
-    "Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
-    "Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
-    null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
-    "Pauper Prelim", null, null, "Modern Prelim", null, null, null, "Pioneer Prelim", null, "Limited Prelim", null, "Pauper Prelim",
-    null, null, null, "Standard Prelim", "Limited Prelim", null, null, "Legacy Prelim", null, null, null, null,
-    "Limited Prelim", null, null, "Legacy Prelim", null, null, null, "Standard Prelim", null, null, null, "Pioneer Prelim",
-    null, null, null, "Modern Prelim", "Limited Prelim", null, null, "Vintage Prelim", null, null, null, null,
-    "Modern Prelim", null, null, "Pioneer Prelim", null, null, null, "Pauper Prelim", null, null, null, "Modern Prelim",
-    "Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
-    "Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
-    null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
-    "Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
-    "Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null]
-    
-    var dict = {};
-    dict[7] = [new Date(2022, 6, 3, 14), "Limited (SNC) Super Qualifier"];
-    dict[30] = [new Date(2022, 6, 4, 13), null];
-    dict[134] = [new Date(2022, 6, 8, 21), null];
-    dict[151] = [new Date(2022, 6, 2, 14), null];
-    dict[145] = [new Date(2022, 6, 9, 8), "Limited Prelim"];
-		
-	function areConsecutiveOrSame(date1, date2) {
-		let val1 = (date1 < date2) && (date2 < (new Date(date1)).setDate(date1.getDate() + 2));
-		let val2 = (date2 < date1) && (date1 < (new Date(date2)).setDate(date2.getDate() + 2));
-		return val1 || val2;
-	}
+    var today = new Date();
+    var localTime = today.toString();
+    var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
+    var offset =  PTOffset - today.getTimezoneOffset() / 60;
+    const schedule = getSchedule();
 	
-	function getScheduleForDay(day) {
-		let i = day.getDay();
-		let thisText = "";
+    document.write("<div class=\"container\">");
+    let fallbacks = getFallbackEvents();
+    for (let k = 0; k < 7; k++) {
+     	document.write(generateTextboxForDay(today, fallbacks));
+	   	today.setDate(today.getDate() + 1);
+    }
+    document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center></div>");
+    document.write("</div>"); // container
+    document.write("<p class=\"footer\">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
+    document.write("</div>"); // everything
+      
+    var modal = document.getElementById("faq");
+    var button = document.getElementById("info");
+    var span = document.getElementsByClassName("close")[0];
+
+    button.onclick = function() { modal.style.display = "block"; };
+    span.onclick = function() { modal.style.display = "none"; };
+    window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+      
+	function getScheduleForDay(day, fallbacks) {
+		let i = day.getDay(); // of week
+		let ret = "";
     	for (let j = 0; j <= 24; j++) {
      		let prettyTime = "";
      		if (j == 0) {
@@ -172,40 +166,67 @@
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
      			if (event != null) {
-     				if (event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) {
-     					if (!areConsecutiveOrSame(day, dict[k][0])) {
-     						event = dict[k][1];
+     				if (isPremier(event)) {
+     					if (!areConsecutiveOrSame(day, fallbacks[k][0])) {
+     						event = fallbacks[k][1];
      					}
      				}
      			}
      			if (event != null) {
-     				color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
-     				thisText += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
+     				color = "black";
+     				if (j == 24) {
+     					color = "grey";
+     				} else if (isPremier(event)) {
+     					color = "red";
+     				} else if (event.includes("Challenge")) {
+     					color = "green";
+     				}
+     				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
      			}
      		}
      	}
-     	return thisText;
+     	return ret;
+	}
+     
+	function getSchedule() {
+		return ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", "Modern Super Qualifier", "Legacy Challenge", null, "Pauper Challenge", null,
+    		"Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
+    		"Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
+    		null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
+    		"Pauper Prelim", null, null, "Modern Prelim", null, null, null, "Pioneer Prelim", null, "Limited Prelim", null, "Pauper Prelim",
+    		null, null, null, "Standard Prelim", "Limited Prelim", null, null, "Legacy Prelim", null, null, null, null,
+    		"Limited Prelim", null, null, "Legacy Prelim", null, null, null, "Standard Prelim", null, null, null, "Pioneer Prelim",
+   			null, null, null, "Modern Prelim", "Limited Prelim", null, null, "Vintage Prelim", null, null, null, null,
+    		"Modern Prelim", null, null, "Pioneer Prelim", null, null, null, "Pauper Prelim", null, null, null, "Modern Prelim",
+    		"Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
+    		"Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
+    		null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
+    		"Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
+    		"Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null];
+    }
+    
+    function getFallbackEvents() {
+    	let dict = {};
+    	dict[7] = [new Date(2022, 6, 3, 14), "Limited (SNC) Super Qualifier"];
+    	dict[30] = [new Date(2022, 6, 4, 13), null];
+    	dict[134] = [new Date(2022, 6, 8, 21), null];
+    	dict[151] = [new Date(2022, 6, 2, 14), null];
+    	dict[145] = [new Date(2022, 6, 9, 8), "Limited Prelim"];
+    	return dict;
+    }
+    
+    function areConsecutiveOrSame(date1, date2) {
+		let val1 = (date1 < date2) && (date2 < (new Date(date1)).setDate(date1.getDate() + 2));
+		let val2 = (date2 < date1) && (date1 < (new Date(date2)).setDate(date2.getDate() + 2));
+		return val1 || val2;
 	}
 	
-	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	const lengths = [-1, -1, -1, -1, -1, -1, -1];
-	const tweets = [null, null, null, null, null, null, null];
+	function isPremier(event) {
+		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open");
+	}
 	
-	var day = new Date(now);
-	var max = -1;
-	var thisMax = 0;
-    for (let k = 0; k < 7; k++) {
-    	let i = day.getDay();
-     	tweets[i] = getScheduleForDay(day);
-     	lengths[i] = thisMax;
-	    if (thisMax > max) {
-	    	max = thisMax;
-	    }
-	    day.setDate(day.getDate() + 1);
-     }
-     document.write("<div class=\"container\">");
-     let today = new Date(now);
-     for (let k = 0; k < 7; k++) {
+	function generateTextboxForDay(today, fallbacks) {
+     	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : "black"; // blue indicates weekend
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
      		suffix = "st";
@@ -214,30 +235,13 @@
      	} else if (today.getDate() % 20 == 3) {
      		suffix = "rd";
      	}
-     	i = today.getDay();
-     	let color = (i == 0 || i == 6) ? "blue" : "black";
-     	document.write("<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">");
-     	document.write("<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">" + days[i] + " " + today.getDate() + suffix + "</legend>");
-	    document.write(tweets[i]);
-	    for (let j = lengths[i]; j < max; j++) {
-	    document.write("<br>");
-	    }
-	   	document.write("</fieldset>");
-	   	today.setDate(today.getDate() + 1);
-     }
-     var localTime = now.toString();
-     document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center>");
-     document.write("</div></div>");
-     document.write("<p class=\"footer\">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
-     document.write("</div>");
-     
-     var modal = document.getElementById("faq");
-     var button = document.getElementById("info");
-     var span = document.getElementsByClassName("close")[0];
-     
-     button.onclick = function() { modal.style.display = "block"; };
-     span.onclick = function() { modal.style.display = "none"; };
-     window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
+     			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
+     			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
+     			+ getScheduleForDay(today, fallbacks)
+     			+ "</fieldset>";
+	}
    </script>
   </body>
 </html>
