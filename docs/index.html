@@ -121,7 +121,8 @@
     </div>
     <script type="text/javascript">
     var now = new Date();
-    var offset =  7 - now.getTimezoneOffset() / 60;
+    var PTOffset = (now.getTime() > 1667725199000) ? 8 : 7;
+    var offset =  PTOffset - now.getTimezoneOffset() / 60;
     const schedule = ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", "Modern Super Qualifier", "Legacy Challenge", null, "Pauper Challenge", null,
     "Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
     "Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
@@ -134,7 +135,7 @@
     "Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
     "Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
     null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
-    "Pioneer Prelim", "Limited (SNC) Qualifier", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
+    "Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
     "Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null]
     
     var dict = {};
@@ -167,17 +168,20 @@
      			prettyTime = "Midnight";
      		}
      		let k = ((24 * i + j) - offset + 168) % 168;
-     		let event = schedule[k];
-     		if (event != null) {
-     			if (event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) {
-     				if (!areConsecutiveOrSame(day, dict[k][0])) {
-     					event = dict[k][1];
+     		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
+     		for (let index = 0; index < events.length; index++) {
+     			let event = events[index];
+     			if (event != null) {
+     				if (event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) {
+     					if (!areConsecutiveOrSame(day, dict[k][0])) {
+     						event = dict[k][1];
+     					}
      				}
      			}
-     		}
-     		if (event != null) {
-     			color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
-     			thisText += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
+     			if (event != null) {
+     				color = (j == 24) ? "grey" : ((event.includes("Qualifier") || event.includes("Showcase") || event.includes("Open")) ? "red" : (event.includes("Challenge") ? "green" : "black"));
+     				thisText += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
+     			}
      		}
      	}
      	return thisText;
