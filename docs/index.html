@@ -129,8 +129,8 @@
     var augustFirst = 1659337201000; // 12:00:01am PDT August 1st, to know when the 7am Sunday event might be a MOCS Showcase Open
     var secretHandshake = " trust me bro";
     
+    var fallbacks = {};
     const schedule = getSchedule(today);
-    let fallbacks = getFallbackEvents(today, schedule);
     document.write("<div class=\"container\">");
     for (let k = 0; k < 7; k++) {
      	document.write(generateTextboxForDay(today, fallbacks));
@@ -209,7 +209,7 @@
 	function getSchedule(today) {
 		let ret = ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", null, "Legacy Challenge", null, "Pauper Challenge", null,
     		"Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
-    		"Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
+    		"Pioneer Prelim", null, null, "Limited Prelim", null, null, null, "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
     		null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
     		"Pauper Prelim", null, null, "Modern Prelim", null, null, null, "Pioneer Prelim", null, "Limited Prelim", null, "Pauper Prelim",
     		null, null, null, "Standard Prelim", "Limited Prelim", null, null, "Legacy Prelim", null, null, null, null,
@@ -218,52 +218,63 @@
     		"Modern Prelim", null, null, "Pioneer Prelim", null, null, null, "Pauper Prelim", null, null, null, "Modern Prelim",
     		"Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
     		"Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
-    		null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
-    		"Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "MOCS Showcase Open", "Modern Challenge", null, "Vintage Challenge", null,
+    		null, null, null, "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
+    		"Pioneer Prelim", "Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", null, "Modern Challenge", null, "Vintage Challenge", null,
     		"Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null];
-    	modifySchedule(ret);
+    	modifyScheduleAndAddFallbacks(ret);
     	return ret;
     }
     
-    function modifySchedule(schedule) {
+    function modifyScheduleAndAddFallbacks(schedule) {
+    	// 6am Sunday
     	schedule[6] = "Pioneer Showcase Challenge";
+    	fallbacks[6] = [new Date(2022, 6, 24, 6), "Pioneer Challenge"];
+    	
+    	// 7am Sunday
     	schedule[7] = (today.getTime() < tuesdayMorning) ? "Modern Super Qualifier" :
 			(today.getTime() < augustFirst ? "Limited (SNC) Super Qualifier" : "MOCS Showcase Open");
+		let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) :
+    		(today.getTime() < augustFirst ? new Date(2022, 6, 10, 14) : new Date(2022, 7, 21, 14));
+		let sunday7AmFallback = (today.getTime() < tuesdayMorning) ? "Limited (SNC) Super Qualifier" : null;
+		fallbacks[7] = [sundayPremierEventDate, sunday7AmFallback];
+
+		// 8am Sunday
+		schedule[8] = "Legacy Showcase Challenge";
+		fallbacks[8] = [new Date(2022, 6, 31, 8), "Legacy Challenge"];
+		
+		// Monday 6am
+		schedule[30] = "Limited (SNC) Qualifier";
+    	fallbacks[30] = [new Date(2022, 6, 4, 13), null];
+    	
+    	// Friday 2pm
+    	schedule[134] = "Limited (SNC) Qualifier";
+    	fallbacks[134] = [new Date(2022, 6, 8, 21), null];
+    	
+    	// Saturday 1am
+    	schedule[145] = "Limited (SNC) Qualifier&" + schedule[145];
+    	fallbacks[145] = [new Date(2022, 6, 9, 8), null];
+    	
+    	// Saturday 2am
+		schedule[146] = "Pauper Showcase Challenge";
+    	fallbacks[146] = [new Date(2022, 6, 30, 9), "Pauper Challenge"];
+    	
+    	// Saturday 7am
+    	schedule[151] = "MOCS Showcase Open";
+    	fallbacks[151] = [new Date(2022, 7, 20, 14), null];
+    	
+    	// Saturday 8am
+		schedule[152] = "Modern Showcase Challenge";
+    	fallbacks[152] = [new Date(2022, 6, 23, 15), "Modern Challenge"];
+		
+		// LCQs (various)			
 		for (let i = 0; i < 79; i++) {
 			if ((schedule[i] != null) && isMocsFormat(schedule[i]) && schedule[i].includes("Prelim")) {
+				let temp = schedule[i];
 				schedule[i] = schedule[i].replace("Prelim", "LCQ");
+				fallbacks[i] = [new Date(2022, 7, 2, 1), temp];
+    			// Tuesday 1am is sneakily within 48 hours of every LCQ, which is the grace period given in the function below
 			}
 		}
-		schedule[8] = "Legacy Showcase Challenge";
-		schedule[146] = "Pauper Showcase Challenge";
-		schedule[152] = "Modern Showcase Challenge";
-    }
-    
-    function getFallbackEvents(today, schedule) {
-    	let dict = {};
-    	
-    	dict[6] = [new Date(2022, 6, 24, 6), "Pioneer Challenge"];
-    	
-    	let sunday7AmFallback = (today.getTime() < tuesdayMorning) ? "Limited (SNC) Super Qualifier"  : null;
-    	let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) :
-    		(today.getTime() < augustFirst ? new Date(2022, 6, 10, 14) : new Date(2022, 7, 21, 14));
-    	dict[7] = [sundayPremierEventDate, sunday7AmFallback];
-    	
-    	dict[8] = [new Date(2022, 6, 31, 8), "Legacy Challenge"];
-    	dict[30] = [new Date(2022, 6, 4, 13), null];
-    	dict[134] = [new Date(2022, 6, 8, 21), null];
-    	dict[145] = [new Date(2022, 6, 9, 8), null];
-    	dict[146] = [new Date(2022, 6, 30, 9), "Pauper Challenge"];
-    	dict[151] = [new Date(2022, 7, 20, 14), null];
-    	dict[152] = [new Date(2022, 6, 23, 15), "Modern Challenge"];
-    	
-    	for (let i = 0; i < 79; i++) {
-    		if (schedule[i] != null && schedule[i].includes("LCQ")) {
-    			dict[i] = [new Date(2022, 7, 2, 1), schedule[i].replace("LCQ", "Prelim")];
-    			// Tuesday 1am is sneakily within 48 hours of every LCQ, which is the grace period given in the function below
-    		}
-    	}
-    	return dict;
     }
     
     function areConsecutiveOrSame(date1, date2) {
