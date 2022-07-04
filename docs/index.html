@@ -122,7 +122,8 @@
     var today = new Date();
     var localTime = today.toString();
     var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
-    var offset =  PTOffset - today.getTimezoneOffset() / 60;
+    var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
+    var someAssholeFromAustralia = (today.getTimezoneOffset() % 60) != 0;
     const schedule = getSchedule();
 	
     document.write("<div class=\"container\">");
@@ -132,6 +133,10 @@
 	   	today.setDate(today.getDate() + 1);
     }
     document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center></div>");
+    if (someAssholeFromAustralia) {
+    	document.write("<div><center><p><strong><font color=red>Warning:</font></strong> you appear to be in a time zone that is not an integer number of hours different from UTC."
+    					+ " Times in the above schedule are rounded to the nearest hour.</p></center></div>");
+    }
     document.write("</div>"); // container
     document.write("<p class=\"footer\">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
     document.write("</div>"); // everything
