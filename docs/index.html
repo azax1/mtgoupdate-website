@@ -125,7 +125,6 @@
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
     
     var isClientSomeJerkFromAustralia = (today.getTimezoneOffset() % 60) != 0;
-    var tuesdayMorning = 1657004401000; // 12:00:01am PDT July 5th, gentle hack to get the 7am Sunday premier event right (Modern SPTQ -> Limited SPTQ -> none)
     var augustFirst = 1659337201000; // 12:00:01am PDT August 1st, to know when the 7am Sunday event might be a MOCS Showcase Open
     var secretHandshake = " trust me bro";
     
@@ -185,7 +184,7 @@
      							bypassChecks = true;
      						}
      					}
-     					if (!bypassChecks && !areConsecutiveOrSame(day, fallbacks[k][0])) {
+     					if (!(bypassChecks || areConsecutiveOrSame(day, fallbacks[k][0]))) {
      						event = fallbacks[k][1];
      					}
      				}
@@ -231,28 +230,12 @@
     	fallbacks[6] = [new Date(2022, 6, 24, 6), "Pioneer Challenge"];
     	
     	// 7am Sunday
-    	schedule[7] = (today.getTime() < tuesdayMorning) ? "Modern Super Qualifier" :
-			(today.getTime() < augustFirst ? "Limited (SNC) Super Qualifier" : "MOCS Showcase Open");
-		let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) :
-    		(today.getTime() < augustFirst ? new Date(2022, 6, 10, 14) : new Date(2022, 7, 21, 14));
-		let sunday7AmFallback = (today.getTime() < tuesdayMorning) ? "Limited (SNC) Super Qualifier" : null;
-		fallbacks[7] = [sundayPremierEventDate, sunday7AmFallback];
+    	schedule[7] = "MOCS Showcase Open";
+		fallbacks[7] = [new Date(2022, 7, 21, 14), null];
 
 		// 8am Sunday
 		schedule[8] = "Legacy Showcase Challenge";
 		fallbacks[8] = [new Date(2022, 6, 31, 8), "Legacy Challenge"];
-		
-		// Monday 6am
-		schedule[30] = "Limited (SNC) Qualifier";
-    	fallbacks[30] = [new Date(2022, 6, 4, 13), null];
-    	
-    	// Friday 2pm
-    	schedule[134] = "Limited (SNC) Qualifier";
-    	fallbacks[134] = [new Date(2022, 6, 8, 21), null];
-    	
-    	// Saturday 1am
-    	schedule[145] = "Limited (SNC) Qualifier&" + schedule[145];
-    	fallbacks[145] = [new Date(2022, 6, 9, 8), null];
     	
     	// Saturday 2am
 		schedule[146] = "Pauper Showcase Challenge";
