@@ -96,29 +96,19 @@
     		<b>What is this website for?</b><br><br>
     		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
     		
-    		<b>The US is changing its clocks soon for Daylight Saving Time, but I live elsewhere and will not be changing mine.
-    		 Is the information on this page accurate for after the change?</b><br><br>
+    		<b>I'm viewing this page right before the US changes its clocks for Daylight Saving Time (but I won't be changing mine).
+    		Are events that take place after the switch listed at the correct times?</b><br><br>
     		
     		Yes! The US's DST policy is simple and predictable, so it's no trouble to incorporate it.<br><br>
     		
-    		<b>I live outside the United States and am about to change my clocks for Daylight Saving Time. Is the information on this page accurate for after the change?</b><br><br>
+    		<b>I'm viewing this page right before my country changes its clocks for DST.
+    		Are events that take place after the switch listed at the correct times?</b><br><br>
     		
     		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
-    		 in policy and to take a side in numerous territorial disputes.<br><br>
+    		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
     		
     		Check back again after the clocks change.<br><br>
 
-			<b>I live in one of those extremely fancy time zones that's a half or quarter hour offset from GMT/UTC.
-			Does your website work for me?</b><br><br>
-			
-			AAAAAAAAAAHHHHHHH<br><br>
-			
-			<b>That's not an answer.</b><br><br>
-			The answer is no.<br><br>
-			
-			<b>Will that ever change?</b><br><br>
-			It's on my to-do list. Expect this in July or August 2022.<br><br>
-			
 			<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
 			
 			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a>.<br><br>
@@ -130,45 +120,46 @@
     var localTime = today.toString();
     var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
-    
-    var isClientSomeJerkFromAustralia = (today.getTimezoneOffset() % 60) != 0;
-    var augustFirst = 1659337201000; // 12:00:01am PDT August 1st, to know when the 7am Sunday event might be a MOCS Showcase Open
+    var minuteOffset = today.getTimezoneOffset() % 60;
+    if (minuteOffset != 0) {
+    	if (minuteOffset > 0) {
+    		// Localities like St. John's with fractional offsets that are west of Greenwich have getTimezoneOffset() > 0.
+    		// Instead of e.g. "3 hours and 45 minutes behind Greenwich",
+    		// this is more naturally thought of as "4 hours behind and 15 minutes ahead of Greenwich".
+    		// Because we incremented the integer part of the time difference (represented above by the floor), we have to decrement offset.
+    		minuteOffset = 60 - minuteOffset;
+    		offset--;
+    	} else {
+    		// Localities like Central Australia with fractional offsets that are east of Greenwich have getTimezoneOffset() < 0.
+    		// A minuteOffset of e.g. -15 here means 15 minutes ahead of Greenwich, so we have to negate that variable.
+    		// Offset is decremented because floor() rounds towards -infinity, when we want it to round towards 0;
+    		// for non-integers this results in an off-by-one error.
+    		minuteOffset = -minuteOffset;
+    		offset--;
+    	}
+    }
     var secretHandshake = " trust me bro";
     
     var fallbacks = {};
     const schedule = getSchedule();
     document.write("<div class=\"container\">");
     for (let k = 0; k < 7; k++) {
-     	document.write(generateTextboxForDay(today, fallbacks));
+     	document.write(generateTextboxForDay(today, fallbacks, minuteOffset));
 	   	today.setDate(today.getDate() + 1);
     }
     document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center></div>");
-    if (isClientSomeJerkFromAustralia) {
-    	document.write("<div><center><p><strong><font color=red>Warning:</font></strong> you appear to be in a time zone that is not an integer number of hours different from GMT/UTC."
-    					+ " Times in the above schedule are rounded to the nearest hour.</p></center></div>");
-    }
     document.write("</div>"); // container
     document.write("<p class=\"footer\">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>");
     document.write("</div>"); // everything
       
     setUpFaqModal();
       
-	function getScheduleForDay(day, fallbacks) {
+	function getScheduleForDay(day, fallbacks, minuteOffset) {
 		let i = day.getDay(); // of week
 		let ret = "";
-    	for (let j = 0; j <= 24; j++) {
-     		let prettyTime = "";
-     		if (j == 0) {
-     			prettyTime = "12am";
-     		} else if (j < 12) {
-     			prettyTime = j + "am";
-     		} else if (j == 12) {
-     			prettyTime = "Noon";
-     		} else if (j < 24) {
-     			prettyTime = (j - 12) + "pm";
-     		} else {
-     			prettyTime = "Midnight";
-     		}
+		let upperLimit = (minuteOffset == 0) ? 24 : 23;
+    	for (let j = 0; j <= upperLimit; j++) {
+     		let prettyTime = getPrettyTime(j, minuteOffset);
      		let k = ((24 * i + j) - offset + 168) % 168;
      		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
      		for (let index = 0; index < events.length; index++) {
@@ -285,7 +276,35 @@
 		return str.includes("Legacy") || str.includes("Modern") || str.includes("Pioneer") || str.includes("Pauper");
 	}
 	
-	function generateTextboxForDay(today, fallbacks) {
+	function getPrettyTime(hour, minuteOfHour) {
+		if (minuteOfHour == 0) {
+     		if (hour == 0) {
+     			return "12am";
+     		} else if (hour < 12) {
+     			return hour + "am";
+     		} else if (hour == 12) {
+     			return "Noon";
+     		} else if (hour < 24) {
+     			return (hour - 12) + "pm";
+     		} else {
+     			return "Midnight";
+     		}
+     	} else {
+     		if (hour == 0) {
+     			return "12:" + minuteOfHour + "am";
+     		} else if (hour < 12) {
+     			return hour + ":" + minuteOfHour + "am";
+     		} else if (hour == 12) {
+     			return hour + ":" + minuteOfHour + "pm";
+     		} else if (hour < 24) {
+     			return (hour - 12) + ":" + minuteOfHour + "pm";
+     		} else {
+     			return ""; // shouldn't happen
+     		}
+     	}
+	}
+	
+	function generateTextboxForDay(today, fallbacks, minuteOffset) {
      	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : "black"; // blue indicates weekend
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
@@ -299,7 +318,7 @@
 		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
      			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
-     			+ getScheduleForDay(today, fallbacks)
+     			+ getScheduleForDay(today, fallbacks, minuteOffset)
      			+ "</fieldset>";
 	}
 	
