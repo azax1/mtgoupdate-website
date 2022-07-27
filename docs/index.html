@@ -225,12 +225,8 @@
     }
     
     function modifyScheduleAndAddFallbacks(schedule) {
-    	// 6am Sunday
-    	schedule[6] = "Pioneer Showcase Challenge";
-    	fallbacks[6] = [new Date(2022, 6, 24, 6), "Pioneer Challenge"];
-    	
     	// 7am Sunday
-    	schedule[7] = "MOCS Showcase Open";
+    	schedule[7] = "MOCS Showcase Open (2XM)";
 		fallbacks[7] = [new Date(2022, 7, 21, 14), null];
 
 		// 8am Sunday
@@ -242,12 +238,8 @@
     	fallbacks[146] = [new Date(2022, 6, 30, 9), "Pauper Challenge"];
     	
     	// Saturday 7am
-    	schedule[151] = "MOCS Showcase Open";
+    	schedule[151] = "MOCS Showcase Open (2XM)";
     	fallbacks[151] = [new Date(2022, 7, 20, 14), null];
-    	
-    	// Saturday 8am
-		schedule[152] = "Modern Showcase Challenge";
-    	fallbacks[152] = [new Date(2022, 6, 23, 15), "Modern Challenge"];
 		
 		// LCQs (various)			
 		for (let i = 0; i < 79; i++) {
