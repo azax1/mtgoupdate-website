@@ -207,8 +207,8 @@
 	    let ch = "Challenge";
 	    let pr = "Prelim";
 	    let dm = "Double Masters 2022 Duels";
-		let ret = [`Vintage ${ch}`, dm, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, dm,
-    		`Limited ${pr}`, null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
+		let ret = [`Vintage ${ch}`, dm, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+    		dm, null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
     		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
     		null, null, null, `Modern ${pr}`, null, null, `Limited ${pr}`, `Pioneer ${pr}`, null, `Vintage ${pr}`, null, null,
     		`Pauper ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Pauper ${pr}`,
@@ -219,8 +219,8 @@
     		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, null, null, `Standard ${pr}`, null, `Pioneer ${pr}`, null, null,
     		`Legacy ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
     		null, null, null, `Pioneer ${pr}`, null, null, `Limited ${pr}`, `Modern ${pr}`, null, null, null, null,
-    		`Pioneer ${pr}`, `Limited ${pr}` + "&" + dm, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, dm,
-    		`Limited ${pr}`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
+    		`Pioneer ${pr}`, dm, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
+    		dm, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
     	modifyScheduleAndAddFallbacks(ret);
     	return ret;
     }
