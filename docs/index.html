@@ -227,7 +227,7 @@
     
     function modifyScheduleAndAddFallbacks(schedule) {
     	// 1am Sunday
-    	if (schedule[1] != null) {
+    	if (schedule[1] == null) {
     		schedule[1] = "Modern RCQ";
     	} else {
     		schedule[1] = "Modern RCQ" + "&" + schedule[1];
