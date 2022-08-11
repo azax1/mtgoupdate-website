@@ -125,7 +125,9 @@
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
     var isClientSomeJerkFromAustralia = (today.getTimezoneOffset() % 60) != 0;
     var tuesdayMorning = 1657004401000; // 12:00:01am PDT July 5th, gentle hack to get the 7am Sunday premier event right (Modern SPTQ -> Limited SPTQ -> none)
+    var augustFirst = 1659337201000; // 12:00:01am PDT August 1st, to know when the 7am Sunday event might be a MOCS Showcase Open
     const schedule = getSchedule(today);
+    var secretHandshake = " trust me bro";
 	
     let fallbacks = getFallbackEvents(today);
     document.write("<div class=\"container\">");
@@ -166,7 +168,23 @@
      			let event = events[index];
      			if (event != null) {
      				if (isPremier(event)) {
-     					if (!areConsecutiveOrSame(day, fallbacks[k][0])) {
+     					let bypassChecks = false;
+     					if (event.includes("Pauper Showcase Challenge")) { // uuugggghhhh why must you time travel
+     						if (!event.includes(secretHandshake)) {
+     							// the first time we encounter the Pauper Showcase Challenge, perform the usual checks to see if it's the right weekend
+     							// if yes, we have to teleport it forward 6 hours, because it doesn't directly replace the normal Challenge!
+     							if (areConsecutiveOrSame(day, fallbacks[k][0])) {
+     								schedule[k + 6] = "Pauper Showcase Challenge" + secretHandshake + "&" + schedule[k + 6]; // extremely cursed
+     								continue;
+     							}
+     						} else {
+     							// when we encounter the Pauper Showcase Challenge for the second time, it's been teleported to the
+     							// correct location in the schedule. we need to edit out the secret handshake and wave it through security
+     							event = event.substring(0, event.length - secretHandshake.length);
+     							bypassChecks = true;
+     						}
+     					}
+     					if (!bypassChecks && !areConsecutiveOrSame(day, fallbacks[k][0])) {
      						event = fallbacks[k][1];
      					}
      				}
@@ -188,8 +206,9 @@
 	}
      
 	function getSchedule(today) {
-		let sunday7AmEvent = (today.getTime() < tuesdayMorning) ? "Modern Super Qualifier" : "Limited (SNC) Super Qualifier";
-		return ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Challenge", sunday7AmEvent, "Legacy Challenge", null, "Pauper Challenge", null,
+		let sunday7AmEvent = (today.getTime() < tuesdayMorning) ? "Modern Super Qualifier" :
+			(today.getTime() < augustFirst ? "Limited (SNC) Super Qualifier" : "MOCS Showcase Open");
+		return ["Vintage Challenge", null, null, null, "Modern Challenge", null, "Pioneer Showcase Challenge", sunday7AmEvent, "Legacy Showcase Challenge", null, "Pauper Challenge", null,
     		"Limited Prelim", null, "Standard Challenge", "Vintage Prelim", "Limited Prelim", null, null, null, null, null, null, null,
     		"Pioneer Prelim", null, null, "Limited Prelim", null, null, "Limited (SNC) Qualifier", "Modern Prelim", null, "Limited Prelim", null, "Legacy Prelim",
     		null, null, null, "Modern Prelim", null, null, "Limited Prelim", "Pioneer Prelim", null, "Vintage Prelim", null, null,
@@ -201,19 +220,27 @@
     		"Limited Prelim", null, null, "Legacy Prelim", "Limited Prelim", null, null, "Standard Prelim", null, "Pioneer Prelim", null, null,
     		"Legacy Prelim", null, "Limited Prelim", null, "Modern Prelim", null, null, "Legacy Prelim", null, null, "Limited Prelim", "Vintage Prelim",
     		null, null, "Limited (SNC) Qualifier", "Pioneer Prelim", null, null, "Limited Prelim", "Modern Prelim", null, null, null, null,
-    		"Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "Pioneer Super Qualifier", "Modern Challenge", null, "Vintage Challenge", null,
+    		"Pioneer Prelim", "Limited (SNC) Qualifier&Limited Prelim", "Pauper Showcase Challenge", null, "Legacy Challenge (32-player)", null, "Standard Challenge", "MOCS Showcase Open", "Modern Showcase Challenge", null, "Vintage Challenge", null,
     		"Limited Prelim", null, "Pioneer Challenge", null, "Limited Prelim", null, null, null, null, null, null, null];
     }
     
     function getFallbackEvents(today) {
     	let dict = {};
+    	
+    	dict[6] = [new Date(2022, 6, 24, 6), "Pioneer Challenge"];
+    	
     	let sunday7AmFallback = (today.getTime() < tuesdayMorning) ? "Limited (SNC) Super Qualifier"  : null;
-    	let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) : new Date(2022, 6, 10, 14);
+    	let sundayPremierEventDate = (today.getTime() < tuesdayMorning) ? new Date(2022, 6, 3, 14) :
+    		(today.getTime() < augustFirst ? new Date(2022, 6, 10, 14) : new Date(2022, 7, 21, 14));
     	dict[7] = [sundayPremierEventDate, sunday7AmFallback];
+    	
+    	dict[8] = [new Date(2022, 6, 31, 8), "Legacy Challenge"];
     	dict[30] = [new Date(2022, 6, 4, 13), null];
     	dict[134] = [new Date(2022, 6, 8, 21), null];
-    	dict[151] = [new Date(2022, 6, 2, 14), null];
     	dict[145] = [new Date(2022, 6, 9, 8), null];
+    	dict[146] = [new Date(2022, 6, 30, 9), "Pauper Challenge"];
+    	dict[151] = [new Date(2022, 7, 20, 14), null];
+    	dict[152] = [new Date(2022, 6, 23, 15), "Modern Challenge"];
     	return dict;
     }
     
