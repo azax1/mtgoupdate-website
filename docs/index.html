@@ -137,7 +137,6 @@
     	}
     }
     var secretHandshake = " trust me bro";
-    var dm = "Double Masters 2022 Duels";
     
     var fallbacks = {};
     const schedule = getSchedule();
@@ -205,8 +204,8 @@
 	function getSchedule() {
 	    let ch = "Challenge";
 	    let pr = "Prelim";
-		let ret = [`Vintage ${ch}`, null, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
-    		dm, null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
+		let ret = [`Vintage ${ch}`, "Limited Challenge (32-player)", null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+    		"Limited Challenge", null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
     		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
     		null, null, null, `Modern ${pr}`, null, null, `Limited ${pr}`, `Pioneer ${pr}`, null, `Vintage ${pr}`, null, null,
     		`Pauper ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Pauper ${pr}`,
@@ -217,21 +216,13 @@
     		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, null, null, `Standard ${pr}`, null, `Pioneer ${pr}`, null, null,
     		`Legacy ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
     		null, null, null, `Pioneer ${pr}`, null, null, `Limited ${pr}`, `Modern ${pr}`, null, null, null, null,
-    		`Pioneer ${pr}`, dm, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
-    		dm, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
+    		`Pioneer ${pr}`, "Limited Challenge (32-player)", `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
+    		"Limited Challenge", null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
     	modifyScheduleAndAddFallbacks(ret);
     	return ret;
     }
     
     function modifyScheduleAndAddFallbacks(schedule) {
-    	// 1am Sunday
-    	if (schedule[1] == null) {
-    		schedule[1] = "Modern RC Qualifier";
-    	} else {
-    		schedule[1] = "Modern RC Qualifier" + "&" + schedule[1];
-    	}
-    	fallbacks[1] = [new Date(2022, 7, 28, 8), null];
-    	
     	// 6am Sunday
     	schedule[6] = "Pioneer Showcase Challenge";
     	let pioFallbackDate = null;
@@ -273,16 +264,10 @@
 			legFallbackDate = new Date(2022, 10, 20, 16);
 		}
 		fallbacks[8] = [legFallbackDate, "Legacy Challenge"];
-		
-		// 12pm Sunday
-		fallbacks[12] = [new Date(2022, 7, 28, 19), null];
     	
     	// Friday 2pm
     	schedule[134] = "Pioneer RC Qualifier";
     	fallbacks[134] = [new Date(2022, 8, 30, 21), null];
-    	
-    	// Saturday 1am
-    	fallbacks[145] = [new Date(2022, 7, 27, 8), "Limited Prelim"];
     	
     	// Saturday 6am
 		schedule[150] = "Standard Showcase Challenge";
@@ -331,9 +316,6 @@
 			modFallbackDate = new Date(2022, 10, 19, 16);
 		}
     	fallbacks[152] = [modFallbackDate, "Modern Challenge"];
-    	
-    	// Saturday 12pm
-    	fallbacks[156] = [new Date(2022, 7, 27, 19), null];
 		
 		// LCQs (various)			
 		for (let i = 0; i < 79; i++) {
@@ -355,8 +337,7 @@
 	}
 	
 	function isPremier(event) {
-		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ") || event.includes("Duels");
-		// Duels aren't premier, this is a hack, nothing to see here
+		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ");
 	}
 	
 	function isMocsFormat(str) {
