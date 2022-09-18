@@ -189,10 +189,10 @@
      				color = "black";
      				if (j == 24) {
      					color = "grey";
-     				} else if (event.includes("Challenge") || event.includes("Duels")) {
-     					color = "green";
      				} else if (isPremier(event)) {
      					color = "red";
+     				} else if (event.includes("Challenge") || event.includes("Duels")) {
+     					color = "green";
      				}
      				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
      			}
