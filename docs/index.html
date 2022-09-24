@@ -165,7 +165,7 @@
      			if (event != null) {
      				if (isPremier(event)) {
      					let bypassChecks = false;
-     					if (event.includes("Standard Showcase Challenge")) { // uuugggghhhh why must you time travel
+     					if (event.includes("Yomama's Showcase Challenge")) { // apparently the Standard Challenge doesn't actually move, oops
      						if (!event.includes(secretHandshake)) {
      							// the first time we encounter the Standard Showcase Challenge, perform the usual checks to see if it's the right weekend
      							// if yes, we have to teleport it forward 6 hours, because it doesn't directly replace the normal Challenge!
@@ -191,7 +191,7 @@
      					color = "grey";
      				} else if (isPremier(event)) {
      					color = "red";
-     				} else if (event.includes("Challenge") || event.includes("Duels")) {
+     				} else if (event.includes("Challenge")) {
      					color = "green";
      				}
      				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
