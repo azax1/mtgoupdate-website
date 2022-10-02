@@ -204,7 +204,7 @@
 	function getSchedule() {
 	    let ch = "Challenge";
 	    let pr = "Prelim";
-		let ret = [`Vintage ${ch}`, "Limited Challenge (32-player)", null, null, `Modern ${ch}`, null, null, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+		let ret = [`Vintage ${ch}`, "Limited Challenge (32-player)", null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
     		"Limited Challenge", null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
     		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
     		null, null, null, `Modern ${pr}`, null, null, `Limited ${pr}`, `Pioneer ${pr}`, null, `Vintage ${pr}`, null, null,
@@ -237,7 +237,7 @@
     	} else {
     		pioFallbackDate = new Date(2022, 10, 20, 14);
     	}
-    	fallbacks[6] = [pioFallbackDate, null];
+    	fallbacks[6] = [pioFallbackDate, Pioneer Challenge];
     	
     	// 7am Sunday
     	if (today.getTime() < new Date(2022, 7, 24, 14).getTime()) {
