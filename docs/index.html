@@ -107,6 +107,10 @@
     		
     		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on November 6, 2022).<br><br>
 
+			<b>What's your contact information?</b><br><br>
+			
+			Feel free to message me on Twitter @mtgoupdate or email me at admin at mtgoupdate dot com.<br><br>
+			
 			<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
 			
 			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a>.<br><br>
@@ -165,16 +169,16 @@
      			if (event != null) {
      				if (isPremier(event)) {
      					let bypassChecks = false;
-     					if (event.includes("Yomama's Showcase Challenge")) { // apparently the Standard Challenge doesn't actually move, oops
+     					if (event.includes("Pauper Showcase Challenge")) {
      						if (!event.includes(secretHandshake)) {
-     							// the first time we encounter the Standard Showcase Challenge, perform the usual checks to see if it's the right weekend
+     							// the first time we encounter the Pauper Showcase Challenge, perform the usual checks to see if it's the right weekend
      							// if yes, we have to teleport it forward 6 hours, because it doesn't directly replace the normal Challenge!
      							if (areConsecutiveOrSame(day, fallbacks[k][0])) {
-     								schedule[k + 2] = "Standard Showcase Challenge" + secretHandshake + "&" + schedule[k + 2]; // extremely cursed
+     								schedule[k + 6] = "Pauper Showcase Challenge" + secretHandshake + "&" + schedule[k + 6]; // extremely cursed
      								continue;
      							}
      						} else {
-     							// when we encounter the Standard Showcase Challenge for the second time, it's been teleported to the
+     							// when we encounter the Pauper Showcase Challenge for the second time, it's been teleported to the
      							// correct location in the schedule. we need to edit out the secret handshake and wave it through security
      							event = event.substring(0, event.length - secretHandshake.length);
      							bypassChecks = true;
