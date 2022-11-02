@@ -120,7 +120,7 @@
     <script type="text/javascript">
     var today = new Date();
     var localTime = today.toString();
-    var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
+    var PTOffset = (today.getTime() > 1667725199000) ? 6 : 5; // handles DST switch in November 2022
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
     var minuteOffset = today.getTimezoneOffset() % 60;
     if (minuteOffset != 0) {
