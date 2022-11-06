@@ -84,6 +84,23 @@
 </style>
   <body>
   	<noscript><div>Please enable JavaScript</div></noscript>
+    <script type="text/javascript">
+    var today = new Date();
+    var localTime = today.toString();
+    var PTOffset;
+    var nextDST;
+    if (today.getTime() <= 1667725199000) {  // handles DST switch in November 2022
+    	PTOffset = 7;
+    	nextDST = "November 6th";
+    } else {
+    	PTOffset = 8;
+    	if (today.getFullYear() == "2022") {
+    		nextDST = "March 12th, 2023";
+    	} else {
+    		nextDST = "March 12th";
+    	}
+    }
+    document.write(`
     <div class="everything">
     <div><div>
     <h1>Scheduled Events on MTGO</h1>
@@ -105,7 +122,7 @@
     		<b>I'm viewing this page right before the US changes its clocks for DST (but I won't be changing mine).
     		Are events that take place after the switch listed at the correct times?</b><br><br>
     		
-    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on November 6, 2022).<br><br>
+    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on ${nextDST}).<br><br>
 
 			<b>What's your contact information?</b><br><br>
 			
@@ -117,10 +134,7 @@
 			</p>
     	</div>
     </div>
-    <script type="text/javascript">
-    var today = new Date();
-    var localTime = today.toString();
-    var PTOffset = (today.getTime() > 1667725199000) ? 8 : 7; // handles DST switch in November 2022
+    `);
     var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
     var minuteOffset = today.getTimezoneOffset() % 60;
     if (minuteOffset != 0) {
