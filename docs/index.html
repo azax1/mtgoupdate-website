@@ -89,16 +89,16 @@
     var localTime = today.toString();
     var PTOffset;
     var nextDST;
-    if (today.getTime() <= 1667725199000) {  // handles DST switch in November 2022
-    	PTOffset = 7;
-    	nextDST = "November 6th";
-    } else {
+    if (today.getTime() <= 1678611600000) {  // handles DST switch in March 2023
     	PTOffset = 8;
     	if (today.getFullYear() == "2022") {
     		nextDST = "March 12th, 2023";
     	} else {
     		nextDST = "March 12th";
     	}
+    } else {
+    	PTOffset = 7;
+    	nextDST = "November 5th";
     }
     document.write(`
     <div class="everything">
@@ -130,7 +130,7 @@
 			
 			<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
 			
-			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a>.<br><br>
+			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a> or email me about sending me MTGO tickets.<br><br>
 			</p>
     	</div>
     </div>
