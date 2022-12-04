@@ -154,11 +154,10 @@
     		offset--;
     	}
     }
-    var fallbacks = {};
     const schedule = getSchedule();
     document.write("<div class=\"container\">");
     for (let k = 0; k < 7; k++) {
-     	document.write(generateTextboxForDay(today, fallbacks, minuteOffset));
+     	document.write(generateTextboxForDay(today, minuteOffset));
 	   	today.setDate(today.getDate() + 1);
     }
     document.write("</div><center><p><strong>Detected local time:</strong> " + localTime + "</p></center></div>");
@@ -168,7 +167,7 @@
       
     setUpFaqModal();
       
-	function getScheduleForDay(day, fallbacks, minuteOffset) {
+	function getScheduleForDay(day, minuteOffset) {
 		let i = day.getDay(); // of week
 		let ret = "";
 		let upperLimit = (minuteOffset == 0) ? 24 : 23;
@@ -178,9 +177,6 @@
      		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
-     			if (event != null && isPremier(event) && !areConsecutiveOrSame(day, fallbacks[k][0])) {
-     				event = fallbacks[k][1];
-     			}
      			if (event != null) {
      				color = "black";
      				if (j == 24) {
@@ -214,200 +210,18 @@
     		null, null, null, `Pioneer ${pr}`, null, null, `Limited ${pr}`, `Modern ${pr}`, null, null, null, null,
     		`Pioneer ${pr}`, "Eternal Weekend - Legacy&Limited Challenge (32-player)", `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
     		"Limited Challenge", null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
-    	modifyScheduleAndAddFallbacks(ret);
+    	insertSpecialEventsAndLCQs(ret);
     	return ret;
     }
     
-    function modifyScheduleAndAddFallbacks(schedule) {
-    	// 1am Sunday
-    	schedule[1] = "Limited (NEO) Super Qualifier&" + schedule[1];
-    	fallbacks[1] = [new Date(2023, 2, 5, 9), null];
-    	
-    	// 6am Sunday
-    	schedule[6] = "Pioneer Showcase Challenge";
-    	let pioFallbackDate = null;
-    	if (today.getTime() < new Date(2023, 0, 10, 14).getTime()) {
-    		pioFallbackDate = new Date(2023, 0, 8, 14);
-    	} else if (today.getTime() < new Date(2023, 1, 14, 13).getTime()) {
-    		pioFallbackDate = new Date(2023, 1, 12, 14);
-    	} else {
-    		pioFallbackDate = new Date(2023, 2, 12, 14);
-    	}
-    	fallbacks[6] = [pioFallbackDate, "Pioneer Challenge"];
-    	
-    	if (today.getTime() < new Date(2022, 11, 20, 15).getTime()) {
-    		schedule[7] = "Limited (BRO) MOCS Showcase Open";
-    		fallbacks[7] = [new Date(2022, 11, 18, 15), null];
-    	} else if (today.getTime() < new Date(2023, 0, 20, 16).getTime()) {
-    		schedule[7] = "Limited (BRO) Super Qualifier";
-    		fallbacks[7] = [new Date(2023, 0, 22, 15), null];
-    	} else if (today.getTime() < new Date(2023, 0, 27, 16).getTime()) {
-    		schedule[7] = "Limited (BRO) Super Qualifier";
-    		fallbacks[7] = [new Date(2023, 0, 22, 15), "Vintage Super Qualifier"];
-    	} else if (today.getTime() < new Date(2023, 1, 3, 16).getTime()) {
-    		schedule[7] = "Vintage Super Qualifier";
-    		fallbacks[7] = [new Date(2023, 0, 29, 15), "Standard Super Qualifier"];
-    	} else if (today.getTime() < new Date(2023, 1, 7, 16).getTime()) {
-    		schedule[7] = "Standard Super Qualifier";
-    		fallbacks[7] = [new Date(2023, 1, 5, 15), null];
-    	} else {
-    		schedule[7] = "Limited (ONE) Super Qualifier";
-    		fallbacks[7] = [new Date(2023, 1, 19, 15), null];
-    	}
-
-		// 8am Sunday
-		schedule[8] = "Legacy Showcase Challenge";
-		let legFallbackDate = null;
-		if (today.getTime() < new Date(2023, 0, 17, 16).getTime()) {
-			legFallbackDate = new Date(2023, 0, 15, 16);
-		} else if (today.getTime() < new Date(2023, 1, 28, 16).getTime()) {
-			legFallbackDate = new Date(2023, 1, 26, 16);
-		}else {
-			legFallbackDate = new Date(2023, 2, 19, 16);
-		}
-		fallbacks[8] = [legFallbackDate, "Legacy Challenge"];
-		
-		// Noon Sunday
-		schedule[12] = "Modern Super Qualifier&" + schedule[12];
-		fallbacks[12] = [new Date(2023, 2, 5, 20), null];
-    	
-    	// 3pm Sunday
-    	schedule[15] = "Limited (BRO) Qualifier&" + schedule[15];
-    	fallbacks[15] = [new Date(2023, 0, 1, 23), null];
-    	// TODO remove this after it occurs so it doesn't show up during LCQ season
-    	
-    	// 7am Monday
-    	if (today.getTime() < new Date(2022, 11, 28, 15).getTime()) {
-    		schedule[31] = "Modern Super Qualifier&" + schedule[31];
-    		fallbacks[31] = [new Date(2022, 11, 26, 15), null];
-    	} else {
-    		schedule[31] = "Limited (ONE) Qualifier&" + schedule[31];
-    		fallbacks[31] = [new Date(2023, 1, 20, 15), null];
-    		// TODO remove this after it occurs so it doesn't show up during LCQ season
-    	}
-    	
-    	// 7am Tuesday
-    	schedule[55] = "Standard Super Qualifier&" + schedule[55];
-    	fallbacks[55] = [new Date(2022, 11, 27, 15), null];
-    	// TODO remove this after it occurs so it doesn't show up during LCQ season
-
-    	// 7am Wednesday
-    	schedule[79] = "Pioneer Super Qualifier&" + schedule[79];
-    	fallbacks[79] = [new Date(2022, 11, 28, 15), null];
-    	
-    	// 7am Thursday
-    	schedule[103] = "Legacy Super Qualifier&" + schedule[103];
-    	fallbacks[103] = [new Date(2022, 11, 29, 15), null];
-    	
-    	// Friday 7am
-    	if (today.getTime() < new Date(2022, 11, 4, 15)) {
-    		schedule[127] = "Limited (BRO) Super Qualifier&" + schedule[127];
-    		fallbacks[127] = [new Date(2022, 11, 2, 15), null];
-    	} else if (today.getTime() < new Date(2022, 11, 18, 15)) {
-    		schedule[127] = "Limited (BRO) Super Qualifier&" + schedule[127];
-    		fallbacks[127] = [new Date(2022, 11, 23, 15), null];
-    	} else if (today.getTime() < new Date(2022, 11, 25, 15)) {
-    		schedule[127] = "Limited (BRO) Super Qualifier&" + schedule[127];
-    		fallbacks[127] = [new Date(2022, 11, 23, 15), "Vintage Super Qualifier"];
-    	} else if (today.getTime() < new Date(2023, 0, 1, 15)) {
-    		schedule[127] = "Vintage Super Qualifier&" + schedule[127];
-    		fallbacks[127] = [new Date(2022, 11, 30, 15), null];
-    	} else {
-    		schedule[127] = "Limited (ONE) Super Qualifier&" + schedule[127];
-    		fallbacks[127] = [new Date(2023, 2, 17, 14), null];
-    	}
-    	
-    	// Friday 2pm
-    	if (today.getTime() < new Date(2023, 1, 12, 22)) {
-    		schedule[134] = "Limited (ONE) Qualifier";
-    		fallbacks[134] = [new Date(2023, 1, 10, 22), null];
-    	} else {
-    		schedule[134] = "Limited (ONE) Qualifier";
-    		fallbacks[134] = [new Date(2023, 2, 10, 22), null];
-    	}
-    	
-    	// Saturday 12am
-    	schedule[144] = "Standard Qualifier&" + schedule[144];
-    	fallbacks[144] = [new Date(2022, 9, 29, 7), null];
-    	
-    	// Saturday 6am
-		schedule[150] = "Standard Showcase Challenge";
-		let stdFallbackDate = null;
-    	if (today.getTime() < new Date(2022, 9, 1, 15).getTime()) {
-			stdFallbackDate = new Date(2022, 8, 24, 13);
-		} else if (today.getTime() < new Date(2022, 10, 10, 15).getTime()) {
-			stdFallbackDate = new Date(2022, 10, 5, 13);
-		} else {
-			stdFallbackDate = new Date(2022, 10, 26, 14);
-		}
-    	fallbacks[150] = [stdFallbackDate, "Standard Challenge"];
-    	
-    	// Saturday 7am
-    	if (today.getTime() < new Date(2022, 11, 19, 15).getTime()) {
-    		schedule[151] = "Limited (BRO) MOCS Showcase Open";
-    		fallbacks[151] = [new Date(2022, 11, 17, 15), null];
-    	} else if (today.getTime() < new Date(2023, 0, 16, 15).getTime()) {
-    		schedule[151] = "Modern Super Qualifier";
-    		fallbacks[151] = [new Date(2023, 0, 21, 15), null];
-    	} else if (today.getTime() < new Date(2023, 0, 23, 15).getTime()) {
-    		schedule[151] = "Modern Super Qualifier";
-    		fallbacks[151] = [new Date(2023, 0, 21, 15), "Pauper Qualifier"];
-    	} else if (today.getTime() < new Date(2023, 0, 30, 15).getTime()) {
-    		schedule[151] = "Pauper Qualifier";
-    		fallbacks[151] = [new Date(2023, 0, 28, 15), "Legacy Qualifier"];
-    	} else if (today.getTime() < new Date(2023, 1, 6, 15).getTime()) {
-    		schedule[151] = "Legacy Qualifier";
-    		fallbacks[151] = [new Date(2023, 1, 4, 15), null];
-    	} else if (today.getTime() < new Date(2023, 1, 20, 15).getTime()) {
-    		schedule[151] = "Pioneer Super Qualifier";
-    		fallbacks[151] = [new Date(2023, 1, 18, 15), null];
-    	} else {
-    		schedule[151] = "Limited (NEO) Super Qualifier";
-    		fallbacks[151] = [new Date(2023, 2, 4, 15), null];
-    	}
-    	
-    	// Saturday 8am
-    	schedule[152] = "Modern Showcase Challenge";
-    	let modFallbackDate = null;
-    	if (today.getTime() < new Date(2023, 0, 9, 16).getTime()) {
-			modFallbackDate = new Date(2023, 0, 7, 16);
-		} else if (today.getTime() < new Date(2023, 1, 13, 16).getTime()) {
-			modFallbackDate = new Date(2023, 1, 11, 16);
-		}else {
-			modFallbackDate = new Date(2023, 2, 11, 16);
-		}
-    	fallbacks[152] = [modFallbackDate, "Modern Challenge"];
-    	
-    	// Saturday 10am
-    	schedule[154] = "Vintage Showcase Challenge";
-    	let vintFallbackDate = null;
-    	if (today.getTime() < new Date(2023, 0, 16, 18).getTime()) {
-			vintFallbackDate = new Date(2023, 0, 14, 18);
-		} else if (today.getTime() < new Date(2023, 1, 27, 18).getTime()) {
-			vintFallbackDate = new Date(2023, 1, 25, 18);
-		}else {
-			vintFallbackDate = new Date(2023, 2, 18, 18);
-		}
-    	fallbacks[154] = [vintFallbackDate, "Vintage Challenge"];
-		
-		// LCQs (various)			
-		for (let i = 0; i < 79; i++) {
-			if ((schedule[i] != null) && isMocsFormat(schedule[i]) && schedule[i].includes("Prelim") && !isPremier(schedule[i])) {
-				let temp = schedule[i];
-				schedule[i] = schedule[i].replace("Prelim", "LCQ");
-				fallbacks[i] = [new Date(2023, 2, 21, 1), temp];
-    			// Tuesday 1am UTC is sneakily within 48 hours of every LCQ, which is the grace period given in the function below
-			}
-		}
+    function insertSpecialEventsAndLCQs(schedule) {
+    	let events = getSpecialEvents();
     }
     
-    function areConsecutiveOrSame(date1, date2) {
-		return isSameDayOrJustAfter(date1, date2) || isSameDayOrJustAfter(date2, date1);
-	}
-	
-	function isSameDayOrJustAfter(date1, date2) {
-		return (date1 <= date2) && (date2 <= (new Date(date1)).setDate(date1.getDate() + 2));
-	}
+    function getSpecialEvents() {
+    	let ret = new Map();
+    	return ret;
+    }
 	
 	function isPremier(event) {
 		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ");
@@ -445,7 +259,7 @@
      	}
 	}
 	
-	function generateTextboxForDay(today, fallbacks, minuteOffset) {
+	function generateTextboxForDay(today, minuteOffset) {
      	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : "black"; // blue indicates weekend
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
@@ -459,7 +273,7 @@
 		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
      			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
-     			+ getScheduleForDay(today, fallbacks, minuteOffset)
+     			+ getScheduleForDay(today, minuteOffset)
      			+ "</fieldset>";
 	}
 	
