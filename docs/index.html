@@ -185,7 +185,7 @@
      				color = "black";
      				if (j == 24) {
      					color = "grey";
-     				} else if (isPremier(event)) {
+     				} else if (isPremier(event) || event.includes("Eternal Weekend")) {
      					color = "red";
      				} else if (event.includes("Challenge")) {
      					color = "green";
@@ -200,7 +200,7 @@
 	function getSchedule() {
 	    let ch = "Challenge";
 	    let pr = "Prelim";
-		let ret = [`Vintage ${ch}`, "Limited Challenge (32-player)", null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+		let ret = [null, "Eternal Weekend - Vintage&Limited Challenge (32-player)", null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
     		"Limited Challenge", null, `Standard ${ch}`, `Vintage ${pr}`, `Limited ${pr}`, null, null, null, null, null, null, null,
     		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
     		null, null, null, `Modern ${pr}`, null, null, `Limited ${pr}`, `Pioneer ${pr}`, null, null, null, null,
@@ -212,7 +212,7 @@
     		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, null, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
     		`Legacy ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
     		null, null, null, `Pioneer ${pr}`, null, null, `Limited ${pr}`, `Modern ${pr}`, null, null, null, null,
-    		`Pioneer ${pr}`, "Limited Challenge (32-player)", `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
+    		`Pioneer ${pr}`, "Eternal Weekend - Legacy&Limited Challenge (32-player)", `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
     		"Limited Challenge", null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null];
     	modifyScheduleAndAddFallbacks(ret);
     	return ret;
@@ -470,7 +470,7 @@
 
     	button.onclick = function() { modal.style.display = "block"; };
     	span.onclick = function() { modal.style.display = "none"; };
-    	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+    	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};poop
 	}
    </script>
   </body>
