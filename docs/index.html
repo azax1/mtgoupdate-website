@@ -86,7 +86,8 @@
   	<noscript><div>Please enable JavaScript</div></noscript>
     <script type="text/javascript">
     var today = new Date();
-    var localTime = today.toString();
+    var localTime = today.toLocaleString([], {hour12: true}) +
+    				" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
     var PTOffset;
     var nextDST;
     if (today.getTime() <= 1678611600000) {  // handles DST switch in March 2023
