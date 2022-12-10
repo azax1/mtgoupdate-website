@@ -201,7 +201,8 @@
      					color = "red";
      				} else if (event.includes("Challenge")) {
      					color = "green";
-     				} else if (j == 24 && !(k == 168 && color !== "black")) {
+     				}
+     				if (j == 24 && !(k == 168 && color !== "black")) {
      					// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
      					// when special events have their normal color since they're not otherwise on the schedule
      					color = "grey";
