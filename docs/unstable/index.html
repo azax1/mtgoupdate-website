@@ -285,7 +285,7 @@
     }
     
     function insertIntoMonsterSchedule(monster, today, offset, specialEvents, isReplacement) {
-        let day = new Date();
+        let day = new Date(today);
     	day.setDate(today.getDate() - 1);
     	for (let i = 0; i < 9; i++) {
     		let todayEvents = specialEvents.get(day.toDateString());
