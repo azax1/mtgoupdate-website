@@ -138,11 +138,10 @@
   	<noscript><div>Please enable JavaScript</div></noscript>
   	
     <script type="text/javascript">
-    displaySchedule(new Date());
+    var today = new Date();
+    displaySchedule(today, getDetectedTime(today));
     
-    function displaySchedule(today) {
-		var localTime = today.toLocaleString([], {hour12: true}) +
-	    				" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";				
+    function displaySchedule(today, localTime) {			
 	    document.getElementById("localTime").innerHTML = localTime;
 	    				
 		var PTOffset;
@@ -309,6 +308,11 @@
     		}
     		day.setDate(day.getDate() + 1);
     	}
+    }
+    
+    function getDetectedTime(date) {
+    	return date.toLocaleString([], {hour12: true}) +
+	    				" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";	
     }
     
 	function isPremier(event) {
@@ -545,13 +549,14 @@
 	    	maxDate: new Date(2023, 2, 22),
 	    	onSelect: function() {
 	    		var day = new Date();
+	    		var localTime = getDetectedTime(day);
 	    		var input = $(this).val();
 	    		
     			day.setFullYear(input.slice(0, 4));
     			day.setMonth(input.slice(5, 7) - 1);
     			day.setDate(input.slice(8));
     			
-	    		displaySchedule(day);
+	    		displaySchedule(day, localTime);
 	    	}
 	    });
   	});
