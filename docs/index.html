@@ -132,13 +132,10 @@
     <div id="day6"></div>
     </div>
     <div style="text-align: center;">
-    	<div style="display: inline-block; text-align: left;">
-    	<p>
-    	<strong>Detected local time: </strong><span id="localTime"></span><br>
-    	<strong>Displayed date: </strong><span id="displayedDate"></span><br>
-    	See schedule for the week of <input type="text" id="datepicker">
-    	</p>
-    	</div>
+	<p>
+	<strong>Detected local time: </strong><span id="localTime"></span><br>
+	<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
+	</p>
     </div>
     </div>
     <p class="footer">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>
@@ -151,9 +148,7 @@
     
     function displaySchedule(today) {			
 	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
-	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";	
-	    		
-	    document.getElementById("displayedDate").innerHTML = today.toISOString().split("T")[0];
+	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 	    				
 		var PTOffset;
 	    var nextDST;
@@ -557,6 +552,7 @@
 	    	dateFormat: "yy-mm-dd",
 	    	minDate: new Date(2022, 11, 1),
 	    	defaultDate: new Date(),
+	    	setDate: new Date(),
 	    	maxDate: new Date(2023, 2, 22),
 	    	onClose: function() {
 	    		var input = $(this).datepicker("getDate");
@@ -572,7 +568,7 @@
 	        	
 	    		displaySchedule(date);
 	    	}
-	    });
+	    }).datepicker('setDate', new Date());;
   	});
    </script>
   </body>
