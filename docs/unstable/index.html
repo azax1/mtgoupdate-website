@@ -547,16 +547,13 @@
 	    	minDate: new Date(2022, 11, 1),
 	    	defaultDate: new Date(),
 	    	maxDate: new Date(2023, 2, 22),
-	    	onSelect: function() {
-	    		var day = new Date();
-	    		var localTime = getDetectedTime(day);
-	    		var input = $(this).val();
-	    		
-    			day.setFullYear(input.slice(0, 4));
-    			day.setMonth(input.slice(5, 7) - 1);
-    			day.setDate(input.slice(8));
-    			
-	    		displaySchedule(day, localTime);
+	    	onClose: function() {
+	    		var input = $(this).datepicker("getDate");
+	        	if (!input || !(input instanceof Date)) {
+	        		input = new Date();
+	          		$(this).datepicker("setDate", input);
+	        	}
+	    		displaySchedule(input, getDetectedTime(new Date()));
 	    	}
 	    });
   	});
