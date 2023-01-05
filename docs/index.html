@@ -90,7 +90,7 @@
 </style>
   <body>
   	<div class="everything">
-    <div><div>
+    <div>
     <h1>Scheduled Events on MTGO</h1>
     <button id="info">&#8505;</button>
     <div id="faq" class="modal">
@@ -130,19 +130,30 @@
     <div id="day4"></div>
     <div id="day5"></div>
     <div id="day6"></div>
-    </div><center><p><strong>Detected local time: </strong><span id="localTime"></span></p></center></div>
-    <center><p>See schedule for the week of <input type="text" id="datepicker"></p></center>
-    "</div>"
+    </div>
+    <div style="text-align: center;">
+    	<div style="display: inline-block; text-align: left;">
+    	<p>
+    	<strong>Detected local time: </strong><span id="localTime"></span><br>
+    	<strong>Displayed date: </strong><span id="displayedDate"></span><br>
+    	See schedule for the week of <input type="text" id="datepicker">
+    	</p>
+    	</div>
+    </div>
+    </div>
     <p class="footer">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>
     </div>
   	<noscript><div>Please enable JavaScript</div></noscript>
   	
     <script type="text/javascript">
     var today = new Date();
-    displaySchedule(today, getDetectedTime(today));
+    displaySchedule(today);
     
-    function displaySchedule(today, localTime) {			
-	    document.getElementById("localTime").innerHTML = localTime;
+    function displaySchedule(today) {			
+	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
+	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";	
+	    		
+	    document.getElementById("displayedDate").innerHTML = today.toISOString().split("T")[0];
 	    				
 		var PTOffset;
 	    var nextDST;
@@ -311,7 +322,7 @@
     }
     
     function getDetectedTime(date) {
-    	return date.toLocaleString([], {hour12: true}) +
+    	return date.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
 	    				" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";	
     }
     
@@ -553,7 +564,13 @@
 	        		input = new Date();
 	          		$(this).datepicker("setDate", input);
 	        	}
-	    		displaySchedule(input, getDetectedTime(new Date()));
+	        	
+	        	var date = new Date();
+	        	date.setFullYear(input.getFullYear());
+	        	date.setMonth(input.getMonth());
+	        	date.setDate(input.getDate());
+	        	
+	    		displaySchedule(date);
 	    	}
 	    });
   	});
