@@ -316,11 +316,6 @@
     	}
     }
     
-    function getDetectedTime(date) {
-    	return date.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
-	    				" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";	
-    }
-    
 	function isPremier(event) {
 		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ") || event.includes("Eternal Weekend");
 	}
