@@ -571,11 +571,11 @@
 	        		input = new Date();
 	          		$(this).datepicker("setDate", input);
 	        	}
-	        	
 	        	var date = new Date();
-	        	date.setFullYear(input.getFullYear());
-	        	date.setMonth(input.getMonth(), input.getDate());
 	        	
+	        	// spooky calendar bullshit
+	        	date.setFullYear(input.getFullYear(), input.getMonth(), input.getDate());
+	    		
 	    		displaySchedule(date);
 	    	}
 	    }).datepicker('setDate', new Date());;
