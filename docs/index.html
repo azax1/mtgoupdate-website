@@ -574,8 +574,7 @@
 	        	
 	        	var date = new Date();
 	        	date.setFullYear(input.getFullYear());
-	        	date.setMonth(input.getMonth());
-	        	date.setDate(input.getDate());
+	        	date.setMonth(input.getMonth(), input.getDate());
 	        	
 	    		displaySchedule(date);
 	    	}
