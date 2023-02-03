@@ -91,7 +91,36 @@
   <body>
   	<div class="everything">
     <div>
-    <h1>Scheduled Events on MTGO</h1>
+	<header style="display: flex;">
+  		<div style="width: 100%; display: flex; align-content: center;">
+    	<div style="width: 35%;"></div>
+    	<div style="width: 30%;">
+      		<h1>Scheduled Events on MTGO</h1>
+    	</div>
+    	<div style="width: 5%;"></div>
+    	<div style="width: 30%"><br><h4>Filter by:
+    		<select id="formatDropdown">
+    			<option value="Format" selected>Format</option>
+  				<option value="Limited">Limited</option>
+  				<option value="Standard">Standard</option>
+  				<option value="Pioneer">Pioneer</option>
+  				<option value="Modern">Modern</option>	
+  				<option value="Legacy">Legacy</option>
+  				<option value="Vintage">Vintage</option>
+			</select>
+			
+			<select id="eventTypeDropdown">
+    			<option value="eventType" selected>Event Type</option>
+  				<option value="Prelim">Prelim</option>
+  				<option value="Challenge">Challenge</option>
+  				<option value="Showcase Challenge">Showcase Challenge</option>
+  				<option value="Qualifier">Qualifier / Super Qualifier</option>
+  				<option value="LCQ">MOCS LCQ</option>
+  				<option value="Premier">All premier (red) events</option>
+			</select>
+		</h4></div>
+  </div>
+</header>
     <button id="info">&#8505;</button>
     <div id="faq" class="modal">
     	<div class="modal-content">
@@ -138,15 +167,38 @@
 	</p>
     </div>
     </div>
-    <p class="footer">Domain names and time aren't free. <a href=\"https://www.ko-fi.com/mtgoupdate\">Donate</a> if you wish.</p>
+    <p class="footer">Registering and maintaining this website isn't free. Any <a href=\"https://www.ko-fi.com/mtgoupdate\">support</a> is appreciated.</p>
     </div>
   	<noscript><div>Please enable JavaScript</div></noscript>
   	
     <script type="text/javascript">
-    var today = new Date();
-    displaySchedule(today);
+    displaySchedule();
     
-    function displaySchedule(today) {			
+    function displaySchedule() {
+	    var today = new Date();	
+	    var inputDate = $("#datepicker").datepicker("getDate");
+	    if (inputDate && (inputDate instanceof Date)) {
+	    	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+	    }
+	    
+	    var formatChoice = document.getElementById("formatDropdown").value;
+	    var formatSelector;
+	    if (formatChoice === "Format") { // no selection
+	    	formatSelector = (_) => { return true; };
+	    } else {
+	    	formatSelector = (event) => { return event.includes(formatChoice); };
+	    }
+	    
+	    var eventTypeChoice = document.getElementById("eventTypeDropdown").value;
+	    var eventTypeSelector;
+	    if (eventTypeChoice === "eventType") { // no selection
+	    	eventTypeSelector = (_) => { return true; };
+	    } else if (eventTypeChoice === "Premier") {
+	    	eventTypeSelector = (event) => { return isPremier(event); };
+	    } else {
+	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
+	    }
+	    		
 	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
 	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 	    				
@@ -186,7 +238,7 @@
     	const fieldSets = [null, null, null, null, null, null, null]; // each day's textbox pre-padding
     	let max = 0;
 	    for (let k = 0; k < 7; k++) {
-	     	fieldSets[k] = generateFieldsetForDay(schedule, today, k, minuteOffset);
+	     	fieldSets[k] = generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, k, minuteOffset);
 	     	heights[k] = (fieldSets[k].match(/<br>/g) || []).length;
 	     	if (heights[k] > max) {
 	     		max = heights[k];
@@ -200,7 +252,7 @@
 	    setUpFaqModal();
 	}
     	
-	function generateFieldsetForDay(schedule, today, dayCounter, minuteOffset) {
+	function generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
      	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : "black"; // blue indicates weekend
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
@@ -214,10 +266,10 @@
 		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
      			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
-     			+ getScheduleForDay(schedule, dayCounter, minuteOffset);
+     			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset);
 	}
 	
-	function getScheduleForDay(schedule, dayCounter, minuteOffset) {
+	function getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
 		let ret = "";
 		let upperLimit = (minuteOffset == 0) ? 24 : 23;
     	for (let j = 0; j <= upperLimit; j++) {
@@ -226,7 +278,7 @@
      		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
-     			if (event != null) {
+     			if (event != null && formatSelector(event) && eventTypeSelector(event)) {
      				color = "black";
      				if (isPremier(event)) {
      					color = "red";
@@ -571,15 +623,13 @@
 	        		input = new Date();
 	          		$(this).datepicker("setDate", input);
 	        	}
-	        	var date = new Date();
-	        	
-	        	// spooky calendar bullshit
-	        	date.setFullYear(input.getFullYear(), input.getMonth(), input.getDate());
-	    		
-	    		displaySchedule(date);
+	    		displaySchedule();
 	    	}
 	    }).datepicker('setDate', new Date());;
   	});
+  	
+  	$("#formatDropdown").change(function () { displaySchedule(); });
+  	$("#eventTypeDropdown").change(function () { displaySchedule(); });
    </script>
   </body>
 </html>
