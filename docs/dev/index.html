@@ -114,6 +114,7 @@
   				<option value="Showcase Challenge">Showcase Challenge</option>
   				<option value="Qualifier">Qualifier / Super Qualifier</option>
   				<option value="LCQ">MOCS LCQ</option>
+  				<option value="Premier">All premier events</option>
 			</select>
 		</div>
   </div>
@@ -190,6 +191,8 @@
 	    var eventTypeSelector;
 	    if (eventTypeChoice === "eventType") { // no selection
 	    	eventTypeSelector = (_) => { return true; };
+	    } else if (eventTypeChoice === "Premier") {
+	    	eventTypeSelector = (event) => { return isPremier(event); };
 	    } else {
 	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
 	    }
