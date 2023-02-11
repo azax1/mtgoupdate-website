@@ -194,7 +194,9 @@
 	    if (eventTypeChoice === "eventType") { // no selection
 	    	eventTypeSelector = (_) => { return true; };
 	    } else if (eventTypeChoice === "Premier") {
-	    	eventTypeSelector = (event) => { return isPremier(event); };
+	    	eventTypeSelector = isPremier;
+	    } else if (eventTypeChoice === "Challenge") {
+	    	eventTypeSelector = (event) => { return event.includes("Challenge") && !event.includes("Showcase"); };
 	    } else {
 	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
 	    }
