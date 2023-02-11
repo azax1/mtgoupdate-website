@@ -18,6 +18,13 @@
 	<!-- jQuery UI library -->
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<style>
+      #banner {
+        background-color: red;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
   </head>
   <style>
   	h1 {
@@ -90,6 +97,7 @@
 </style>
   <body>
   	<div class="everything">
+  	<div id="bannerContainer"></div>
     <div>
 	<header style="display: flex;">
   		<div style="width: 100%; display: flex; align-content: center;">
@@ -133,13 +141,13 @@
     		<b>I'm viewing this page right before my country changes its clocks for Daylight Saving Time.
     		Are events that take place after the switch listed at the correct times?</b><br><br>
     		
-    		No. Anticipating when your locale enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
+    		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
     		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
     		 
     		<b>I'm viewing this page right before the US changes its clocks for DST (but I won't be changing mine).
     		Are events that take place after the switch listed at the correct times?</b><br><br>
     		
-    		No. While the US's time change is predictable to me in advance, your locale's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
+    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
 
 			<b>What's your contact information?</b><br><br>
 			
@@ -175,6 +183,7 @@
     displaySchedule();
     
     function displaySchedule() {
+    	displayDSTBanner(null);
 	    var today = new Date();	
 	    var inputDate = $("#datepicker").datepicker("getDate");
 	    if (inputDate && (inputDate instanceof Date)) {
@@ -265,13 +274,14 @@
      		suffix = "rd";
      	}
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		let displayDateForDSTMessage = days[today.getDay()] + " the " + today.getDate() + suffix;
 		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
      			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
-     			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset);
+     			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDateForDSTMessage);
 	}
 	
-	function getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
+	function getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDate) {
 		let ret = "";
 		let upperLimit = (minuteOffset == 0) ? 24 : 23;
     	for (let j = 0; j <= upperLimit; j++) {
@@ -280,19 +290,23 @@
      		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
-     			if (event != null && formatSelector(event) && eventTypeSelector(event)) {
-     				color = "black";
-     				if (isPremier(event)) {
-     					color = "red";
-     				} else if (event.includes("Challenge")) {
-     					color = "green";
+     			if (event != null) {
+     				if (event === "DST") {
+     					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
+     				} else if (formatSelector(event) && eventTypeSelector(event)) {
+	     				color = "black";
+	     				if (isPremier(event)) {
+	     					color = "red";
+	     				} else if (event.includes("Challenge")) {
+	     					color = "green";
+	     				}
+	     				if (j == 24 && !(k == 168 && color !== "black")) {
+	     					// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
+	     					// when special events have their normal color since they're not otherwise on the schedule
+	     					color = "grey";
+	     				} 
+	     				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
      				}
-     				if (j == 24 && !(k == 168 && color !== "black")) {
-     					// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
-     					// when special events have their normal color since they're not otherwise on the schedule
-     					color = "grey";
-     				} 
-     				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
      			}
      		}
      	}
@@ -416,6 +430,19 @@
     	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
 	}
 	
+	function displayDSTBanner(dstTime) {
+		if (dstTime == null) {
+			document.getElementById("bannerContainer").innerHTML = null;
+		} else {
+			let contents =
+				`The US is moving its clocks forward 1 hour on ${dstTime}. ` +
+				"If your locality is not changing its clocks, scheduled events after this time are 1 hour earlier than displayed.";
+			document.getElementById("bannerContainer").innerHTML = `<div id=\"banner\"><p>${contents}</p></div>`;
+		}
+	}
+	
+	// Events that don't replace other events at the same time
+	// Usually RCQs, but also for weird one-off events like Eternal Weekend
 	function getRCQs() {
     	let ret = new Map();
 
@@ -520,12 +547,18 @@
     	);
     	
     	ret.set(
+    		new Date(2023, 2, 12).toDateString(), {2: "DST"}
+    	);
+    	
+    	ret.set(
     		new Date(2023, 2, 17).toDateString(), {7: "Limited (ONE) Super Qualifier"}
     	);
 
     	return ret;
     }
     
+    // Events that replace other events at the same time (Showcases replace Challenges, LCQs replace Prelims)
+    // Also useful for weird one-off changes to the schedule, e.g. cancelled Challenges due to nearby RCQs of the same format
     function getShowcasesAndLCQs() {
     	let ret = new Map();
     	    	
