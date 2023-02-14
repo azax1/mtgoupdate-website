@@ -175,7 +175,7 @@
 	</p>
     </div>
     </div>
-    <p class="footer">Registering and maintaining this website isn't free. Any <a href=\"https://www.ko-fi.com/mtgoupdate\">support</a> is appreciated.</p>
+    <p class="footer">Registering and maintaining this website isn't free. Any <a href="https://www.ko-fi.com/mtgoupdate">support</a> is appreciated.</p>
     </div>
   	<noscript><div>Please enable JavaScript</div></noscript>
   	
@@ -183,32 +183,8 @@
     displaySchedule();
     
     function displaySchedule() {
-    	displayDSTBanner(null);
-	    var today = new Date();	
-	    var inputDate = $("#datepicker").datepicker("getDate");
-	    if (inputDate && (inputDate instanceof Date)) {
-	    	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
-	    }
-	    
-	    var formatChoice = document.getElementById("formatDropdown").value;
-	    var formatSelector;
-	    if (formatChoice === "Format") { // no selection
-	    	formatSelector = (_) => { return true; };
-	    } else {
-	    	formatSelector = (event) => { return event.includes(formatChoice); };
-	    }
-	    
-	    var eventTypeChoice = document.getElementById("eventTypeDropdown").value;
-	    var eventTypeSelector;
-	    if (eventTypeChoice === "eventType") { // no selection
-	    	eventTypeSelector = (_) => { return true; };
-	    } else if (eventTypeChoice === "Premier") {
-	    	eventTypeSelector = isPremier;
-	    } else if (eventTypeChoice === "Challenge") {
-	    	eventTypeSelector = (event) => { return event.includes("Challenge") && !event.includes("Showcase"); };
-	    } else {
-	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
-	    }
+    	let today, formatSelector, eventTypeSelector;
+    	[today, formatSelector, eventTypeSelector] = initializePageAndParameters();
 	    		
 	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
 	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
@@ -428,6 +404,36 @@
     	button.onclick = function() { modal.style.display = "block"; };
     	span.onclick = function() { modal.style.display = "none"; };
     	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+	}
+	
+	function initializePageAndParameters() {
+		displayDSTBanner(null);
+	    var today = new Date();	
+	    var inputDate = $("#datepicker").datepicker("getDate");
+	    if (inputDate && (inputDate instanceof Date)) {
+	    	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+	    }
+	    
+	    var formatChoice = document.getElementById("formatDropdown").value;
+	    var formatSelector;
+	    if (formatChoice === "Format") { // no selection
+	    	formatSelector = (_) => { return true; };
+	    } else {
+	    	formatSelector = (event) => { return event.includes(formatChoice); };
+	    }
+	    
+	    var eventTypeChoice = document.getElementById("eventTypeDropdown").value;
+	    var eventTypeSelector;
+	    if (eventTypeChoice === "eventType") { // no selection
+	    	eventTypeSelector = (_) => { return true; };
+	    } else if (eventTypeChoice === "Premier") {
+	    	eventTypeSelector = isPremier;
+	    } else if (eventTypeChoice === "Challenge") {
+	    	eventTypeSelector = (event) => { return event.includes("Challenge") && !event.includes("Showcase"); };
+	    } else {
+	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
+	    }
+	    return [today, formatSelector, eventTypeSelector];
 	}
 	
 	function displayDSTBanner(dstTime) {
