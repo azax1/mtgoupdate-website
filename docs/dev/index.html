@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Scheduled Events on Magic Online</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'G-8HF2HRS1RS');
+	</script>
+	<!-- jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+	<!-- jQuery UI library -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<style>
+      #banner {
+        background-color: red;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <style>
+  	h1 {
+  		text-align: center;
+  	}
+  	#info {
+  		position: absolute;
+  		top: 10px;
+  		right: 10px;
+  		font-size: 24px;
+  	}
+  	.bottom {
+  		position: fixed;
+  		bottom: 0;
+  		width: 100%;
+  		text-align: center;
+  	}
+  	.modal {
+  		display: none;
+  		position: fixed;
+  		z-index: 1;
+  		left: 0;
+  		top: 0;
+  		width: 100%;
+  		height: 100%;
+  		overflow: auto;
+  		background-color: rgb(0,0,0);
+  		background-color: rgba(0,0,0,0.4);
+	}
+	.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	}
+	.everything {
+		display: flex;
+		position: relative;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100vh;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		gap: 8px 4px;
+		flex-wrap: wrap;
+	}
+	.footer {
+		bottom: 0;
+		text-align: center;
+	}
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+  <body>
+  	<div class="everything">
+  	<div id="bannerContainer"></div>
+    <div>
+	<header style="display: flex;">
+  		<div style="width: 100%; display: flex; align-content: center;">
+    	<div style="width: 35%;"></div>
+    	<div style="width: 30%;">
+      		<h1>Scheduled Events on MTGO</h1>
+    	</div>
+    	<div style="width: 5%;"></div>
+    	<div style="width: 30%"><br><h4>Filter by:
+    		<select id="formatDropdown">
+    			<option value="Format" selected>Format</option>
+  				<option value="Limited">Limited</option>
+  				<option value="Standard">Standard</option>
+  				<option value="Pioneer">Pioneer</option>
+  				<option value="Modern">Modern</option>	
+  				<option value="Legacy">Legacy</option>
+  				<option value="Vintage">Vintage</option>
+			</select>
+			
+			<select id="eventTypeDropdown">
+    			<option value="eventType" selected>Event Type</option>
+  				<option value="Prelim">Prelim</option>
+  				<option value="Challenge">Challenge</option>
+  				<option value="Showcase Challenge">Showcase Challenge</option>
+  				<option value="Qualifier">Qualifier / Super Qualifier</option>
+  				<option value="LCQ">MOCS LCQ</option>
+  				<option value="Premier">All premier (red) events</option>
+			</select>
+		</h4></div>
+  </div>
+</header>
+    <button id="info">&#8505;</button>
+    <div id="faq" class="modal">
+    	<div class="modal-content">
+    		<span class="close">&times;</span>
+    		<p>
+    		<b>FAQ</b><br><br>
+    		<b>What is this website for?</b><br><br>
+    		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
+    		
+    		<b>I'm viewing this page right before my country changes its clocks for Daylight Saving Time.
+    		Are events that take place after the switch listed at the correct times?</b><br><br>
+    		
+    		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
+    		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
+    		 
+    		<b>I'm viewing this page right before the US changes its clocks for DST (but I won't be changing mine).
+    		Are events that take place after the switch listed at the correct times?</b><br><br>
+    		
+    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above). Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
+
+			<b>What's your contact information?</b><br><br>
+			
+			Feel free to message me on Twitter @mtgoupdate or email me at admin at mtgoupdate dot com.<br><br>
+			
+			<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
+			
+			Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a> or email me about sending me MTGO tickets.<br><br>
+			</p>
+    	</div>
+    </div>
+    <div class="container">
+    <div id="day0"></div>
+    <div id="day1"></div>
+    <div id="day2"></div>
+    <div id="day3"></div>
+    <div id="day4"></div>
+    <div id="day5"></div>
+    <div id="day6"></div>
+    </div>
+    <div style="text-align: center;">
+	<p>
+	<strong>Detected local time: </strong><span id="localTime"></span><br>
+	<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
+	</p>
+    </div>
+    </div>
+    <p class="footer">Registering and maintaining this website isn't free. Any <a href="https://www.ko-fi.com/mtgoupdate">support</a> is appreciated.</p>
+    </div>
+  	<noscript><div>Please enable JavaScript</div></noscript>
+  	
+    <script type="text/javascript">
+    displaySchedule();
+    
+    function displaySchedule() {
+    	let today, formatSelector, eventTypeSelector;
+    	[today, formatSelector, eventTypeSelector] = initializePageAndParameters();
+	    		
+	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
+	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
+	    				
+		var PTOffset;
+	    var nextDST;
+	    if (today.getTime() <= 1678611600000) {  // handles DST switch in March 2023
+	    	PTOffset = 8;
+	    	nextDST = "March 12th";
+	    } else {
+	    	PTOffset = 7;
+	    	nextDST = "November 5th";
+	    }
+	    document.getElementById("nextDST").innerHTML = nextDST;
+    
+	    var offset =  PTOffset - Math.floor(today.getTimezoneOffset() / 60);
+	    var minuteOffset = today.getTimezoneOffset() % 60;
+	    if (minuteOffset != 0) {
+	    	if (minuteOffset > 0) {
+	    		// Localities like St. John's with fractional offsets that are west of Greenwich have getTimezoneOffset() > 0.
+	    		// Instead of e.g. "3 hours and 45 minutes behind Greenwich",
+	    		// this is more naturally thought of as "4 hours behind and 15 minutes ahead of Greenwich".
+	    		// Because we incremented the integer part of the time difference (represented above by the negative floor), we have to decrement offset.
+	    		minuteOffset = 60 - minuteOffset;
+	    		offset--;
+	    	} else {
+	    		// Localities like Central Australia with fractional offsets that are east of Greenwich have getTimezoneOffset() < 0.
+	    		// A minuteOffset of e.g. -15 here means 15 minutes ahead of Greenwich, so we have to negate that variable.
+	    		// Offset is decremented because floor() rounds towards -infinity, when we want it to round towards 0;
+	    		// for non-integers this results in an off-by-one error.
+	    		minuteOffset = -minuteOffset;
+	    		offset--;
+	    	}
+	    }
+	    
+    	schedule = getNextWeekSchedule(today, offset);
+    	const heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
+    	const fieldSets = [null, null, null, null, null, null, null]; // each day's textbox pre-padding
+    	let max = 0;
+	    for (let k = 0; k < 7; k++) {
+	     	fieldSets[k] = generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, k, minuteOffset);
+	     	heights[k] = (fieldSets[k].match(/<br>/g) || []).length;
+	     	if (heights[k] > max) {
+	     		max = heights[k];
+	     	}
+		   	today.setDate(today.getDate() + 1);
+	    }
+	    for (let k = 0; k < 7; k++) {
+	    	document.getElementById("day" + k).innerHTML = fieldSets[k] + "<br>".repeat(max - heights[k]) + "</fieldset>";
+	    }
+	      
+	    setUpFaqModal();
+	}
+    	
+	function generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
+     	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : "black"; // blue indicates weekend
+     	let suffix = "th";
+     	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
+     		suffix = "st";
+     	} else if (today.getDate() % 20 == 2) {
+     		suffix = "nd";
+     	} else if (today.getDate() % 20 == 3) {
+     		suffix = "rd";
+     	}
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		let displayDateForDSTMessage = days[today.getDay()] + ", March " + today.getDate() + suffix;
+		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
+     			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
+     			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
+     			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDateForDSTMessage);
+	}
+	
+	function getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDate) {
+		let ret = "";
+		let upperLimit = (minuteOffset == 0) ? 24 : 23;
+    	for (let j = 0; j <= upperLimit; j++) {
+     		let prettyTime = getPrettyTime(j, minuteOffset);
+     		let k = 24 * dayCounter + j;
+     		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
+     		for (let index = 0; index < events.length; index++) {
+     			let event = events[index];
+     			if (event != null) {
+     				if (event === "DST") {
+     					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
+     				} else if (formatSelector(event) && eventTypeSelector(event)) {
+	     				color = "black";
+	     				if (isPremier(event)) {
+	     					color = "red";
+	     				} else if (event.includes("Challenge")) {
+	     					color = "green";
+	     				}
+	     				if (j == 24 && !(k == 168 && color !== "black")) {
+	     					// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
+	     					// when special events have their normal color since they're not otherwise on the schedule
+	     					color = "grey";
+	     				} 
+	     				ret += "<font color=" + color + ">" + prettyTime + " " + event + "</font><br>";
+     				}
+     			}
+     		}
+     	}
+     	return ret;
+	}
+     
+	function getNextWeekSchedule(today, offset) {
+	    // for PT exactly, compiling the schedule for the week requires consulting 7 different dates
+    	// for any other time zone, it's 8 different dates (6 full days and 2 partial days on either end)
+    	// as a practical matter, it's easiest to just get the 7 days we want + 2 days of buffer on either end
+    	// and then trim off the unwanted information later
+    	
+		let base = getBaseSchedule();
+		
+		// a schedule lasting 3 weeks, from which we will slice the monster schedule of 9 days
+		let monsterMonsterSched = base.concat(base).concat(base);
+		
+		// the monster schedule of 9 days, from which we will slice the desired 7 days + 1 hour
+		let day = today.getDay();
+		let monsterSched = monsterMonsterSched.slice(24 * (day + 7 - 1), 24 * (day + 7 + 8) + 1);
+
+		insertRCQsShowcasesAndLCQs(monsterSched, today, offset);
+		let ret = monsterSched.slice(24 - offset, 24 - offset + 170);
+		return ret;
+	}
+	
+	function getBaseSchedule() {
+	    let ch = "Challenge";
+	    let pr = "Prelim";
+		let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+    		`Limited ${ch}`, null, `Standard ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null,
+    		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
+    		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, null, null, null,
+    		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`,
+    		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, null,
+    		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Pioneer ${pr}`,
+   			null, null, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
+    		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`,
+    		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, null, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
+    		`Legacy ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
+    		null, null, null, `Pioneer ${pr}`, `Limited ${ch} (32-player)`, null, `Modern ${ch} (32-player)`, null, null, null, null, null,
+    		`Pioneer ${pr}`, `Limited ${ch} (32-player)`, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch}`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
+    		`Limited ${ch}`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch} (32-player)`, null, null, null, null, null];
+    	return ret;
+    }
+    
+    function insertRCQsShowcasesAndLCQs(monster, today, offset) {
+    	insertIntoMonsterSchedule(monster, today, offset, getShowcasesAndLCQs(), true);
+    	insertIntoMonsterSchedule(monster, today, offset, getRCQs(), false);
+    }
+    
+    function insertIntoMonsterSchedule(monster, today, offset, specialEvents, isReplacement) {
+        let day = new Date(today);
+    	day.setDate(today.getDate() - 1);
+    	for (let i = 0; i < 9; i++) {
+    		let todayEvents = specialEvents.get(day.toDateString());
+    		if (todayEvents != null) {
+    			for (let j = 0; j < 24; j++) {
+    				if (todayEvents[j] !== undefined) {
+    					event = todayEvents[j];
+    					index = 24 * i + j;
+    					if (isReplacement) {
+    						monster[index] = event;
+    					} else {
+    						if (monster[index] == null) {
+    							monster[index] = event;
+    						} else {
+    							monster[index] = event + "&" + monster[index];
+    						}
+    					}
+    				}
+    			}
+    		}
+    		day.setDate(day.getDate() + 1);
+    	}
+    }
+    
+	function isPremier(event) {
+		return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ") || event.includes("Eternal Weekend");
+	}
+	
+	function isMocsFormat(str) {
+		return str.includes("Pioneer") || str.includes("Modern") || str.includes("Legacy") ||  str.includes("Vintage");
+	}
+	
+	function getPrettyTime(hour, minuteOfHour) {
+		if (minuteOfHour == 0) {
+     		if (hour == 0) {
+     			return "12am";
+     		} else if (hour < 12) {
+     			return hour + "am";
+     		} else if (hour == 12) {
+     			return "Noon";
+     		} else if (hour < 24) {
+     			return (hour - 12) + "pm";
+     		} else {
+     			return "Midnight";
+     		}
+     	} else {
+     		if (hour == 0) {
+     			return "12:" + minuteOfHour + "am";
+     		} else if (hour < 12) {
+     			return hour + ":" + minuteOfHour + "am";
+     		} else if (hour == 12) {
+     			return hour + ":" + minuteOfHour + "pm";
+     		} else if (hour < 24) {
+     			return (hour - 12) + ":" + minuteOfHour + "pm";
+     		} else {
+     			return ""; // shouldn't happen
+     		}
+     	}
+	}
+	
+	function setUpFaqModal() {
+		var modal = document.getElementById("faq");
+    	var button = document.getElementById("info");
+   		var span = document.getElementsByClassName("close")[0];
+
+    	button.onclick = function() { modal.style.display = "block"; };
+    	span.onclick = function() { modal.style.display = "none"; };
+    	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
+	}
+	
+	function initializePageAndParameters() {
+		displayDSTBanner(null);
+	    var today = new Date();	
+	    var inputDate = $("#datepicker").datepicker("getDate");
+	    if (inputDate && (inputDate instanceof Date)) {
+	    	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+	    }
+	    
+	    var formatChoice = document.getElementById("formatDropdown").value;
+	    var formatSelector;
+	    if (formatChoice === "Format") { // no selection
+	    	formatSelector = (_) => { return true; };
+	    } else {
+	    	formatSelector = (event) => { return event.includes(formatChoice); };
+	    }
+	    
+	    var eventTypeChoice = document.getElementById("eventTypeDropdown").value;
+	    var eventTypeSelector;
+	    if (eventTypeChoice === "eventType") { // no selection
+	    	eventTypeSelector = (_) => { return true; };
+	    } else if (eventTypeChoice === "Premier") {
+	    	eventTypeSelector = isPremier;
+	    } else if (eventTypeChoice === "Challenge") {
+	    	eventTypeSelector = (event) => { return event.includes("Challenge") && !event.includes("Showcase"); };
+	    } else {
+	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
+	    }
+	    return [today, formatSelector, eventTypeSelector];
+	}
+	
+	function displayDSTBanner(dstTime) {
+		if (dstTime == null) {
+			document.getElementById("bannerContainer").innerHTML = null;
+		} else {
+			let contents =
+				`The US is moving its clocks forward 1 hour on ${dstTime}. ` +
+				"If your locality is not changing its clocks, scheduled events after this time are 1 hour earlier than displayed.";
+			document.getElementById("bannerContainer").innerHTML = `<div id=\"banner\"><p>${contents}</p></div>`;
+		}
+	}
+	
+	// Events that don't replace other events at the same time
+	// Usually RCQs, but also for weird one-off events like Eternal Weekend
+	function getRCQs() {
+    	let ret = new Map();
+
+    	ret.set(
+    		new Date(2022, 11, 2).toDateString(), {7: "Limited (BRO) Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 10).toDateString(), {1: "Eternal Weekend - Legacy"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 11).toDateString(), {1: "Eternal Weekend - Vintage"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 17).toDateString(), {7: "Limited (BRO) MOCS Showcase Open"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 18).toDateString(), {7: "Limited (BRO) MOCS Showcase Open"}
+    	);
+
+    	ret.set(
+    		new Date(2022, 11, 23).toDateString(), {7: "Limited (BRO) Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 26).toDateString(), {7: "Modern Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 27).toDateString(), {7: "Standard Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 28).toDateString(), {7: "Pioneer Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 29).toDateString(), {7: "Legacy Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2022, 11, 30).toDateString(), {7: "Vintage Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 1).toDateString(), {15: "Limited (BRO) Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 21).toDateString(), {7: "Modern Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 22).toDateString(), {7: "Limited (BRO) Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 28).toDateString(), {7: "Pauper Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 29).toDateString(), {7: "Vintage Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 4).toDateString(), {7: "Legacy Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 5).toDateString(), {7: "Modern Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 17).toDateString(), {14: "Limited (ONE) Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 18).toDateString(), {7: "Pioneer Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 19).toDateString(), {7: "Limited (ONE) Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 20).toDateString(), {7: "Limited (ONE) Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 4).toDateString(), {7: "Limited (ONE) Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 5).toDateString(), {1: "Limited (ONE) Super Qualifier", 12:"Modern Super Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 10).toDateString(), {14: "Limited (ONE) Qualifier"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 12).toDateString(), {2: "DST"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 17).toDateString(), {7: "Limited (ONE) Super Qualifier"}
+    	);
+
+    	return ret;
+    }
+    
+    // Events that replace other events at the same time (Showcases replace Challenges, LCQs replace Prelims)
+    // Also useful for weird one-off changes to the schedule, e.g. cancelled Challenges due to nearby RCQs of the same format
+    function getShowcasesAndLCQs() {
+    	let ret = new Map();
+    	    	
+    	ret.set(
+    		new Date(2022, 11, 11).toDateString(), {0: null}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 20).toDateString(), {16: null, 18: "Limited Prelim", 19: "Modern Prelim"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 21).toDateString(), {18: null}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 23).toDateString(), {17: null}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 25).toDateString(), {18: null}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 7).toDateString(), {8: "Modern Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 8).toDateString(), {6: "Pioneer Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 14).toDateString(), {10: "Vintage Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 0, 15).toDateString(), {8: "Legacy Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 11).toDateString(), {8: "Modern Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 12).toDateString(), {6: "Pioneer Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 25).toDateString(), {10: "Vintage Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 1, 26).toDateString(), {8: "Legacy Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 11).toDateString(), {8: "Modern Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 12).toDateString(), {6: "Pioneer Showcase Challenge"}
+    	);
+    	
+    	ret.set(
+    		new Date(2023, 2, 18).toDateString(), {10: "Vintage Showcase Challenge"}
+    	);
+
+    	let schedule = getBaseSchedule();
+    	// 12am Sunday until 7am Wednesday
+    	for (let day = 0; day < 4; day++) {
+    		let lcqs = {};
+    		if (day == 0) {
+    			lcqs[8] = "Legacy Showcase Challenge";
+    		}
+    		for (let hour = 0; hour < 8 || (day < 3 && hour < 24); hour++) {
+    			let event = schedule[24 * day + hour];
+    			if (event != null && event.includes("Prelim") && isMocsFormat(event)) {
+    				lcqs[hour] = event.replace("Prelim", "LCQ");
+    			}
+    		}
+    		ret.set(new Date(2023, 2, 19 + day).toDateString(), lcqs);
+    	}
+    	
+    	return ret;
+    }
+    
+    $( function() {
+	    $( "#datepicker" ).datepicker({
+	    	dateFormat: "yy-mm-dd",
+	    	minDate: new Date(2022, 11, 1),
+	    	defaultDate: new Date(),
+	    	setDate: new Date(),
+	    	maxDate: new Date(2023, 2, 22),
+	    	onClose: function() {
+	    		var input = $(this).datepicker("getDate");
+	        	if (!input || !(input instanceof Date)) {
+	        		input = new Date();
+	          		$(this).datepicker("setDate", input);
+	        	}
+	    		displaySchedule();
+	    	}
+	    }).datepicker('setDate', new Date());;
+  	});
+  	
+  	$("#formatDropdown").change(function () { displaySchedule(); });
+  	$("#eventTypeDropdown").change(function () { displaySchedule(); });
+   </script>
+  </body>
+</html>
