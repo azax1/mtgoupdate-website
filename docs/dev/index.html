@@ -18,6 +18,8 @@
 	<!-- jQuery UI library -->
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="../jquery_chosen/chosen.min.css">
+  	<script src="../jquery_chosen/chosen.jquery.min.js"></script>
 	<style>
       #banner {
         background-color: red;
@@ -107,8 +109,7 @@
     	</div>
     	<div style="width: 5%;"></div>
     	<div style="width: 30%"><br><h4>Filter by:
-    		<select id="formatDropdown">
-    			<option value="Format" selected>Format</option>
+    		<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="formatDropdown"  style="width: 100px;" multiple>
   				<option value="Limited">Limited</option>
   				<option value="Standard">Standard</option>
   				<option value="Pioneer">Pioneer</option>
@@ -117,14 +118,12 @@
   				<option value="Vintage">Vintage</option>
 			</select>
 			
-			<select id="eventTypeDropdown">
-    			<option value="eventType" selected>Event Type</option>
+			<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="eventTypeDropdown" multiple>
   				<option value="Prelim">Prelim</option>
   				<option value="Challenge">Challenge</option>
   				<option value="Showcase Challenge">Showcase Challenge</option>
   				<option value="Qualifier">Qualifier / Super Qualifier</option>
   				<option value="LCQ">MOCS LCQ</option>
-  				<option value="Premier">All premier (red) events</option>
 			</select>
 		</h4></div>
   </div>
@@ -180,6 +179,9 @@
   	<noscript><div>Please enable JavaScript</div></noscript>
   	
     <script type="text/javascript">
+    $(document).ready(function() {
+    	$('.chosen-select').chosen();
+  	});
     displaySchedule();
     
     function displaySchedule() {
@@ -413,25 +415,34 @@
 	    if (inputDate && (inputDate instanceof Date)) {
 	    	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
 	    }
-	    
-	    var formatChoice = document.getElementById("formatDropdown").value;
+	    var formatChoices = Array.from(document.getElementById("formatDropdown").options)
+	    						.filter(option => option.selected)
+	    						.map(option => option.value);
 	    var formatSelector;
-	    if (formatChoice === "Format") { // no selection
+	    if (formatChoices.length == 0) { // default; no filter
 	    	formatSelector = (_) => { return true; };
 	    } else {
-	    	formatSelector = (event) => { return event.includes(formatChoice); };
+	    	formatSelector = (event) =>
+	    		{
+	    			return formatChoices
+	    					.filter(format => event.includes(format))
+	    					.length > 0;
+	    		};
 	    }
 	    
-	    var eventTypeChoice = document.getElementById("eventTypeDropdown").value;
+	    var eventTypeChoices = Array.from(document.getElementById("eventTypeDropdown").options)
+	    						.filter(option => option.selected)
+	    						.map(option => option.value);
 	    var eventTypeSelector;
-	    if (eventTypeChoice === "eventType") { // no selection
+	    if (eventTypeChoices.length == 0) { // default; no filter
 	    	eventTypeSelector = (_) => { return true; };
-	    } else if (eventTypeChoice === "Premier") {
-	    	eventTypeSelector = isPremier;
-	    } else if (eventTypeChoice === "Challenge") {
-	    	eventTypeSelector = (event) => { return event.includes("Challenge") && !event.includes("Showcase"); };
 	    } else {
-	    	eventTypeSelector = (event) => { return event.includes(eventTypeChoice); };
+	    	eventTypeSelector = (event) =>
+	    		{
+		    		return eventTypeChoices
+		    				.filter(eventType => event.includes(eventType))
+		    				.length > 0;
+	    		};
 	    }
 	    return [today, formatSelector, eventTypeSelector];
 	}
