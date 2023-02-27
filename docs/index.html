@@ -333,8 +333,10 @@
 	}
     	
 	function generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
-		let defaultColor = document.querySelector("html").style.getPropertyValue("--text-color"); // white or black, dark mode depending
-     	let color = (today.getDay() == 0 || today.getDay() == 6) ? "blue" : defaultColor; // blue indicates weekend
+		let isDarkMode = document.querySelector("html").style.getPropertyValue("--text-color") === "yellow";
+		let weekdayColor = isDarkMode ? "yellow" : "black";
+		let weekendColor = isDarkMode ? "#0f0" : "blue";
+     	let color = (today.getDay() == 0 || today.getDay() == 6) ? weekendColor : weekdayColor;
      	let suffix = "th";
      	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
      		suffix = "st";
@@ -347,7 +349,7 @@
 		let displayDateForDSTMessage = days[today.getDay()] + ", March " + today.getDate() + suffix;
 		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
-     			+ days[today.getDay()] + " " + today.getDate() + suffix + "</legend>"
+     			+ "<span style=\"color:" + (!isDarkMode ? "black" : (color === "#0f0" ? "#0f0" : "yellow")) + "\">" + days[today.getDay()] + " " + today.getDate() + suffix + "</span></legend>"
      			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDateForDSTMessage);
 	}
 	
@@ -364,13 +366,14 @@
      				if (event === "DST") {
      					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
      				} else if (formatSelector(event) && eventTypeSelector(event)) {
-	     				color = document.querySelector("html").style.getPropertyValue("--text-color");
+     					let isDarkMode = document.querySelector("html").style.getPropertyValue("--text-color") === "yellow";
+	     				color =  isDarkMode ? "yellow" : "black";
 	     				if (isPremier(event)) {
-	     					color = "red";
+	     					color = isDarkMode ? "magenta" : "red";
 	     				} else if (event.includes("Challenge")) {
-	     					color = "green";
+	     					color = isDarkMode ? "cyan" : "green";
 	     				}
-	     				if (j == 24 && !(k == 168 && color !== "black")) {
+	     				if (j == 24 && !(k == 168 && (color !== "black" && color !== "yellow"))) {
 	     					// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
 	     					// when special events have their normal color since they're not otherwise on the schedule
 	     					color = "grey";
@@ -514,7 +517,7 @@
 	function setColorMode(mode) {
 		if (mode === "dark") {
 			document.querySelector("html").style.setProperty("--bg-color", "black");
-			document.querySelector("html").style.setProperty("--text-color", "white");
+			document.querySelector("html").style.setProperty("--text-color", "yellow");
 			
 			// info button wizardry
 			document.querySelector("button").style.backgroundColor = "#303030";
