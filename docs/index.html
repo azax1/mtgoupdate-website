@@ -138,8 +138,8 @@
 				checkbox.prop("checked", color === "dark");
 			}
 		}
-    	let today, formatSelector, eventTypeSelector;
-    	[today, formatSelector, eventTypeSelector] = initializePageAndParameters();
+    	let today, eventFilter;
+    	[today, eventFilter] = initializePageAndParameters();
 	    		
 	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
 	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
@@ -158,11 +158,11 @@
     	let hourOffset, minuteOffset;
     	[hourOffset, minuteOffset] = getHourAndMinuteOffset(PTOffset, today.getTimezoneOffset());
     	schedule = getNextWeekSchedule(today, hourOffset);
-    	const heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
-    	const fieldSets = [null, null, null, null, null, null, null]; // each day's textbox pre-padding
+    	let heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
+    	let fieldSets = [null, null, null, null, null, null, null]; // each day's textbox pre-padding
     	let max = 0;
 	    for (let k = 0; k < 7; k++) {
-	     	fieldSets[k] = generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, k, minuteOffset);
+	     	fieldSets[k] = generateFieldsetForDay(schedule, today, eventFilter, k, minuteOffset);
 	     	heights[k] = (fieldSets[k].match(/<br>/g) || []).length;
 	     	if (heights[k] > max) {
 	     		max = heights[k];
@@ -174,28 +174,22 @@
 	    }
 	}
     	
-	function generateFieldsetForDay(schedule, today, formatSelector, eventTypeSelector, dayCounter, minuteOffset) {
-		let isDarkMode = document.querySelector("html").style.getPropertyValue("--text-color") === "yellow";
-		let weekdayColor = isDarkMode ? "yellow" : "black";
-		let weekendColor = isDarkMode ? "#0f0" : "blue";
-     	let color = (today.getDay() == 0 || today.getDay() == 6) ? weekendColor : weekdayColor;
-     	let suffix = "th";
-     	if (today.getDate() % 20 == 1 || today.getDate() == 31) {
-     		suffix = "st";
-     	} else if (today.getDate() % 20 == 2) {
-     		suffix = "nd";
-     	} else if (today.getDate() % 20 == 3) {
-     		suffix = "rd";
-     	}
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	function generateFieldsetForDay(schedule, today, eventFilter, dayCounter, minuteOffset) {
+     	let isDarkMode = (document.querySelector("html").style.getPropertyValue("--bg-color")) !== "white";
+     	let textboxColor = getTextboxColor(today, isDarkMode);
+     	let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
+     	let suffix = getSuffix(today.getDate());
+     	
+		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		let displayDateForDSTMessage = days[today.getDay()] + ", March " + today.getDate() + suffix;
-		return "<fieldset style=\"border: 1px " + color + " solid; display: inline-block; min-width: 280px;\">"
-     			+ "<legend style=\"border: 1px " + color + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
-     			+ "<span style=\"color:" + (!isDarkMode ? "black" : (color === "#0f0" ? "#0f0" : "yellow")) + "\">" + days[today.getDay()] + " " + today.getDate() + suffix + "</span></legend>"
-     			+ getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDateForDSTMessage);
+		return "<fieldset style=\"border: 1px " + textboxColor + " solid; display: inline-block; min-width: 280px;\">"
+     			+ "<legend style=\"border: 1px " + textboxColor + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
+     			+ "<span style=\"color:" + dayOfWeekTextColor + "\">" + days[today.getDay()] + " " + today.getDate() + suffix + "</span></legend>"
+     			+ getScheduleForDay(schedule, eventFilter, dayCounter, minuteOffset, isDarkMode, displayDateForDSTMessage);
 	}
 	
-	function getScheduleForDay(schedule, formatSelector, eventTypeSelector, dayCounter, minuteOffset, displayDate) {
+	// this is the next frontier for refactoring. look at all those parameters!
+	function getScheduleForDay(schedule, eventFilter, dayCounter, minuteOffset, isDarkMode, displayDate) {
 		let ret = "";
 		let upperLimit = (minuteOffset == 0) ? 24 : 23;
     	for (let j = 0; j <= upperLimit; j++) {
@@ -206,9 +200,8 @@
      			if (event != null) {
      				if (event === "DST") {
      					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
-     				} else if (formatSelector(event) && eventTypeSelector(event)) {
-     					let isDarkMode = document.querySelector("html").style.getPropertyValue("--bg-color") !== "white";
-     					color = getEventColor(isDarkMode, event, j, k);
+     				} else if (eventFilter(event)) {;
+     					color = getEventColor(event, isDarkMode, j, k);
 	     				ret += "<font color=" + color + ">" + getPrettyTime(j, minuteOffset) + " " + event + "</font><br>";
      				}
      			}

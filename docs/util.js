@@ -1,6 +1,6 @@
 function getHourAndMinuteOffset(PTOffset, localOffset) {
-	var hourOffset =  PTOffset - Math.floor(localOffset / 60);
-    var minuteOffset = localOffset % 60;
+	let hourOffset =  PTOffset - Math.floor(localOffset / 60);
+    let minuteOffset = localOffset % 60;
     if (minuteOffset != 0) {
     	if (minuteOffset > 0) {
     		// Localities like St. John's with fractional offsets that are west of Greenwich have getTimezoneOffset() > 0.
@@ -57,6 +57,17 @@ function getPrettyTime(hour, minuteOfHour) {
  	}
 }
 
+function getSuffix(dayOfMonth) {
+ 	if (dayOfMonth % 20 == 1 || dayOfMonth == 31) {
+ 		return "st";
+ 	} else if (dayOfMonth % 20 == 2) {
+ 		return "nd";
+ 	} else if (dayOfMonth % 20 == 3) {
+ 		return "rd";
+ 	}
+ 	return "th";
+}
+
 function displayDSTBanner(dstTime) {
 	if (dstTime == null) {
 		document.getElementById("bannerContainer").innerHTML = null;
@@ -71,15 +82,15 @@ function displayDSTBanner(dstTime) {
 function initializePageAndParameters() {
 	setColorMode(getColorMode());
 	displayDSTBanner(null);
-    var today = new Date();	
-    var inputDate = $("#datepicker").datepicker("getDate");
+    let today = new Date();	
+    let inputDate = $("#datepicker").datepicker("getDate");
     if (inputDate && (inputDate instanceof Date)) {
     	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
     }
-    var formatChoices = Array.from(document.getElementById("formatDropdown").options)
+    let formatChoices = Array.from(document.getElementById("formatDropdown").options)
     						.filter(option => option.selected)
     						.map(option => option.value);
-    var formatSelector;
+    let formatSelector;
     if (formatChoices.length == 0) { // default; no filter
     	formatSelector = (_) => { return true; };
     } else {
@@ -91,10 +102,10 @@ function initializePageAndParameters() {
     		};
     }
     
-    var eventTypeChoices = Array.from(document.getElementById("eventTypeDropdown").options)
+    let eventTypeChoices = Array.from(document.getElementById("eventTypeDropdown").options)
     						.filter(option => option.selected)
     						.map(option => option.value);
-    var eventTypeSelector;
+    let eventTypeSelector;
     if (eventTypeChoices.length == 0) { // default; no filter
     	eventTypeSelector = (_) => { return true; };
     } else {
@@ -105,5 +116,9 @@ function initializePageAndParameters() {
 	    				.length > 0;
     		};
     }
-    return [today, formatSelector, eventTypeSelector];
+    let eventFilter = (event) =>
+    	{
+    		return formatSelector(event) && eventTypeSelector(event);
+    	};
+    return [today, eventFilter];
 }

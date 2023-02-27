@@ -32,7 +32,20 @@ function setColorMode(mode) {
 	}
 }
 
-function getEventColor(isDarkMode, event, j, k) {
+function getTextboxColor(today, isDarkMode) {
+	let weekdayColor = isDarkMode ? "yellow" : "black";
+	let weekendColor = isDarkMode ? "#0f0" : "blue";
+	return (today.getDay() == 0 || today.getDay() == 6) ? weekendColor : weekdayColor;
+}
+
+function getDayOfWeekColor(today, isDarkMode) {
+	if (!isDarkMode) {
+		return "black";
+	}
+	return (today.getDay() == 0 || today.getDay() == 6) ? "#00ff00" : "yellow";
+}
+
+function getEventColor(event, isDarkMode, j, k) {
 	let ret;
 	if (isDarkMode) {
 		ret = "yellow";
