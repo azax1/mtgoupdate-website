@@ -122,3 +122,8 @@ function initializePageAndParameters() {
     	};
     return [today, eventFilter];
 }
+
+function getUnixTime(date, hour) {
+	let PTOffset = (date.getTime() <= 1678611600000) ? 8 : 7;
+	return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), hour + PTOffset, 0, 0, 0);
+}

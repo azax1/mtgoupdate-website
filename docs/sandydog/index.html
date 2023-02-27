@@ -14,6 +14,7 @@ to play all remaining events without using any unnecessary PPs / tix.</p>
 </html>
 <script>
 let today = new Date();
+let instant = today.getTime(); // unix timestamp
 let rcqs = 0;
 let supers = 0;
 let showcases = 0;
@@ -21,15 +22,18 @@ let lcqs = 0;
 
 let rcqSched = getRCQs();
 let showcaseSched = getShowcasesAndLCQs();
+today.setDate(today.getDate() - 1);
 for (let i = 0; i < 100 && today.toDateString() !== "Wed March 22 2023"; i++) {
 	if (rcqSched.get(today.toDateString()) != null) {
 		for (let j = 0; j < 24; j++) {
 			let event = rcqSched.get(today.toDateString())[j];
 			if (event !== undefined) {
-				if (event.includes("Super")) {
-					supers++;
-				} else if (event.includes("Qualifier") || event.includes("RCQ")) {
-					rcqs++;
+				if (instant <= getUnixTime(today, j)) {
+					if (event.includes("Super")) {
+						supers++;
+					} else if (event.includes("Qualifier") || event.includes("RCQ")) {
+						rcqs++;
+					}
 				}
 			}
 		}
@@ -38,17 +42,19 @@ for (let i = 0; i < 100 && today.toDateString() !== "Wed March 22 2023"; i++) {
 		for (let j = 0; j < 24; j++) {
 			let event = showcaseSched.get(today.toDateString())[j];
 			if (event !== undefined) {
-				if (event.includes("LCQ")) {
-					lcqs++;
-				} else if (event.includes("Showcase")) {
-					showcases++;
+				if (instant <= getUnixTime(today, j)) {
+					if (event.includes("LCQ")) {
+						lcqs++;
+					} else if (event.includes("Showcase")) {
+						showcases++;
+					}
 				}
 			}
 		}
 	}
 	today.setDate(today.getDate() + 1);
 }
-
+	
 document.getElementById("showcases").innerHTML = showcases;
 document.getElementById("supers").innerHTML = supers;
 document.getElementById("rcqs").innerHTML = rcqs;
