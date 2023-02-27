@@ -75,6 +75,12 @@
 		color: var(--text-color);
 	}
 	
+	#banner {
+    	background-color: var(--banner-color);
+    	padding: 10px;
+    	text-align: center;
+  	}
+	
 	/* The switch - the box around the slider */
 	.switch {
 	  position: relative;

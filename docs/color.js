@@ -24,6 +24,7 @@ function setColorMode(mode) {
 	if (mode === "dark") {
 		document.querySelector("html").style.setProperty("--bg-color", offBlack);
 		document.querySelector("html").style.setProperty("--text-color", yellow);
+		document.querySelector("html").style.setProperty("--banner-color", blue);
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#303030";
@@ -34,6 +35,7 @@ function setColorMode(mode) {
 		document.querySelector("html").style.setProperty("--bg-color", "white");
 		document.querySelector("html").style.setProperty("--off-bg-color", "#f0f0f0");
 		document.querySelector("html").style.setProperty("--text-color", black);
+		document.querySelector("html").style.setProperty("--banner-color", red);
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#f0f0f0";
