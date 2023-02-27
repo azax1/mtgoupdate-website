@@ -264,7 +264,14 @@
   	});
     displaySchedule();
     
-    function displaySchedule() {
+    function displaySchedule(fixColorModeSlider = true) {
+        if (fixColorModeSlider) {
+       		let checkbox = $('input[type="checkbox"]');
+       		let color = getColorMode();
+	    	if ((color === "dark") != checkbox.prop("checked")) {
+				checkbox.prop("checked", color === "dark");
+			}
+		}
     	let today, formatSelector, eventTypeSelector;
     	[today, formatSelector, eventTypeSelector] = initializePageAndParameters();
 	    		
@@ -489,6 +496,17 @@
     	window.onclick = function(event) { if(event.target == modal) { modal.style.display = "none"; }};
 	}
 	
+	function getColorMode() {
+		if (localStorage.getItem("colorScheme") === "dark") {
+	  		return "dark";
+		} else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+					&& localStorage.getItem("colorScheme") !== "light") {
+	  		return "dark";
+		} else {
+	  		return "light";
+		}
+	}
+	
 	function setColorMode(mode) {
 		if (mode === "dark") {
 			document.querySelector("html").style.setProperty("--bg-color", "black");
@@ -502,15 +520,7 @@
 	}
 	
 	function initializePageAndParameters() {
-		if (localStorage.getItem("colorScheme") === "dark") {
-	  		setColorMode("dark");
-		} else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-					&& localStorage.getItem("colorScheme") !== "light") {
-	  		setColorMode("dark");
-		} else {
-	  		setColorMode("light");
-		}
-		
+		setColorMode(getColorMode());
 		displayDSTBanner(null);
 	    var today = new Date();	
 	    var inputDate = $("#datepicker").datepicker("getDate");
@@ -785,13 +795,13 @@
   	$("#formatDropdown").change(function () { displaySchedule(); });
   	$("#eventTypeDropdown").change(function () { displaySchedule(); });
   	$("#darkModeSlider").click(function() {
-  		var checkbox = $('input[type="checkbox"]');
+  		let checkbox = $('input[type="checkbox"]');
   		if ($(checkbox).prop('checked')) {
   			localStorage.setItem("colorScheme", "light");
-			displaySchedule();
+			displaySchedule(false);
   		} else {
   			localStorage.setItem("colorScheme", "dark");
-			displaySchedule();
+			displaySchedule(false);
   		}
   	});
    </script>
