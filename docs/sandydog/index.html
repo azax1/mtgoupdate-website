@@ -23,11 +23,11 @@ let lcqs = 0;
 let rcqSched = getRCQs();
 let showcaseSched = getShowcasesAndLCQs();
 today.setDate(today.getDate() - 1);
-for (let i = 0; i < 100 && today.toDateString() !== "Wed March 22 2023"; i++) {
+for (let i = 0; i < 1000 && today.toDateString() !== "Wed March 22 2023"; i++) {
 	if (rcqSched.get(today.toDateString()) != null) {
 		for (let j = 0; j < 24; j++) {
 			let event = rcqSched.get(today.toDateString())[j];
-			if (event !== undefined) {
+			if (event != null) {
 				if (instant <= getUnixTime(today, j)) {
 					if (event.includes("Super")) {
 						supers++;
@@ -41,7 +41,7 @@ for (let i = 0; i < 100 && today.toDateString() !== "Wed March 22 2023"; i++) {
 	if (showcaseSched.get(today.toDateString()) != null) {
 		for (let j = 0; j < 24; j++) {
 			let event = showcaseSched.get(today.toDateString())[j];
-			if (event !== undefined) {
+			if (event != null) {
 				if (instant <= getUnixTime(today, j)) {
 					if (event.includes("LCQ")) {
 						lcqs++;
