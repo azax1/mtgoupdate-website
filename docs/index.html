@@ -92,13 +92,19 @@
 	}
 	.close:hover,
 	.close:focus {
-		color: black;
+		color: var(--text-color);
 		text-decoration: none;
 		cursor: pointer;
 	}
 	body {
 		margin: 0;
 		padding: 0;
+	}
+	
+	.infoButton {
+		color: var(--text-color);
+		background-color: var(--off-bg-color);
+		border-color: var(--off-bg-color);
 	}
 	
 	/* The switch - the box around the slider */
@@ -206,7 +212,7 @@
 		</h4></div>
   		</div>
 	</header>
-    <button id="info">&#8505;</button>
+    <button id="info" class="infoButton">&#8505;</button>
     <div id="faq" class="modal">
     	<div class="modal-content" id="modalContent">
     		<span class="close">&times;</span>
@@ -510,12 +516,12 @@
 	function setColorMode(mode) {
 		if (mode === "dark") {
 			document.querySelector("html").style.setProperty("--bg-color", "black");
+			document.querySelector("html").style.setProperty("--off-bg-color", "#303030");
 			document.querySelector("html").style.setProperty("--text-color", "white");
-			document.getElementById("modalContent").style.backgroundColor = "black";
 		} else {
     		document.querySelector("html").style.setProperty("--bg-color", "white");
+			document.querySelector("html").style.setProperty("--off-bg-color", "#f0f0f0");
 			document.querySelector("html").style.setProperty("--text-color", "black");
-			document.getElementById("modalContent").style.backgroundColor = "white";
 		}
 	}
 	
