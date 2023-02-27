@@ -103,8 +103,6 @@
 	
 	.infoButton {
 		color: var(--text-color);
-		background-color: var(--off-bg-color);
-		border-color: var(--off-bg-color);
 	}
 	
 	/* The switch - the box around the slider */
@@ -212,7 +210,7 @@
 		</h4></div>
   		</div>
 	</header>
-    <button id="info" class="infoButton">&#8505;</button>
+    <button id="info" class="infoButton"><div id="infoButtonText">&#8505;</span></button>
     <div id="faq" class="modal">
     	<div class="modal-content" id="modalContent">
     		<span class="close">&times;</span>
@@ -516,12 +514,23 @@
 	function setColorMode(mode) {
 		if (mode === "dark") {
 			document.querySelector("html").style.setProperty("--bg-color", "black");
-			document.querySelector("html").style.setProperty("--off-bg-color", "#303030");
 			document.querySelector("html").style.setProperty("--text-color", "white");
+			
+			// info button wizardry
+			document.querySelector("button").style.backgroundColor = "#303030";
+			document.querySelector("button").style.borderColor = "#505050";
+			document.querySelector("button").style.transform = "rotate(180deg)";
+			document.getElementById("infoButtonText").style.transform = "rotate(180deg)";
 		} else {
     		document.querySelector("html").style.setProperty("--bg-color", "white");
 			document.querySelector("html").style.setProperty("--off-bg-color", "#f0f0f0");
 			document.querySelector("html").style.setProperty("--text-color", "black");
+			
+			// info button wizardry
+			document.querySelector("button").style.backgroundColor = "#f0f0f0";
+			document.querySelector("button").style.borderColor = "#e0e0e0";
+			document.querySelector("button").style.transform = "rotate(0deg)";
+			document.getElementById("infoButtonText").style.transform = "rotate(0deg)";
 		}
 	}
 	
