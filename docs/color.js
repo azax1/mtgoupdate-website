@@ -1,3 +1,14 @@
+const black = "#000000";
+const blue = "#0000ff";
+const cyan = "#00cccc";
+const darkModeGreen = "#00cc00";
+const green = "#008000";
+const grey = "#808080";
+const magenta = "cc00cc";
+const offBlack = "#121212";
+const red = "#ff0000";
+const yellow = "#bbbb00";
+
 function getColorMode() {
 	if (localStorage.getItem("colorScheme") === "dark") {
   		return "dark";
@@ -11,8 +22,8 @@ function getColorMode() {
 
 function setColorMode(mode) {
 	if (mode === "dark") {
-		document.querySelector("html").style.setProperty("--bg-color", "#121212");
-		document.querySelector("html").style.setProperty("--text-color", "yellow");
+		document.querySelector("html").style.setProperty("--bg-color", offBlack);
+		document.querySelector("html").style.setProperty("--text-color", yellow);
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#303030";
@@ -22,7 +33,7 @@ function setColorMode(mode) {
 	} else {
 		document.querySelector("html").style.setProperty("--bg-color", "white");
 		document.querySelector("html").style.setProperty("--off-bg-color", "#f0f0f0");
-		document.querySelector("html").style.setProperty("--text-color", "black");
+		document.querySelector("html").style.setProperty("--text-color", black);
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#f0f0f0";
@@ -33,43 +44,30 @@ function setColorMode(mode) {
 }
 
 function getTextboxColor(today, isDarkMode) {
-	let weekdayColor = isDarkMode ? "yellow" : "black";
-	let weekendColor = isDarkMode ? "#0f0" : "blue";
-	return (today.getDay() == 0 || today.getDay() == 6) ? weekendColor : weekdayColor;
+	let weekdayColor = isDarkMode ? yellow : black;
+	let weekendColor = isDarkMode ? darkModeGreen : blue;
+	return (today.getDay() === 0 || today.getDay() === 6) ? weekendColor : weekdayColor;
 }
 
 function getDayOfWeekColor(today, isDarkMode) {
 	if (!isDarkMode) {
-		return "black";
+		return black;
 	}
-	return (today.getDay() == 0 || today.getDay() == 6) ? "#00ff00" : "yellow";
+	return (today.getDay() == 0 || today.getDay() == 6) ? darkModeGreen : yellow;
 }
 
 function getEventColor(event, isDarkMode, j, k) {
-	let ret;
-	if (isDarkMode) {
-		ret = "yellow";
-		if (isPremier(event)) {
-			ret = "magenta";
-		} else if (event.includes("Challenge")) {
-			ret = "cyan";
-		}
-		if (j == 24 && !(k == 168 && color !== "yellow")) {
-			// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
-			// when special events have their normal color since they're not otherwise on the schedule
-			color = "grey";
-		}
-	} else {
-		ret = "black";
-		if (isPremier(event)) {
-			ret = "red";
-		} else if (event.includes("Challenge")) {
-			ret = "green";
-		}
-		if (j == 24 && !(k == 168 && color !== "black")) {
-			// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
-			// when special events have their normal color since they're not otherwise on the schedule
-			color = "grey";
+	let ret = isDarkMode ? yellow : black;
+	if (isPremier(event)) {
+		ret = isDarkMode ? magenta : red;
+	} else if (event.includes("Challenge")) {
+		ret = isDarkMode ? cyan : green;
+	}
+	if (j === 24 && k !== 168) {
+		// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
+		// when special events have their normal color since they're not otherwise on the schedule
+		if (color === (isDarkMode ? yellow : black)) {
+			color = grey;
 		}
 	}
 	return ret;
