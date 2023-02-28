@@ -68,8 +68,8 @@ function getEventColor(event, isDarkMode, j, k) {
 	if (j === 24 && k !== 168) {
 		// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
 		// when special events have their normal color since they're not otherwise on the schedule
-		if (color === (isDarkMode ? yellow : black)) {
-			color = grey;
+		if (ret === (isDarkMode ? yellow : black)) {
+			ret = grey;
 		}
 	}
 	return ret;
