@@ -4,8 +4,8 @@
 <script src="../schedule.js"></script>
 </head>
 <body>
-<div>
-<p>Remaining in this season there are <span id="showcases"></span> Showcase Challenge(s), 
+<div="everything">
+<p id="text">Remaining in this season there are <span id="showcases"></span> Showcase Challenge(s), 
 <span id="supers"></span> Super RCQ(s), <span id="rcqs"></span> regular RCQ(s), and <span id="lcqs"></span> MOCS LCQ(s).<br><br>
 You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events and <span id="qps2" style="color:red"></span> QPs 
 to play all remaining events without using any unnecessary PPs / tix.</p>
@@ -54,4 +54,11 @@ document.getElementById("rcqs").innerHTML = rcqs;
 document.getElementById("lcqs").innerHTML = lcqs;
 document.getElementById("qps1").innerHTML = 40 * (showcases + rcqs + lcqs);
 document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
+
+if (localStorage.getItem("colorScheme") === "dark") {
+	document.getElementById("text").style.color = "yellow";
+	document.getElementById("qps1").style.color = "magenta";
+	document.getElementById("qps2").style.color = "magenta";
+	document.body.style.backgroundColor = "#121212";
+}
 </script>
