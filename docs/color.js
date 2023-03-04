@@ -65,11 +65,15 @@ function getEventColor(event, isDarkMode, j, k) {
 	} else if (event.includes("Challenge")) {
 		ret = isDarkMode ? cyan : green;
 	}
-	if (j === 24 && k !== 168) {
-		// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
-		// when special events have their normal color since they're not otherwise on the schedule
-		if (ret === (isDarkMode ? yellow : black)) {
+	if (j === 24) {
+		if (k !== 168) {
 			ret = grey;
+		} else {
+			// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
+			// when special events have their normal color since they're not otherwise on the schedule
+			if (ret === (isDarkMode ? yellow : black)) {
+				ret = grey;
+			}
 		}
 	}
 	return ret;
