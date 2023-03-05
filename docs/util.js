@@ -1,7 +1,7 @@
 function getHourAndMinuteOffset(PTOffset, localOffset) {
 	let hourOffset =  PTOffset - Math.floor(localOffset / 60);
     let minuteOffset = localOffset % 60;
-    if (minuteOffset != 0) {
+    if (minuteOffset !== 0) {
     	if (minuteOffset > 0) {
     		// Localities like St. John's with fractional offsets that are west of Greenwich have getTimezoneOffset() > 0.
     		// Instead of e.g. "3 hours and 45 minutes behind Greenwich",
@@ -30,12 +30,12 @@ function isMocsFormat(str) {
 }
 
 function getPrettyTime(hour, minuteOfHour) {
-	if (minuteOfHour == 0) {
- 		if (hour == 0) {
+	if (minuteOfHour === 0) {
+ 		if (hour === 0) {
  			return "12am";
  		} else if (hour < 12) {
  			return hour + "am";
- 		} else if (hour == 12) {
+ 		} else if (hour === 12) {
  			return "Noon";
  		} else if (hour < 24) {
  			return (hour - 12) + "pm";
@@ -43,11 +43,11 @@ function getPrettyTime(hour, minuteOfHour) {
  			return "Midnight";
  		}
  	} else {
- 		if (hour == 0) {
+ 		if (hour === 0) {
  			return "12:" + minuteOfHour + "am";
  		} else if (hour < 12) {
  			return hour + ":" + minuteOfHour + "am";
- 		} else if (hour == 12) {
+ 		} else if (hour === 12) {
  			return hour + ":" + minuteOfHour + "pm";
  		} else if (hour < 24) {
  			return (hour - 12) + ":" + minuteOfHour + "pm";
@@ -58,26 +58,26 @@ function getPrettyTime(hour, minuteOfHour) {
 }
 
 function getSuffix(dayOfMonth) {
- 	if (dayOfMonth % 20 == 1 || dayOfMonth == 31) {
+ 	if (dayOfMonth % 20 === 1 || dayOfMonth === 31) {
  		return "st";
- 	} else if (dayOfMonth % 20 == 2) {
+ 	} else if (dayOfMonth % 20 === 2) {
  		return "nd";
- 	} else if (dayOfMonth % 20 == 3) {
+ 	} else if (dayOfMonth % 20 === 3) {
  		return "rd";
  	}
  	return "th";
 }
 
 function displayDSTBanner(dstTime) {
-	if (dstTime == null) {
-		document.getElementById("bannerContainer").innerHTML = null;
-		document.getElementById("bannerContainer").style.setProperty("position", "absolute");
-	} else {
+	if (dstTime) {
 		let contents =
 			`The US is moving its clocks forward 1 hour on ${dstTime}. ` +
 			"If your locality is not changing its clocks, scheduled events after this time are 1 hour earlier than displayed.";
 		document.getElementById("bannerContainer").innerHTML = `<div id=\"banner\"><p>${contents}</p></div>`;
 		document.getElementById("bannerContainer").style.setProperty("position", "relative");
+	} else {
+		document.getElementById("bannerContainer").innerHTML = null;
+		document.getElementById("bannerContainer").style.setProperty("position", "absolute");
 	}
 }
 
@@ -93,7 +93,7 @@ function initializePageAndParameters() {
     						.filter(option => option.selected)
     						.map(option => option.value);
     let formatSelector;
-    if (formatChoices.length == 0) { // default; no filter
+    if (formatChoices.length === 0) { // default; no filter
     	formatSelector = (_) => { return true; };
     } else {
     	formatSelector = (event) =>
@@ -108,7 +108,7 @@ function initializePageAndParameters() {
     						.filter(option => option.selected)
     						.map(option => option.value);
     let eventTypeSelector;
-    if (eventTypeChoices.length == 0) { // default; no filter
+    if (eventTypeChoices.length === 0) { // default; no filter
     	eventTypeSelector = (_) => { return true; };
     } else {
     	eventTypeSelector = (event) =>

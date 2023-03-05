@@ -55,7 +55,7 @@ function getDayOfWeekColor(today, isDarkMode) {
 	if (!isDarkMode) {
 		return black;
 	}
-	return (today.getDay() == 0 || today.getDay() == 6) ? darkModeGreen : yellow;
+	return (today.getDay() === 0 || today.getDay() === 6) ? darkModeGreen : yellow;
 }
 
 function getEventColor(event, isDarkMode, j, k) {

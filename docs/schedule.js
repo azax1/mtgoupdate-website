@@ -28,7 +28,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 	day.setDate(today.getDate() - 1);
 	for (let i = 0; i < 9; i++) {
 		let todayEvents = specialEvents.get(day.toDateString());
-		if (todayEvents != null) {
+		if (todayEvents) {
 			for (let j = 0; j < 24; j++) {
 				if (todayEvents[j] !== undefined) {
 					event = todayEvents[j];
@@ -36,10 +36,10 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 					if (isReplacement) {
 						monster[index] = event;
 					} else {
-						if (monster[index] == null) {
-							monster[index] = event;
-						} else {
+						if (monster[index]) {
 							monster[index] = event + "&" + monster[index];
+						} else {
+							monster[index] = event;
 						}
 					}
 				}
@@ -258,12 +258,12 @@ function getShowcasesAndLCQs() {
 	// 12am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
-		if (day == 0) {
+		if (day === 0) {
 			lcqs[8] = "Legacy Showcase Challenge";
 		}
 		for (let hour = 0; hour < 8 || (day < 3 && hour < 24); hour++) {
 			let event = schedule[24 * day + hour];
-			if (event != null && event.includes("Prelim") && isMocsFormat(event)) {
+			if (event && event.includes("Prelim") && isMocsFormat(event)) {
 				lcqs[hour] = event.replace("Prelim", "LCQ");
 			}
 		}

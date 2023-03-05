@@ -134,7 +134,7 @@
         if (fixColorModeSlider) {
        		let checkbox = $('input[type="checkbox"]');
        		let color = getColorMode();
-	    	if ((color === "dark") != checkbox.prop("checked")) {
+	    	if ((color === "dark") !== checkbox.prop("checked")) {
 				checkbox.prop("checked", color === "dark");
 			}
 		}
@@ -191,13 +191,13 @@
 	// this is the next frontier for refactoring. look at all those parameters!
 	function getScheduleForDay(schedule, eventFilter, dayCounter, minuteOffset, isDarkMode, displayDate) {
 		let ret = "";
-		let upperLimit = (minuteOffset == 0) ? 24 : 23;
+		let upperLimit = (minuteOffset === 0) ? 24 : 23;
     	for (let j = 0; j <= upperLimit; j++) {
      		let k = 24 * dayCounter + j;
-     		let events = (schedule[k] == null) ? [null] : schedule[k].split("&");
+     		let events = (schedule[k]) ? schedule[k].split("&") : [null];
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
-     			if (event != null) {
+     			if (event) {
      				if (event === "DST") {
      					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
      				} else if (eventFilter(event)) {;
