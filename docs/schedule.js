@@ -30,7 +30,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 		let todayEvents = specialEvents.get(day.toDateString());
 		if (todayEvents) {
 			for (let j = 0; j < 24; j++) {
-				if (todayEvents[j] !== undefined) {
+				if (todayEvents[j]) {
 					event = todayEvents[j];
 					index = 24 * i + j;
 					if (isReplacement) {
