@@ -71,11 +71,13 @@ function getSuffix(dayOfMonth) {
 function displayDSTBanner(dstTime) {
 	if (dstTime == null) {
 		document.getElementById("bannerContainer").innerHTML = null;
+		document.getElementById("bannerContainer").style.setProperty("position", "absolute");
 	} else {
 		let contents =
 			`The US is moving its clocks forward 1 hour on ${dstTime}. ` +
 			"If your locality is not changing its clocks, scheduled events after this time are 1 hour earlier than displayed.";
 		document.getElementById("bannerContainer").innerHTML = `<div id=\"banner\"><p>${contents}</p></div>`;
+		document.getElementById("bannerContainer").style.setProperty("position", "relative");
 	}
 }
 
