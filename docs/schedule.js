@@ -181,6 +181,14 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 2, 17).toDateString(), {7: "Limited (ONE) Super Qualifier"}
 	);
+	
+	ret.set(
+		new Date(2023, 2, 19).toDateString(), {15: "Vintage LCQ"}
+	);
+	
+	ret.set(
+		new Date(2023, 2, 21).toDateString(), {5: "Vintage LCQ", 13: "Vintage LCQ"}
+	);
 
 	return ret;
 }
