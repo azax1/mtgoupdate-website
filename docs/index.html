@@ -181,15 +181,14 @@
      	let suffix = getSuffix(today.getDate());
      	
 		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		let displayDateForDSTMessage = days[today.getDay()] + ", March " + today.getDate() + suffix;
 		return "<fieldset style=\"border: 1px " + textboxColor + " solid; display: inline-block; min-width: 280px;\">"
      			+ "<legend style=\"border: 1px " + textboxColor + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
      			+ "<span style=\"color:" + dayOfWeekTextColor + "\">" + days[today.getDay()] + " " + today.getDate() + suffix + "</span></legend>"
-     			+ getScheduleForDay(schedule, eventFilter, dayCounter, minuteOffset, isDarkMode, displayDateForDSTMessage);
+     			+ getScheduleForDay(today, schedule, eventFilter, dayCounter, minuteOffset, isDarkMode);
 	}
 	
 	// this is the next frontier for refactoring. look at all those parameters!
-	function getScheduleForDay(schedule, eventFilter, dayCounter, minuteOffset, isDarkMode, displayDate) {
+	function getScheduleForDay(today, schedule, eventFilter, dayCounter, minuteOffset, isDarkMode) {
 		let ret = "";
 		let upperLimit = (minuteOffset === 0) ? 24 : 23;
     	for (let j = 0; j <= upperLimit; j++) {
@@ -199,7 +198,11 @@
      			let event = events[index];
      			if (event) {
      				if (event === "DST") {
-     					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
+     					if (today.getTime() <= 1678611600000) {
+	     					let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	     					let displayDate = days[today.getDay()] + ", March " + today.getDate() + suffix;
+	     					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
+     					}
      				} else if (eventFilter(event)) {;
      					color = getEventColor(event, isDarkMode, j, k);
 	     				ret += "<font color=" + color + ">" + getPrettyTime(j, minuteOffset) + " " + event + "</font><br>";
