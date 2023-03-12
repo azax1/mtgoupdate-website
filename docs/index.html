@@ -146,12 +146,12 @@
 	    				
 		let PTOffset;
 	    let nextDST;
-	    if (today.getTime() <= 1678611600000) {  // handles DST switch in March 2023
-	    	PTOffset = 8;
-	    	nextDST = "March 12th";
-	    } else {
+	    if (today.getTime() <= 1699178400000) {  // handles DST switch in November 2023
 	    	PTOffset = 7;
 	    	nextDST = "November 5th";
+	    } else {
+	    	PTOffset = 8; 
+	    	nextDST = "March 10th, 2024";
 	    }
 	    document.getElementById("nextDST").innerHTML = nextDST;
     
