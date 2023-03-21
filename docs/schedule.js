@@ -189,6 +189,14 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 2, 21).toDateString(), {5: "Vintage LCQ", 13: "Vintage LCQ"}
 	);
+	
+	ret.set(
+		new Date(2023, 3, 8).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
+	);
+	
+	ret.set(
+		new Date(2023, 3, 9).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
+	);
 
 	return ret;
 }
