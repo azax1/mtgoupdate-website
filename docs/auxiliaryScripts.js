@@ -11,10 +11,10 @@ $(function() {
 $(function() {
     $( "#datepicker" ).datepicker({
     	dateFormat: "yy-mm-dd",
-    	minDate: new Date(2022, 11, 1),
+    	minDate: new Date(2023, 2, 1),
     	defaultDate: new Date(),
     	setDate: new Date(),
-    	maxDate: new Date(2023, 3, 15),
+    	maxDate: new Date(2023, 6, 5),
     	onClose: function() {
     		var input = $(this).datepicker("getDate");
         	if (!input || !(input instanceof Date)) {

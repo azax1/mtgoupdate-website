@@ -30,7 +30,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 		let todayEvents = specialEvents.get(day.toDateString());
 		if (todayEvents) {
 			for (let j = 0; j < 24; j++) {
-				if (todayEvents[j]) {
+				if (todayEvents[j] !== undefined) {
 					event = todayEvents[j];
 					index = 24 * i + j;
 					if (isReplacement) {
@@ -75,129 +75,61 @@ function getRCQs() {
 	let ret = new Map();
 
 	ret.set(
-		new Date(2022, 11, 2).toDateString(), {7: "Limited (BRO) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 10).toDateString(), {1: "Eternal Weekend - Legacy"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 11).toDateString(), {1: "Eternal Weekend - Vintage"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 17).toDateString(), {7: "Limited (BRO) MOCS Showcase Open"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 18).toDateString(), {7: "Limited (BRO) MOCS Showcase Open"}
-	);
-
-	ret.set(
-		new Date(2022, 11, 23).toDateString(), {7: "Limited (BRO) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 26).toDateString(), {7: "Modern Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 27).toDateString(), {7: "Standard Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 28).toDateString(), {7: "Pioneer Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 29).toDateString(), {7: "Legacy Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2022, 11, 30).toDateString(), {7: "Vintage Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 0, 1).toDateString(), {15: "Limited (BRO) Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 0, 21).toDateString(), {7: "Modern Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 0, 22).toDateString(), {7: "Limited (BRO) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 0, 28).toDateString(), {7: "Pauper Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 0, 29).toDateString(), {7: "Vintage Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 4).toDateString(), {7: "Legacy Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 5).toDateString(), {7: "Modern Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 17).toDateString(), {14: "Limited (ONE) Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 18).toDateString(), {7: "Pioneer Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 19).toDateString(), {7: "Limited (ONE) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 20).toDateString(), {7: "Limited (ONE) Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 4).toDateString(), {7: "Limited (ONE) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 5).toDateString(), {1: "Limited (ONE) Super Qualifier", 12:"Modern Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 10).toDateString(), {14: "Limited (ONE) Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 12).toDateString(), {2: "DST"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 17).toDateString(), {7: "Limited (ONE) Super Qualifier"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 19).toDateString(), {15: "Vintage LCQ"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 21).toDateString(), {5: "Vintage LCQ", 13: "Vintage LCQ"}
-	);
-	
-	ret.set(
 		new Date(2023, 3, 8).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
 	);
 	
 	ret.set(
 		new Date(2023, 3, 9).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
 	);
+	
+	ret.set(
+		new Date(2023, 3, 15).toDateString(), {7: "Pauper Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 3, 16).toDateString(), {7: "Vintage Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 3, 28).toDateString(), {14: "Limited (MOM) Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 4, 1).toDateString(), {1: "Modern Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 4, 7).toDateString(), {7: "Standard Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 4, 20).toDateString(), {1: "Limited (MOM) Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 4, 21).toDateString(), {7: "Limited (MOM) Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 4, 27).toDateString(), {5: "Pioneer Qualifier"}
+	);
 
+	ret.set(
+		new Date(2023, 4, 28).toDateString(), {7: "Limited (MOM) Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 5, 2).toDateString(), {7: "Legacy Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 5, 9).toDateString(), {14: "Pioneer Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 5, 30).toDateString(), {7: "Limited (LTR) Qualifier"}
+	);
+	
 	return ret;
 }
 
@@ -207,69 +139,49 @@ function getShowcasesAndLCQs() {
 	let ret = new Map();
 	    	
 	ret.set(
-		new Date(2022, 11, 11).toDateString(), {0: null}
+		new Date(2023, 3, 29).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 20).toDateString(), {16: null, 18: "Limited Prelim", 19: "Modern Prelim"}
+		new Date(2023, 3, 30).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 21).toDateString(), {18: null}
+		new Date(2023, 4, 13).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 23).toDateString(), {17: null}
+		new Date(2023, 4, 14).toDateString(), {8: "Legacy Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 25).toDateString(), {18: null}
+		new Date(2023, 5, 3).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 7).toDateString(), {8: "Modern Showcase Challenge"}
+		new Date(2023, 5, 4).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 8).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2023, 5, 10).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 14).toDateString(), {10: "Vintage Showcase Challenge"}
+		new Date(2023, 5, 11).toDateString(), {8: "Legacy Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 0, 15).toDateString(), {8: "Legacy Showcase Challenge"}
+		new Date(2023, 5, 24).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 1, 11).toDateString(), {8: "Modern Showcase Challenge"}
+		new Date(2023, 5, 25).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 1, 12).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2023, 6, 1).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
 	);
 	
-	ret.set(
-		new Date(2023, 1, 25).toDateString(), {10: "Vintage Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2023, 1, 26).toDateString(), {8: "Legacy Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 11).toDateString(), {8: "Modern Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 12).toDateString(), {6: "Pioneer Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2023, 2, 18).toDateString(), {10: "Vintage Showcase Challenge"}
-	);
-
 	let schedule = getBaseSchedule();
 	// 12am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
@@ -283,7 +195,7 @@ function getShowcasesAndLCQs() {
 				lcqs[hour] = event.replace("Prelim", "LCQ");
 			}
 		}
-		ret.set(new Date(2023, 2, 19 + day).toDateString(), lcqs);
+		ret.set(new Date(2023, 6, 2 + day).toDateString(), lcqs);
 	}
 	
 	return ret;

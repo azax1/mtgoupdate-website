@@ -26,7 +26,7 @@ function isPremier(event) {
 }
 
 function isMocsFormat(str) {
-	return str.includes("Pioneer") || str.includes("Modern") || str.includes("Legacy") ||  str.includes("Vintage");
+	return str.includes("Pioneer") || str.includes("Modern") || str.includes("Legacy") ||  str.includes("Pauper");
 }
 
 function getPrettyTime(hour, minuteOfHour) {
