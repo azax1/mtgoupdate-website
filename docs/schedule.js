@@ -130,6 +130,14 @@ function getRCQs() {
 		new Date(2023, 5, 30).toDateString(), {7: "Limited (LTR) Qualifier"}
 	);
 	
+	ret.set(
+		new Date(2023, 6, 22).toDateString(), {7: "Limited (TBD) MOCS Showcase Open"}
+	);
+	
+	ret.set(
+		new Date(2023, 6, 23).toDateString(), {7: "Limited (TBD) MOCS Showcase Open"}
+	);
+	
 	return ret;
 }
 
