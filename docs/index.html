@@ -29,97 +29,96 @@
   <body>
   <div class="everything">
     <div>
-  	<div id="bannerContainer"></div>
-  	<header style="display: flex;">
-  		<div style="width: 100%; display: flex; align-content: center;">
-  			<div style="width: 5%;"></div>
-  			<div style="width: 4%;">
-  				<h4><span><br>Dark<br>mode</span></h4>
-  			</div>
-  			<div style="width: 6%;">
-  				<br>
-  				<h4><label class="switch">
-  						<input type="checkbox">
-  						<span class="slider round" id="darkModeSlider"></span>
-					</label>
-  				</h4>
-  			</div>
-    		<div style="width: 20%;"></div>
-    		<div style="width: 30%;">
-      			<h1>Scheduled Events on MTGO</h1>
-    		</div>
-    		<div style="width: 5%;"></div>
-    		<div style="width: 30%"><br>
-    			<h4>Filter by:
-    			<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="formatDropdown"  style="width: 100px;" multiple>
-	  				<option value="Limited">Limited</option>
-	  				<option value="Standard">Standard</option>
-	  				<option value="Pioneer">Pioneer</option>
-	  				<option value="Modern">Modern</option>	
-	  				<option value="Legacy">Legacy</option>
-	  				<option value="Vintage">Vintage</option>
-				</select>
-			
-				<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="eventTypeDropdown" multiple>
-	  				<option value="Prelim">Prelim</option>
-	  				<option value="Challenge">Challenge</option>
-	  				<option value="Showcase Challenge">Showcase Challenge</option>
-	  				<option value="Qualifier">Qualifier / Super Qualifier</option>
-	  				<option value="LCQ">MOCS LCQ</option>
-				</select>
-				</h4>
-			</div>
-  		</div>
-	</header>
-  	<div class="contentWrapper">
-	    <button id="info" class="infoButton"><div id="infoButtonText">&#8505;</div></button>
-	    <div id="faq" class="modal">
-	    	<div class="modal-content" id="modalContent">
-	    		<span class="close">&times;</span>
-	    		<p>
-	    		<b>FAQ</b><br><br>
-	    		<b>What is this website for?</b><br><br>
-	    		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
-	    		
-	    		<b>My country is about to change its clocks for daylight saving time (AKA summer time), but clocks in the US are staying put.
-	    		Are events that take place after the switch listed at the correct times?</b><br><br>
-	    		
-	    		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
-	    		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
-	    		 
-	    		<b>The US is about to change its clocks for DST, but I won't be changing mine.
-	    		Are events that take place after the switch listed at the correct times?</b><br><br>
-	    		
-	    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above).
-	    		 Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
-	
-				<b>What's your contact information?</b><br><br>
+	  	<header style="display: flex;">
+	  		<div style="width: 100%; display: flex; align-content: center;">
+	  			<div style="width: 5%;"></div>
+	  			<div style="width: 4%;">
+	  				<h4><span><br>Dark<br>mode</span></h4>
+	  			</div>
+	  			<div style="width: 6%;">
+	  				<br>
+	  				<h4><label class="switch">
+	  						<input type="checkbox">
+	  						<span class="slider round" id="darkModeSlider"></span>
+						</label>
+	  				</h4>
+	  			</div>
+	    		<div style="width: 20%;"></div>
+	    		<div style="width: 30%;">
+	      			<h1>Scheduled Events on MTGO</h1>
+	    		</div>
+	    		<div style="width: 5%;"></div>
+	    		<div style="width: 30%"><br>
+	    			<h4>Filter by:
+	    			<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="formatDropdown"  style="width: 100px;" multiple>
+		  				<option value="Limited">Limited</option>
+		  				<option value="Standard">Standard</option>
+		  				<option value="Pioneer">Pioneer</option>
+		  				<option value="Modern">Modern</option>	
+		  				<option value="Legacy">Legacy</option>
+		  				<option value="Vintage">Vintage</option>
+					</select>
 				
-				Feel free to message me on Twitter @mtgoupdate or email me at admin at mtgoupdate dot com.<br><br>
-				
-				<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
-				
-				Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a> or contact me via Twitter or 
-				email to discuss trading me MTGO tickets.<br><br>
+					<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="eventTypeDropdown" multiple>
+		  				<option value="Prelim">Prelim</option>
+		  				<option value="Challenge">Challenge</option>
+		  				<option value="Showcase Challenge">Showcase Challenge</option>
+		  				<option value="Qualifier">Qualifier / Super Qualifier</option>
+		  				<option value="LCQ">MOCS LCQ</option>
+					</select>
+					</h4>
+				</div>
+	  		</div>
+		</header>
+	  	<div class="contentWrapper">
+		    <button id="info" class="infoButton"><div id="infoButtonText">&#8505;</div></button>
+		    <div id="faq" class="modal">
+		    	<div class="modal-content" id="modalContent">
+		    		<span class="close">&times;</span>
+		    		<p>
+		    		<b>FAQ</b><br><br>
+		    		<b>What is this website for?</b><br><br>
+		    		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
+		    		
+		    		<b>My country is about to change its clocks for daylight saving time (AKA summer time), but clocks in the US are staying put.
+		    		Are events that take place after the switch listed at the correct times?</b><br><br>
+		    		
+		    		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
+		    		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
+		    		 
+		    		<b>The US is about to change its clocks for DST, but I won't be changing mine.
+		    		Are events that take place after the switch listed at the correct times?</b><br><br>
+		    		
+		    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above).
+		    		 Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
+		
+					<b>What's your contact information?</b><br><br>
+					
+					Feel free to message me on Twitter @mtgoupdate or email me at admin at mtgoupdate dot com.<br><br>
+					
+					<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
+					
+					Gladly. You can tip me at <a href="https://www.ko-fi.com/mtgoupdate">ko-fi.com/mtgoupdate</a> or contact me via Twitter or 
+					email to discuss trading me MTGO tickets.<br><br>
+					</p>
+		    	</div>
+		    </div>
+			<div class="container">
+			    <div id="day0"></div>
+			    <div id="day1"></div>
+			    <div id="day2"></div>
+			    <div id="day3"></div>
+			    <div id="day4"></div>
+			    <div id="day5"></div>
+			    <div id="day6"></div>
+		    </div>
+		    <div style="text-align: center;">
+				<p>
+				<strong>Detected local time: </strong><span id="localTime"></span><br>
+				<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
 				</p>
-	    	</div>
-	    </div>
-		<div class="container">
-		    <div id="day0"></div>
-		    <div id="day1"></div>
-		    <div id="day2"></div>
-		    <div id="day3"></div>
-		    <div id="day4"></div>
-		    <div id="day5"></div>
-		    <div id="day6"></div>
-	    </div>
-	    <div style="text-align: center;">
-			<p>
-			<strong>Detected local time: </strong><span id="localTime"></span><br>
-			<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
-			</p>
-	    </div>
-	</div>
+		    </div>
+		</div>
 	</div>
 	<footer>
 		<p style="text-align: center">Registering and maintaining this website isn't free. Any <a href="https://www.ko-fi.com/mtgoupdate">support</a> is appreciated.</p>
