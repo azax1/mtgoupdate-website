@@ -197,11 +197,7 @@
      			let event = events[index];
      			if (event) {
      				if (event === "DST") {
-     					if (today.getTime() <= 1678611600000) {
-	     					let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	     					let displayDate = days[today.getDay()] + ", March " + today.getDate() + suffix;
-	     					displayDSTBanner(displayDate + " at " + getPrettyTime(j, minuteOffset));
-     					}
+     					
      				} else if (eventFilter(event)) {;
      					color = getEventColor(event, isDarkMode, j, k);
 	     				ret += "<font color=" + color + ">" + getPrettyTime(j, minuteOffset) + " " + event + "</font><br>";
