@@ -166,6 +166,7 @@
      	let isDarkMode = (document.querySelector("html").style.getPropertyValue("--bg-color")) !== "white";
      	
      	let ret = [null, null, null, null, null, null, null];
+     	let schedules = getSchedulesForWeek(schedule, eventFilter, minuteOffset, isDarkMode);
      	for (let i = 0; i < 7; i++) {
      		let textboxColor = getTextboxColor(today, isDarkMode);
      		let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
@@ -175,33 +176,30 @@
 				`<fieldset style=\"border: 1px ${textboxColor} solid; display: inline-block; min-width: 280px;\">
      			<legend style=\"border: 1px ${textboxColor} solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">
      			<span style=\"color: ${dayOfWeekTextColor}\"> ${today.toLocaleDateString("en-US", {weekday: "long"})} ${today.getDate()}${suffix}</span></legend>
-     			${getScheduleForDay(today, schedule, eventFilter, i, minuteOffset, isDarkMode)}`;
+     			${schedules[i]}`;
      			
 		   	today.setDate(today.getDate() + 1);
      	}
      	return ret;
 	}
 	
-	// this is the next frontier for refactoring. look at all those parameters!
-	function getScheduleForDay(today, schedule, eventFilter, dayCounter, minuteOffset, isDarkMode) {
-		let ret = "";
-		let upperLimit = (minuteOffset === 0) ? 24 : 23;
-    	for (let j = 0; j <= upperLimit; j++) {
-     		let k = 24 * dayCounter + j;
+	function getSchedulesForWeek(schedule, eventFilter, minuteOffset, isDarkMode) {
+		let ret = ["", "", "", "", "", "", ""];
+		for (let k = 0; k < schedule.length; k++) {
      		let events = (schedule[k]) ? schedule[k].split("&") : [null];
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
      			if (event) {
      				if (event === "DST") {
      					
-     				} else if (eventFilter(event)) {;
-     					color = getEventColor(event, isDarkMode, j, k);
-	     				ret += "<font color=" + color + ">" + getPrettyTime(j, minuteOffset) + " " + event + "</font><br>";
+     				} else if (eventFilter(event)) {
+     					color = getEventColor(event, isDarkMode, k % 24, k);
+	     				ret[Math.floor(k / 24)] += `<font color= ${color}>${getPrettyTime(k % 24, minuteOffset)} ${event}</font><br>`;
      				}
      			}
      		}
-     	}
-     	return ret;
+		}
+		return ret;
 	}
    </script>
    </body>
