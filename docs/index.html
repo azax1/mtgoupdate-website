@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="jquery_chosen/chosen.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"></script>
   	<script src="jquery_chosen/chosen.jquery.min.js"></script>
   	<script src="auxiliaryScripts.js"></script>
   	<script src="color.js"></script>
@@ -80,17 +82,10 @@
 		    		<b>What is this website for?</b><br><br>
 		    		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
 		    		
-		    		<b>My country is about to change its clocks for daylight saving time (AKA summer time), but clocks in the US are staying put.
-		    		Are events that take place after the switch listed at the correct times?</b><br><br>
+		    		<b>My country and/or the United States are about to adjust the clocks by an hour for daylight saving time (AKA summer time).
+		    		Are events taking place after the switch listed at the correct times?</b><br><br>
 		    		
-		    		No. Anticipating when your locality enters or exits DST would require me to obsessively monitor hundreds of legislatures for changes
-		    		 in policy and to take a side in numerous territorial disputes around the world.<br><br>
-		    		 
-		    		<b>The US is about to change its clocks for DST, but I won't be changing mine.
-		    		Are events that take place after the switch listed at the correct times?</b><br><br>
-		    		
-		    		No. While the US's time change is predictable to me in advance, your locality's lack of a change is not (see above).
-		    		 Check back after the US changes its clocks (next happening at 2am on <span id="nextDST">${nextDST}</span>).<br><br>
+		    		Yes.<br><br>
 		
 					<b>What's your contact information?</b><br><br>
 					
@@ -144,46 +139,47 @@
 	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 	    				
 		let PTOffset;
-	    let nextDST;
 	    if (today.getTime() <= 1699178400000) {  // handles DST switch in November 2023
 	    	PTOffset = 7;
-	    	nextDST = "November 5th";
 	    } else {
-	    	PTOffset = 8; 
-	    	nextDST = "March 10th, 2024";
+	    	PTOffset = 8;
 	    }
-	    document.getElementById("nextDST").innerHTML = nextDST;
     
     	let hourOffset, minuteOffset;
     	[hourOffset, minuteOffset] = getHourAndMinuteOffset(PTOffset, today.getTimezoneOffset());
     	schedule = getNextWeekSchedule(today, hourOffset);
     	let heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
-    	let fieldSets = [null, null, null, null, null, null, null]; // each day's textbox pre-padding
+    	let fieldSets = generateFieldsetsForWeek(schedule, today, eventFilter, minuteOffset); // each day's textbox pre-padding
     	let max = 0;
 	    for (let k = 0; k < 7; k++) {
-	     	fieldSets[k] = generateFieldsetForDay(schedule, today, eventFilter, k, minuteOffset);
 	     	heights[k] = (fieldSets[k].match(/<br>/g) || []).length;
 	     	if (heights[k] > max) {
 	     		max = heights[k];
 	     	}
-		   	today.setDate(today.getDate() + 1);
 	    }
 	    for (let k = 0; k < 7; k++) {
 	    	document.getElementById("day" + k).innerHTML = fieldSets[k] + "<br>".repeat(max - heights[k]) + "</fieldset>";
 	    }
 	}
     	
-	function generateFieldsetForDay(schedule, today, eventFilter, dayCounter, minuteOffset) {
+	function generateFieldsetsForWeek(schedule, today, eventFilter, minuteOffset) {
      	let isDarkMode = (document.querySelector("html").style.getPropertyValue("--bg-color")) !== "white";
-     	let textboxColor = getTextboxColor(today, isDarkMode);
-     	let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
-     	let suffix = getSuffix(today.getDate());
      	
-		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		return "<fieldset style=\"border: 1px " + textboxColor + " solid; display: inline-block; min-width: 280px;\">"
-     			+ "<legend style=\"border: 1px " + textboxColor + " solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">"
-     			+ "<span style=\"color:" + dayOfWeekTextColor + "\">" + days[today.getDay()] + " " + today.getDate() + suffix + "</span></legend>"
-     			+ getScheduleForDay(today, schedule, eventFilter, dayCounter, minuteOffset, isDarkMode);
+     	let ret = [null, null, null, null, null, null, null];
+     	for (let i = 0; i < 7; i++) {
+     		let textboxColor = getTextboxColor(today, isDarkMode);
+     		let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
+     		let suffix = getSuffix(today.getDate());
+     		
+			ret[i] =
+				`<fieldset style=\"border: 1px ${textboxColor} solid; display: inline-block; min-width: 280px;\">
+     			<legend style=\"border: 1px ${textboxColor} solid;margin-left: 1em; border-radius: 15px; padding: 0.2em 0.8em \">
+     			<span style=\"color: ${dayOfWeekTextColor}\"> ${today.toLocaleDateString("en-US", {weekday: "long"})} ${today.getDate()}${suffix}</span></legend>
+     			${getScheduleForDay(today, schedule, eventFilter, i, minuteOffset, isDarkMode)}`;
+     			
+		   	today.setDate(today.getDate() + 1);
+     	}
+     	return ret;
 	}
 	
 	// this is the next frontier for refactoring. look at all those parameters!
