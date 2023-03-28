@@ -1,26 +1,3 @@
-function getHourAndMinuteOffset(PTOffset, localOffset) {
-	let hourOffset =  PTOffset - Math.floor(localOffset / 60);
-    let minuteOffset = localOffset % 60;
-    if (minuteOffset !== 0) {
-    	if (minuteOffset > 0) {
-    		// Localities like St. John's with fractional offsets that are west of Greenwich have getTimezoneOffset() > 0.
-    		// Instead of e.g. "3 hours and 45 minutes behind Greenwich",
-    		// this is more naturally thought of as "4 hours behind and 15 minutes ahead of Greenwich".
-    		// Because we incremented the integer part of the time difference (represented above by the negative floor), we have to decrement hourOffset.
-    		minuteOffset = 60 - minuteOffset;
-    		hourOffset--;
-    	} else {
-    		// Localities like Central Australia with fractional offsets that are east of Greenwich have getTimezoneOffset() < 0.
-    		// A minuteOffset of e.g. -15 here means 15 minutes ahead of Greenwich, so we have to negate that variable.
-    		// Offset is decremented because floor() rounds towards -infinity, when we want it to round towards 0;
-    		// for non-integers this results in an off-by-one error.
-    		minuteOffset = -minuteOffset;
-    		hourOffset--;
-    	}
-    }
-    return [hourOffset, minuteOffset];
-}
-
 function isPremier(event) {
 	return event.includes("Qualifier") || event.includes("Showcase") || event.includes("LCQ") || event.includes("Eternal Weekend");
 }
@@ -108,7 +85,14 @@ function initializePageAndParameters() {
     	{
     		return formatSelector(event) && eventTypeSelector(event);
     	};
-    return [today, eventFilter];
+    
+    let timeZone;
+    try {
+    	timeZone = Intl.DateTimeFormat(undefined, { timeZone: new URLSearchParams(window.location.search).get("timeZone") }).resolvedOptions().timeZone;
+   	} catch (e) {
+   		timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+   	}
+    return [today, timeZone, eventFilter];
 }
 
 function getUnixTime(date, hour) {

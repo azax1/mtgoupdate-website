@@ -21,7 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data-10-year-range.min.js"></script>
   	<script src="jquery_chosen/chosen.jquery.min.js"></script>
   	<script src="auxiliaryScripts.js"></script>
   	<script src="color.js"></script>
@@ -86,6 +86,15 @@
 		    		Are events taking place after the switch listed at the correct times?</b><br><br>
 		    		
 		    		Yes.<br><br>
+		    		
+		    		<b>I consider myself a power user. Are there any hidden features of your website that I might find useful?</b><br><br>
+		    		
+		    		You can visit <a href="https://www.mtgoupdate.com/sandydog">mtgoupdate.com/sandydog</a> to see how many QPs are needed to play all remaining
+		    		events in the current MOCS season.<br><br>
+		    		
+		    		You can pass an IANA timezone identifier as a query parameter to view the MTGO schedule in that time zone;
+		    		you may find this useful if you'll soon be traveling.
+		    		<a href="https://www.mtgoupdate.com/?timeZone=America/New_York">Here</a>'s an example.<br><br>
 		
 					<b>What's your contact information?</b><br><br>
 					
@@ -109,7 +118,7 @@
 		    </div>
 		    <div style="text-align: center;">
 				<p>
-				<strong>Detected local time: </strong><span id="localTime"></span><br>
+				<strong>Local time: </strong><span id="localTime"></span><br>
 				<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
 				</p>
 		    </div>
@@ -132,24 +141,14 @@
 				checkbox.prop("checked", color === "dark");
 			}
 		}
-    	let today, eventFilter;
-    	[today, eventFilter] = initializePageAndParameters();
-	    		
-	    document.getElementById("localTime").innerHTML = today.toLocaleString([], {hour12: true, timeStyle: "medium"}) +
-	    												" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
-	    				
-		let PTOffset;
-	    if (today.getTime() <= 1699178400000) {  // handles DST switch in November 2023
-	    	PTOffset = 7;
-	    } else {
-	    	PTOffset = 8;
-	    }
-    
-    	let hourOffset, minuteOffset;
-    	[hourOffset, minuteOffset] = getHourAndMinuteOffset(PTOffset, today.getTimezoneOffset());
-    	schedule = getNextWeekSchedule(today, hourOffset);
+    	let today, timeZone, eventFilter;
+    	[today, timeZone, eventFilter] = initializePageAndParameters();
+	    
+	    document.getElementById("localTime").innerHTML = moment.unix(today.valueOf() / 1000).tz(timeZone).format("hh:mm:ss A") + ` (${timeZone})`;
+	    												
+    	let schedule = getMonsterSchedule(today);
     	let heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
-    	let fieldSets = generateFieldsetsForWeek(schedule, today, eventFilter, minuteOffset); // each day's textbox pre-padding
+    	let fieldSets = generateFieldsetsForWeek(schedule, new Date(today), timeZone, eventFilter); // each day's textbox pre-padding
     	let max = 0;
 	    for (let k = 0; k < 7; k++) {
 	     	heights[k] = (fieldSets[k].match(/<br>/g) || []).length;
@@ -162,11 +161,11 @@
 	    }
 	}
     	
-	function generateFieldsetsForWeek(schedule, today, eventFilter, minuteOffset) {
+	function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
      	let isDarkMode = (document.querySelector("html").style.getPropertyValue("--bg-color")) !== "white";
      	
      	let ret = [null, null, null, null, null, null, null];
-     	let schedules = getSchedulesForWeek(schedule, eventFilter, minuteOffset, isDarkMode);
+     	let schedules = getSchedulesForWeek(schedule, new Date(today), timeZone, eventFilter, isDarkMode);
      	for (let i = 0; i < 7; i++) {
      		let textboxColor = getTextboxColor(today, isDarkMode);
      		let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
@@ -183,23 +182,61 @@
      	return ret;
 	}
 	
-	function getSchedulesForWeek(schedule, eventFilter, minuteOffset, isDarkMode) {
-		let ret = ["", "", "", "", "", "", ""];
+	function getSchedulesForWeek(schedule, today, timeZone, eventFilter, isDarkMode) {
+		let startDate = new Date(today);
+		startDate.setDate(startDate.getDate() - 1);
+		let monthPadding = startDate.getMonth() < 9 ? "0" : "";
+		let datePadding = startDate.getDate() < 10 ? "0" : "";
+		let parseDate = `${startDate.getFullYear()}-${monthPadding}${startDate.getMonth() + 1}-${datePadding}${startDate.getDate()} 00:00`;
+		let timestamp = moment.tz(parseDate, "America/Los_Angeles").unix();
+		
+		let schedules = {};
 		for (let k = 0; k < schedule.length; k++) {
+			if (k != 0) {
+				timestamp += 60 * 60;
+			}
+			let keyDate = moment.unix(timestamp).tz(timeZone);
      		let events = (schedule[k]) ? schedule[k].split("&") : [null];
      		for (let index = 0; index < events.length; index++) {
      			let event = events[index];
      			if (event) {
      				if (event === "DST") {
-     					
+     					if (today.getMonth() < 6) {
+     						timestamp -= 60 * 60;
+     					} else {
+     						timestamp += 60 * 60;
+     					}
      				} else if (eventFilter(event)) {
-     					color = getEventColor(event, isDarkMode, k % 24, k);
-	     				ret[Math.floor(k / 24)] += `<font color= ${color}>${getPrettyTime(k % 24, minuteOffset)} ${event}</font><br>`;
+     					let day = parseInt(keyDate.format("DD"));
+     					let hour = parseInt(keyDate.format("HH"));
+     					let minute = parseInt(keyDate.format("mm"));
+     					
+     					color = getEventColor(event, isDarkMode, hour, -1);
+     					let eventString = `<font color= #COLOR>${getPrettyTime(hour, minute)} ${event}</font><br>`;
+     					if (schedules[day] !== undefined) {
+	     					schedules[day].push([eventString, color]);
+	     				} else {
+	     					schedules[day] = [[eventString, color]];
+	     				}
      				}
      			}
      		}
 		}
-		return ret;
+		
+		let ret = ["", "", "", "", "", "", "", "", ""];
+		for (let i = 1; i < ret.length; i++) {
+			ret[i] = schedules[today.getDate()]
+						.map(x => x[0].replace("#COLOR", x[1]))
+						.join("");
+			let event = schedules[today.getDate()][0];
+			if (event[0].includes("12am")) {
+				ret[i - 1] += event[0]
+								.replace("12am", "Midnight")
+								.replace("#COLOR", (i !== ret.length - 1 || event[0].includes("Prelim")) ? "#808080" : event[1]);
+			}
+			today.setDate(today.getDate() + 1);
+		}
+		return ret.slice(1, 8);
 	}
    </script>
    </body>

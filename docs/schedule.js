@@ -1,4 +1,4 @@
-function getNextWeekSchedule(today, hourOffset) {
+function getMonsterSchedule(today) {
     // for PT exactly, compiling the schedule for the week requires consulting 7 different dates
 	// for any other time zone, it's 8 different dates (6 full days and 2 partial days on either end)
 	// as a practical matter, it's easiest to just get the 7 days we want + 2 days of buffer on either end
@@ -14,8 +14,7 @@ function getNextWeekSchedule(today, hourOffset) {
 	let monsterSched = monsterMonsterSched.slice(24 * (day + 7 - 1), 24 * (day + 7 + 8) + 1);
 
 	insertRCQsShowcasesAndLCQs(monsterSched, today);
-	let ret = monsterSched.slice(24 - hourOffset, 24 - hourOffset + 170);
-	return ret;
+	return monsterSched;
 }
 
 function insertRCQsShowcasesAndLCQs(monster, today) {
@@ -74,6 +73,10 @@ function getBaseSchedule() {
 function getRCQs() {
 	let ret = new Map();
 
+	ret.set(
+		new Date(2023, 2, 12).toDateString(), {2: "DST"}
+	);
+	
 	ret.set(
 		new Date(2023, 3, 8).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
 	);
