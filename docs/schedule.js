@@ -72,10 +72,6 @@ function getBaseSchedule() {
 // Usually RCQs, but also for weird one-off events like Eternal Weekend
 function getRCQs() {
 	let ret = new Map();
-
-	ret.set(
-		new Date(2023, 2, 12).toDateString(), {2: "DST"}
-	);
 	
 	ret.set(
 		new Date(2023, 3, 8).toDateString(), {7: "Limited (ONE) MOCS Showcase Open"}
@@ -140,6 +136,8 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 6, 23).toDateString(), {7: "Limited (TBD) MOCS Showcase Open"}
 	);
+	
+	addCurrentYearDSTDates(ret);
 	
 	return ret;
 }
@@ -210,4 +208,20 @@ function getShowcasesAndLCQs() {
 	}
 	
 	return ret;
+}
+
+function addCurrentYearDSTDates(rcqs) {
+	let year = new Date().getFullYear();
+	let march = new Date(year, 2, 8 + ((7 - new Date(year, 2, 1).getDay()) % 7));
+	
+	rcqs.set(
+		march.toDateString(), {2: "DST"}
+	);
+	
+	let nov = new Date(year, 10, 1 + ((7 - new Date(year, 10, 1).getDay()) % 7));
+	rcqs.set(
+		nov, {2: "DST"}
+	);
+	
+	return rcqs;
 }
