@@ -220,7 +220,7 @@ function addCurrentYearDSTDates(rcqs) {
 	
 	let nov = new Date(year, 10, 1 + ((7 - new Date(year, 10, 1).getDay()) % 7));
 	rcqs.set(
-		nov, {2: "DST"}
+		nov.toDateString(), {2: "DST"}
 	);
 	
 	return rcqs;
