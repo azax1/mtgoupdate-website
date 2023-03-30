@@ -213,14 +213,16 @@ function getShowcasesAndLCQs() {
 function addCurrentYearDSTDates(rcqs) {
 	let year = new Date().getFullYear();
 	let march = new Date(year, 2, 8 + ((7 - new Date(year, 2, 1).getDay()) % 7));
-	
-	rcqs.set(
-		march.toDateString(), {2: "DST"}
-	);
-	
 	let nov = new Date(year, 10, 1 + ((7 - new Date(year, 10, 1).getDay()) % 7));
-	rcqs.set(
-		nov.toDateString(), {2: "DST"}
+	
+	[march, nov].forEach(date =>
+		{
+			if (rcqs.get(date.toDateString()) === undefined) {
+				rcqs.set(date.toDateString(), {2: "DST"});
+			} else {
+				rcqs.get(date.toDateString())[2] = "DST";
+			}
+		}
 	);
 	
 	return rcqs;
