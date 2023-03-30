@@ -24,7 +24,9 @@ function setColorMode(mode) {
 	if (mode === "dark") {
 		document.querySelector("html").style.setProperty("--bg-color", offBlack);
 		document.querySelector("html").style.setProperty("--text-color", yellow);
-		document.querySelector("html").style.setProperty("--banner-color", blue);
+		
+		document.querySelector("html").style.setProperty("--fresh-link-color", "#ADD8E6");
+		document.querySelector("html").style.setProperty("--visited-link-color", "#49759C");
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#303030";
@@ -35,7 +37,9 @@ function setColorMode(mode) {
 		document.querySelector("html").style.setProperty("--bg-color", "white");
 		document.querySelector("html").style.setProperty("--off-bg-color", "#f0f0f0");
 		document.querySelector("html").style.setProperty("--text-color", black);
-		document.querySelector("html").style.setProperty("--banner-color", red);
+		
+		document.querySelector("html").style.setProperty("--fresh-link-color", "-webkit-link");
+		document.querySelector("html").style.setProperty("--visited-link-color", "#551A8B");
 		
 		// info button wizardry
 		document.querySelector("button").style.backgroundColor = "#f0f0f0";

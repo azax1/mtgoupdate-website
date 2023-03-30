@@ -6,6 +6,12 @@
   		text-align: center;
   		top: 0;
   	}
+  	a:link {
+  		color: var(--fresh-link-color);
+  	}
+  	a:visited {
+  		color: var(--visited-link-color);
+  	}
   	#info {
   		position: absolute;
   		top: 10px;
@@ -92,12 +98,6 @@
 	.infoButton {
 		color: var(--text-color);
 	}
-	
-	#banner {
-    	background-color: var(--banner-color);
-    	padding: 10px;
-    	text-align: center;
-  	}
 	
 	/* The switch - the box around the slider */
 	.switch {
