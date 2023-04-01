@@ -33,7 +33,7 @@ let lcqs = 4; // anticipated unlisted Pauper LCQs
 let rcqSched = getRCQs();
 let showcaseSched = getShowcasesAndLCQs();
 today.setDate(today.getDate() - 1);
-for (let i = 0; i < 1000 && today.toDateString() !== "Wed March 22 2023"; i++) {
+for (let i = 0; i < 200 && today.toDateString() !== "Thu Jul 06 2023"; i++) {
 	for (let k = 0; k < 2; k++) {
 		let sched = [rcqSched, showcaseSched][k];
 		if (sched.get(today.toDateString()) != null) {
