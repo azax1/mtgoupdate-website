@@ -231,7 +231,7 @@
 			if (event[0].includes("12am")) {
 				ret[i - 1] += event[0]
 								.replace("12am", "Midnight")
-								.replace("#COLOR", getEventColor(event[0], isDarkMode, true, i === 7));
+								.replace("#COLOR", getEventColor(event[0], isDarkMode, true, i === 8));
 			}
 			today.setDate(today.getDate() + 1);
 		}
