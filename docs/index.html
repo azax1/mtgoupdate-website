@@ -210,7 +210,7 @@
      					let hour = parseInt(keyDate.format("HH"));
      					let minute = parseInt(keyDate.format("mm"));
      					
-     					color = getEventColor(event, isDarkMode, hour, -1);
+     					color = getEventColor(event, isDarkMode, false, false);
      					let eventString = `<font color= #COLOR>${getPrettyTime(hour, minute)} ${event}</font><br>`;
      					if (schedules[day] !== undefined) {
 	     					schedules[day].push([eventString, color]);
@@ -231,7 +231,7 @@
 			if (event[0].includes("12am")) {
 				ret[i - 1] += event[0]
 								.replace("12am", "Midnight")
-								.replace("#COLOR", (i !== ret.length - 1 || event[0].includes("Prelim")) ? "#808080" : event[1]);
+								.replace("#COLOR", getEventColor(event[0], isDarkMode, true, i === 7));
 			}
 			today.setDate(today.getDate() + 1);
 		}

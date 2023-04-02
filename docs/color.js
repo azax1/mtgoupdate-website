@@ -62,22 +62,18 @@ function getDayOfWeekColor(today, isDarkMode) {
 	return (today.getDay() === 0 || today.getDay() === 6) ? darkModeGreen : yellow;
 }
 
-function getEventColor(event, isDarkMode, j, k) {
+function getEventColor(event, isDarkMode, isMidnight, overrideGrey) {
 	let ret = isDarkMode ? yellow : black;
 	if (isPremier(event)) {
 		ret = isDarkMode ? magenta : red;
 	} else if (event.includes("Challenge")) {
 		ret = isDarkMode ? cyan : green;
 	}
-	if (j === 24) {
-		if (k !== 168) {
+	if (isMidnight) {
+		// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
+		// when special events have their normal color since they're not otherwise on the schedule
+		if (ret === (isDarkMode ? yellow : black)) {
 			ret = grey;
-		} else {
-			// midnight events are greyed out, 12am events aren't:  except for midnight on the final day,
-			// when special events have their normal color since they're not otherwise on the schedule
-			if (ret === (isDarkMode ? yellow : black)) {
-				ret = grey;
-			}
 		}
 	}
 	return ret;
