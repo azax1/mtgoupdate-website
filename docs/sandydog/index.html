@@ -3,6 +3,8 @@
 <title>QP Information</title>
 <script src="../util.js"></script>
 <script src="../schedule.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data-10-year-range.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"></script>
 <script>
@@ -40,7 +42,12 @@ for (let i = 0; i < 200 && today.toDateString() !== "Thu Jul 06 2023"; i++) {
 			for (let j = 0; j < 24; j++) {
 				let event = sched.get(today.toDateString())[j];
 				if (event != null) {
-					if (instant <= getUnixTime(today, j)) {
+					let monthPadding = today.getMonth() < 9 ? "0" : "";
+					let datePadding = today.getDate() < 10 ? "0" : "";
+					let time = `${today.getFullYear()}-${monthPadding}${today.getMonth() + 1}-${datePadding}${today.getDate()}`;
+					time += (j < 10 ? " 0" : " ") + j + ":00";
+					let timestamp = moment.tz(time, "America/Los_Angeles").unix() * 1000;
+					if (instant <= timestamp) {
 						if (event.includes("Super")) {
 							supers++;
 						} else if (event.includes("Qualifier") || event.includes("RCQ")) {
