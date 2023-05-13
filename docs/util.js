@@ -45,19 +45,19 @@ function getSuffix(dayOfMonth) {
  	return "th";
 }
 
-function initializePageAndParameters() {
-	setColorMode(getColorMode());
-    let today = new Date();	
-    let inputDate = $("#datepicker").datepicker("getDate");
+function initializePageAndParameters(formatDropdownName="formatDropdown", eventTypeDropdownName="eventTypeDropdown", suppliedDate = null) {
+	suppliedDate || setColorMode(getColorMode());
+    let today = new Date();
+    let inputDate = suppliedDate || $("#datepicker").datepicker("getDate");
     if (inputDate && (inputDate instanceof Date)) {
     	today.setFullYear(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
     }
-    let formatChoices = Array.from(document.getElementById("formatDropdown").options)
+    let formatChoices = Array.from(document.getElementById(formatDropdownName).options)
     						.filter(option => option.selected)
     						.map(option => option.value);
     let formatSelector;
     if (formatChoices.length === 0) { // default; no filter
-    	formatSelector = (_) => { return true; };
+    	formatSelector = null;
     } else {
     	formatSelector = (event) =>
     		{
@@ -67,12 +67,12 @@ function initializePageAndParameters() {
     		};
     }
     
-    let eventTypeChoices = Array.from(document.getElementById("eventTypeDropdown").options)
+    let eventTypeChoices = Array.from(document.getElementById(eventTypeDropdownName).options)
     						.filter(option => option.selected)
     						.map(option => option.value);
     let eventTypeSelector;
     if (eventTypeChoices.length === 0) { // default; no filter
-    	eventTypeSelector = (_) => { return true; };
+    	eventTypeSelector = null;
     } else {
     	eventTypeSelector = (event) =>
     		{
@@ -81,23 +81,23 @@ function initializePageAndParameters() {
 	    				.length > 0;
     		};
     }
-    let eventFilter = (event) =>
-    	{
-    		return formatSelector(event) && eventTypeSelector(event);
-    	};
+	let eventFilter = null;
+	if (formatSelector || eventTypeSelector) {
+		eventFilter = (event) =>
+    		{
+    			return (!formatSelector || formatSelector(event)) && (!eventTypeSelector || eventTypeSelector(event));
+    		};
+	}
     
-    return [today, getTimeZone(), eventFilter];
-}
-
-function getTimeZone() {
 	let timeZone;
-    try {
-    	timeZone = Intl.DateTimeFormat(undefined, { timeZone: new URLSearchParams(window.location.search)
+	try {
+		timeZone = Intl.DateTimeFormat(undefined, { timeZone: new URLSearchParams(window.location.search)
 					.get("timeZone") }).resolvedOptions().timeZone;
-   	} catch (e) {
-   		timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-   	}
-	return timeZone;
+	} catch (e) {
+		timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+	}
+	
+    return [today, timeZone, eventFilter];
 }
 
 function verbosify(event) {

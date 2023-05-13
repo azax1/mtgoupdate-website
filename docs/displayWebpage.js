@@ -76,7 +76,7 @@ function getSchedulesForWeek(schedule, today, timeZone, eventFilter, isDarkMode)
                      } else {
                          timestamp += 60 * 60;
                      }
-                 } else if (eventFilter(event)) {
+                 } else if (!eventFilter || eventFilter(event)) {
                      let day = parseInt(keyDate.format("DD"));
                      let hour = parseInt(keyDate.format("HH"));
                      let minute = parseInt(keyDate.format("mm"));

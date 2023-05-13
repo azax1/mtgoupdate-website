@@ -29,14 +29,14 @@
 </head>
 <body>
 <div="everything">
-<p id="text">Remaining in this season (ending July 5th) there are <span id="showcases"></span>, 
-<span id="supers"></span>, <span id="rcqs"></span>, and <span id="lcqs"></span>.<br><br>
-You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events and
-<span id="qps2" style="color:red"></span> QPs to play all remaining events without using any unnecessary PPs / tix.</p>
+<p id="text">Remaining in this MOCS season (ending July 5th) there are <span id="showcases"></span>, 
+<span id="supers"></span>, <span id="rcqs"></span>, and <span id="lcqs"></span><span id="disclaimer"></span>.<br><br>
+You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events <span id="disclaimer2"></span> and
+<span id="qps2" style="color:red"></span> QPs to play all selected events (including Super RCQs) without using any unnecessary PPs / tix.</p>
 <div id="selectors">
 	<h4>
 	Filter by:
-	<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="formatDropdown"  style="width: 100px;" multiple>
+	<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="dogFormatDropdown"  style="width: 100px;" multiple>
 		<option value="Limited">Limited</option>
 		<option value="Standard">Standard</option>
 		<option value="Pioneer">Pioneer</option>
@@ -45,8 +45,7 @@ You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-
 		<option value="Vintage">Vintage</option>
 		<option value="Pauper">Pauper</option>
 	</select>
-	<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="eventTypeDropdown" multiple>
-		<option value="Challenge">Challenge</option>
+	<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="dogEventTypeDropdown" multiple>
 		<option value="Showcase Challenge">Showcase Challenge</option>
 		<option value="Qualifier">RCQ</option>
 		<option value="Super">Super RCQ</option>
@@ -54,93 +53,109 @@ You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-
 	</select>
 	</h4>
 </div>
-<table id="events" style="width: 23%">
-	<tr>
-		<th style="width: 2%">Date</th>
-		<th style="width: 2%">Time</th>
-		<th style="width: 4%">Format</th>
-		<th style="width: 15%">Event Type</th>
-	</tr>
+<table id="events" style="width: 24%">
+	<thead>
+		<tr>
+			<th style="width: 2%">Date</th>
+			<th style="width: 2%">Time</th>
+			<th style="width: 4%">Format</th>
+			<th style="width: 16%">Event Type</th>
+		</tr>
+	</thead>
+	<tbody id="tableBody">
+	</tbody>
 </table>
 </div>
 </body>
 </html>
 <script>
-let today = new Date();
-let instant = today.getTime(); // unix timestamp
-let rcqs = 0;
-let supers = 0;
-let showcases = 0;
-let lcqs = 0;
+displaySandydog();
 
-let timeZone = getTimeZone();
-let rcqSched = getRCQs();
-let showcaseSched = getShowcasesAndLCQs();
-today.setDate(today.getDate() - 1);
-for (let i = 0; i < 200 && today.toDateString() !== "Fri Jul 07 2023"; i++) {
-	for (let k = 0; k < 3; k++) {
-		let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
-		if (sched.get(today.toDateString()) != null) {
-			for (let j = 0; j < 24; j++) {
-				let event = sched.get(today.toDateString())[j];
-				if (event != null) {
-					let monthPadding = today.getMonth() < 9 ? "0" : "";
-					let datePadding = today.getDate() < 10 ? "0" : "";
-					let time = `${today.getFullYear()}-${monthPadding}${today.getMonth() + 1}-${datePadding}${today.getDate()}`;
-					time += (j < 10 ? " 0" : " ") + j + ":00";
-					let timestamp = moment.tz(time, "America/Los_Angeles").unix();
-					if (instant <= timestamp * 1000) {
-						if (event.includes("Super")) {
-							supers++;
-						} else if (event.includes("Qualifier") || event.includes("RCQ")) {
-							rcqs++;
-						} else if (event.includes("LCQ")) {
-							lcqs++;
-						} else if (event.includes("Showcase Challenge")) {
-							showcases++;
+function displaySandydog() {
+	let today = new Date();
+	let instant = today.getTime(); // unix timestamp
+	let rcqs = 0;
+	let supers = 0;
+	let showcases = 0;
+	let lcqs = 0;
+
+	let _, timeZone, eventFilter;
+	[_, timeZone, eventFilter] = initializePageAndParameters("dogFormatDropdown", "dogEventTypeDropdown", today);
+	if (!eventFilter) {
+		document.getElementById("disclaimer").innerHTML = " matching your filters";
+		document.getElementById("disclaimer2").innerHTML = " matching your filters";
+	}
+	let rcqSched = getRCQs();
+	let showcaseSched = getShowcasesAndLCQs();
+	today.setDate(today.getDate() - 1);
+	document.getElementById("tableBody").innerHTML = "";
+	for (let i = 0; i < 200 && today.toDateString() !== "Fri Jul 07 2023"; i++) {
+		for (let k = 0; k < 3; k++) {
+			let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
+			if (sched.get(today.toDateString()) != null) {
+				for (let j = 0; j < 24; j++) {
+					let event = sched.get(today.toDateString())[j];
+					if (event != null) {
+						if (eventFilter && !eventFilter(event)) {
+								continue;
 						}
-						let index = event.indexOf(" ");
-						let index2 = index;
-						if (event.substring(0, index).includes("Limited")) {
-							index2 = event.indexOf(" ", index + 1);
+						let monthPadding = today.getMonth() < 9 ? "0" : "";
+						let datePadding = today.getDate() < 10 ? "0" : "";
+						let time = `${today.getFullYear()}-${monthPadding}${today.getMonth() + 1}-${datePadding}${today.getDate()}`;
+						time += (j < 10 ? " 0" : " ") + j + ":00";
+						let timestamp = moment.tz(time, "America/Los_Angeles").unix();
+						if (instant <= timestamp * 1000) {
+							if (event.includes("Super")) {
+								supers++;
+							} else if (event.includes("Qualifier") || event.includes("RCQ")) {
+								rcqs++;
+							} else if (event.includes("LCQ")) {
+								lcqs++;
+							} else if (event.includes("Showcase Challenge")) {
+								showcases++;
+							}
+							let index = event.indexOf(" ");
+							let index2 = index;
+							if (event.substring(0, index).includes("Limited")) {
+								index2 = event.indexOf(" ", index + 1);
+							}
+							// TODO sort by date instead of first sorting by RCQ/Showcase status
+							let keyDate = moment.unix(timestamp).tz(timeZone);
+							let isDummy = today.getMonth() === 6 && today.getDate() === 6;
+							document.getElementById("tableBody").innerHTML +=
+								`<tr>
+								<td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
+								<td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
+								<td>${event.substring(0, index)}</td>
+								<td>${verbosify(event.substring(index2))}</td>
+								</tr>`
+								;
 						}
-						// TODO sort by date instead of first sorting by RCQ/Showcase status
-						let keyDate = moment.unix(timestamp).tz(timeZone);
-						let isDummy = today.getMonth() === 6 && today.getDate() === 6;
-						document.getElementById("events").innerHTML +=
-							`<tr>
-							<td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
-							<td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
-							<td>${event.substring(0, index)}</td>
-							<td>${verbosify(event.substring(index2))}</td>
-							</tr>`
-							;
 					}
 				}
 			}
 		}
+		today.setDate(today.getDate() + 1);
 	}
-	today.setDate(today.getDate() + 1);
-}
 
-document.getElementById("selectors").innerHTML = "";
-document.getElementById("showcases").innerHTML = showcases + " Showcase Challenge" + (showcases == 1 ? "" : "s");
-document.getElementById("supers").innerHTML = supers  + " Super RCQ" + (supers == 1 ? "" : "s");
-document.getElementById("rcqs").innerHTML = rcqs  + " RCQ" + (rcqs == 1 ? "" : "s");;
-document.getElementById("lcqs").innerHTML = lcqs  + " MOCS LCQ" + (lcqs == 1 ? "" : "s");;
-document.getElementById("qps1").innerHTML = 40 * (showcases + rcqs + lcqs);
-document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
+	document.getElementById("showcases").innerHTML = showcases + " Showcase Challenge" + (showcases == 1 ? "" : "s");
+	document.getElementById("supers").innerHTML = supers  + " Super RCQ" + (supers == 1 ? "" : "s");
+	document.getElementById("rcqs").innerHTML = rcqs  + " RCQ" + (rcqs == 1 ? "" : "s");;
+	document.getElementById("lcqs").innerHTML = lcqs  + " MOCS LCQ" + (lcqs == 1 ? "" : "s");;
+	document.getElementById("qps1").innerHTML = 40 * (showcases + rcqs + lcqs);
+	document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
 
-if (localStorage.getItem("colorScheme") === "dark") {
-	document.getElementById("text").style.color = "yellow";
-	document.getElementById("events").style.color = "yellow";
-	$("table").css("border","1px solid green");
-	$("th").css("border","1px solid green");
-	$("td").css("border","1px solid green");
-	document.getElementById("selectors").style.color = "yellow";
-	document.getElementById("qps1").style.color = "magenta";
-	document.getElementById("qps2").style.color = "magenta";
-	document.body.style.backgroundColor = "#121212";
+	if (localStorage.getItem("colorScheme") === "dark") {
+		document.getElementById("text").style.color = "yellow";
+		document.getElementById("events").style.color = "yellow";
+		$("table").css("border","1px solid green");
+		$("th").css("border","1px solid green");
+		$("td").css("border","1px solid green");
+		document.getElementById("selectors").style.color = "yellow";
+		document.getElementById("qps1").style.color = "magenta";
+		document.getElementById("qps2").style.color = "magenta";
+		document.body.style.backgroundColor = "#121212";
+	}
 }
 
 function getPlaceholderLCQs() {
@@ -152,4 +167,25 @@ function getPlaceholderLCQs() {
 
 	return ret;
 }
+</script>
+<script>
+$(document).ready(function() {
+	$('.chosen-select').chosen();
+});
+
+$(function() {
+	$("#dogFormatDropdown").change(
+		function () {
+			displaySandydog();
+		}
+	);
+});
+	
+$(function() {
+	$("#dogEventTypeDropdown").change(
+		function () {
+			displaySandydog();
+		}
+	);
+});
 </script>
