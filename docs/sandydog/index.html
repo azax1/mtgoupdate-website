@@ -106,11 +106,11 @@ for (let i = 0; i < 200 && today.toDateString() !== "Fri Jul 07 2023"; i++) {
 						}
 						// TODO sort by date instead of first sorting by RCQ/Showcase status
 						let keyDate = moment.unix(timestamp).tz(timeZone);
-						let displayDate = keyDate.format("M/D");
+						let isDummy = today.getMonth() === 6 && today.getDate() === 6;
 						document.getElementById("events").innerHTML +=
 							`<tr>
-							<td>${displayDate === "7/6" ? "TBD" : displayDate}</td>
-							<td>${displayDate === "7/6" ? "TBD" : keyDate.format("ha")}</td>
+							<td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
+							<td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
 							<td>${event.substring(0, index)}</td>
 							<td>${verbosify(event.substring(index2))}</td>
 							</tr>`
