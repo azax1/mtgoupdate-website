@@ -100,6 +100,10 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 4, 7).toDateString(), {7: "Standard Qualifier"}
 	);
+
+	ret.set(
+		new Date(2023, 4, 13).toDateString(), {8: "Pauper Showcase Challenge"}
+	);
 	
 	ret.set(
 		new Date(2023, 4, 20).toDateString(), {1: "Limited (MOM) Qualifier"}
@@ -153,10 +157,6 @@ function getShowcasesAndLCQs() {
 	
 	ret.set(
 		new Date(2023, 3, 30).toDateString(), {6: "Pioneer Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2023, 4, 13).toDateString(), {8: "Pauper Showcase Challenge"}
 	);
 	
 	ret.set(
