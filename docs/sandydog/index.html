@@ -32,7 +32,7 @@
 <p id="text">Remaining in this MOCS season (ending July 5th) there are <span id="showcases"></span>, 
 <span id="supers"></span>, <span id="rcqs"></span>, and <span id="lcqs"></span><span id="disclaimer"></span>.<br><br>
 You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events <span id="disclaimer2"></span> and
-<span id="qps2" style="color:red"></span> QPs to play all selected events (including Super RCQs) without using any unnecessary PPs / tix.</p>
+<span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events (including Super RCQs) without using any unnecessary PPs / tix.</p>
 <div id="selectors">
 	<h4>
 	Filter by:
@@ -84,9 +84,11 @@ function displaySandydog() {
 	if (eventFilter) {
 		document.getElementById("disclaimer").innerHTML = " matching your filters";
 		document.getElementById("disclaimer2").innerHTML = " matching your filters";
+		document.getElementById("disclaimer3").innerHTML = " selected";
 	} else {
 		document.getElementById("disclaimer").innerHTML = "";
 		document.getElementById("disclaimer2").innerHTML = "";
+		document.getElementById("disclaimer3").innerHTML = "";
 	}
 	let rcqSched = getRCQs();
 	let showcaseSched = getShowcasesAndLCQs();
