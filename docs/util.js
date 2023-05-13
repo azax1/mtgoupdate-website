@@ -86,11 +86,28 @@ function initializePageAndParameters() {
     		return formatSelector(event) && eventTypeSelector(event);
     	};
     
-    let timeZone;
+    return [today, getTimeZone(), eventFilter];
+}
+
+function getTimeZone() {
+	let timeZone;
     try {
-    	timeZone = Intl.DateTimeFormat(undefined, { timeZone: new URLSearchParams(window.location.search).get("timeZone") }).resolvedOptions().timeZone;
+    	timeZone = Intl.DateTimeFormat(undefined, { timeZone: new URLSearchParams(window.location.search)
+					.get("timeZone") }).resolvedOptions().timeZone;
    	} catch (e) {
    		timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
    	}
-    return [today, timeZone, eventFilter];
+	return timeZone;
+}
+
+function verbosify(event) {
+	if (event.includes("Super Qualifier")) {
+		return "RC Super Qualifier";
+	} else if (event.includes("Qualifier")) {
+		return "RC Qualifier";
+	} else if (event.includes("LCQ")) {
+		return "MOCS LCQ";
+	} else {
+	return event;
+	}
 }
