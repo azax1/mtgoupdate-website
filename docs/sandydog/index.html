@@ -81,9 +81,12 @@ function displaySandydog() {
 
 	let _, timeZone, eventFilter;
 	[_, timeZone, eventFilter] = initializePageAndParameters("dogFormatDropdown", "dogEventTypeDropdown", today);
-	if (!eventFilter) {
+	if (eventFilter) {
 		document.getElementById("disclaimer").innerHTML = " matching your filters";
 		document.getElementById("disclaimer2").innerHTML = " matching your filters";
+	} else {
+		document.getElementById("disclaimer").innerHTML = "";
+		document.getElementById("disclaimer2").innerHTML = "";
 	}
 	let rcqSched = getRCQs();
 	let showcaseSched = getShowcasesAndLCQs();
