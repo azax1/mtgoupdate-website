@@ -101,7 +101,7 @@ function initializePageAndParameters(formatDropdownName="formatDropdown", eventT
 }
 
 function verbosify(event) {
-	if (event.includes("Super Qualifier")) {
+	if (event.includes("Super")) {
 		return "RC Super Qualifier";
 	} else if (event.includes("Qualifier")) {
 		return "RC Qualifier";

@@ -96,6 +96,7 @@ function displaySandydog() {
 				for (let j = 0; j < 24; j++) {
 					let event = sched.get(today.toDateString())[j];
 					if (event != null) {
+						event = event.replace("Super Qualifier", "Super"); // handles namespace collision of RCQs and Super RCQs
 						if (eventFilter && !eventFilter(event)) {
 								continue;
 						}
@@ -127,7 +128,7 @@ function displaySandydog() {
 								<td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
 								<td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
 								<td>${event.substring(0, index)}</td>
-								<td>${verbosify(event.substring(index2))}</td>
+								<td>${verbosify(event.substring(index2 + 1))}</td>
 								</tr>`
 								;
 						}
