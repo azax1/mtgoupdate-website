@@ -31,8 +31,10 @@
 <div="everything">
 <p id="text">Remaining in this MOCS season (ending July 5th) there are <span id="showcases"></span>, 
 <span id="supers"></span>, <span id="rcqs"></span>, and <span id="lcqs"></span><span id="disclaimer"></span>.<br><br>
-You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events <span id="disclaimer2"></span> and
-<span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events (including Super RCQs) without using any unnecessary PPs / tix.</p>
+You need <span id="qps1" style="color:red"></span> QPs to play all remaining QP-gated events.</p>
+<!-- <span id="disclaimer2"></span> and
+<span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events
+(including Super RCQs) without using any unnecessary PPs / tix.</p> -->
 <div id="selectors">
 	<h4>
 	Filter by:
@@ -83,12 +85,12 @@ function displaySandydog() {
 	[_, timeZone, eventFilter] = initializePageAndParameters("dogFormatDropdown", "dogEventTypeDropdown", today);
 	if (eventFilter) {
 		document.getElementById("disclaimer").innerHTML = " matching your filters";
-		document.getElementById("disclaimer2").innerHTML = " matching your filters";
-		document.getElementById("disclaimer3").innerHTML = " selected";
+//		document.getElementById("disclaimer2").innerHTML = " matching your filters";
+//		document.getElementById("disclaimer3").innerHTML = " selected";
 	} else {
 		document.getElementById("disclaimer").innerHTML = "";
-		document.getElementById("disclaimer2").innerHTML = "";
-		document.getElementById("disclaimer3").innerHTML = "";
+//		document.getElementById("disclaimer2").innerHTML = "";
+//		document.getElementById("disclaimer3").innerHTML = "";
 	}
 	let rcqSched = getRCQs();
 	let showcaseSched = getShowcasesAndLCQs();
@@ -149,7 +151,7 @@ function displaySandydog() {
 	document.getElementById("rcqs").innerHTML = rcqs  + " RCQ" + (rcqs == 1 ? "" : "s");;
 	document.getElementById("lcqs").innerHTML = lcqs  + " MOCS LCQ" + (lcqs == 1 ? "" : "s");;
 	document.getElementById("qps1").innerHTML = 40 * (showcases + rcqs + lcqs);
-	document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
+//	document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
 
 	if (localStorage.getItem("colorScheme") === "dark") {
 		document.getElementById("text").style.color = "yellow";
@@ -159,7 +161,7 @@ function displaySandydog() {
 		$("td").css("border","1px solid green");
 		document.getElementById("selectors").style.color = "yellow";
 		document.getElementById("qps1").style.color = "magenta";
-		document.getElementById("qps2").style.color = "magenta";
+//		document.getElementById("qps2").style.color = "magenta";
 		document.body.style.backgroundColor = "#121212";
 	}
 }
