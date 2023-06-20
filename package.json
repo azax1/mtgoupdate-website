@@ -1,0 +1,11 @@
+{
+  "name": "mtgoupdate-website",
+  "repository": "https://github.com/azax1/mtgoupdate-website/",
+  "author": " Aryeh Zax <aryehzax@gmail.com>",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "2.8.8"
+  }
+}

@@ -3,147 +3,207 @@
 <html lang="en">
   <head>
     <title>Scheduled Events on Magic Online</title>
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"></script>
-	<script>
-  		window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8HF2HRS1RS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  		gtag('config', 'G-8HF2HRS1RS');
-	</script>
-	<!-- jQuery library -->
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+      gtag("config", "G-8HF2HRS1RS");
+    </script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
-	<!-- jQuery UI library -->
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="jquery_chosen/chosen.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data-10-year-range.min.js"></script>
-  	<script src="jquery_chosen/chosen.jquery.min.js"></script>
-  	<script src="auxiliaryScripts.js"></script>
-  	<script src="color.js"></script>
-  	<script src="schedule.js"></script>
-  	<script src="util.js"></script>
-	<script src="displayWebpage.js"></script>
+    <!-- jQuery UI library -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="jquery_chosen/chosen.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data-10-year-range.min.js"></script>
+    <script src="jquery_chosen/chosen.jquery.min.js"></script>
+    <script src="auxiliaryScripts.js"></script>
+    <script src="color.js"></script>
+    <script src="schedule.js"></script>
+    <script src="util.js"></script>
+    <script src="displayWebpage.js"></script>
   </head>
   <body>
-  <div class="everything">
-    <div>
-	  	<header style="display: flex;">
-	  		<div style="width: 100%; display: flex; align-content: center;">
-	  			<div style="width: 5%;"></div>
-	  			<div style="width: 4%;">
-	  				<h4><span><br>Dark<br>mode</span></h4>
-	  			</div>
-	  			<div style="width: 6%;">
-	  				<br>
-	  				<h4><label class="switch">
-	  						<input type="checkbox">
-	  						<span class="slider round" id="darkModeSlider"></span>
-						</label>
-	  				</h4>
-	  			</div>
-	    		<div style="width: 20%;"></div>
-	    		<div style="width: 30%;">
-	      			<h1>Scheduled Events on MTGO</h1>
-	    		</div>
-	    		<div style="width: 5%;"></div>
-	    		<div style="width: 30%"><br>
-	    			<h4>Filter by:
-	    			<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Format" id="formatDropdown"  style="width: 100px;" multiple>
-		  				<option value="Limited">Limited</option>
-		  				<option value="Standard">Standard</option>
-		  				<option value="Pioneer">Pioneer</option>
-		  				<option value="Modern">Modern</option>	
-		  				<option value="Legacy">Legacy</option>
-		  				<option value="Vintage">Vintage</option>
-		  				<option value="Pauper">Pauper</option>
-					</select>
-				
-					<select class="chosen-select" data-allow-single-deselect="true" data-placeholder="Event Type" id="eventTypeDropdown" multiple>
-		  				<option value="Prelim">Prelim</option>
-		  				<option value="Challenge">Challenge</option>
-		  				<option value="Showcase Challenge">Showcase Challenge</option>
-		  				<option value="Qualifier">Qualifier / Super Qualifier</option>
-		  				<option value="LCQ">MOCS LCQ</option>
-					</select>
-					</h4>
-				</div>
-	  		</div>
-		</header>
-	  	<div class="contentWrapper">
-		    <button id="info" class="infoButton"><div id="infoButtonText">&#8505;</div></button>
-		    <div id="faq" class="modal">
-		    	<div class="modal-content" id="modalContent">
-		    		<span class="close">&times;</span>
-		    		<p>
-		    		<b>FAQ</b><br><br>
-		    		<b>What is this website for?</b><br><br>
-		    		It's hard to know when scheduled events are being held on MTGO. This site provides that information to you in your home time zone.<br><br>
-		    		
-					<b>Is this website in any way affiliated with Wizards of the Coast and/or Daybreak Games?</b><br><br>
-		    		Not at all. I am merely a very satisfied customer of Magic: the Gathering and MTGO.<br><br>
+    <div class="everything">
+      <div>
+        <header style="display: flex">
+          <div style="width: 100%; display: flex; align-content: center">
+            <div style="width: 5%"></div>
+            <div style="width: 4%">
+              <h4>
+                <span><br />Dark<br />mode</span>
+              </h4>
+            </div>
+            <div style="width: 6%">
+              <br />
+              <h4>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round" id="darkModeSlider"></span>
+                </label>
+              </h4>
+            </div>
+            <div style="width: 20%"></div>
+            <div style="width: 30%">
+              <h1>Scheduled Events on MTGO</h1>
+            </div>
+            <div style="width: 5%"></div>
+            <div style="width: 30%">
+              <br />
+              <h4>
+                Filter by:
+                <select
+                  class="chosen-select"
+                  data-allow-single-deselect="true"
+                  data-placeholder="Format"
+                  id="formatDropdown"
+                  style="width: 100px"
+                  multiple
+                >
+                  <option value="Limited">Limited</option>
+                  <option value="Standard">Standard</option>
+                  <option value="Pioneer">Pioneer</option>
+                  <option value="Modern">Modern</option>
+                  <option value="Legacy">Legacy</option>
+                  <option value="Vintage">Vintage</option>
+                  <option value="Pauper">Pauper</option>
+                </select>
 
-		    		<b>My country and/or the United States are about to adjust the clocks by an hour for daylight saving time (AKA summer time).
-		    		Are events taking place after the switch listed at the correct times?</b><br><br>
-		    		
-		    		Yes.<br><br>
-		    		
-		    		<b>I consider myself a power user. Are there any hidden features of your website that I might find useful?</b><br><br>
-		    		
-		    		There is a <a href="https://www.mtgoupdate.com/sandydog">separate page</a> with detailed
-					information about all QP-gated events in the current MOCS season.<br><br>
-		    		
-		    		You can pass an <a href="https://en.wikipedia.org/wiki/Tz_database">IANA</a> timezone identifier 
-					as a <a id="queryExample">query parameter</a> to view the MTGO schedule in that time zone; 
-					you may find this useful if you'll soon be traveling.<br><br>
+                <select
+                  class="chosen-select"
+                  data-allow-single-deselect="true"
+                  data-placeholder="Event Type"
+                  id="eventTypeDropdown"
+                  multiple
+                >
+                  <option value="Prelim">Prelim</option>
+                  <option value="Challenge">Challenge</option>
+                  <option value="Showcase Challenge">Showcase Challenge</option>
+                  <option value="Qualifier">Qualifier / Super Qualifier</option>
+                  <option value="LCQ">MOCS LCQ</option>
+                </select>
+              </h4>
+            </div>
+          </div>
+        </header>
+        <div class="contentWrapper">
+          <button id="info" class="infoButton">
+            <div id="infoButtonText">&#8505;</div>
+          </button>
+          <div id="faq" class="modal">
+            <div class="modal-content" id="modalContent">
+              <span class="close">&times;</span>
+              <p>
+                <b>FAQ</b><br /><br />
+                <b>What is this website for?</b><br /><br />
+                It's hard to know when scheduled events are being held on MTGO.
+                This site provides that information to you in your home time
+                zone.<br /><br />
 
-					<b>I love this website you've made, but the view on my phone could look much better.
-					When are you going to make a dedicated mobile view?</b><br><br>
+                <b
+                  >Is this website in any way affiliated with Wizards of the
+                  Coast and/or Daybreak Games?</b
+                ><br /><br />
+                Not at all. I am merely a very satisfied customer of Magic: the
+                Gathering and MTGO.<br /><br />
 
-					When I have the time, energy, and will to do so. If you reach out to me to say you want this, 
-					I will become marginally more likely to get around to it.<br><br>
-		
-					<b>What's your contact information?</b><br><br>
-					
-					Feel free to message me on Twitter @mtgoupdate or email me at admin at mtgoupdate dot com.<br><br>
-					
-					<b>You seem like a cool person and I've benefited from the work you've done. Will you please take my money?</b><br><br>
-					
-					Gladly. You can <a href="https://www.ko-fi.com/mtgoupdate">tip me</a> on ko-fi or contact me via Twitter or 
-					email to discuss trading me MTGO tickets.<br><br>
-					</p>
-		    	</div>
-		    </div>
-			<div class="container">
-			    <div id="day0"></div>
-			    <div id="day1"></div>
-			    <div id="day2"></div>
-			    <div id="day3"></div>
-			    <div id="day4"></div>
-			    <div id="day5"></div>
-			    <div id="day6"></div>
-		    </div>
-		    <div style="text-align: center;">
-				<p>
-				<strong>Local time: </strong><span id="localTime"></span><br>
-				<strong>Displaying schedule for the week of </strong> <input type="text" id="datepicker">
-				</p>
-		    </div>
-		</div>
-	</div>
-	<footer>
-		<p style="text-align: center">Registering and maintaining this website isn't free. Any <a href="https://www.ko-fi.com/mtgoupdate">support</a> is appreciated.</p>
-	</footer>
+                <b
+                  >My country and/or the United States are about to adjust the
+                  clocks by an hour for daylight saving time (AKA summer time).
+                  Are events taking place after the switch listed at the correct
+                  times?</b
+                ><br /><br />
+
+                Yes.<br /><br />
+
+                <b
+                  >I consider myself a power user. Are there any hidden features
+                  of your website that I might find useful?</b
+                ><br /><br />
+
+                There is a
+                <a href="https://www.mtgoupdate.com/sandydog">separate page</a>
+                with detailed information about all QP-gated events in the
+                current MOCS season.<br /><br />
+
+                You can pass an
+                <a href="https://en.wikipedia.org/wiki/Tz_database">IANA</a>
+                timezone identifier as a
+                <a id="queryExample">query parameter</a> to view the MTGO
+                schedule in that time zone; you may find this useful if you'll
+                soon be traveling.<br /><br />
+
+                <b
+                  >I love this website you've made, but the view on my phone
+                  could look much better. When are you going to make a dedicated
+                  mobile view?</b
+                ><br /><br />
+
+                When I have the time, energy, and will to do so. If you reach
+                out to me to say you want this, I will become marginally more
+                likely to get around to it.<br /><br />
+
+                <b>What's your contact information?</b><br /><br />
+
+                Feel free to message me on Twitter @mtgoupdate or email me at
+                admin at mtgoupdate dot com.<br /><br />
+
+                <b
+                  >You seem like a cool person and I've benefited from the work
+                  you've done. Will you please take my money?</b
+                ><br /><br />
+
+                Gladly. You can
+                <a href="https://www.ko-fi.com/mtgoupdate">tip me</a> on ko-fi
+                or contact me via Twitter or email to discuss trading me MTGO
+                tickets.<br /><br />
+              </p>
+            </div>
+          </div>
+          <div class="container">
+            <div id="day0"></div>
+            <div id="day1"></div>
+            <div id="day2"></div>
+            <div id="day3"></div>
+            <div id="day4"></div>
+            <div id="day5"></div>
+            <div id="day6"></div>
+          </div>
+          <div style="text-align: center">
+            <p>
+              <strong>Local time: </strong><span id="localTime"></span><br />
+              <strong>Displaying schedule for the week of </strong>
+              <input type="text" id="datepicker" />
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center">
+          Registering and maintaining this website isn't free. Any
+          <a href="https://www.ko-fi.com/mtgoupdate">support</a> is appreciated.
+        </p>
+      </footer>
     </div>
-  	<noscript><div>Please enable JavaScript</div></noscript>
-  	
+    <noscript><div>Please enable JavaScript</div></noscript>
+
     <script>
-    displaySchedule();
-	</script>
-	</body>
+      displaySchedule();
+    </script>
+  </body>
 </html>
