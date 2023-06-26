@@ -130,6 +130,18 @@ function getRCQs() {
 	);
 
 	ret.set(
+		new Date(2023, 6, 1).toDateString(), {15: "Pauper LCQ"}
+	);
+
+	ret.set(
+		new Date(2023, 6, 3).toDateString(), {5: "Pauper LCQ"}
+	);
+
+	ret.set(
+		new Date(2023, 6, 4).toDateString(), {1: "Pauper LCQ", 23: "Pauper LCQ"}
+	);
+
+	ret.set(
 		new Date(2023, 6, 8).toDateString(), {8: "Modern Showcase Qualifier (invite-only)"}
 	);
 

@@ -131,8 +131,8 @@
       i < 200 && today.toDateString() !== "Fri Jul 07 2023";
       i++
     ) {
-      for (let k = 0; k < 3; k++) {
-        let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
+      for (let k = 0; k < 2; k++) {
+        let sched = [rcqSched, showcaseSched][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
             let event = sched.get(today.toDateString())[j];
@@ -205,18 +205,6 @@
       //		document.getElementById("qps2").style.color = "magenta";
       document.body.style.backgroundColor = "#121212";
     }
-  }
-
-  function getPlaceholderLCQs() {
-    let ret = new Map();
-
-    ret.set(new Date(2023, 6, 6).toDateString(), {
-      0: "Pauper LCQ",
-      1: "Pauper LCQ",
-      2: "Pauper LCQ",
-    });
-
-    return ret;
   }
 </script>
 <script>
