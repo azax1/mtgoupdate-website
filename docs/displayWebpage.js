@@ -44,6 +44,20 @@ function displaySchedule(fixColorModeSlider = true) {
     document.getElementById("day" + k).innerHTML =
       fieldSets[k].replaceAll("<fbr>", "<br>") + "<br>".repeat(max - heights[k]) + "</fieldset>";
   }
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const tooltips = document.querySelectorAll(".tooltip");
+
+    tooltips.forEach(function(tooltip) {
+      const tooltipContent = tooltip.querySelector(".tooltip-content");
+      const tooltipText = tooltip.querySelector(".tooltip-text");
+
+      tooltipText.addEventListener("click", function() {
+        tooltipContent.classList.toggle("show");
+      });
+    });
+  });
 }
 
 function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
