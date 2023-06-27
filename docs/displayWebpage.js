@@ -42,7 +42,7 @@ function displaySchedule(fixColorModeSlider = true) {
   }
   for (let k = 0; k < 7; k++) {
     document.getElementById("day" + k).innerHTML =
-      fieldSets[k] + "<br>".repeat(max - heights[k]) + "</fieldset>";
+      fieldSets[k].replaceAll("<fbr>", "<br>") + "<br>".repeat(max - heights[k]) + "</fieldset>";
   }
 }
 
@@ -63,7 +63,6 @@ function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
     let textboxColor = getTextboxColor(today, isDarkMode);
     let dayOfWeekTextColor = getDayOfWeekColor(today, isDarkMode);
     let suffix = getSuffix(today.getDate());
-
     ret[
       i
     ] = `<fieldset style=\"border: 1px ${textboxColor} solid; display: inline-block; min-width: 280px;\">
@@ -117,6 +116,7 @@ function getSchedulesForWeek(
           let minute = parseInt(keyDate.format("mm"));
 
           color = getEventColor(event, isDarkMode, false, false);
+          event = addTooltip(event);
           let eventString = `<font color= #COLOR>${getPrettyTime(
             hour,
             minute
