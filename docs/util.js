@@ -253,3 +253,16 @@ function addTooltip(event) {
   }
   return arr.join(" ").trim();
 }
+
+function tooltipListener(event) {
+  const targetTooltip = event.target.closest(".tooltip");
+  
+  if (targetTooltip) {
+    const tooltipContent = targetTooltip.querySelector(".tooltip-content");
+    const tooltipText = targetTooltip.querySelector(".tooltip-text");
+    
+    if (event.target === tooltipText) {
+      tooltipContent.classList.toggle("show");
+    }
+  }
+};

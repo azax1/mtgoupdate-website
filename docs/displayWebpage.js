@@ -45,19 +45,8 @@ function displaySchedule(fixColorModeSlider = true) {
       fieldSets[k].replaceAll("<fbr>", "<br>") + "<br>".repeat(max - heights[k]) + "</fieldset>";
   }
 
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const tooltips = document.querySelectorAll(".tooltip");
-
-    tooltips.forEach(function(tooltip) {
-      const tooltipContent = tooltip.querySelector(".tooltip-content");
-      const tooltipText = tooltip.querySelector(".tooltip-text");
-
-      tooltipText.addEventListener("click", function() {
-        tooltipContent.classList.toggle("show");
-      });
-    });
-  });
+  document.removeEventListener("click", tooltipListener); // fucking wizardry, don't ask
+  document.addEventListener("click", tooltipListener);
 }
 
 function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
