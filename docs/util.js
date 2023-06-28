@@ -262,6 +262,11 @@ function tooltipListener(event) {
     const tooltipText = targetTooltip.querySelector(".tooltip-text");
     
     if (event.target === tooltipText) {
+      const tooltips = document.querySelectorAll(".tooltip");
+      tooltips.forEach(function(tooltip) {
+        const tooltipContent = tooltip.querySelector(".tooltip-content");
+        tooltipContent.classList.remove("show");
+      });
       tooltipContent.classList.toggle("show");
     }
   }
