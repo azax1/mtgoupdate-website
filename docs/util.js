@@ -264,8 +264,10 @@ function tooltipListener(event) {
     if (event.target === tooltipText) {
       const tooltips = document.querySelectorAll(".tooltip");
       tooltips.forEach(function(tooltip) {
-        const tooltipContent = tooltip.querySelector(".tooltip-content");
-        tooltipContent.classList.remove("show");
+        const thisTooltipContent = tooltip.querySelector(".tooltip-content");
+        if (thisTooltipContent !== tooltipContent) {
+          thisTooltipContent.classList.remove("show");
+        }
       });
       tooltipContent.classList.toggle("show");
     }
