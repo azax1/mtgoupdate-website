@@ -164,6 +164,18 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 6, 23).toDateString(), {7: "Limited (LTR) MOCS Showcase Open"}
 	);
+
+	ret.set(
+		new Date(2023, 6, 30).toDateString(), {7: "Modern Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 7, 5).toDateString(), {3: "Limited (LTR) Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 7, 6).toDateString(), {7: "Limited (LTR) Super Qualifier"}
+	);
 	
 	addCurrentYearDSTDates(ret);
 	
@@ -219,6 +231,22 @@ function getShowcasesAndLCQs() {
 		new Date(2023, 6, 1).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
 	);
 	
+	ret.set(
+		new Date(2023, 7, 12).toDateString(), {8: "Modern Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 7, 13).toDateString(), {6: "Pioneer Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 7, 19).toDateString(), {6: "Standard Showcase Challenge"}
+	);
+
+	ret.set(
+		new Date(2023, 7, 20).toDateString(), {8: "Legacy Showcase Challenge"}
+	);
+
 	let schedule = getBaseSchedule();
 	// 12am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
