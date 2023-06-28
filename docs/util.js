@@ -175,6 +175,17 @@ function addTooltip(event) {
                             </span>
                           `;
     arr[arr.length - 1] = "";
+  } else if (tail === "Showcase Open") {
+    arr[arr.length - 2] = `
+                            <span class=\"tooltip\">
+                            <span class=\"tooltip-text\">${tail}</span>
+                            <div class=\"tooltip-content\">
+                            ${tail} entry fee: 400 PPs or 40 tix.<fbr><fbr>
+                            A Sealed tourament with draft top 8. The winner qualifies directly for the MOCS.
+                            </div>
+                            </span>
+                          `;
+    arr[arr.length - 1] = "";
   } else {
     tail = arr[arr.length - 1];
     if (tail === "Prelim") {
