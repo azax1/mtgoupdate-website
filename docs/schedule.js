@@ -130,7 +130,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 6, 1).toDateString(), {15: "Pauper LCQ"}
+		new Date(2023, 6, 1).toDateString(), {17: "Pauper LCQ"}
 	);
 
 	ret.set(
