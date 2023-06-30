@@ -212,7 +212,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2023, 5, 10).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
+		new Date(2023, 5, 10).toDateString(), {8: "Pauper Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -228,7 +228,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2023, 6, 1).toDateString(), {2: null, 8: "Pauper Showcase Challenge"}
+		new Date(2023, 6, 1).toDateString(), {8: "Pauper Showcase Challenge"}
 	);
 	
 	ret.set(
