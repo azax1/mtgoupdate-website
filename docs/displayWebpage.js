@@ -113,6 +113,10 @@ function getSchedulesForWeek(
           } else {
             timestamp += 60 * 60;
           }
+        } else if (event === "minus") {
+          timestamp -= 30 * 60;
+        } else if (event === "plus") {
+          timestamp += 30 * 60;
         } else if (!eventFilter || eventFilter(event)) {
           let day = parseInt(keyDate.format("DD"));
           let hour = parseInt(keyDate.format("HH"));

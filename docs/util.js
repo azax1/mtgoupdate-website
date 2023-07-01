@@ -99,7 +99,14 @@ function initializePageAndParameters(
   } else {
     eventTypeSelector = (event) => {
       return (
-        eventTypeChoices.filter((eventType) => event.includes(eventType))
+        eventTypeChoices.filter((eventType) =>
+        {
+          if (eventType !== "WAB") {
+            return event.includes(eventType);
+          } else {
+            return !event.includes("Win-a-Box");
+          }
+        })
           .length > 0
       );
     };
@@ -122,7 +129,6 @@ function initializePageAndParameters(
   } catch (e) {
     timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   }
-
   return [today, timeZone, eventFilter];
 }
 
@@ -182,6 +188,20 @@ function addTooltip(event) {
                             <div class=\"tooltip-content\">
                             ${tail} entry fee: 400 PPs or 40 tix.<fbr><fbr>
                             A Sealed tourament with draft top 8. The winner qualifies directly for the MOCS.
+                            </div>
+                            </span>
+                          `;
+    arr[arr.length - 1] = "";
+  } else if (tail === "Win-a-Box Sealed") {
+    arr[arr.length - 2] = `
+                            <span class=\"tooltip\">
+                            <span class=\"tooltip-text\">${tail}</span>
+                            <div class=\"tooltip-content\">
+                            ${tail} entry fee: 350 PPs or 35 tix or 20 QPs.<fbr><fbr>
+
+                            A 4-round non-Phantom Sealed tournament.
+                            4-0: 36 LTR boosters.<fbr>
+                            3-1: 6 LTR boosters.<fbr>
                             </div>
                             </span>
                           `;

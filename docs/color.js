@@ -27,6 +27,7 @@ function setColorMode(mode) {
   if (mode === "dark") {
     document.querySelector("html").style.setProperty("--bg-color", offBlack);
     document.querySelector("html").style.setProperty("--text-color", yellow);
+    document.querySelector("html").style.setProperty("--banner-color", blue);
 
     document
       .querySelector("html")
@@ -47,6 +48,7 @@ function setColorMode(mode) {
       .querySelector("html")
       .style.setProperty("--off-bg-color", "#f0f0f0");
     document.querySelector("html").style.setProperty("--text-color", black);
+    document.querySelector("html").style.setProperty("--banner-color", red);
 
     document
       .querySelector("html")
@@ -82,7 +84,7 @@ function getEventColor(event, isDarkMode, isMidnight, overrideGrey) {
   let ret = isDarkMode ? yellow : black;
   if (isPremier(event)) {
     ret = isDarkMode ? magenta : red;
-  } else if (event.includes("Challenge")) {
+  } else if (event.includes("Challenge") || event.includes("Win-a-Box")) {
     ret = isDarkMode ? cyan : green;
   }
   if (isMidnight) {
