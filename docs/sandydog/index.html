@@ -169,12 +169,14 @@
                 // TODO sort by date instead of first sorting by RCQ/Showcase status
                 let keyDate = moment.unix(timestamp).tz(timeZone);
                 let isDummy = today.getMonth() === 6 && today.getDate() === 6;
-                document.getElementById("tableBody").innerHTML += `<tr>
-								<td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
-								<td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
-								<td>${event.substring(0, index)}</td>
-								<td>${verbosify(event.substring(index2 + 1))}</td>
-								</tr>`;
+                if (!event.includes("Win-a-Box") && !event.includes("minus")) {
+                  document.getElementById("tableBody").innerHTML += `<tr>
+                  <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
+                  <td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
+                  <td>${event.substring(0, index)}</td>
+                  <td>${verbosify(event.substring(index2 + 1))}</td>
+                  </tr>`;
+                }
               }
             }
           }
