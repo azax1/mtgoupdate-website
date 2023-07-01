@@ -199,7 +199,7 @@ function addTooltip(event) {
                             <div class=\"tooltip-content\">
                             ${tail} entry fee: 350 PPs or 35 tix or 20 QPs.<fbr><fbr>
 
-                            A 4-round non-Phantom Sealed tournament.
+                            A 4-round non-Phantom Sealed tournament.<fbr><fbr>
                             4-0: 36 LTR boosters.<fbr>
                             3-1: 6 LTR boosters.<fbr>
                             </div>
