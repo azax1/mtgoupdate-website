@@ -84,7 +84,7 @@ function getEventColor(event, isDarkMode, isMidnight, overrideGrey) {
   let ret = isDarkMode ? yellow : black;
   if (isPremier(event)) {
     ret = isDarkMode ? magenta : red;
-  } else if (event.includes("Challenge") || event.includes("Win-a-Box")) {
+  } else if (event.includes("Challenge")) {
     ret = isDarkMode ? cyan : green;
   }
   if (isMidnight) {

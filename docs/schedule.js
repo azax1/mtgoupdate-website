@@ -133,8 +133,8 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 6, 1).toDateString(), {3: "LTR Win-a-Box Sealed", 5: "LTR Win-a-Box Sealed", 7: "LTR Win-a-Box Sealed",
 												9: "LTR Win-a-Box Sealed", 11: "LTR Win-a-Box Sealed",
-												12: "minus", 13: "LTR Win-a-Box Sealed&plus",
-												15: "LTR Win-a-Box Sealed", 17: "Pauper LCQ", 19: "LTR Win-a-Box Sealed",
+												12: "minus", 13: "LTR Win-a-Box Sealed&plus", // don't ask
+												17: "Pauper LCQ", 19: "LTR Win-a-Box Sealed",
 												21: "LTR Win-a-Box Sealed", 23: "LTR Win-a-Box Sealed"}
 	);
 
@@ -157,8 +157,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 6, 5).toDateString(), {1: "LTR Win-a-Box Sealed", 5: "LTR Win-a-Box Sealed",
-												15: "LTR Win-a-Box Sealed", 17: "LTR Win-a-Box Sealed"}
+		new Date(2023, 6, 5).toDateString(), {1: "LTR Win-a-Box Sealed", 5: "LTR Win-a-Box Sealed"}
 	);
 
 	ret.set(
