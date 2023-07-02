@@ -104,7 +104,7 @@ function initializePageAndParameters(
           if (eventType !== "WAB") {
             return event.includes(eventType);
           } else {
-            return !event.includes("Win-a-Box");
+            return (eventTypeChoices.length === 1) && !event.includes("Win-a-Box");
           }
         })
           .length > 0
