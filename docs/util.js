@@ -214,12 +214,12 @@ function addTooltip(event) {
                               <span class=\"tooltip\">
                               <span class=\"tooltip-text\">${tail}</span>
                               <div class=\"tooltip-content\">
-                              Limited ${tail} entry fee: 300 PPs or 30 tix.<fbr><fbr>
+                              Limited ${tail} entry fee: 350 PPs or 35 tix.<fbr><fbr>
 
                               A 4-round event whose primary purpose is to earn QPs to enter various Qualifier events.<fbr><fbr>
-                              4-0: 40 QPs, 600 PPs.<fbr>
-                              3-1: 20 QPs, 300 PPs.<fbr>
-                              2-2: 10 QPs, 150 PPs.<fbr>
+                              4-0: 40 QPs, 700 PPs.<fbr>
+                              3-1: 20 QPs, 400 PPs.<fbr>
+                              2-2: 10 QPs, 200 PPs.<fbr>
                               </div>
                               </span>
                             `;
