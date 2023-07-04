@@ -123,15 +123,14 @@ function getSchedulesForWeek(
           let minute = parseInt(keyDate.format("mm"));
 
           color = getEventColor(event, isDarkMode, false, false);
-          event = addTooltip(event);
           let eventString = `<font color= #COLOR>${getPrettyTime(
             hour,
             minute
-          )} ${event}</font><br>`;
+          )} #EVENT</font><br>`;
           if (schedules[day] !== undefined) {
-            schedules[day].push([eventString, color]);
+            schedules[day].push([eventString, event, color]);
           } else {
-            schedules[day] = [[eventString, color]];
+            schedules[day] = [[eventString, event, color]];
           }
         }
       }
@@ -142,14 +141,15 @@ function getSchedulesForWeek(
   for (let i = 1; i < ret.length; i++) {
     let sched = schedules[today.getDate()];
     if (sched) {
-      ret[i] = sched.map((x) => x[0].replace("#COLOR", x[1])).join("");
+      ret[i] = sched.map((x) => x[0].replace("#EVENT", addTooltip(x[1])).replace("#COLOR", x[2])).join("");
       let event = sched[0];
       if (event[0].includes("12am")) {
         ret[i - 1] += event[0]
+          .replace("#EVENT", addTooltip(event[1]))
           .replace("12am", "Midnight")
           .replace(
             "#COLOR",
-            getEventColor(event[0], isDarkMode, true, i === 8)
+            getEventColor(event[1], isDarkMode, true, i === 8)
           );
       }
     }
