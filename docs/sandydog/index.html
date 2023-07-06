@@ -153,6 +153,8 @@
               if (instant <= timestamp * 1000) {
                 if (event.includes("Super")) {
                   supers++;
+                } else if (event.includes("Showcase Qualifier")) {
+                  continue;
                 } else if (
                   event.includes("Qualifier") ||
                   event.includes("RCQ")
