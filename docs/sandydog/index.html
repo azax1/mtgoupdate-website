@@ -38,12 +38,14 @@
   <body>
     <div ="everything">
       <p id="text">
-        Remaining in this MOCS season (ending July 5th) there are
+        Remaining in this MOCS season (ending November 29th) there are
         <span id="showcases"></span>, <span id="supers"></span>,
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
         You need <span id="qps1" style="color: red"></span> QPs to play all
-        remaining QP-gated events.
+        remaining QP-gated events.<br><br>
+
+        This is a partial list of events and more will be added later in the season.
       </p>
       <!-- <span id="disclaimer2"></span> and
 <span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events
@@ -81,13 +83,13 @@
           </select>
         </h4>
       </div>
-      <table id="events" style="width: 24%">
+      <table id="events" style="width: 25%">
         <thead>
           <tr>
             <th style="width: 2%">Date</th>
             <th style="width: 2%">Time</th>
             <th style="width: 4%">Format</th>
-            <th style="width: 16%">Event Type</th>
+            <th style="width: 17%">Event Type</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -128,11 +130,11 @@
     document.getElementById("tableBody").innerHTML = "";
     for (
       let i = 0;
-      i < 200 && today.toDateString() !== "Fri Jul 07 2023";
+      i < 200 && today.toDateString() !== "Fri Nov 31 2023";
       i++
     ) {
-      for (let k = 0; k < 2; k++) {
-        let sched = [rcqSched, showcaseSched][k];
+      for (let k = 0; k < 3; k++) {
+        let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
             let event = sched.get(today.toDateString())[j];
@@ -168,8 +170,8 @@
                 }
                 // TODO sort by date instead of first sorting by RCQ/Showcase status
                 let keyDate = moment.unix(timestamp).tz(timeZone);
-                let isDummy = today.getMonth() === 6 && today.getDate() === 6;
-                if (!event.includes("Win-a-Box") && !event.includes("minus")) {
+                let isDummy = today.getMonth() === 10 && today.getDate() === 30;
+                if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
                   document.getElementById("tableBody").innerHTML += `<tr>
                   <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
                   <td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
@@ -207,6 +209,16 @@
       //		document.getElementById("qps2").style.color = "magenta";
       document.body.style.backgroundColor = "#121212";
     }
+  }
+
+  function getPlaceholderLCQs() {
+    let ret = new Map();
+
+    ret.set(
+		  new Date(2023, 10, 30).toDateString(), {1: "Standard LCQ", 2: "Standard LCQ", 3: "Standard LCQ", 4: "Standard LCQ"}
+	  );
+
+    return ret;
   }
 </script>
 <script>
