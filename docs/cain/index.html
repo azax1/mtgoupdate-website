@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+<title>Day Information</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+</head>
+<body>
+<center>
+<font size="25">
+Today is <span id="day"; color="#16F529"></span>.
+</font>
+</center>
+</body>
+</html>
+<script>
+    const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    document.getElementById("day").innerHTML = dayNames[new Date().getDay()];
+</script>
