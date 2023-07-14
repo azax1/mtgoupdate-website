@@ -204,6 +204,16 @@
 
     <script>
       displaySchedule();
+
+      document.addEventListener("click", function(event) {
+        const isTooltipClicked = Array.from(event.target.classList).some(className => className.startsWith("tooltip"));
+        if (!isTooltipClicked) {
+          document.querySelectorAll(".tooltip").forEach(function(tooltip) {
+            const tooltipContent = tooltip.querySelector(".tooltip-content");
+            tooltipContent.classList.remove("show");
+          });
+        }
+      });
     </script>
   </body>
 </html>
