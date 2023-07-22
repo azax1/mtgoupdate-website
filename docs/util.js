@@ -273,23 +273,3 @@ function addTooltip(event) {
   }
   return arr.join(" ").trim();
 }
-
-function tooltipListener(event) {
-  const targetTooltip = event.target.closest(".tooltip");
-  
-  if (targetTooltip) {
-    const tooltipContent = targetTooltip.querySelector(".tooltip-content");
-    const tooltipText = targetTooltip.querySelector(".tooltip-text");
-    
-    if (event.target === tooltipText) {
-      const tooltips = document.querySelectorAll(".tooltip");
-      tooltips.forEach(function(tooltip) {
-        const thisTooltipContent = tooltip.querySelector(".tooltip-content");
-        if (thisTooltipContent !== tooltipContent) {
-          thisTooltipContent.classList.remove("show");
-        }
-      });
-      tooltipContent.classList.toggle("show");
-    }
-  }
-};
