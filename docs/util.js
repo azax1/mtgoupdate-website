@@ -175,7 +175,7 @@ function addTooltip(event) {
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 300 PPs or 30 tix.<fbr><fbr>
+                            Challenge entry fee: 300 PPs or 30 tix.<fbr><fbr>
                             A standalone event unconnected to broader Organized Play.
                             </div>
                             </span>
