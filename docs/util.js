@@ -186,7 +186,7 @@ function addTooltip(event) {
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 400 PPs or 40 tix.<fbr><fbr>
+                            ${tail} entry fee: 500 PPs or 50 tix.<fbr><fbr>
                             A Sealed tourament with draft top 8. The winner qualifies directly for the MOCS.
                             </div>
                             </span>
