@@ -147,12 +147,40 @@ function getShowcasesAndLCQs() {
 		new Date(2023, 7, 20).toDateString(), {8: "Legacy Showcase Challenge"}
 	);
 
+	ret.set(
+		new Date(2023, 9, 7).toDateString(), {8: "Modern Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 9, 8).toDateString(), {6: "Pioneer Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 9, 21).toDateString(), {6: "Standard Showcase Challenge"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 22).toDateString(), {8: "Legacy Showcase Challenge"}
+	);
+
+	ret.set(
+		new Date(2023, 10, 18).toDateString(), {8: "Modern Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 10, 19).toDateString(), {6: "Pioneer Showcase Challenge"}
+	);
+	
+	ret.set(
+		new Date(2023, 10, 25).toDateString(), {6: "Standard Showcase Challenge"}
+	);
+
 	let schedule = getBaseSchedule();
 	// 12am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
 		if (day === 0) {
-			// lcqs[8] = "Legacy Showcase Challenge";
+			lcqs[8] = "Legacy Showcase Challenge";
 		}
 		for (let hour = 0; hour < 8 || (day < 3 && hour < 24); hour++) {
 			let event = schedule[24 * day + hour];
