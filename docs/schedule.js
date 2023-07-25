@@ -120,6 +120,30 @@ function getRCQs() {
 	ret.set(
 		new Date(2023, 7, 6).toDateString(), {7: "Limited (LTR) Super Qualifier"}
 	);
+
+	ret.set(
+		new Date(2023, 11, 2).toDateString(), {8: "Modern Showcase Qualifier (invite-only)"}
+	);
+
+	ret.set(
+		new Date(2023, 11, 3).toDateString(), {6: "Pioneer Showcase Qualifier (invite-only)"}
+	);
+
+	ret.set(
+		new Date(2023, 11, 9).toDateString(), {6: "Standard Showcase Qualifier (invite-only)"}
+	);
+
+	ret.set(
+		new Date(2023, 11, 10).toDateString(), {8: "Legacy Showcase Qualifier (invite-only)"}
+	);
+
+	ret.set(
+		new Date(2023, 11, 16).toDateString(), {7: "Limited (LCI) MOCS Showcase Open"}
+	);
+	
+	ret.set(
+		new Date(2023, 11, 17).toDateString(), {7: "Limited (LCI) MOCS Showcase Open"}
+	);
 	
 	addCurrentYearDSTDates(ret);
 	
