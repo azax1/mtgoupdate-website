@@ -218,7 +218,7 @@ function addTooltip(event) {
 
                               A 4-round event whose primary purpose is to earn QPs to enter various Qualifier events.<fbr><fbr>
                               4-0: 40 QPs, 700 PPs.<fbr>
-                              3-1: 20 QPs, 400 PPs.<fbr>
+                              3-1: 20 QPs, 450 PPs.<fbr>
                               2-2: 10 QPs, 200 PPs.<fbr>
                               </div>
                               </span>
