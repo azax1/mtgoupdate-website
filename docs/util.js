@@ -160,11 +160,15 @@ function addTooltip(event) {
                           `;
     arr[arr.length - 1] = "";
   } else if (tail === "Super Qualifier") {
+    let fee = 40;
+    if (arr[arr.length - 3] === "(LTR)") {
+      fee = 50;
+    }
     arr[arr.length - 2] = `
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 40 QPs or 400 PPs or 40 tix.<fbr><fbr>
+                            ${tail} entry fee: 40 QPs or ${fee}0 PPs or ${fee} tix.<fbr><fbr>
                             Top 4 competitors each qualify for their region's RC.
                             </div>
                             </span>
