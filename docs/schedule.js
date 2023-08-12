@@ -126,7 +126,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 11, 3).toDateString(), {6: "Pioneer Showcase Qualifier (invite-only)"}
+		new Date(2023, 11, 3).toDateString(), {8: "Legacy Showcase Qualifier (invite-only)"}
 	);
 
 	ret.set(
@@ -134,7 +134,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 11, 10).toDateString(), {8: "Legacy Showcase Qualifier (invite-only)"}
+		new Date(2023, 11, 10).toDateString(), {6: "Pioneer Showcase Qualifier (invite-only)"}
 	);
 
 	ret.set(
