@@ -175,11 +175,13 @@ function addTooltip(event) {
                           `;
     arr[arr.length - 1] = "";
   } else if (tail === "Challenge (32-player)") {
+    let cost = (arr[arr.length - 3] == "Limited") ? 45 : 30;
+    let format = (cost == 45) ? "Limited " : "";
     arr[arr.length - 2] = `
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            Challenge entry fee: 300 PPs or 30 tix.<fbr><fbr>
+                            ${format} Challenge entry fee: ${cost}0 PPs or ${cost} tix.<fbr><fbr>
                             A standalone event unconnected to broader Organized Play.
                             </div>
                             </span>
@@ -253,11 +255,13 @@ function addTooltip(event) {
                             </span>
                           `;
     } else if (tail === "Challenge") {
+      let cost = (arr[arr.length - 2] == "Limited") ? 45 : 30;
+      let format = (cost == 45) ? "Limited " : "";
       arr[arr.length - 1] = `
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 300 PPs or 30 tix.<fbr><fbr>
+                            ${format} ${tail} entry fee: ${cost}0 PPs or ${cost} tix.<fbr><fbr>
                             A standalone event unconnected to broader Organized Play.
                             </div>
                             </span>
