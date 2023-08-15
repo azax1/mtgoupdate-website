@@ -53,14 +53,14 @@ function getBaseSchedule() {
     let pr = "Prelim";
     let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
 		`Limited ${ch}`, null, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null, null, null, null, null, null, null,
-		`Pioneer ${pr}`, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
-		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, null, null, null,
+		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Standard ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
+		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Standard ${pr}`, null, null,
 		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`,
-		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, null,
-		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, null,
+		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Legacy ${pr}`, null, null, null, null,
+		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, `Standard ${pr}`, null, null,
 		null, `Pioneer ${pr}`, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
 		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`,
-		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, null, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
+		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
 		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
 		null, null, null, `Pioneer ${pr}`, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, null, null, null, null, null,
 		`Pioneer ${pr}`, `Limited ${ch} (32-player)`, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch}`, null, `Vintage ${ch}`, null,
@@ -74,42 +74,6 @@ function getRCQs() {
 	let ret = new Map();
 
 	ret.set(
-		new Date(2023, 6, 1).toDateString(), { 17: "Pauper LCQ" }
-	);
-
-	ret.set(
-		new Date(2023, 6, 3).toDateString(), {5: "Pauper LCQ"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 4).toDateString(), {13: "Pauper LCQ", 23: "Pauper LCQ"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 8).toDateString(), {8: "Modern Showcase Qualifier (invite-only)"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 9).toDateString(), {6: "Pioneer Showcase Qualifier (invite-only)"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 15).toDateString(), {8: "Pauper Showcase Qualifier (invite-only)"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 16).toDateString(), {8: "Legacy Showcase Qualifier (invite-only)"}
-	);
-
-	ret.set(
-		new Date(2023, 6, 22).toDateString(), {7: "Limited (LTR) MOCS Showcase Open"}
-	);
-	
-	ret.set(
-		new Date(2023, 6, 23).toDateString(), {7: "Limited (LTR) MOCS Showcase Open"}
-	);
-
-	ret.set(
 		new Date(2023, 6, 30).toDateString(), {7: "Modern Super Qualifier"}
 	);
 
@@ -119,6 +83,58 @@ function getRCQs() {
 
 	ret.set(
 		new Date(2023, 7, 6).toDateString(), {7: "Limited (LTR) Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 8, 9).toDateString(), {7: "Legacy Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 8, 10).toDateString(), {7: "Modern Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 8, 16).toDateString(), {7: "Limited (WOE) Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 8, 24).toDateString(), {7: "Standard Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 8, 30).toDateString(), {7: "Legacy Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 1).toDateString(), {7: "Vintage Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 6).toDateString(), {14: "Pioneer Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 8).toDateString(), {7: "Limited (WOE) Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 27).toDateString(), {14: "Limited (WOE) Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 9, 28).toDateString(), {7: "Pauper Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 10, 4).toDateString(), {1: "Limited (WOE) Qualifier"}
+	);
+
+	ret.set(
+		new Date(2023, 10, 5).toDateString(), {1: "Modern Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2023, 10, 24).toDateString(), {7: "Limited (LCI) Super Qualifier"}
 	);
 
 	ret.set(
@@ -172,11 +188,15 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 9, 7).toDateString(), {8: "Modern Showcase Challenge"}
+		new Date(2023, 7, 30).toDateString(), {9: null} // downtime > prelim
+	);
+
+	ret.set(
+		new Date(2023, 9, 14).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2023, 9, 8).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2023, 9, 15).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -190,7 +210,7 @@ function getShowcasesAndLCQs() {
 	ret.set(
 		new Date(2023, 10, 18).toDateString(), {8: "Modern Showcase Challenge"}
 	);
-	
+
 	ret.set(
 		new Date(2023, 10, 19).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
@@ -206,7 +226,7 @@ function getShowcasesAndLCQs() {
 		if (day === 0) {
 			lcqs[8] = "Legacy Showcase Challenge";
 		}
-		for (let hour = 0; hour < 8 || (day < 3 && hour < 24); hour++) {
+		for (let hour = 0; hour < 10 || (day < 3 && hour < 24); hour++) {
 			let event = schedule[24 * day + hour];
 			if (event && event.includes("Prelim") && isMocsFormat(event)) {
 				lcqs[hour] = event.replace("Prelim", "LCQ");

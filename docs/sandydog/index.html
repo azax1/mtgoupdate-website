@@ -43,13 +43,9 @@
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
         You need <span id="qps1" style="color: red"></span> QPs to play all
-        remaining QP-gated events.<br><br>
-
-        This is a partial list of events and more will be added later in the season.
-      </p>
-      <!-- <span id="disclaimer2"></span> and
-<span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events
-(including Super RCQs) without using any unnecessary PPs / tix.</p> -->
+        remaining QP-gated events this season <span id="disclaimer2"></span> and
+        <span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span> events
+        (including Super RCQs) without using any unnecessary PPs / tix.</p>
       <div id="selectors">
         <h4>
           Filter by:
@@ -117,12 +113,12 @@
     if (eventFilter) {
       document.getElementById("disclaimer").innerHTML =
         " matching your filters";
-      //		document.getElementById("disclaimer2").innerHTML = " matching your filters";
-      //		document.getElementById("disclaimer3").innerHTML = " selected";
+      		document.getElementById("disclaimer2").innerHTML = " matching your filters";
+      		document.getElementById("disclaimer3").innerHTML = " selected";
     } else {
       document.getElementById("disclaimer").innerHTML = "";
-      //		document.getElementById("disclaimer2").innerHTML = "";
-      //		document.getElementById("disclaimer3").innerHTML = "";
+      		document.getElementById("disclaimer2").innerHTML = "";
+      		document.getElementById("disclaimer3").innerHTML = "";
     }
     let rcqSched = getRCQs();
     let showcaseSched = getShowcasesAndLCQs();
@@ -133,8 +129,8 @@
       i < 200 && today.toDateString() !== "Fri Nov 31 2023";
       i++
     ) {
-      for (let k = 0; k < 3; k++) {
-        let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
+      for (let k = 0; k < 2; k++) {
+        let sched = [rcqSched, showcaseSched][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
             let event = sched.get(today.toDateString())[j];
@@ -153,7 +149,7 @@
               if (instant <= timestamp * 1000) {
                 if (event.includes("Super")) {
                   supers++;
-                } else if (event.includes("Showcase Qualifier")) {
+                } else if (event.includes("Showcase Qualifier") || event.includes("Showcase Open")) {
                   continue;
                 } else if (
                   event.includes("Qualifier") ||
@@ -198,7 +194,7 @@
     document.getElementById("lcqs").innerHTML =
       lcqs + " MOCS LCQ" + (lcqs == 1 ? "" : "s");
     document.getElementById("qps1").innerHTML = 40 * (showcases + rcqs + lcqs);
-    //	document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
+    	document.getElementById("qps2").innerHTML = 40 * (showcases + rcqs + lcqs + supers);
 
     if (localStorage.getItem("colorScheme") === "dark") {
       document.getElementById("text").style.color = "yellow";
@@ -208,20 +204,20 @@
       $("td").css("border", "1px solid green");
       document.getElementById("selectors").style.color = "yellow";
       document.getElementById("qps1").style.color = "magenta";
-      //		document.getElementById("qps2").style.color = "magenta";
+      document.getElementById("qps2").style.color = "magenta";
       document.body.style.backgroundColor = "#121212";
     }
   }
 
-  function getPlaceholderLCQs() {
-    let ret = new Map();
+  // function getPlaceholderLCQs() {
+  //   let ret = new Map();
 
-    ret.set(
-		  new Date(2023, 10, 30).toDateString(), {1: "Standard LCQ", 2: "Standard LCQ", 3: "Standard LCQ", 4: "Standard LCQ"}
-	  );
+  //   ret.set(
+	// 	  new Date(2023, 10, 30).toDateString(), {1: "Standard LCQ", 2: "Standard LCQ", 3: "Standard LCQ", 4: "Standard LCQ"}
+	//   );
 
-    return ret;
-  }
+  //   return ret;
+  // }
 </script>
 <script>
   $(document).ready(function () {
