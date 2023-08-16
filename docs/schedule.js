@@ -178,6 +178,14 @@ function getShowcasesAndLCQs() {
 	ret.set(
 		new Date(2023, 7, 13).toDateString(), {6: "Pioneer Showcase Challenge"}
 	);
+
+	ret.set(
+		new Date(2023, 7, 15).toDateString(), {17: null}
+	);
+
+	ret.set(
+		new Date(2023, 7, 16).toDateString(), {9: null}
+	);
 	
 	ret.set(
 		new Date(2023, 7, 19).toDateString(), {6: "Standard Showcase Challenge"}
