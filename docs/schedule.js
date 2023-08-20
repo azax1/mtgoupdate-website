@@ -1,5 +1,5 @@
 function getMonsterSchedule(today) {
-    // for PT exactly, compiling the schedule for the week requires consulting 7 different dates
+	// for PT exactly, compiling the schedule for the week requires consulting 7 different dates
 	// for any other time zone, it's 8 different dates (6 full days and 2 partial days on either end)
 	// as a practical matter, it's easiest to just get the 7 days we want + 2 days of buffer on either end
 	// and then trim off the unwanted information later
@@ -23,7 +23,7 @@ function insertRCQsShowcasesAndLCQs(monster, today) {
 }
 
 function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement) {
-    let day = new Date(today);
+	let day = new Date(today);
 	day.setDate(today.getDate() - 1);
 	for (let i = 0; i < 9; i++) {
 		let todayEvents = specialEvents.get(day.toDateString());
@@ -50,8 +50,8 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 
 function getBaseSchedule() {
 	let ch = "Challenge";
-    let pr = "Prelim";
-    let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
+	let pr = "Prelim";
+	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, null, `Pauper ${ch}`, null,
 		`Limited ${ch}`, null, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null, null, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Standard ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
 		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Standard ${pr}`, null, null,
@@ -180,11 +180,11 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 7, 15).toDateString(), {17: null}
+		new Date(2023, 7, 15).toDateString(), {17: null} // new Standard prelim not yet active
 	);
 
 	ret.set(
-		new Date(2023, 7, 16).toDateString(), {9: null}
+		new Date(2023, 7, 16).toDateString(), {9: null} // new Standard prelim not yet active
 	);
 	
 	ret.set(
