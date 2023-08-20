@@ -86,6 +86,50 @@ function getRCQs() {
 	);
 
 	ret.set(
+		new Date(2023, 7, 25).toDateString(),
+		{ 0 : "Cube 64-player Single Elim", 5 : "Cube 64-player Single Elim",
+		9 : "Cube 64-player Single Elim", 13 : "Cube 64-player Single Elim",
+		19 : "Cube 64-player Single Elim"}
+	);
+
+	ret.set(
+		new Date(2023, 7, 26).toDateString(),
+		{ 5 : "Cube 64-player Single Elim", 7 : "Cube 64-player Single Elim",
+		9 : "Cube 64-player Single Elim", 11 : "Cube 64-player Single Elim",
+		13 : "Cube 64-player Single Elim", 17 : "Cube 64-player Single Elim",
+		19 : "plus&Cube 64-player Single Elim&minus", 22 : "Cube 64-player Single Elim" }
+	);
+
+	ret.set(
+		new Date(2023, 7, 27).toDateString(),
+		{ 5 : "Cube 64-player Single Elim", 7 : "Cube 64-player Single Elim",
+		9 : "Cube 64-player Single Elim", 11 : "Cube 64-player Single Elim",
+		13 : "Cube 64-player Single Elim", 17 : "Cube 64-player Single Elim",
+		19 : "plus&Cube 64-player Single Elim&minus", 22 : "Cube 64-player Single Elim" }
+	);
+
+	ret.set(
+		new Date(2023, 7, 28).toDateString(),
+		{ 1 : "Cube 64-player Single Elim", 5 : "Cube 64-player Single Elim",
+		10 : "Cube 64-player Single Elim", 15 : "plus&Cube 64-player Single Elim&minus",
+		17 : "plus&Cube 64-player Single Elim&minus", 19 : "plus&Cube 64-player Single Elim&minus" }
+	);
+
+	ret.set(
+		new Date(2023, 7, 29).toDateString(),
+		{ 0 : "Cube 64-player Single Elim", 5 : "Cube 64-player Single Elim",
+		8 : "Cube 64-player Single Elim", 12 : "Cube 64-player Single Elim",
+		15 : "plus&Cube 64-player Single Elim&minus", 17 : "plus&Cube 64-player Single Elim&minus",
+		19 : "plus&Cube 64-player Single Elim&minus", 21 : "plus&Cube 64-player Single Elim&minus" }
+	);
+
+	ret.set(
+		new Date(2023, 7, 30).toDateString(), { 1 : "Cube 64-player Single Elim" }
+	);
+
+
+
+	ret.set(
 		new Date(2023, 8, 9).toDateString(), {7: "Legacy Super Qualifier"}
 	);
 
@@ -193,6 +237,14 @@ function getShowcasesAndLCQs() {
 
 	ret.set(
 		new Date(2023, 7, 20).toDateString(), {8: "Legacy Showcase Challenge"}
+	);
+
+	ret.set(
+		new Date(2023, 7, 25).toDateString(), {0: null} // cube single-elim preempts prelim
+	);
+
+	ret.set(
+		new Date(2023, 7, 29).toDateString(), {0: null} // cube single-elim preempts prelim
 	);
 
 	ret.set(

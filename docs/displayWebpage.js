@@ -114,7 +114,6 @@ function getSchedulesForWeek(
     if (k != 0) {
       timestamp += 60 * 60;
     }
-    let keyDate = moment.unix(timestamp).tz(timeZone);
     let events = schedule[k] ? schedule[k].split("&") : [null];
     for (let index = 0; index < events.length; index++) {
       let event = events[index];
@@ -130,6 +129,7 @@ function getSchedulesForWeek(
         } else if (event === "plus") {
           timestamp += 30 * 60;
         } else if (!eventFilter || eventFilter(event)) {
+          let keyDate = moment.unix(timestamp).tz(timeZone);
           let day = parseInt(keyDate.format("DD"));
           let hour = parseInt(keyDate.format("HH"));
           let minute = parseInt(keyDate.format("mm"));

@@ -95,12 +95,13 @@
                   id="eventTypeDropdown"
                   multiple
                 >
-                  <option value="Elim">64-player Single Elim</option>
                   <option value="Prelim">Prelim</option>
                   <option value="Challenge">Challenge</option>
                   <option value="Showcase Challenge">Showcase Challenge</option>
                   <option value="Qualifier">Qualifier / Super Qualifier</option>
                   <option value="LCQ">MOCS LCQ</option>
+                  <option value="Elim">64-player Single Elim</option>
+                  <option value="Hide">Hide Single Elim</option>
                 </select>
               </h4>
             </div>
@@ -162,7 +163,7 @@
 
                 <b>What's your contact information?</b><br /><br />
 
-                Feel free to message me on Twitter @mtgoupdate.<br /><br />
+                I prefer to be messaged on Twitter/X @mtgoupdate.<br /><br />
               </p>
             </div>
           </div>
@@ -188,6 +189,11 @@
     <noscript><div>Please enable JavaScript</div></noscript>
 
     <script>
+      document.getElementById("banner").innerHTML = `
+        <p><center>There are 64-player Single Elim Vintage Cube events every few hours for the next two weeks.
+        These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center></p>
+        `;
+      document.getElementById("eventTypeDropdown").options[6].selected = true;
       displaySchedule();
 
       document.addEventListener("click", function(event) {

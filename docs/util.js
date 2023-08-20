@@ -101,13 +101,12 @@ function initializePageAndParameters(
       return (
         eventTypeChoices.filter((eventType) =>
         {
-          if (eventType !== "WAB") {
+          if (eventType !== "Hide") {
             return event.includes(eventType);
           } else {
-            return (eventTypeChoices.length === 1) && !event.includes("Win-a-Box");
+            return (eventTypeChoices.length === 1) && !event.includes("Single Elim");
           }
-        })
-          .length > 0
+        }).length > 0
       );
     };
   }
@@ -208,6 +207,23 @@ function addTooltip(event) {
                             A 4-round non-Phantom Sealed tournament.<fbr><fbr>
                             4-0: 36 LTR boosters.<fbr>
                             3-1: 6 LTR boosters.<fbr>
+                            </div>
+                            </span>
+                          `;
+    arr[arr.length - 1] = "";
+  } else if (tail === "Single Elim") {
+    arr[arr.length - 2] = `
+                            <span class=\"tooltip\">
+                            <span class=\"tooltip-text\">${tail}</span>
+                            <div class=\"tooltip-content\">
+                            ${tail} entry fee: 150 PPs or 15 tix.<fbr><fbr>
+
+                            Two back-to-back single-elim Vintage Cube drafts.<fbr><fbr>
+                            6 wins: 500 PPs, 24 QPs, 50 treasure chests.<fbr>
+                            5 wins: 350 PPs, 12 QPs, 35 treasure chests.<fbr>
+                            4 wins: 300 PPs, 6 QPs, 20 treasure chests.<fbr>
+                            3 wins: 150 PPs, 3 QPs, 10 treasure chests.<fbr>
+                            2 wins: 150 PPs, 1 QP, 5 treasure chests.<fbr>
                             </div>
                             </span>
                           `;
