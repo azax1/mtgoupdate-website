@@ -87,9 +87,14 @@ function getRCQs() {
 
 	ret.set(
 		new Date(2023, 7, 25).toDateString(),
-		{ 0 : "Cube 64-player Single Elim", 5 : "Cube 64-player Single Elim",
-		9 : "Cube 64-player Single Elim", 13 : "Cube 64-player Single Elim",
-		19 : "Cube 64-player Single Elim"}
+		{ 0 : "Cube 64-player Single Elim", 1 : "plus&Cube 64-player Single Elim&minus",
+		3 : "plus&Cube 64-player Single Elim&minus", 5 : "Cube 64-player Single Elim",
+		6 : "plus&Cube 64-player Single Elim&minus", 7 : "plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim", 11 : "plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim", 14 : "plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus", 17 : "plus&Cube 64-player Single Elim&minus",
+		19 : "Cube 64-player Single Elim", 20 : "plus&Cube 64-player Single Elim&minus",
+		22 : "plus&Cube 64-player Single Elim&minus"}
 	);
 
 	ret.set(
