@@ -19,6 +19,10 @@ function displaySchedule(fixColorModeSlider = true) {
       "https://www.mtgoupdate.com/?timeZone=America/Los_Angeles";
   }
 
+  document.getElementById("banner").innerHTML = `
+  <p><center>There are 64-player Single Elim Vintage Cube events every few hours for the next week.
+  These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center></p>
+  `;
   document.getElementById("localTime").innerHTML =
     moment
       .unix(today.valueOf() / 1000)
