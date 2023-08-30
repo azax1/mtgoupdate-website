@@ -139,10 +139,147 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 7, 30).toDateString(), { 0 : "Cube 64-player Single Elim", 1 : "Cube 64-player Single Elim" }
+		new Date(2023, 7, 30).toDateString(),
+		{ 0 : "Cube 64-player Single Elim", 1 : "Cube 64-player Single Elim", 13 : "plus&Cube 64-player Single Elim&minus",
+		14 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus", 15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		19 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		21 : "Cube 64-player Single Elim", 22 : "plus&Cube 64-player Single Elim&minus",
+	 	}
 	);
 
+	ret.set(
+		new Date(2023, 7, 31).toDateString(),
+		{ 1 : "Cube 64-player Single Elim", 2 : "plus&Cube 64-player Single Elim&minus",
+		5 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		6 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		7 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		8 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		10 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		11 : "plus&Cube 64-player Single Elim&minus",
+		12 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		14 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "plus&Cube 64-player Single Elim&minus",
+		18 : "Cube 64-player Single Elim",
+		19 : "plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		22 : "plus&Cube 64-player Single Elim&minus",
+	 	}
+	);
 
+	ret.set(
+		new Date(2023, 8, 1).toDateString(),
+		{ 0 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		1 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		2 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		3 : "plus&Cube 64-player Single Elim&minus",
+		4 : "plus&Cube 64-player Single Elim&minus",
+		5 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		6 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		7 : "plus&Cube 64-player Single Elim&minus",
+		8 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		10 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		11 : "plus&Cube 64-player Single Elim&minus",
+		12 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		14 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		19 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		21 : "Cube 64-player Single Elim",
+		22 : "plus&Cube 64-player Single Elim&minus",
+	 	}
+	);
+
+	ret.set(
+		new Date(2023, 8, 2).toDateString(),
+		{ 1 : "Cube 64-player Single Elim",
+		2 : "plus&Cube 64-player Single Elim&minus",
+		3 : "plus&Cube 64-player Single Elim&minus",
+		4 : "plus&Cube 64-player Single Elim&minus",
+		5 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		6 : "plus&Cube 64-player Single Elim&minus",
+		7 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		8 : "plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		10 : "plus&Cube 64-player Single Elim&minus",
+		11 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		12 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		14 : "plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		19 : "plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		21 : "Cube 64-player Single Elim",
+		22 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+	 	}
+	);
+
+	ret.set(
+		new Date(2023, 8, 3).toDateString(),
+		{ 1 : "Cube 64-player Single Elim",
+		2 : "plus&Cube 64-player Single Elim&minus",
+		3 : "plus&Cube 64-player Single Elim&minus",
+		4 : "plus&Cube 64-player Single Elim&minus",
+		5 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		6 : "plus&Cube 64-player Single Elim&minus",
+		7 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		8 : "plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		10 : "plus&Cube 64-player Single Elim&minus",
+		11 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		12 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		14 : "plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		19 : "plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		21 : "Cube 64-player Single Elim",
+		22 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+	 	}
+	);
+
+	ret.set(
+		new Date(2023, 8, 4).toDateString(),
+		{ 1 : "Cube 64-player Single Elim",
+		2 : "plus&Cube 64-player Single Elim&minus",
+		3 : "Cube 64-player Single Elim",
+		4 : "plus&Cube 64-player Single Elim&minus",
+		5 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		6 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		7 : "plus&Cube 64-player Single Elim&minus",
+		8 : "plus&Cube 64-player Single Elim&minus",
+		9 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		10 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		11 : "plus&Cube 64-player Single Elim&minus",
+		12 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		13 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		14 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		15 : "plus&Cube 64-player Single Elim&minus",
+		16 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+		17 : "plus&Cube 64-player Single Elim&minus",
+		18 : "Cube 64-player Single Elim",
+		19 : "plus&Cube 64-player Single Elim&minus",
+		20 : "Cube 64-player Single Elim&plus&Cube 64-player Single Elim&minus",
+	 	}
+	);
+
+	ret.set(
+		new Date(2023, 8, 5).toDateString(), { 0 : "Cube 64-player Single Elim" }
+	);
 
 	ret.set(
 		new Date(2023, 8, 9).toDateString(), {7: "Legacy Super Qualifier"}
