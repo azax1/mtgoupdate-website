@@ -27,7 +27,7 @@ function setColorMode(mode) {
   if (mode === "dark") {
     document.querySelector("html").style.setProperty("--bg-color", offBlack);
     document.querySelector("html").style.setProperty("--text-color", yellow);
-    document.querySelector("html").style.setProperty("--banner-color", blue);
+    document.querySelector("html").style.setProperty("--banner-color", "#023020");
 
     document
       .querySelector("html")
