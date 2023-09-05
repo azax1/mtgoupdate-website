@@ -278,10 +278,6 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 8, 5).toDateString(), { 0 : "Cube 64-player Single Elim" }
-	);
-
-	ret.set(
 		new Date(2023, 8, 9).toDateString(), {7: "Legacy Super Qualifier"}
 	);
 
@@ -401,6 +397,10 @@ function getShowcasesAndLCQs() {
 
 	ret.set(
 		new Date(2023, 7, 30).toDateString(), {9: null} // downtime > prelim
+	);
+
+	ret.set(
+		new Date(2023, 8, 5).toDateString(), { 0 : "Cube 64-player Single Elim" }
 	);
 
 	ret.set(
