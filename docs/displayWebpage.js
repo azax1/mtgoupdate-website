@@ -1,10 +1,10 @@
-function displaySchedule(fixColorModeSlider = true) {
-  if (fixColorModeSlider) {
-    let checkbox = $('input[type="checkbox"]');
-    let color = getColorMode();
-    if ((color === "dark") !== checkbox.prop("checked")) {
-      checkbox.prop("checked", color === "dark");
-    }
+function displaySchedule(fixSliders = true) {
+  if (fixSliders) {
+    let checkbox = $("#colorModeCheckbox");
+    checkbox.prop("checked", getColorMode() === "dark");
+
+    let checkbox2 = $("#hourModeCheckbox");
+    checkbox2.prop("checked", getHourMode() === "24");
   }
   let today, timeZone, eventFilter;
   [today, timeZone, eventFilter] = initializePageAndParameters();
@@ -155,10 +155,11 @@ function getSchedulesForWeek(
     if (sched) {
       ret[i] = sched.map((x) => x[0].replace("#EVENT", addTooltip(x[1])).replace("#COLOR", x[2])).join("");
       let event = sched[0];
-      if (event[0].includes("12am")) {
+      if (event[0].includes("12am") || event[0].includes("00:")) {
         ret[i - 1] += event[0]
           .replace("#EVENT", addTooltip(event[1]))
           .replace("12am", "Midnight")
+          .replace("00:", "24:")
           .replace(
             "#COLOR",
             getEventColor(event[1], isDarkMode, true, i === 8)

@@ -16,30 +16,54 @@ function isMocsFormat(str) {
   );
 }
 
+function getHourMode() {
+  if (localStorage.getItem("hourMode") === "24") {
+    return "24";
+  } else {
+    return "12";
+  }
+}
+
 function getPrettyTime(hour, minuteOfHour) {
-  if (minuteOfHour === 0) {
-    if (hour === 0) {
-      return "12am";
-    } else if (hour < 12) {
-      return hour + "am";
-    } else if (hour === 12) {
-      return "Noon";
-    } else if (hour < 24) {
-      return hour - 12 + "pm";
+  if (getHourMode() === "12") {
+    if (minuteOfHour === 0) {
+      if (hour === 0) {
+        return "12am";
+      } else if (hour < 12) {
+        return hour + "am";
+      } else if (hour === 12) {
+        return "Noon";
+      } else if (hour < 24) {
+        return hour - 12 + "pm";
+      } else {
+        return "Midnight";
+      }
     } else {
-      return "Midnight";
+      if (hour === 0) {
+        return "12:" + minuteOfHour + "am";
+      } else if (hour < 12) {
+        return hour + ":" + minuteOfHour + "am";
+      } else if (hour === 12) {
+        return hour + ":" + minuteOfHour + "pm";
+      } else if (hour < 24) {
+        return hour - 12 + ":" + minuteOfHour + "pm";
+      } else {
+        return ""; // shouldn't happen
+      }
     }
   } else {
-    if (hour === 0) {
-      return "12:" + minuteOfHour + "am";
-    } else if (hour < 12) {
-      return hour + ":" + minuteOfHour + "am";
-    } else if (hour === 12) {
-      return hour + ":" + minuteOfHour + "pm";
-    } else if (hour < 24) {
-      return hour - 12 + ":" + minuteOfHour + "pm";
+    if (minuteOfHour === 0) {
+      if (hour < 10) {
+        return "0" + hour + ":00";
+      } else {
+        return hour + ":00";
+      }
     } else {
-      return ""; // shouldn't happen
+      if (hour < 10) {
+        return "0:" + minuteOfHour;
+      } else {
+        return hour + ":" + minuteOfHour;
+      }
     }
   }
 }

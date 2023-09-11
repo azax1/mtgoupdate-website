@@ -41,6 +41,13 @@ a:visited {
   border: 1px solid #888;
   width: 80%;
 }
+.mini-modal-content {
+  background-color: var(--bg-color);
+  margin: 5% auto;
+  padding: 5px;
+  border: 1px solid #888;
+  width: 40%;
+}
 .everything {
   display: flex;
   flex-direction: column;

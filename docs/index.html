@@ -46,20 +46,11 @@
       <div>
         <header style="display: flex">
           <div style="width: 100%; display: flex; align-content: center">
-            <div style="width: 5%"></div>
-            <div style="width: 4%">
+            <div style="width: 10%"></div>
+            <div style="width: 5%">
               <h4>
-                <span><br />Dark<br />mode</span>
-              </h4>
-            </div>
-            <div style="width: 6%">
-              <br />
-              <h4>
-                <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider round" id="darkModeSlider"></span>
-                </label>
-              </h4>
+                <div id="gearIcon"><font size="25">&#9881;</font></div>
+            </h4>
             </div>
             <div style="width: 20%"></div>
             <div style="width: 30%">
@@ -108,9 +99,32 @@
           <button id="info" class="infoButton">
             <div id="infoButtonText">&#8505;</div>
           </button>
+          <div id="settings" class="modal">
+            <div class="mini-modal-content" id="settingsContent">
+              <div style="display: flex; justify-content: space-between">
+              <span></span>
+              <span>Settings</span>
+              <span id="settingClose" class="close">&times;</span>
+              </div>
+              <h3 style="display: flex; justify-content: space-between">
+              <span>Dark mode</span>
+              <label class="switch">
+                <input type="checkbox" id="colorModeCheckbox"/>
+                <span class="slider round" id="colorModeSlider"></span>
+              </label>
+              </h3>
+              <h3 style="display: flex; justify-content: space-between">
+                <span>24-hour time</span>
+                <label class="switch">
+                  <input type="checkbox" id="hourModeCheckbox"/>
+                  <span class="slider round" id="hourSlider"></span>
+                </label>
+              </h3>
+            </div>
+          </div>
           <div id="faq" class="modal">
-            <div class="modal-content" id="modalContent">
-              <span class="close">&times;</span>
+            <div class="modal-content" id="faqContent">
+              <span id="faqClose" class="close">&times;</span>
               <p>
                 <b>FAQ</b><br /><br />
                 <b>What is this website for?</b><br /><br />

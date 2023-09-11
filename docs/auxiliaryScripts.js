@@ -1,7 +1,25 @@
 $(function () {
   var modal = document.getElementById("faq");
   var button = document.getElementById("info");
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementById("faqClose");
+
+  button.onclick = function () {
+    modal.style.display = "block";
+  };
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+});
+
+$(function () {
+  var modal = document.getElementById("settings");
+  var button = document.getElementById("gearIcon");
+  var span = document.getElementById("settingClose");
 
   button.onclick = function () {
     modal.style.display = "block";
@@ -49,13 +67,26 @@ $(function () {
 });
 
 $(function () {
-  $("#darkModeSlider").click(function () {
-    let checkbox = $('input[type="checkbox"]');
-    if ($(checkbox).prop("checked")) {
-      localStorage.setItem("colorScheme", "light");
+  let checkbox = $("#colorModeCheckbox");;
+  checkbox.click(function () {
+    if (checkbox.prop("checked")) {
+      localStorage.setItem("colorScheme", "dark");
       displaySchedule(false);
     } else {
-      localStorage.setItem("colorScheme", "dark");
+      localStorage.setItem("colorScheme", "light");
+      displaySchedule(false);
+    }
+  });
+});
+
+$(function () {
+  let checkbox = $("#hourModeCheckbox");;
+  checkbox.click(function () {
+    if (checkbox.prop("checked")) {
+      localStorage.setItem("hourMode", "24");
+      displaySchedule(false);
+    } else {
+      localStorage.setItem("hourMode", "12");
       displaySchedule(false);
     }
   });
