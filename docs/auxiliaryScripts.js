@@ -17,8 +17,8 @@ $(function () {
 });
 
 $(function () {
-  var modal = document.getElementById("settings");
-  var button = document.getElementById("gearIcon");
+  var modal = document.getElementById("settingsModal");
+  var button = document.getElementById("settings");
   var span = document.getElementById("settingClose");
 
   button.onclick = function () {

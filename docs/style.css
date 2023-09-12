@@ -104,6 +104,8 @@ body {
 
 .infoButton {
   color: var(--text-color);
+  text-align: center;
+  vertical-align: middle;
 }
 
 #banner {

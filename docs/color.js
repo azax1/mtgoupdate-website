@@ -37,11 +37,12 @@ function setColorMode(mode) {
       .style.setProperty("--visited-link-color", "#49759C");
 
     // info button wizardry
-    document.querySelector("button").style.backgroundColor = "#303030";
-    document.querySelector("button").style.borderColor = "#505050";
-    document.querySelector("button").style.transform = "rotate(180deg)";
-    document.getElementById("infoButtonText").style.transform =
-      "rotate(180deg)";
+    ["info", "settings"].forEach(button => {
+      document.getElementById(button).style.backgroundColor = "#303030";
+      document.getElementById(button).style.borderColor = "#505050";
+      document.getElementById(button).style.transform = "rotate(180deg)";
+      document.getElementById(button + "ButtonText").style.transform = "rotate(180deg)";
+    });
   } else {
     document.querySelector("html").style.setProperty("--bg-color", "white");
     document
@@ -58,10 +59,12 @@ function setColorMode(mode) {
       .style.setProperty("--visited-link-color", "#551A8B");
 
     // info button wizardry
-    document.querySelector("button").style.backgroundColor = "#f0f0f0";
-    document.querySelector("button").style.borderColor = "#e0e0e0";
-    document.querySelector("button").style.transform = "rotate(0deg)";
-    document.getElementById("infoButtonText").style.transform = "rotate(0deg)";
+    ["info", "settings"].forEach(button => {
+      document.getElementById(button).style.backgroundColor = "#f0f0f0";
+      document.getElementById(button).style.borderColor = "#e0e0e0";
+      document.getElementById(button).style.transform = "rotate(0deg)";
+      document.getElementById(button + "ButtonText").style.transform = "rotate(0deg)";
+    });
   }
 }
 
