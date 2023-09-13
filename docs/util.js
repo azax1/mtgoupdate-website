@@ -106,7 +106,13 @@ function initializePageAndParameters(
   } else {
     formatSelector = (event) => {
       return (
-        formatChoices.filter((format) => event.includes(format)).length > 0
+        formatChoices.filter((format) => {
+          if (format !== "Limited") {
+            return event.includes(format);
+          } else {
+            return event.includes(format) || event.includes("Eldraine");
+          }
+        }).length > 0
       );
     };
   }

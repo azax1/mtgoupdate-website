@@ -40,7 +40,7 @@
   </head>
   <body>
     <div id="banner">
-      mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
+      <p><center>mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.</center></p>
     </div>
     <div class="everything">
       <div>
@@ -93,6 +93,8 @@
                   <option value="Showcase Challenge">Showcase Challenge</option>
                   <option value="Qualifier">Qualifier / Super Qualifier</option>
                   <option value="LCQ">MOCS LCQ</option>
+                  <option value="Elim">64-player Single Elim</option>
+                  <option value="Hide">Hide Single Elim</option>
                 </select>
               </h4>
             </div>
@@ -203,6 +205,7 @@
     <noscript><div>Please enable JavaScript</div></noscript>
 
     <script>
+      document.getElementById("eventTypeDropdown").options[6].selected = true;
       displaySchedule();
 
       document.addEventListener("click", function(event) {

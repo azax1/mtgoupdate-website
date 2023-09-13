@@ -25,6 +25,19 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
+  if (today.getTime() < 1695011401000) {
+    document.getElementById("banner").innerHTML = `
+      <p><center>There are 64-player Single Elim Wilds of Eldraine events every few hours for the next few days.
+      These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center></p>
+      `;
+  } else {
+    document.getElementById("banner").innerHTML = `
+      <p><center>
+      mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
+      </center></p>
+      `;
+  }
+
   let schedule = getMonsterSchedule(today);
   let heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
   let fieldSets = generateFieldsetsForWeek(
