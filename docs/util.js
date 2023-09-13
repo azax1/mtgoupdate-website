@@ -60,7 +60,7 @@ function getPrettyTime(hour, minuteOfHour) {
       }
     } else {
       if (hour < 10) {
-        return "0:" + minuteOfHour;
+        return "0" + hour + ":" + minuteOfHour;
       } else {
         return hour + ":" + minuteOfHour;
       }

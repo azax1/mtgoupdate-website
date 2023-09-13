@@ -155,7 +155,7 @@ function getSchedulesForWeek(
     if (sched) {
       ret[i] = sched.map((x) => x[0].replace("#EVENT", addTooltip(x[1])).replace("#COLOR", x[2])).join("");
       let event = sched[0];
-      if (event[0].includes("12am") || event[0].includes("00:")) {
+      if (event[0].includes("12am") || event[0].includes("00:00")) {
         ret[i - 1] += event[0]
           .replace("#EVENT", addTooltip(event[1]))
           .replace("12am", "Midnight")
