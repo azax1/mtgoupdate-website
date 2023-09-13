@@ -25,16 +25,25 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  if (today.getTime() < 1695011401000) {
+  let end = new Date(Date.UTC(2023, 8, 18, 4, 30)).valueOf() / 1000;
+  if (today.getTime() < end * 1000) {
+    let start = new Date(Date.UTC(2023, 8, 14, 17, 30)).valueOf() / 1000;
+    let timeFormat;
+    if (getHourMode() === "12") {
+      timeFormat = "h:mma dddd";
+    } else {
+      timeFormat = "HH:mm dddd";
+    }
     document.getElementById("banner").innerHTML = `
-      <p><center>There are 64-player Single Elim Wilds of Eldraine events every few hours for the next few days.
-      These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center></p>
+      <center>There are 64-player Single Elim Wilds of Eldraine events every few hours from 
+      ${moment.unix(start).tz(timeZone).format(timeFormat)} until ${moment.unix(end).tz(timeZone).format(timeFormat)}.<br>
+      These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
   } else {
     document.getElementById("banner").innerHTML = `
-      <p><center>
+      <center>
       mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
-      </center></p>
+      </center>
       `;
   }
 
