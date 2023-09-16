@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+<title>Die Roll</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+</head>
+<body>
+<div id="content" style="font-size: 22;">
+<span>Alice always rolls a <span id="aliceRoll">10.5</span>.<br></span>
+<span>Bob (3d6) rolls a<span id="bobSuffix"></span> <span id="bobRoll"></span> <span id="bobExp"></span>.<br></span>
+<span>Charlie (1d20) rolls a<span id="charlieSuffix"></span> <span id="charlieRoll"></span>.<br><br></span>
+
+<span id="victoryText"></span><br><br>
+<button id="button">reroll</button>
+</div>
+</body>
+</html>
+<script>
+    function dice(n) {
+        return 1 + Math.floor(Math.random() * n);
+    }
+
+    function suffix(n) {
+        if (n === 8 || n === 11 || n === 18) {
+            return "n";
+        }
+        return "";
+    }
+
+    function reroll() {
+        let x = dice(6), y = dice(6), z = dice(6);
+        let bob = x + y + z;
+        let charlie = dice(20);
+
+        document.getElementById("bobRoll").innerHTML = bob;
+        document.getElementById("bobSuffix").innerHTML = suffix(bob);
+        document.getElementById("bobExp").innerHTML = ` (${x} + ${y} + ${z})`;
+
+        document.getElementById("charlieRoll").innerHTML = charlie;
+        document.getElementById("charlieSuffix").innerHTML = suffix(charlie);
+
+        if (bob > 10.5 && bob > charlie) {
+            document.getElementById("victoryText").innerHTML = "The winner is Bob!";
+        } else if (charlie > 10.5 && charlie > bob) {
+            document.getElementById("victoryText").innerHTML = "The winner is Charlie!";
+        } else if (charlie < 10.5 && bob < 10.5) {
+            document.getElementById("victoryText").innerHTML = "The winner is Alice!";
+        } else {
+            document.getElementById("victoryText").innerHTML = "It's a tie!"
+        }
+    }
+
+    reroll();
+
+    if (localStorage.getItem("colorScheme") === "dark") {
+      document.body.style.backgroundColor = "#121212";
+      document.getElementById("content").style.color = "#bbbb00";
+      ["alice", "bob", "charlie"].forEach(name => document.getElementById(name + "Roll").style.color = "#cc00cc");
+    } else {
+      document.body.style.backgroundColor = "#ffffff";
+      document.getElementById("content").style.color = "#000000";
+      ["alice", "bob", "charlie"].forEach(name => document.getElementById(name + "Roll").style.color = "#ff0000");
+    }
+
+    let button = document.getElementById("button");
+    button.onclick = reroll;
+</script>

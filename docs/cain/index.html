@@ -3,20 +3,21 @@
 <title>Day Information</title>
 <link rel="shortcut icon" href="../favicon.ico" />
 </head>
-<style>
-body {
-  background-color: #121212;
-}
-</style>
 <body>
-<center>
-<font size="25"; color="#16F529">
+<div id="content" style="text-align: center; font-size: 48;">
 Today is <span id="day"></span>.
-</font>
-</center>
+</div>
 </body>
 </html>
 <script>
     const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     document.getElementById("day").innerHTML = dayNames[new Date().getDay()];
+
+    if (localStorage.getItem("colorScheme") === "dark") {
+      document.body.style.backgroundColor = "#121212";
+      document.getElementById("content").style.color = "#16F529";
+    } else {
+      document.body.style.backgroundColor = "#FFFFFF";
+      document.getElementById("content").style.color = "#ff0000";
+    }
 </script>
