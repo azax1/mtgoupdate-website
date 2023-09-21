@@ -94,7 +94,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 8, 14).toDateString(),
+		new Date(2023, 8, 21).toDateString(),
 		{ 10 : "plus&Eldraine 64-player Single Elim&minus",
 		12 : "plus&Eldraine 64-player Single Elim&minus",
 		14 : "plus&Eldraine 64-player Single Elim&minus",
@@ -105,7 +105,7 @@ function getRCQs() {
 	)
 
 	ret.set(
-		new Date(2023, 8, 15).toDateString(),
+		new Date(2023, 8, 22).toDateString(),
 		{ 0 : "plus&Eldraine 64-player Single Elim&minus",
 		3 : "Eldraine 64-player Single Elim",
 		4 : "plus&Eldraine 64-player Single Elim&minus",
@@ -123,12 +123,11 @@ function getRCQs() {
 	)
 
 	ret.set(
-		new Date(2023, 8, 16).toDateString(),
+		new Date(2023, 8, 23).toDateString(),
 		{ 2 : "plus&Eldraine 64-player Single Elim&minus",
 		4 : "plus&Eldraine 64-player Single Elim&minus",
 		6 : "plus&Eldraine 64-player Single Elim&minus",
-		7: "Limited (WOE) Super Qualifier",
-		9 : "Eldraine 64-player Single Elim",
+		8 : "plus&Eldraine 64-player Single Elim&minus",
 		10 : "plus&Eldraine 64-player Single Elim&minus",
 		13 : "plus&Eldraine 64-player Single Elim&minus",
 		14 : "plus&Eldraine 64-player Single Elim&minus",
@@ -140,10 +139,11 @@ function getRCQs() {
 	)
 
 	ret.set(
-		new Date(2023, 8, 17).toDateString(),
+		new Date(2023, 8, 24).toDateString(),
 		{ 2 : "plus&Eldraine 64-player Single Elim&minus",
 		4 : "plus&Eldraine 64-player Single Elim&minus",
 		6 : "plus&Eldraine 64-player Single Elim&minus",
+		7: "Standard Super Qualifier",
 		9 : "Eldraine 64-player Single Elim",
 		10 : "plus&Eldraine 64-player Single Elim&minus",
 		13 : "plus&Eldraine 64-player Single Elim&minus",
@@ -152,10 +152,6 @@ function getRCQs() {
 		21 : "plus&Eldraine 64-player Single Elim&minus"
 		}
 	)
-
-	ret.set(
-		new Date(2023, 8, 24).toDateString(), {7: "Standard Super Qualifier"}
-	);
 
 	ret.set(
 		new Date(2023, 8, 30).toDateString(), {7: "Legacy Qualifier"}
