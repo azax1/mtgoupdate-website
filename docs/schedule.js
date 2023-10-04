@@ -151,22 +151,187 @@ function getRCQs() {
 		17 : "plus&Eldraine 64-player Single Elim&minus",
 		21 : "plus&Eldraine 64-player Single Elim&minus"
 		}
-	)
+	);
 
 	ret.set(
 		new Date(2023, 8, 30).toDateString(), {7: "Legacy Qualifier"}
 	);
+
 
 	ret.set(
 		new Date(2023, 9, 1).toDateString(), {7: "Vintage Qualifier"}
 	);
 
 	ret.set(
-		new Date(2023, 9, 6).toDateString(), {14: "Pioneer Qualifier"}
+		new Date(2023, 9, 5).toDateString(),
+		{ 1 : "Vintage Cube 64-player Single Elim",
+		2 : "Vintage Cube 64-player Single Elim",
+		4 : "Vintage Cube 64-player Single Elim",
+		5 : "Vintage Cube 64-player Single Elim",
+		6 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "plus&Vintage Cube 64-player Single Elim&minus",
+		18 : "Vintage Cube 64-player Single Elim",
+		19 : "plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		22 : "Vintage Cube 64-player Single Elim",
+		23 : "Vintage Cube 64-player Single Elim",
+		}
 	);
 
 	ret.set(
-		new Date(2023, 9, 8).toDateString(), {7: "Limited (WOE) Super Qualifier"}
+		new Date(2023, 9, 6).toDateString(),
+		{ 0 : "Vintage Cube 64-player Single Elim",
+		1 : "Vintage Cube 64-player Single Elim",
+		3 : "Vintage Cube 64-player Single Elim",
+		5 : "Vintage Cube 64-player Single Elim",
+		6 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "Pioneer Qualifier&Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		19 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		21 : "Vintage Cube 64-player Single Elim",
+		22 : "Vintage Cube 64-player Single Elim",
+		23 : "Vintage Cube 64-player Single Elim",
+		}
+	);
+
+	ret.set(
+		new Date(2023, 9, 7).toDateString(),
+		{ 3 : "Vintage Cube 64-player Single Elim",
+		5 : "Vintage Cube 64-player Single Elim",
+		6 : "plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		19 : "plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		21 : "Vintage Cube 64-player Single Elim",
+		22 : "Vintage Cube 64-player Single Elim",
+		23 : "Vintage Cube 64-player Single Elim",
+		}
+	);
+
+	ret.set(
+		new Date(2023, 9, 8).toDateString(),
+		{ 2 : "Vintage Cube 64-player Single Elim",
+		3 : "Vintage Cube 64-player Single Elim",
+		5 : "Vintage Cube 64-player Single Elim",
+		6 : "plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "Limited (WOE) Super Qualifier&Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		18 : "Vintage Cube 64-player Single Elim",
+		19 : "plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "Vintage Cube 64-player Single Elim&plus&Vintage Cube 64-player Single Elim&minus",
+		21 : "Vintage Cube 64-player Single Elim",
+		22 : "Vintage Cube 64-player Single Elim",
+		23 : "Vintage Cube 64-player Single Elim",
+		}
+	);
+
+	ret.set(
+		new Date(2023, 9, 9).toDateString(),
+		{ 0 : "plus&Vintage Cube 64-player Single Elim&minus",
+		1 : "plus&Vintage Cube 64-player Single Elim&minus",
+		2 : "plus&Vintage Cube 64-player Single Elim&minus",
+		3 : "plus&Vintage Cube 64-player Single Elim&minus",
+		4 : "plus&Vintage Cube 64-player Single Elim&minus",
+		5 : "plus&Vintage Cube 64-player Single Elim&minus",
+		6 : "plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "plus&Vintage Cube 64-player Single Elim&minus",
+		19 : "plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "plus&Vintage Cube 64-player Single Elim&minus",
+		21 : "plus&Vintage Cube 64-player Single Elim&minus",
+		22 : "plus&Vintage Cube 64-player Single Elim&minus",
+		23 : "plus&Vintage Cube 64-player Single Elim&minus",
+		}
+	);
+
+	ret.set(
+		new Date(2023, 9, 10).toDateString(),
+		{ 0 : "plus&Vintage Cube 64-player Single Elim&minus",
+		1 : "plus&Vintage Cube 64-player Single Elim&minus",
+		2 : "plus&Vintage Cube 64-player Single Elim&minus",
+		3 : "plus&Vintage Cube 64-player Single Elim&minus",
+		4 : "plus&Vintage Cube 64-player Single Elim&minus",
+		5 : "plus&Vintage Cube 64-player Single Elim&minus",
+		6 : "plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "plus&Vintage Cube 64-player Single Elim&minus",
+		9 : "plus&Vintage Cube 64-player Single Elim&minus",
+		10 : "plus&Vintage Cube 64-player Single Elim&minus",
+		11 : "plus&Vintage Cube 64-player Single Elim&minus",
+		12 : "plus&Vintage Cube 64-player Single Elim&minus",
+		13 : "plus&Vintage Cube 64-player Single Elim&minus",
+		14 : "plus&Vintage Cube 64-player Single Elim&minus",
+		15 : "plus&Vintage Cube 64-player Single Elim&minus",
+		16 : "plus&Vintage Cube 64-player Single Elim&minus",
+		17 : "plus&Vintage Cube 64-player Single Elim&minus",
+		19 : "plus&Vintage Cube 64-player Single Elim&minus",
+		20 : "plus&Vintage Cube 64-player Single Elim&minus",
+		21 : "plus&Vintage Cube 64-player Single Elim&minus",
+		22 : "plus&Vintage Cube 64-player Single Elim&minus",
+		23 : "plus&Vintage Cube 64-player Single Elim&minus",
+		}
+	);
+
+	ret.set(
+		new Date(2023, 9, 11).toDateString(),
+		{ 0 : "plus&Vintage Cube 64-player Single Elim&minus",
+		1 : "plus&Vintage Cube 64-player Single Elim&minus",
+		2 : "plus&Vintage Cube 64-player Single Elim&minus",
+		3 : "plus&Vintage Cube 64-player Single Elim&minus",
+		4 : "plus&Vintage Cube 64-player Single Elim&minus",
+		5 : "plus&Vintage Cube 64-player Single Elim&minus",
+		6 : "plus&Vintage Cube 64-player Single Elim&minus",
+		7 : "plus&Vintage Cube 64-player Single Elim&minus",
+		8 : "plus&Vintage Cube 64-player Single Elim&minus",
+		}
 	);
 
 	ret.set(

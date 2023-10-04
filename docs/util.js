@@ -246,7 +246,7 @@ function addTooltip(event) {
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 200 PPs or 20 tix.<fbr><fbr>
+                            ${tail} entry fee: 150 PPs or 15 tix.<fbr><fbr>
 
                             Two back-to-back single-elim Vintage Cube drafts.<fbr><fbr>
                             6 wins: 500 PPs, 24 QPs, 50 treasure chests.<fbr>

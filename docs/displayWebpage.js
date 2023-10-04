@@ -25,17 +25,17 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  let end = new Date(Date.UTC(2023, 8, 25, 4, 30)).valueOf() / 1000;
+  let end = new Date(Date.UTC(2023, 9, 18, 15, 30)).valueOf() / 1000;
   if (today.getTime() < end * 1000) {
-    let start = new Date(Date.UTC(2023, 8, 21, 17, 30)).valueOf() / 1000;
+    let start = new Date(Date.UTC(2023, 9, 5, 8)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
-      timeFormat = "h:mma dddd";
+      timeFormat = "h:mma dddd MM/DD";
     } else {
-      timeFormat = "HH:mm dddd";
+      timeFormat = "HH:mm dddd MM/DD";
     }
     document.getElementById("banner").innerHTML = `
-      <center>There are 64-player Single Elim Wilds of Eldraine events every few hours from 
+      <center>There are 64-player Single Elim Vintage Cube events every few hours from 
       ${moment.unix(start).tz(timeZone).format(timeFormat)} until ${moment.unix(end).tz(timeZone).format(timeFormat)}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
