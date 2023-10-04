@@ -30,9 +30,9 @@ function displaySchedule(fixSliders = true) {
     let start = new Date(Date.UTC(2023, 9, 5, 8)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
-      timeFormat = "h:mma dddd MM/DD";
+      timeFormat = "h:mma dddd [the] D[th]";
     } else {
-      timeFormat = "HH:mm dddd MM/DD";
+      timeFormat = "HH:mm dddd [the] D[th]";
     }
     document.getElementById("banner").innerHTML = `
       <center>There are 64-player Single Elim Vintage Cube events every few hours from 
