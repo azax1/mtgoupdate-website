@@ -133,49 +133,54 @@
         let sched = [rcqSched, showcaseSched][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
-            let event = sched.get(today.toDateString())[j];
-            if (event != null) {
-              event = event.replace("Super Qualifier", "Super"); // handles namespace collision of RCQs and Super RCQs
-              if (eventFilter && !eventFilter(event)) {
-                continue;
-              }
-              let monthPadding = today.getMonth() < 9 ? "0" : "";
-              let datePadding = today.getDate() < 10 ? "0" : "";
-              let time = `${today.getFullYear()}-${monthPadding}${
-                today.getMonth() + 1
-              }-${datePadding}${today.getDate()}`;
-              time += (j < 10 ? " 0" : " ") + j + ":00";
-              let timestamp = moment.tz(time, "America/Los_Angeles").unix();
-              if (instant <= timestamp * 1000) {
-                if (event.includes("Super")) {
-                  supers++;
-                } else if (event.includes("Showcase Qualifier") || event.includes("Showcase Open") || event.includes("Single Elim")) {
+            let hour = sched.get(today.toDateString())[j];
+            let events = hour ? hour.split("&") : [null];
+            for (let index = 0; index < events.length; index++) {
+              event = events[index];
+              if (event != null) {
+                event = event.replace("Super Qualifier", "Super"); // handles namespace collision of RCQs and Super RCQs
+                if (eventFilter && !eventFilter(event)) {
                   continue;
-                } else if (
-                  event.includes("Qualifier") ||
-                  event.includes("RCQ")
-                ) {
-                  rcqs++;
-                } else if (event.includes("LCQ")) {
-                  lcqs++;
-                } else if (event.includes("Showcase Challenge")) {
-                  showcases++;
                 }
-                let index = event.indexOf(" ");
-                let index2 = index;
-                if (event.substring(0, index).includes("Limited")) {
-                  index2 = event.indexOf(" ", index + 1);
-                }
-                // TODO sort by date instead of first sorting by RCQ/Showcase status
-                let keyDate = moment.unix(timestamp).tz(timeZone);
-                let isDummy = today.getMonth() === 10 && today.getDate() === 30;
-                if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
-                  document.getElementById("tableBody").innerHTML += `<tr>
-                  <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
-                  <td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
-                  <td>${event.substring(0, index)}</td>
-                  <td>${verbosify(event.substring(index2 + 1))}</td>
-                  </tr>`;
+                let monthPadding = today.getMonth() < 9 ? "0" : "";
+                let datePadding = today.getDate() < 10 ? "0" : "";
+                let time = `${today.getFullYear()}-${monthPadding}${
+                  today.getMonth() + 1
+                }-${datePadding}${today.getDate()}`;
+                time += (j < 10 ? " 0" : " ") + j + ":00";
+                let timestamp = moment.tz(time, "America/Los_Angeles").unix();
+                if (instant <= timestamp * 1000) {
+                  if (event.includes("Super")) {
+                    supers++;
+                  } else if (event.includes("Showcase Qualifier") || event.includes("Showcase Open") || event.includes("Single Elim")
+                            || event.includes("plus") || event.includes("minus")) {
+                    continue;
+                  } else if (
+                    event.includes("Qualifier") ||
+                    event.includes("RCQ")
+                  ) {
+                    rcqs++;
+                  } else if (event.includes("LCQ")) {
+                    lcqs++;
+                  } else if (event.includes("Showcase Challenge")) {
+                    showcases++;
+                  }
+                  let index = event.indexOf(" ");
+                  let index2 = index;
+                  if (event.substring(0, index).includes("Limited")) {
+                    index2 = event.indexOf(" ", index + 1);
+                  }
+                  // TODO sort by date instead of first sorting by RCQ/Showcase status
+                  let keyDate = moment.unix(timestamp).tz(timeZone);
+                  let isDummy = today.getMonth() === 10 && today.getDate() === 30;
+                  if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
+                    document.getElementById("tableBody").innerHTML += `<tr>
+                    <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
+                    <td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
+                    <td>${event.substring(0, index)}</td>
+                    <td>${verbosify(event.substring(index2 + 1))}</td>
+                    </tr>`;
+                  }
                 }
               }
             }
