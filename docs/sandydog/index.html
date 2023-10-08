@@ -176,7 +176,7 @@
                   if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
                     document.getElementById("tableBody").innerHTML += `<tr>
                     <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
-                    <td>${isDummy ? "TBD" : keyDate.format("ha")}</td>
+                    <td>${isDummy ? "TBD" : (getHourMode() === "12" ? keyDate.format("ha") : keyDate.format("hh") + ":00")}</td>
                     <td>${event.substring(0, index)}</td>
                     <td>${verbosify(event.substring(index2 + 1))}</td>
                     </tr>`;
