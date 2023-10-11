@@ -35,8 +35,8 @@ function displaySchedule(fixSliders = true) {
       timeFormat = "HH:mm dddd [the] D[th]";
     }
     document.getElementById("banner").innerHTML = `
-      <center>There are 64-player Single Elim Vintage Cube events every few hours from 
-      ${moment.unix(start).tz(timeZone).format(timeFormat)} until ${moment.unix(end).tz(timeZone).format(timeFormat)}.<br>
+      <center>There are 64-player Single Elim Vintage Cube events every few hours 
+      until ${moment.unix(end).tz(timeZone).format(timeFormat)}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
   } else {
