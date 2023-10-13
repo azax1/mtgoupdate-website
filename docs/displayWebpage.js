@@ -152,6 +152,9 @@ function getSchedulesForWeek(
           timestamp += 30 * 60;
         } else if (!eventFilter || eventFilter(event)) {
           let keyDate = moment.unix(timestamp).tz(timeZone);
+          if (keyDate.valueOf() < today.getTime() && today.toDateString() === new Date().toDateString()) {
+            continue;
+          }
           let day = parseInt(keyDate.format("DD"));
           let hour = parseInt(keyDate.format("HH"));
           let minute = parseInt(keyDate.format("mm"));
