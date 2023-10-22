@@ -16,6 +16,27 @@ $(function () {
   };
 });
 
+$(function() {
+  const left = document.getElementById("leftButton");
+  const right = document.getElementById("rightButton");
+
+  left.onclick = function () {
+    const dp = $("#datepicker");
+    const newDate = dp.datepicker("getDate");
+    newDate.setDate(newDate.getDate() - 7);
+    dp.datepicker("setDate", newDate);
+    displaySchedule(false);
+  }
+
+  right.onclick = function () {
+    const dp = $("#datepicker");
+    const newDate = dp.datepicker("getDate");
+    newDate.setDate(newDate.getDate() + 7);
+    dp.datepicker("setDate", newDate);
+    displaySchedule(false);
+  }
+});
+
 $(function () {
   var modal = document.getElementById("settingsModal");
   var button = document.getElementById("settings");

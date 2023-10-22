@@ -63,6 +63,14 @@ a:visited {
   gap: 8px 4px;
   flex-wrap: wrap;
 }
+.fixed-button {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+}
 .header {
   position: absolute;
   top: 0;
