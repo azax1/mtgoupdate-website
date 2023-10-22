@@ -26,7 +26,7 @@ function displaySchedule(fixSliders = true) {
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
   let end = new Date(Date.UTC(2023, 9, 18, 15, 30)).valueOf() / 1000;
-  if (today.getTime() < end * 1000) {
+  if (new Date().getTime() < end * 1000) {
     let start = new Date(Date.UTC(2023, 9, 5, 8)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
