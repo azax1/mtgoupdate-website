@@ -129,6 +129,7 @@ function getSchedulesForWeek(
   let parseDate = `${startDate.getFullYear()}-${monthPadding}${
     startDate.getMonth() + 1
   }-${datePadding}${startDate.getDate()} 00:00`;
+  let actualDate = new Date();
   let timestamp = moment.tz(parseDate, "America/Los_Angeles").unix();
 
   let schedules = {};
@@ -152,14 +153,14 @@ function getSchedulesForWeek(
           timestamp += 30 * 60;
         } else if (!eventFilter || eventFilter(event)) {
           let keyDate = moment.unix(timestamp).tz(timeZone);
-          if (keyDate.valueOf() < today.getTime() && today.toDateString() === new Date().toDateString()) {
-            continue;
-          }
           let day = parseInt(keyDate.format("DD"));
           let hour = parseInt(keyDate.format("HH"));
           let minute = parseInt(keyDate.format("mm"));
 
           color = getEventColor(event, isDarkMode, false, false);
+          if (today.toDateString() === actualDate.toDateString() && keyDate.valueOf() < today.getTime()) {
+            color = grey;
+          }
           let eventString = `<font color= #COLOR>${getPrettyTime(
             hour,
             minute
