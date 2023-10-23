@@ -268,7 +268,6 @@ function addTooltip(event) {
                               <div class=\"tooltip-content\">
                               Limited ${tail} entry fee: 350 PPs or 35 tix.<fbr><fbr>
 
-                              A 4-round event whose primary purpose is to earn QPs to enter various Qualifier events.<fbr><fbr>
                               4-0: 40 QPs, 700 PPs.<fbr>
                               3-1: 20 QPs, 450 PPs.<fbr>
                               2-2: 10 QPs, 200 PPs.<fbr>
@@ -282,7 +281,6 @@ function addTooltip(event) {
                               <div class=\"tooltip-content\">
                               Constructed ${tail} entry fee: 200 PPs or 20 tix.<fbr><fbr>
 
-                              A 4-round event whose primary purpose is to earn QPs to enter various Qualifier events.<fbr><fbr>
                               4-0: 40 QPs, 400 PPs, 5 treasure chests.<fbr>
                               3-1: 20 QPs, 200 PPs, 3 treasure chests.<fbr>
                               2-2: 10 QPs, 100 PPs, 1 treasure chest.<fbr>
