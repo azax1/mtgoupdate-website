@@ -118,176 +118,36 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 9, 25).toDateString(),
-		{ 10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
-
-	ret.set(
-		new Date(2023, 9, 26).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
-
-	ret.set(
 		new Date(2023, 9, 27).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "Limited (WOE) Qualifier&plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
+		{ 14 : "Limited (WOE) Qualifier" }
+	)
 
 	ret.set(
 		new Date(2023, 9, 28).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "Pauper Qualifier&plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
+		{ 7 : "Pauper Qualifier" }
+	)
 
-	ret.set(
-		new Date(2023, 9, 29).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
+	addBulkEvents(
+		ret,
+		"plus&Horror Cube 64-player Single Elim&minus",
+		[ new Date(2023, 9, 25), ],
+		[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22],
+	);
 
-	ret.set(
-		new Date(2023, 9, 30).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
+	addBulkEvents(
+		ret,
+		"plus&Horror Cube 64-player Single Elim&minus",
+		[ new Date(2023, 9, 26), new Date(2023, 9, 27), new Date(2023, 9, 28),
+			new Date(2023, 9, 29), new Date(2023, 9, 30), new Date(2023, 9, 31)],
+		[0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22]
+	);
 
-	ret.set(
-		new Date(2023, 9, 31).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus",
-		10: "plus&Horror Cube 64-player Single Elim&minus",
-		11: "plus&Horror Cube 64-player Single Elim&minus",
-		12: "plus&Horror Cube 64-player Single Elim&minus",
-		13: "plus&Horror Cube 64-player Single Elim&minus",
-		14: "plus&Horror Cube 64-player Single Elim&minus",
-		15: "plus&Horror Cube 64-player Single Elim&minus",
-		16: "plus&Horror Cube 64-player Single Elim&minus",
-		17: "plus&Horror Cube 64-player Single Elim&minus",
-		18: "plus&Horror Cube 64-player Single Elim&minus",
-		19: "plus&Horror Cube 64-player Single Elim&minus",
-		20: "plus&Horror Cube 64-player Single Elim&minus",
-		22: "plus&Horror Cube 64-player Single Elim&minus"
-	});
-
-	ret.set(
-		new Date(2023, 10, 1).toDateString(),
-		{ 0: "plus&Horror Cube 64-player Single Elim&minus",
-		2: "plus&Horror Cube 64-player Single Elim&minus",
-		4: "plus&Horror Cube 64-player Single Elim&minus",
-		5: "plus&Horror Cube 64-player Single Elim&minus",
-		6: "plus&Horror Cube 64-player Single Elim&minus",
-		7: "plus&Horror Cube 64-player Single Elim&minus",
-		8: "plus&Horror Cube 64-player Single Elim&minus",
-		9: "plus&Horror Cube 64-player Single Elim&minus"
-	});
+	addBulkEvents(
+		ret,
+		"plus&Horror Cube 64-player Single Elim&minus",
+		[ new Date(2023, 10, 1), ],
+		[0, 2, 4, 5, 6, 7, 8, 9],
+	);
 	
 	ret.set(
 		new Date(2023, 10, 4).toDateString(), {1: "Limited (WOE) Qualifier"}
@@ -438,4 +298,22 @@ function addCurrentYearDSTDates(rcqs) {
 	);
 	
 	return rcqs;
+}
+
+function addBulkEvents(map, event, dates, times) {
+	for (let k = 0; k < dates.length; k++) {
+		const day = dates[k];
+		for (const time of times) {
+			let events = map.get(day.toDateString());
+			if (events === undefined) {
+				events = {};
+				map.set(day.toDateString(), events);
+			}
+			if (events[time]) {
+				events[time] += "&" + event;
+			} else {
+				events[time] = event;
+			}
+		}
+	}
 }
