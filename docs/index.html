@@ -215,7 +215,16 @@
     <noscript><div>Please enable JavaScript</div></noscript>
 
     <script>
-      document.getElementById("eventTypeDropdown").options[6].selected = true;
+      const url = new URL(window.location);
+      if (url.searchParams.get("events") === "premier") {
+        url.searchParams.delete("events");
+        history.pushState({}, "", url);
+        for (let i = 2; i < 5; i++) {
+          document.getElementById("eventTypeDropdown").options[i].selected = true;
+        }
+      } else {
+        document.getElementById("eventTypeDropdown").options[6].selected = true;
+      }
       displaySchedule();
 
       document.addEventListener("click", function(event) {
