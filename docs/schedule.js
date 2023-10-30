@@ -154,7 +154,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2023, 10, 5).toDateString(), {1: "Modern Qualifier"}
+		new Date(2023, 10, 5).toDateString(), {2: "plus&Modern Qualifier&minus"}
 	);
 	
 	ret.set(
@@ -292,7 +292,11 @@ function addCurrentYearDSTDates(rcqs) {
 			if (rcqs.get(date.toDateString()) === undefined) {
 				rcqs.set(date.toDateString(), {2: "DST"});
 			} else {
-				rcqs.get(date.toDateString())[2] = "DST";
+				if (rcqs.get(date.toDateString())[2] === undefined) {
+					rcqs.get(date.toDateString())[2] = "DST";
+				} else {
+					rcqs.get(date.toDateString())[2] = "DST&" + rcqs.get(date.toDateString())[2];
+				}
 			}
 		}
 	);
