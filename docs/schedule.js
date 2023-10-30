@@ -127,26 +127,27 @@ function getRCQs() {
 		{ 7 : "Pauper Qualifier" }
 	)
 
+	const horror = "Horror Cube 64-player Single Elim";
 	addBulkEvents(
 		ret,
-		"plus&Horror Cube 64-player Single Elim&minus",
+		horror,
 		[ new Date(2023, 9, 25), ],
-		[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22],
+		[10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
 	);
 
 	addBulkEvents(
 		ret,
-		"plus&Horror Cube 64-player Single Elim&minus",
+		horror,
 		[ new Date(2023, 9, 26), new Date(2023, 9, 27), new Date(2023, 9, 28),
 			new Date(2023, 9, 29), new Date(2023, 9, 30), new Date(2023, 9, 31)],
-		[0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22]
+		[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
 	);
 
 	addBulkEvents(
 		ret,
-		"plus&Horror Cube 64-player Single Elim&minus",
+		horror,
 		[ new Date(2023, 10, 1), ],
-		[0, 2, 4, 5, 6, 7, 8, 9],
+		[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5],
 	);
 	
 	ret.set(
@@ -307,16 +308,21 @@ function addCurrentYearDSTDates(rcqs) {
 function addBulkEvents(map, event, dates, times) {
 	for (let k = 0; k < dates.length; k++) {
 		const day = dates[k];
-		for (const time of times) {
+		for (let time of times) {
 			let events = map.get(day.toDateString());
 			if (events === undefined) {
 				events = {};
 				map.set(day.toDateString(), events);
 			}
+			let eventToUse = event;
+			if (!Number.isInteger(time)) {
+				eventToUse = "plus&" + event + "&minus";
+				time = Math.floor(time);
+			}
 			if (events[time]) {
-				events[time] += "&" + event;
+				events[time] += "&" + eventToUse;
 			} else {
-				events[time] = event;
+				events[time] = eventToUse;
 			}
 		}
 	}
