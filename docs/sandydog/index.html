@@ -150,7 +150,15 @@
                 let time = `${today.getFullYear()}-${monthPadding}${
                   today.getMonth() + 1
                 }-${datePadding}${today.getDate()}`;
-                time += (j < 10 ? " 0" : " ") + j + ":00";
+                time += (j < 10 ? " 0" : " ") + j;
+                let format;
+                if (today.toDateString() === "Sun Nov 05 2023") { // I'm sorry
+                  time += ":30";
+                  format = "h:mma";
+                } else {
+                  time += ":00";
+                  format = "ha";
+                }
                 let timestamp = moment.tz(time, "America/Los_Angeles").unix();
                 if (instant <= timestamp * 1000) {
                   if (event.includes("Super")) {
@@ -179,7 +187,7 @@
                   if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
                     document.getElementById("tableBody").innerHTML += `<tr>
                     <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
-                    <td>${isDummy ? "TBD" : (getHourMode() === "12" ? keyDate.format("ha") : keyDate.format("HH") + ":00")}</td>
+                    <td>${isDummy ? "TBD" : (getHourMode() === "12" ? keyDate.format(format) : keyDate.format("HH:mm"))}</td>
                     <td>${event.substring(0, index)}</td>
                     <td>${verbosify(event.substring(index2 + 1))}</td>
                     </tr>`;
