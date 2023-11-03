@@ -127,28 +127,28 @@ function getRCQs() {
 		{ 7 : "Pauper Qualifier" }
 	)
 
-	const horror = "Horror Cube 64-player Single Elim";
-	addBulkEvents(
-		ret,
-		horror,
-		[ new Date(2023, 9, 25), ],
-		[10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
-	);
+	// const horror = "Horror Cube 64-player Single Elim";
+	// addBulkEvents(
+	// 	ret,
+	// 	horror,
+	// 	[ new Date(2023, 9, 25), ],
+	// 	[10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
+	// );
 
-	addBulkEvents(
-		ret,
-		horror,
-		[ new Date(2023, 9, 26), new Date(2023, 9, 27), new Date(2023, 9, 28),
-			new Date(2023, 9, 29), new Date(2023, 9, 30), new Date(2023, 9, 31)],
-		[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
-	);
+	// addBulkEvents(
+	// 	ret,
+	// 	horror,
+	// 	[ new Date(2023, 9, 26), new Date(2023, 9, 27), new Date(2023, 9, 28),
+	// 		new Date(2023, 9, 29), new Date(2023, 9, 30), new Date(2023, 9, 31)],
+	// 	[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
+	// );
 
-	addBulkEvents(
-		ret,
-		horror,
-		[ new Date(2023, 10, 1), ],
-		[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5],
-	);
+	// addBulkEvents(
+	// 	ret,
+	// 	horror,
+	// 	[ new Date(2023, 10, 1), ],
+	// 	[0.5, 2.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5],
+	// );
 	
 	ret.set(
 		new Date(2023, 10, 4).toDateString(), {1: "Limited (WOE) Qualifier"}
