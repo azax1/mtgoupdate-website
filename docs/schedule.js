@@ -62,7 +62,7 @@ function getBaseSchedule() {
 		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`,
 		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
 		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
-		null, null, `Pioneer ${ch} (32-player)`, null, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, null, null, null, null, null,
+		null, null, `Pioneer ${ch}`, null, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, null, null, null, null, null,
 		`Pioneer ${pr}`, `Limited ${ch} (32-player)`, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch} (96-player)`, null, `Vintage ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch} (96-player)`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, null, null, null, null];
 	return ret;
