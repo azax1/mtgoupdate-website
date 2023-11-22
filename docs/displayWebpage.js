@@ -25,20 +25,21 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  let end = new Date(Date.UTC(2023, 10, 1, 16, 30)).valueOf() / 1000;
+  let end = new Date(Date.UTC(2023, 10, 29, 17, 30)).valueOf() / 1000;
   if (new Date().getTime() < end * 1000) {
-    let start = new Date(Date.UTC(2023, 9, 25, 17, 30)).valueOf() / 1000;
+    let start = new Date(Date.UTC(2023, 10, 22, 18, 30)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
       timeFormat = "h:mma dddd [the] D"
     } else {
       timeFormat = "HH:mm dddd [the] D";
     }
-    let suffix = moment.unix(end).tz(timeZone).format("D") === "2" ? "nd" : "st";
+    const day = moment.unix(start).tz(timeZone).format("D");
+    const suffix = day === "22" ? "nd" : (day === "23" ? "rd" : "st");
     document.getElementById("banner").innerHTML = `
-      <center>There are 64-player Innistrad Horror Cube Vintage Cube events every few hours 
-      from ${moment.unix(start).tz(timeZone).format(timeFormat)}th 
-      until ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix}.<br>
+      <center>There are 64-player Vintage Cube events every few hours 
+      from ${moment.unix(start).tz(timeZone).format(timeFormat)}${suffix} 
+      until ${moment.unix(end).tz(timeZone).format(timeFormat)}th.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
   } else {

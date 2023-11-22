@@ -84,8 +84,23 @@ function initializePageAndParameters(
   eventTypeDropdownName = "eventTypeDropdown",
   suppliedDate = null
 ) {
+  const url = new URL(window.location);
+  if (url.searchParams.get("events") === "premier") {
+    url.searchParams.delete("events");
+    history.pushState({}, "", url);
+    for (let i = 2; i < 5; i++) {
+      document.getElementById("eventTypeDropdown").options[i].selected = true;
+    }
+  } else {
+    document.getElementById("eventTypeDropdown").options[6].selected = true;
+  }
   suppliedDate || setColorMode(getColorMode());
   let today = new Date();
+  // let urlDate;
+  // if (url.searchParams.get("date")) {
+  //   urlDate = new Date(url.searchParams.get("date"));
+  // }
+  // window.alert(urlDate);
   let inputDate = suppliedDate || $("#datepicker").datepicker("getDate");
   if (inputDate && inputDate instanceof Date) {
     today.setFullYear(

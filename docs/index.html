@@ -94,8 +94,8 @@
                   <option value="Showcase Challenge">Showcase Challenge</option>
                   <option value="Qualifier">Qualifier / Super Qualifier</option>
                   <option value="LCQ">MOCS LCQ</option>
-                  <!-- <option value="Elim">64-player Single Elim</option>
-                  <option value="Hide">Hide Single Elim</option> -->
+                  <option value="Elim">64-player Single Elim</option>
+                  <option value="Hide">Hide Single Elim</option>
                 </select>
               </h4>
             </div>
@@ -216,16 +216,6 @@
     <noscript><div>Please enable JavaScript</div></noscript>
 
     <script>
-      const url = new URL(window.location);
-      if (url.searchParams.get("events") === "premier") {
-        url.searchParams.delete("events");
-        history.pushState({}, "", url);
-        for (let i = 2; i < 5; i++) {
-          document.getElementById("eventTypeDropdown").options[i].selected = true;
-        }
-      } else {
-        // document.getElementById("eventTypeDropdown").options[6].selected = true;
-      }
       displaySchedule();
 
       document.addEventListener("click", function(event) {
