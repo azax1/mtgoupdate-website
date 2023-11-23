@@ -112,10 +112,10 @@ function initializePageAndParameters(
     formatSelector = (event) => {
       return (
         formatChoices.filter((format) => {
-          if (format !== "Limited") {
+          if (format !== "Vintage") {
             return event.includes(format);
           } else {
-            return event.includes(format) || event.includes("Eldraine");
+            return event.includes(format) && !event.includes("Cube");
           }
         }).length > 0
       );
