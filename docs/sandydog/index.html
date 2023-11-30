@@ -38,14 +38,14 @@
   <body>
     <div id="everything">
       <p id="text">
-        Remaining in this MOCS season (ending November 29th) there are
+        Remaining in this MOCS season (ending March 20th<span id="year">, 2024</span>) there are
         <span id="showcases"></span>, <span id="supers"></span>,
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
         You need <span id="qps1" style="color: red"></span> QPs to play all
         remaining QP-gated events this season<span id="disclaimer2"></span>
         <span id="superModifier"></span>
-        <span><br/><br/>You can still spend leftover QPs on Vintage Cube leagues from December 20th to January 3rd.</span>
+        <span id="leftover"><br/><br/>You can still spend leftover QPs from last season (season 3) on Vintage Cube leagues <span id="start">from December 20th to</span> January 3rd<span id="year2">, 2024</span>.</span>
         </p>
       <div id="selectors">
         <h4>
@@ -100,6 +100,16 @@
   function displaySandydog() {
     let today = new Date();
     let instant = today.getTime(); // unix timestamp
+    if (today.getFullYear() === 2024) {
+      document.getElementById("year").innerHTML = "";
+      document.getElementById("year2").innerHTML = "";
+    }
+    if (instant > 1703098800000) { // December 20th 2023, 11am PT
+      document.getElementById("start").innerHTML = "until";
+    }
+    if (instant > 1704308400000) { // January 3rd 2024, 11am PT
+      document.getElementById("leftover").innerHTML = "";
+    }
     let rcqs = 0;
     let supers = 0;
     let showcases = 0;
@@ -130,11 +140,11 @@
     document.getElementById("tableBody").innerHTML = "";
     for (
       let i = 0;
-      i < 200 && today.toDateString() !== "Fri Nov 31 2023";
+      i < 200 && today.toDateString() !== "Fri Mar 22 2024";
       i++
     ) {
-      for (let k = 0; k < 2; k++) {
-        let sched = [rcqSched, showcaseSched][k];
+      for (let k = 0; k < 3; k++) {
+        let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
             let hour = sched.get(today.toDateString())[j];
@@ -151,15 +161,8 @@
                 let time = `${today.getFullYear()}-${monthPadding}${
                   today.getMonth() + 1
                 }-${datePadding}${today.getDate()}`;
-                time += (j < 10 ? " 0" : " ") + j;
-                let format;
-                if (today.toDateString() === "Sun Nov 05 2023") { // I'm sorry
-                  time += ":30";
-                  format = "h:mma";
-                } else {
-                  time += ":00";
-                  format = "ha";
-                }
+                time += (j < 10 ? " 0" : " ") + j + ":00";
+                let format = "ha";
                 let timestamp = moment.tz(time, "America/Los_Angeles").unix();
                 if (instant <= timestamp * 1000) {
                   if (event.includes("Super")) {
@@ -184,10 +187,10 @@
                   }
                   // TODO sort by date instead of first sorting by RCQ/Showcase status
                   let keyDate = moment.unix(timestamp).tz(timeZone);
-                  let isDummy = today.getMonth() === 10 && today.getDate() === 30;
+                  let isDummy = today.getMonth() === 2 && today.getDate() === 21;
                   if (!event.includes("Win-a-Box") && !event.includes("minus") && !event.includes("DST")) {
                     document.getElementById("tableBody").innerHTML += `<tr>
-                    <td>${isDummy ? "TBD" : keyDate.format("M/D")}</td>
+                    <td>${isDummy ? "TBD" : keyDate.format("MM/DD")}</td>
                     <td>${isDummy ? "TBD" : (getHourMode() === "12" ? keyDate.format(format) : keyDate.format("HH:mm"))}</td>
                     <td>${event.substring(0, index)}</td>
                     <td>${verbosify(event.substring(index2 + 1))}</td>
@@ -232,15 +235,15 @@
     }
   }
 
-  // function getPlaceholderLCQs() {
-  //   let ret = new Map();
+  function getPlaceholderLCQs() {
+    let ret = new Map();
 
-  //   ret.set(
-	// 	  new Date(2023, 10, 30).toDateString(), {1: "Standard LCQ", 2: "Standard LCQ", 3: "Standard LCQ", 4: "Standard LCQ"}
-	//   );
+    ret.set(
+		  new Date(2024, 2, 21).toDateString(), {1: "Vintage LCQ", 2: "Vintage LCQ", 3: "Vintage LCQ"}
+	  );
 
-  //   return ret;
-  // }
+    return ret;
+  }
 </script>
 <script>
   $(document).ready(function () {
