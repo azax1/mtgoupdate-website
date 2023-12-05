@@ -45,7 +45,9 @@
         You need <span id="qps1" style="color: red"></span> QPs to play all
         remaining QP-gated events this season<span id="disclaimer2"></span>
         <span id="superModifier"></span>
-        <span id="leftover"><br/><br/>You can still spend leftover QPs from last season (season 3) on Vintage Cube leagues <span id="start">from December 20th to</span> January 3rd<span id="year2">, 2024</span>.</span>
+        <span id="leftover"><br/><br/>You can still spend leftover QPs from last season (season 3, red) on 
+          AlphaFrog alt-Vintage Cube events <span id="frogStart">from December 6th to</span> the 20th and 
+          Vintage Cube events <span id="start">from December 20th to</span> January 3rd<span id="year2">, 2024</span>.</span>
         </p>
       <div id="selectors">
         <h4>
@@ -103,6 +105,9 @@
     if (today.getFullYear() === 2024) {
       document.getElementById("year").innerHTML = "";
       document.getElementById("year2").innerHTML = "";
+    }
+    if (instant > 1701889200000) { // December 6th 2023, 11am PT
+      document.getElementById("frogStart").innerHTML = "until";
     }
     if (instant > 1703098800000) { // December 20th 2023, 11am PT
       document.getElementById("start").innerHTML = "until";
