@@ -137,7 +137,7 @@ function initializePageAndParameters(
         eventTypeChoices.filter((eventType) =>
         {
           if (eventType !== "Hide") {
-            return event.includes(eventType);
+            return event.includes(eventType) || (eventType === "Showcase Challenge" && event.includes("Showcase Open"));
           } else {
             return (eventTypeChoices.length === 1) && !event.includes("Single Elim");
           }
