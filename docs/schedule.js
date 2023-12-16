@@ -53,11 +53,11 @@ function getBaseSchedule() {
 	let pr = "Prelim";
 	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}  (96-player)`, null, `Pioneer ${ch}  (96-player)`, null, `Legacy ${ch} (96-player)`, null, `Pauper ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Standard ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null,
-		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Standard ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
-		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Standard ${pr}`, null, null,
+		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
+		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
 		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`,
-		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Legacy ${pr}`, null, null, null, null,
-		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, `Standard ${pr}`, null, null,
+		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, `Modern ${pr}`, null, `Legacy ${pr}`, null, null, null, null,
+		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null,
 		null, `Pioneer ${pr}`, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
 		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`,
 		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
@@ -218,6 +218,15 @@ function getRCQs() {
 // Also useful for weird one-off changes to the schedule, e.g. cancelled Challenges due to nearby RCQs of the same format
 function getShowcasesAndLCQs() {
 	let ret = new Map();
+
+	ret.set(
+		new Date(2023, 11, 18).toDateString(), {4: "Standard Prelim", 21: "Standard Prelim"}
+	);
+
+	ret.set(
+		new Date(2023, 11, 19).toDateString(), {17: "Standard Prelim"}
+	);
+	// last Standard prelims before being replaced by real formats now that Standard isn't a MOCS format
 	
 	ret.set(
 		new Date(2024, 0, 6).toDateString(), {8: "Modern Showcase Challenge"}
