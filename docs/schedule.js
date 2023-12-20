@@ -226,6 +226,10 @@ function getShowcasesAndLCQs() {
 	ret.set(
 		new Date(2023, 11, 19).toDateString(), {17: "Standard Prelim"}
 	);
+
+	ret.set(
+		new Date(2023, 11, 20).toDateString(), {9: "Standard Prelim"}
+	);
 	// last Standard prelims before being replaced by real formats now that Standard isn't a MOCS format
 	
 	ret.set(
