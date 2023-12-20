@@ -73,14 +73,6 @@ function getBaseSchedule() {
 function getRCQs() {
 	let ret = new Map();
 
-	// const cube = "Vintage Cube 64-player Single Elim";
-	// addBulkEvents(
-	// 	ret,
-	// 	cube,
-	// 	[ new Date(2023, 10, 22), ],
-	// 	[10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
-	// );
-
 	ret.set(
 		new Date(2023, 11, 2).toDateString(), {8: "Modern Showcase Qualifier (invite-only)"}
 	);
@@ -131,6 +123,23 @@ function getRCQs() {
 
 	ret.set(
 		new Date(2023, 11, 30).toDateString(), {7: "Limited (LCI) Super Qualifier"}
+	);
+
+
+	const cube = "Vintage Cube 64-player Single Elim";
+	addBulkEvents(
+		ret,
+		cube,
+		[ new Date(2023, 11, 20), ],
+		[11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
+	);
+
+	addBulkEvents(
+		ret,
+		cube,
+		[ new Date(2023, 11, 21), new Date(2023, 11, 22), ],
+		[0.5, 1.5, 2.5, 3.5, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
+		13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
 	);
 
 	ret.set(
