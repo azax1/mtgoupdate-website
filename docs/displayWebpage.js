@@ -25,7 +25,7 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  let end = new Date(Date.UTC(2024, 0, 3, 17, 30)).valueOf() / 1000;
+  let end = new Date(Date.UTC(2024, 0, 3, 2, 0)).valueOf() / 1000;
   if (new Date().getTime() < end * 1000) {
     let start = new Date(Date.UTC(2023, 11, 20, 19, 30)).valueOf() / 1000;
     let timeFormat;
@@ -40,7 +40,6 @@ function displaySchedule(fixSliders = true) {
     const suffix2 = day2 === "2" ? "nd" : (day2 === "3" ? "rd" : "th");
     document.getElementById("banner").innerHTML = `
       <center>There are 64-player Vintage Cube events every few hours 
-      from ${moment.unix(start).tz(timeZone).format(timeFormat)}${suffix1} 
       until ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
