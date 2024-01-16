@@ -169,7 +169,9 @@ function getRCQs() {
 		[ new Date(2024, 0, 3), new Date(2024, 0, 4), new Date(2024, 0, 5), new Date(2024, 0, 6),
 		new Date(2024, 0, 7), new Date(2024, 0, 8), new Date(2024, 0, 9), new Date(2024, 0, 10),
 		new Date(2024, 0, 11), new Date(2024, 0, 12), new Date(2024, 0, 13), new Date(2024, 0, 14),
-		new Date(2024, 0, 15), new Date(2024, 0, 16), ],
+		new Date(2024, 0, 15), new Date(2024, 0, 16), new Date(2024, 0, 17), new Date(2024, 0, 18),
+		new Date(2024, 0, 19), new Date(2024, 0, 20), new Date(2024, 0, 21), new Date(2024, 0, 22),
+		new Date(2024, 0, 23), ],
 		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
 		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
 	);
@@ -177,7 +179,7 @@ function getRCQs() {
 	addBulkEvents(
 		ret,
 		cube,
-		[ new Date(2024, 0, 17) ],
+		[ new Date(2024, 0, 24) ],
 		[0.5,]
 	);
 
