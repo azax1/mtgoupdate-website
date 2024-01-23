@@ -51,7 +51,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 function getBaseSchedule() {
 	let ch = "Challenge";
 	let pr = "Prelim";
-	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch} (96-player)`, `Modern ${pr}`, `Pauper ${ch}`, null,
+	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch} (96-player)`, null, `Pioneer ${ch}`, null, `Legacy ${ch} (96-player)`, `Modern ${pr}`, `Pauper ${ch}`, null,
 		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (96-player)`, null, `Limited ${pr}`, null, `Modern ${ch} (32-player)`, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
 		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
@@ -275,7 +275,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2024, 0, 7).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2024, 0, 7).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -283,7 +283,7 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 0, 21).toDateString(), {8: "Legacy Showcase Challenge"}
+		new Date(2024, 0, 21).toDateString(), {4: "Modern Challenge", 8: "Legacy Showcase Challenge"}
 	);
 
 	ret.set(
@@ -291,7 +291,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2024, 1, 11).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2024, 1, 11).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -299,7 +299,7 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 1, 18).toDateString(), {8: "Legacy Showcase Challenge"}
+		new Date(2024, 1, 18).toDateString(), {4: "Modern Challenge", 8: "Legacy Showcase Challenge"}
 	);
 
 
@@ -308,7 +308,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2024, 2, 10).toDateString(), {6: "Pioneer Showcase Challenge"}
+		new Date(2024, 2, 10).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -320,6 +320,7 @@ function getShowcasesAndLCQs() {
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
 		if (day === 0) {
+			lcqs[4] = "Modern Challenge";
 			lcqs[8] = "Legacy Showcase Challenge";
 		}
 		for (let hour = 0; hour < 10 || (day < 3 && hour < 24); hour++) {
