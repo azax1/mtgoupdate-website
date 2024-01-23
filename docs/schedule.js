@@ -51,8 +51,8 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 function getBaseSchedule() {
 	let ch = "Challenge";
 	let pr = "Prelim";
-	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch} (96-player)`, null, `Pauper ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Standard ${ch}`, null, `Limited ${pr}`, null, null, null, null, null, null, null,
+	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch} (96-player)`, `Modern ${pr}`, `Pauper ${ch}`, null,
+		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (96-player)`, null, `Limited ${pr}`, null, `Modern ${ch} (32-player)`, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
 		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
 		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`,
