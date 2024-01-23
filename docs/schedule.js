@@ -162,6 +162,14 @@ function getRCQs() {
 	ret.set(
 		new Date(2024, 0, 15).toDateString(), {7: "Modern Qualifier"}
 	);
+	
+	ret.set(
+		new Date(2024, 0, 27).toDateString(), {7: "Pioneer Qualifier"}
+	);
+
+	ret.set(
+		new Date(2024, 0, 28).toDateString(), {7: "Limited (RVR) Super Qualifier"}
+	);
 
 	addBulkEvents(
 		ret,
@@ -171,7 +179,7 @@ function getRCQs() {
 		new Date(2024, 0, 11), new Date(2024, 0, 12), new Date(2024, 0, 13), new Date(2024, 0, 14),
 		new Date(2024, 0, 15), new Date(2024, 0, 16), new Date(2024, 0, 17), new Date(2024, 0, 18),
 		new Date(2024, 0, 19), new Date(2024, 0, 20), new Date(2024, 0, 21), new Date(2024, 0, 22),
-		new Date(2024, 0, 23), ],
+		new Date(2024, 0, 23), new Date(2024, 0, 24), new Date(2024, 0, 25), new Date(2024, 0, 26) ],
 		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
 		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
 	);
@@ -179,16 +187,8 @@ function getRCQs() {
 	addBulkEvents(
 		ret,
 		cube,
-		[ new Date(2024, 0, 24) ],
-		[0.5,]
-	);
-
-	ret.set(
-		new Date(2024, 0, 27).toDateString(), {7: "Pioneer Qualifier"}
-	);
-
-	ret.set(
-		new Date(2024, 0, 28).toDateString(), {7: "Limited (RVR) Super Qualifier"}
+		[ new Date(2024, 0, 27) ],
+		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5]
 	);
 
 	ret.set(
