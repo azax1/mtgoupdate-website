@@ -54,15 +54,15 @@ function getBaseSchedule() {
 	let ret = [`Vintage ${ch}`, `Limited ${ch} (32-player)`, null, null, `Modern ${ch} (96-player)`, null, `Pioneer ${ch}`, null, `Legacy ${ch} (96-player)`, `Modern ${pr}`, `Pauper ${ch}`, null,
 		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (96-player)`, null, `Limited ${pr}`, null, `Modern ${ch} (32-player)`, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, null, `Legacy ${pr}`,
-		null, null, null, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
-		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`,
-		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, `Modern ${pr}`, null, `Legacy ${pr}`, null, null, null, null,
-		`Limited ${pr}`, null, null, `Legacy ${pr}`, null, null, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null,
-		null, `Pioneer ${pr}`, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
-		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, null, `Modern ${pr}`,
+		null, null, `Standard ${pr}`, `Modern ${pr}`, null, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
+		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null, `Limited ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
+		null, null, null, `Pioneer ${pr}`, `Limited ${pr}`, `Modern ${pr}`, `Standard ${pr}`, `Legacy ${pr}`, null, null, null, null,
+		`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null, `Pioneer ${pr}`, `Limited ${pr}`, null, `Modern ${pr}`, null, `Limited ${pr}`,
+		`Standard ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
+		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, `Standard ${pr}`, `Modern ${pr}`,
 		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
-		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, null, `Limited ${pr}`, `Vintage ${pr}`,
-		null, null, `Pioneer ${ch}`, null, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, null, null, null, null, null,
+		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
+		null, null, `Pioneer ${ch}`, `Standard ${pr}`, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, `Standard ${pr}`, null, null, null, null,
 		`Pioneer ${pr}`, `Limited ${ch} (32-player)`, `Pauper ${ch}`, null, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch} (96-player)`, null, `Vintage ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, null, null, null, null];
 	return ret;
@@ -162,7 +162,7 @@ function getRCQs() {
 	ret.set(
 		new Date(2024, 0, 15).toDateString(), {7: "Modern Qualifier"}
 	);
-	
+
 	ret.set(
 		new Date(2024, 0, 27).toDateString(), {7: "Pioneer Qualifier"}
 	);
