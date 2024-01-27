@@ -129,32 +129,6 @@ function getRCQs() {
 		new Date(2024, 0, 1).toDateString(), {7: "Standard Qualifier"}
 	);
 
-	const cube = "Vintage Cube 64-player Single Elim";
-	addBulkEvents(
-		ret,
-		cube,
-		[ new Date(2023, 11, 20), ],
-		[11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
-	);
-
-	addBulkEvents(
-		ret,
-		cube,
-		[ new Date(2023, 11, 21), new Date(2023, 11, 22), new Date(2023, 11, 23), new Date(2023, 11, 24), 
-		new Date(2023, 11, 25), new Date(2023, 11, 26), new Date(2023, 11, 27), new Date(2023, 11, 28), 
-		new Date(2023, 11, 29), new Date(2023, 11, 30), new Date(2023, 11, 31), new Date(2024, 0, 1), ],
-		[0.5, 1.5, 2.5, 3.5, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
-		13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
-	);
-
-	addBulkEvents(
-		ret,
-		cube,
-		[ new Date(2024, 0, 2), ],
-		[0.5, 1.5, 2.5, 3.5, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
-		13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 22.5],
-	);
-
 	ret.set(
 		new Date(2024, 0, 14).toDateString(), {1: "Modern Qualifier"}
 	);
@@ -169,26 +143,6 @@ function getRCQs() {
 
 	ret.set(
 		new Date(2024, 0, 28).toDateString(), {7: "Limited (RVR) Super Qualifier"}
-	);
-
-	addBulkEvents(
-		ret,
-		cube,
-		[ new Date(2024, 0, 3), new Date(2024, 0, 4), new Date(2024, 0, 5), new Date(2024, 0, 6),
-		new Date(2024, 0, 7), new Date(2024, 0, 8), new Date(2024, 0, 9), new Date(2024, 0, 10),
-		new Date(2024, 0, 11), new Date(2024, 0, 12), new Date(2024, 0, 13), new Date(2024, 0, 14),
-		new Date(2024, 0, 15), new Date(2024, 0, 16), new Date(2024, 0, 17), new Date(2024, 0, 18),
-		new Date(2024, 0, 19), new Date(2024, 0, 20), new Date(2024, 0, 21), new Date(2024, 0, 22),
-		new Date(2024, 0, 23), new Date(2024, 0, 24), new Date(2024, 0, 25), new Date(2024, 0, 26) ],
-		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
-		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
-	);
-
-	addBulkEvents(
-		ret,
-		cube,
-		[ new Date(2024, 0, 27) ],
-		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5]
 	);
 
 	ret.set(
@@ -248,6 +202,7 @@ function getRCQs() {
 	);
 
 	addCurrentYearDSTDates(ret);
+	// addCubeEvents(ret);
 	
 	return ret;
 }
@@ -355,6 +310,55 @@ function addCurrentYearDSTDates(rcqs) {
 	);
 	
 	return rcqs;
+}
+
+function addCubeEvents(rcqs) {
+	const cube = "Vintage Cube 64-player Single Elim";
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2023, 11, 20), ],
+		[11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
+	);
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2023, 11, 21), new Date(2023, 11, 22), new Date(2023, 11, 23), new Date(2023, 11, 24), 
+		new Date(2023, 11, 25), new Date(2023, 11, 26), new Date(2023, 11, 27), new Date(2023, 11, 28), 
+		new Date(2023, 11, 29), new Date(2023, 11, 30), new Date(2023, 11, 31), new Date(2024, 0, 1), ],
+		[0.5, 1.5, 2.5, 3.5, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
+		13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21.5, 22.5, 23.5],
+	);
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2024, 0, 2), ],
+		[0.5, 1.5, 2.5, 3.5, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
+		13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 22.5],
+	);
+
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2024, 0, 3), new Date(2024, 0, 4), new Date(2024, 0, 5), new Date(2024, 0, 6),
+		new Date(2024, 0, 7), new Date(2024, 0, 8), new Date(2024, 0, 9), new Date(2024, 0, 10),
+		new Date(2024, 0, 11), new Date(2024, 0, 12), new Date(2024, 0, 13), new Date(2024, 0, 14),
+		new Date(2024, 0, 15), new Date(2024, 0, 16), new Date(2024, 0, 17), new Date(2024, 0, 18),
+		new Date(2024, 0, 19), new Date(2024, 0, 20), new Date(2024, 0, 21), new Date(2024, 0, 22),
+		new Date(2024, 0, 23), new Date(2024, 0, 24), new Date(2024, 0, 25), new Date(2024, 0, 26) ],
+		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
+		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5]
+	);
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2024, 0, 27) ],
+		[0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5]
+	);
 }
 
 function addBulkEvents(map, event, dates, times) {
