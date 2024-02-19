@@ -154,15 +154,15 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 1, 23).toDateString(), {14: "Legacy Qualifier"}
-	);
-
-	ret.set(
 		new Date(2024, 1, 24).toDateString(), {7: "Limited (MKM) Super Qualifier"}
 	);
 
 	ret.set(
 		new Date(2024, 1, 25).toDateString(), {1: "Limited (MKM) Super Qualifier"}
+	);
+	
+	ret.set(
+		new Date(2024, 2, 1).toDateString(), {14: "Legacy Qualifier"}
 	);
 
 	ret.set(
