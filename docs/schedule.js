@@ -270,7 +270,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2024, 2, 10).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
+		new Date(2024, 2, 10).toDateString(), {4: "Modern Challenge&plus&Modern Challenge (32-player)&minus", 6: "Pioneer Showcase Challenge"}
 	);
 	
 	ret.set(
@@ -278,14 +278,14 @@ function getShowcasesAndLCQs() {
 	);
 
 	let schedule = getBaseSchedule();
-	// 12am Sunday until 7am Wednesday
+	// 11am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
 		if (day === 0) {
 			lcqs[4] = "Modern Challenge";
 			lcqs[8] = "Legacy Showcase Challenge";
 		}
-		for (let hour = 0; hour < 10 || (day < 3 && hour < 24); hour++) {
+		for (let hour = (day == 0 ? 10 : 0); hour < 10 || (day < 3 && hour < 24); hour++) {
 			let event = schedule[24 * day + hour];
 			if (event && event.includes("Prelim") && isMocsFormat(event)) {
 				lcqs[hour] = event.replace("Prelim", "LCQ");
