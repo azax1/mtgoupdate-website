@@ -202,7 +202,7 @@ function getRCQs() {
 	);
 
 	addCurrentYearDSTDates(ret);
-	addCubeEvents(ret);
+	// addCubeEvents(ret);
 	
 	return ret;
 }
