@@ -132,8 +132,8 @@
       i < 200 && today.toDateString() !== "Fri Mar 22 2024";
       i++
     ) {
-      for (let k = 0; k < 3; k++) {
-        let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
+      for (let k = 0; k < 2; k++) {
+        let sched = [rcqSched, showcaseSched][k]; //, getPlaceholderLCQs()][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
             let hour = sched.get(today.toDateString())[j];

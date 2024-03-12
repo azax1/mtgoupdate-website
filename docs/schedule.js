@@ -278,14 +278,14 @@ function getShowcasesAndLCQs() {
 	);
 
 	let schedule = getBaseSchedule();
-	// 11am Sunday until 7am Wednesday
+	// 9am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
 		if (day === 0) {
 			lcqs[4] = "Modern Challenge";
 			lcqs[8] = "Legacy Showcase Challenge";
 		}
-		for (let hour = (day == 0 ? 10 : 0); hour < 10 || (day < 3 && hour < 24); hour++) {
+		for (let hour = 0; hour < 10 || (day < 3 && hour < 24); hour++) {
 			let event = schedule[24 * day + hour];
 			if (event && event.includes("Prelim") && isMocsFormat(event)) {
 				lcqs[hour] = event.replace("Prelim", "LCQ");
@@ -293,6 +293,13 @@ function getShowcasesAndLCQs() {
 		}
 		ret.set(new Date(2024, 2, 17 + day).toDateString(), lcqs);
 	}
+
+	ret.get(new Date(2024, 2, 17).toDateString())[9] = null;
+	ret.get(new Date(2024, 2, 17).toDateString())[11] = "Modern LCQ";
+	ret.get(new Date(2024, 2, 17).toDateString())[15] = "Vintage LCQ";
+	ret.get(new Date(2024, 2, 18).toDateString())[7] = "Vintage LCQ";
+	ret.get(new Date(2024, 2, 19).toDateString())[17] = "Modern Prelim";
+	ret.get(new Date(2024, 2, 20).toDateString())[0] = "Vintage LCQ";
 	
 	return ret;
 }
