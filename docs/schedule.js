@@ -61,7 +61,7 @@ function getBaseSchedule() {
 		`Standard ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
 		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, `Standard ${pr}`, `Modern ${pr}`,
 		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
-		`Modern ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
+		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
 		null, null, `Pioneer ${ch}`, `Standard ${pr}`, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, `Standard ${pr}`, null, null, null, `Modern ${ch} (32-player)`,
 		`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch} (96-player)&plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
