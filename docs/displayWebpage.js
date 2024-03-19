@@ -25,9 +25,9 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  let end = new Date(Date.UTC(2024, 2, 6, 6, 30)).valueOf() / 1000;
+  let end = new Date(Date.UTC(2024, 2, 27, 15, 30)).valueOf() / 1000;
   if (new Date().getTime() < end * 1000) {
-    let start = new Date(Date.UTC(2024, 2, 1, 18, 30)).valueOf() / 1000;
+    let start = new Date(Date.UTC(2024, 2, 20, 17, 30)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
       timeFormat = "h:mma dddd [the] D"
@@ -35,7 +35,7 @@ function displaySchedule(fixSliders = true) {
       timeFormat = "HH:mm dddd [the] D";
     }
     const day1 = moment.unix(start).tz(timeZone).format("D");
-    const suffix1 = day1 === "1" ? "st" : "nd";
+    const suffix1 = day1 === "21" ? "st" : "th";
     const day2 = moment.unix(end).tz(timeZone).format("D");
     const suffix2 = "th";
     document.getElementById("banner").innerHTML = `

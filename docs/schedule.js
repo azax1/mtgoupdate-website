@@ -62,7 +62,7 @@ function getBaseSchedule() {
 		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, null, `Limited ${pr}`, null, null, `Standard ${pr}`, `Modern ${pr}`,
 		`Limited ${pr}`, null, null, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${pr}`, null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
 		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, null, null, `Legacy ${pr}`, null, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
-		null, null, `Pioneer ${ch}`, `Standard ${pr}`, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, `Standard ${pr}`, null, null, null, `Modern ${ch} (32-player)`,
+		null, null, `Pioneer ${ch}`, `Standard ${ch} (32-player)`, `Limited ${ch} (32-player)`, null, `Modern ${ch}`, `Standard ${pr}`, null, null, null, `Modern ${ch} (32-player)`,
 		`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch} (96-player)&plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return ret;
@@ -202,7 +202,7 @@ function getRCQs() {
 	);
 
 	addCurrentYearDSTDates(ret);
-	// addCubeEvents(ret);
+	addCubeEvents(ret);
 	
 	return ret;
 }
@@ -331,16 +331,24 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 2, 1), ],
+		[ new Date(2024, 2, 20), ],
 		[ 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
 	);
 
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 2, 2), new Date(2024, 2, 3), new Date(2024, 2, 4), new Date(2024, 2, 5) ],
+		[ new Date(2024, 2, 21), new Date(2024, 2, 22), new Date(2024, 2, 23), new Date(2024, 2, 24),
+		new Date(2024, 2, 25), new Date(2024, 2, 26) ],
 		[ 0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5,
 		12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
+	);
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2024, 2, 27) ],
+		[ 0.5, 2.5, 4.5, 6.5, 7.5 ],
 	);
 }
 
