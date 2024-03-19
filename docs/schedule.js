@@ -298,7 +298,7 @@ function getShowcasesAndLCQs() {
 	ret.get(new Date(2024, 2, 17).toDateString())[11] = "Modern LCQ";
 	ret.get(new Date(2024, 2, 17).toDateString())[15] = "Vintage LCQ";
 	ret.get(new Date(2024, 2, 18).toDateString())[7] = "Vintage LCQ";
-	ret.get(new Date(2024, 2, 19).toDateString())[17] = "Modern Prelim";
+	ret.get(new Date(2024, 2, 19).toDateString())[17] = "Modern LCQ";
 	ret.get(new Date(2024, 2, 20).toDateString())[0] = "Vintage LCQ";
 	
 	return ret;
@@ -332,7 +332,7 @@ function addCubeEvents(rcqs) {
 		rcqs,
 		cube,
 		[ new Date(2024, 2, 20), ],
-		[ 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
+		[ 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5],
 	);
 
 	addBulkEvents(
