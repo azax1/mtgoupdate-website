@@ -12,7 +12,7 @@ function isMocsFormat(str) {
     str.includes("Pioneer") ||
     str.includes("Modern") ||
     str.includes("Legacy") ||
-    str.includes("Vintage")
+    str.includes("Pauper")
   );
 }
 

@@ -62,7 +62,7 @@ $(function () {
       minDate: new Date(2023, 10, 26),
       defaultDate: new Date(),
       setDate: new Date(),
-      maxDate: new Date(2024, 3, 31),
+      maxDate: new Date(2024, 6, 31),
       onClose: function () {
         var input = $(this).datepicker("getDate");
         if (!input || !(input instanceof Date)) {
