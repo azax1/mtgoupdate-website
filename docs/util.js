@@ -256,11 +256,11 @@ function addTooltip(event) {
                             ${tail} entry fee: 150 PPs or 15 tix.<fbr><fbr>
 
                             Two back-to-back single-elim Vintage Cube drafts.<fbr><fbr>
-                            6 wins: 500 PPs, 24 QPs, 50 treasure chests.<fbr>
-                            5 wins: 350 PPs, 12 QPs, 35 treasure chests.<fbr>
-                            4 wins: 300 PPs, 6 QPs, 20 treasure chests.<fbr>
-                            3 wins: 150 PPs, 3 QPs, 10 treasure chests.<fbr>
-                            2 wins: 150 PPs, 1 QP, 5 treasure chests.<fbr>
+                            6 wins: 750 PPs, 24 QPs, 30 treasure chests.<fbr>
+                            5 wins: 600 PPs, 12 QPs, 20 treasure chests.<fbr>
+                            4 wins: 500 PPs, 6 QPs, 10 treasure chests.<fbr>
+                            3 wins: 400 PPs, 3 QPs, 6 treasure chests.<fbr>
+                            2 wins: 250 PPs, 1 QP, 3 treasure chests.<fbr>
                             </div>
                             </span>
                           `;
