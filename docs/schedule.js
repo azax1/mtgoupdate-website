@@ -126,7 +126,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 4, 12).toDateString(), {7: "Modern Super Qualifier"}
+		new Date(2024, 4, 19).toDateString(), {7: "Modern Super Qualifier"}
 	);
 
 	ret.set(
@@ -142,11 +142,11 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 5, 1).toDateString(), {1: "Legacy Qualifier"}
+		new Date(2024, 5, 1).toDateString(), {1: "Limited (OTJ) Super Qualifier"}
 	);
 
 	ret.set(
-		new Date(2024, 5, 9).toDateString(), {7: "Limited (OTJ) Super Qualifier"}
+		new Date(2024, 5, 2).toDateString(), {1: "Legacy Qualifier"}
 	);
 
 	ret.set(
@@ -225,19 +225,19 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 4, 19).toDateString(), {8: "Modern Showcase Challenge"}
+		new Date(2024, 4, 11).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
 	ret.set(
-		new Date(2024, 4, 25).toDateString(), {7: "Pauper Showcase Challenge"}
-	);
-	
-	ret.set(
-		new Date(2024, 4, 26).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
+		new Date(2024, 4, 12).toDateString(), {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}
 	);
 
 	ret.set(
-		new Date(2024, 5, 2).toDateString(), {4: "Modern Challenge", 8: "Legacy Showcase Challenge"}
+		new Date(2024, 4, 25).toDateString(), {7: "Pauper Showcase Challenge"}
+	);
+
+	ret.set(
+		new Date(2024, 4, 26).toDateString(), {4: "Modern Challenge", 8: "Legacy Showcase Challenge"}
 	);
 
 	ret.set(
