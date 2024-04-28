@@ -122,10 +122,6 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 4, 11).toDateString(), {1: "Limited (OTJ) Qualifier"}
-	);
-
-	ret.set(
 		new Date(2024, 4, 19).toDateString(), {7: "Modern Super Qualifier"}
 	);
 
@@ -142,7 +138,7 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 5, 1).toDateString(), {1: "Limited (OTJ) Super Qualifier"}
+		new Date(2024, 5, 1).toDateString(), {1: "Limited (OTJ) Qualifier"}
 	);
 
 	ret.set(
@@ -150,7 +146,11 @@ function getRCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 5, 15).toDateString(), {7: "Pauper Super Qualifier"}
+		new Date(2024, 5, 8).toDateString(), {7: "Pauper Super Qualifier"}
+	);
+
+	ret.set(
+		new Date(2024, 5, 9).toDateString(), {7: "Limited (OTJ) Super Qualifier"}
 	);
 
 	ret.set(
