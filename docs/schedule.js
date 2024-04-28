@@ -51,8 +51,8 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 function getBaseSchedule() {
 	let ch = "Challenge";
 	let pr = "Prelim";
-	let ret = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch} (96-player)&plus&Modern ${ch}&minus`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch}&plus&Pauper ${ch} (32-player)&minus`, null,
-		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (96-player)&plus&Standard ${ch}&minus`, null, `Limited ${pr}`, null, `Modern ${ch}&plus&Modern ${ch} (32-player)&minus`, null, null, null, null, null,
+	let ret = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch}&plus&Pauper ${ch} (32-player)&minus`, null,
+		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}&plus&Modern ${ch} (32-player)&minus`, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, `Pauper ${pr}`, `Legacy ${pr}`,
 		null, null, `Standard ${pr}`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
 		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, `Pauper ${pr}`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
@@ -63,7 +63,7 @@ function getBaseSchedule() {
 		`Limited ${pr}`, null, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, `Limited ${pr}`, `Modern ${ch} (32-player)`, `Pauper ${pr}`, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
 		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch} (32-player)`, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
 		null, `Modern ${pr}`, `Pioneer ${ch}`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`,
-		`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `Modern ${ch} (96-player)&plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
+		`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return ret;
 }
