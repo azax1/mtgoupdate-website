@@ -11,7 +11,7 @@ function getMonsterSchedule(today) {
 	
 	// the monster schedule of 9 days, from which we will slice the desired 7 days + 1 hour
 	let day = today.getDay();
-	let monsterSched = monsterMonsterSched.slice(24 * (day + 7 - 1), 24 * (day + 7 + 8) + 1);
+	let monsterSched = monsterMonsterSched.slice(24 * (7 + 0), 24 * (7 + 9) + 1);
 
 	insertRCQsShowcasesAndLCQs(monsterSched, today);
 	return monsterSched;

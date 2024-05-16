@@ -51,6 +51,9 @@ function displaySchedule(fixSliders = true) {
       `;
   }
 
+  while (today.getDay() !== 1) {
+    today.setDate(today.getDate() - 1);
+  }
   let schedule = getMonsterSchedule(today);
   let heights = [-1, -1, -1, -1, -1, -1, -1]; // number of lines in each day so I can pad each textbox to be the same height
   let fieldSets = generateFieldsetsForWeek(
@@ -163,7 +166,7 @@ function getSchedulesForWeek(
 
           color = getEventColor(event, isDarkMode, false, false);
           if (today.toDateString() === actualDate.toDateString() && keyDate.valueOf() < today.getTime()) {
-            color = grey;
+              // color = grey;
           }
           let eventString = `<font color= #COLOR>${getPrettyTime(
             hour,
