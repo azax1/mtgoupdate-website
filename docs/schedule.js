@@ -198,7 +198,7 @@ function getRCQs() {
 	);
 
 	addCurrentYearDSTDates(ret);
-	// addCubeEvents(ret);
+	addCubeEvents(ret);
 	
 	return ret;
 }
@@ -304,18 +304,17 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 3, 3), new Date(2024, 3, 4), new Date(2024, 3, 5),
-		new Date(2024, 3, 6), new Date(2024, 3, 7) ],
-		[ 0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
-		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 22.5 ],
+		[ new Date(2024, 4, 16), new Date(2024, 4, 17), new Date(2024, 4, 18),
+			new Date(2024, 4, 19), new Date(2024, 4, 20), new Date(2024, 4, 21), ],
+		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
+		14.5, 16.5, 18.5, 20.5, 22.5 ],
 	);
 
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 3, 8) ],
-		[ 0.5, 2.5, 4.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
-		13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5 ],
+		[ new Date(2024, 4, 22), ],
+		[ 0.5, 2.5, 4.5, 6.5, 8.5 ],
 	);
 }
 
