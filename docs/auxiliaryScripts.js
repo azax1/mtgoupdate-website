@@ -123,6 +123,18 @@ $(function() {
   });
 })
 
+$(function() {
+  let checkbox = $("#rotatingCalendarCheckbox");
+  checkbox.click(function() {
+    if (checkbox.prop("checked")) {
+      localStorage.setItem("calendarStyle", "rotating");
+    } else {
+      localStorage.setItem("calendarStyle", "fixed");
+    }
+    displaySchedule(false);
+  });
+})
+
 $(document).ready(function () {
   $(".chosen-select").chosen();
 });
