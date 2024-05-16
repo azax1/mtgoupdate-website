@@ -51,6 +51,11 @@ function displaySchedule(fixSliders = true) {
       `;
   }
 
+  let greyOutTs = undefined;
+  let now = new Date();
+  if (today.toDateString() === now.toDateString()) {
+    greyOutTs = now.getTime() / 1000;
+  }
   while (today.getDay() !== 1) {
     today.setDate(today.getDate() - 1);
   }
@@ -60,7 +65,8 @@ function displaySchedule(fixSliders = true) {
     schedule,
     new Date(today),
     timeZone,
-    eventFilter
+    eventFilter,
+    greyOutTs
   ); // each day's textbox pre-padding
   let max = 0;
   for (let k = 0; k < 7; k++) {
@@ -90,7 +96,7 @@ function displaySchedule(fixSliders = true) {
     });
 }
 
-function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
+function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter, greyOutTs) {
   let isDarkMode =
     document.querySelector("html").style.getPropertyValue("--bg-color") !==
     "white";
@@ -101,7 +107,8 @@ function generateFieldsetsForWeek(schedule, today, timeZone, eventFilter) {
     new Date(today),
     timeZone,
     eventFilter,
-    isDarkMode
+    isDarkMode,
+    greyOutTs
   );
   for (let i = 0; i < 7; i++) {
     let textboxColor = getTextboxColor(today, isDarkMode);
@@ -127,7 +134,8 @@ function getSchedulesForWeek(
   today,
   timeZone,
   eventFilter,
-  isDarkMode
+  isDarkMode,
+  greyOutTs
 ) {
   let startDate = new Date(today);
   startDate.setDate(startDate.getDate() - 1);
@@ -165,8 +173,8 @@ function getSchedulesForWeek(
           let minute = parseInt(keyDate.format("mm"));
 
           color = getEventColor(event, isDarkMode, false, false);
-          if (today.toDateString() === actualDate.toDateString() && keyDate.valueOf() < today.getTime()) {
-              // color = grey;
+          if (greyOutTs && timestamp < greyOutTs) {
+              color = grey;
           }
           let eventString = `<font color= #COLOR>${getPrettyTime(
             hour,
