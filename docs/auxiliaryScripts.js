@@ -92,26 +92,36 @@ $(function () {
   checkbox.click(function () {
     if (checkbox.prop("checked")) {
       localStorage.setItem("colorScheme", "dark");
-      displaySchedule(false);
     } else {
       localStorage.setItem("colorScheme", "light");
-      displaySchedule(false);
     }
+    displaySchedule(false);
   });
 });
 
 $(function () {
-  let checkbox = $("#hourModeCheckbox");;
+  let checkbox = $("#hourModeCheckbox");
   checkbox.click(function () {
     if (checkbox.prop("checked")) {
       localStorage.setItem("hourMode", "24");
-      displaySchedule(false);
     } else {
       localStorage.setItem("hourMode", "12");
-      displaySchedule(false);
     }
+    displaySchedule(false);
   });
 });
+
+$(function() {
+  let checkbox = $("#startDayCheckbox");
+  checkbox.click(function() {
+    if (checkbox.prop("checked")) {
+      localStorage.setItem("startsOnSunday", "true");
+    } else {
+      localStorage.setItem("startsOnSunday", "false");
+    }
+    displaySchedule(false);
+  });
+})
 
 $(document).ready(function () {
   $(".chosen-select").chosen();

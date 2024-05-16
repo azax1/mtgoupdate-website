@@ -5,6 +5,9 @@ function displaySchedule(fixSliders = true) {
 
     let checkbox2 = $("#hourModeCheckbox");
     checkbox2.prop("checked", getHourMode() === "24");
+
+    let checkbox3 = $("#startDayCheckbox");
+    checkbox3.prop("checked", localStorage.getItem("startsOnSunday") === "true");
   }
   let today, timeZone, eventFilter;
   [today, timeZone, eventFilter] = initializePageAndParameters();
@@ -56,7 +59,11 @@ function displaySchedule(fixSliders = true) {
   if (today.toDateString() === now.toDateString()) {
     greyOutTs = now.getTime() / 1000;
   }
-  while (today.getDay() !== 1) {
+  let startingDay = 1; // Monday
+  if (localStorage.getItem("startsOnSunday") === "true") {
+    startingDay = 0;
+  }
+  while (today.getDay() !== startingDay) {
     today.setDate(today.getDate() - 1);
   }
   let schedule = getMonsterSchedule(today);
