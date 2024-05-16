@@ -112,18 +112,6 @@ $(function () {
 });
 
 $(function() {
-  let checkbox = $("#startDayCheckbox");
-  checkbox.click(function() {
-    if (checkbox.prop("checked")) {
-      localStorage.setItem("startsOnSunday", "true");
-    } else {
-      localStorage.setItem("startsOnSunday", "false");
-    }
-    displaySchedule(false);
-  });
-})
-
-$(function() {
   let checkbox = $("#rotatingCalendarCheckbox");
   checkbox.click(function() {
     if (checkbox.prop("checked")) {

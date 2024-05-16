@@ -8,9 +8,6 @@ function displaySchedule(fixSliders = true) {
 
     let checkbox3 = $("#rotatingCalendarCheckbox");
     checkbox3.prop("checked", localStorage.getItem("calendarStyle") === "rotating");
-
-    let checkbox4 = $("#startDayCheckbox");
-    checkbox4.prop("checked", localStorage.getItem("startsOnSunday") === "true");
   }
   let today, timeZone, eventFilter;
   [today, timeZone, eventFilter] = initializePageAndParameters();
@@ -63,11 +60,7 @@ function displaySchedule(fixSliders = true) {
     greyOutTs = now.getTime() / 1000;
   }
   if (localStorage.getItem("calendarStyle") !== "rotating") {
-    let startingDay = 1; // Monday
-    if (localStorage.getItem("startsOnSunday") === "true") {
-      startingDay = 0;
-    }
-    while (today.getDay() !== startingDay) {
+    while (today.getDay() !== 1) {
       today.setDate(today.getDate() - 1);
     }
   }
