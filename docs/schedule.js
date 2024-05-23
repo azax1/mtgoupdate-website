@@ -305,7 +305,9 @@ function addCubeEvents(rcqs) {
 		rcqs,
 		cube,
 		[ new Date(2024, 4, 16), new Date(2024, 4, 17), new Date(2024, 4, 18),
-			new Date(2024, 4, 19), new Date(2024, 4, 20), new Date(2024, 4, 21), ],
+		new Date(2024, 4, 19), new Date(2024, 4, 20), new Date(2024, 4, 21), 
+		new Date(2024, 4, 22), new Date(2024, 4, 23), new Date(2024, 4, 24),
+		new Date(2024, 4, 25), new Date(2024, 4, 26), ],
 		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
 		14.5, 16.5, 18.5, 20.5, 22.5 ],
 	);
@@ -313,8 +315,9 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 4, 22), ],
-		[ 0.5, 2.5, 4.5, 6.5, 8.5 ],
+		[ new Date(2024, 4, 27), ],
+		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
+			14.5, 16.5, 18.5, 20.5 ],
 	);
 }
 
