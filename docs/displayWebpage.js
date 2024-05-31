@@ -48,10 +48,13 @@ function displaySchedule(fixSliders = true) {
       `;
   } else {
     document.getElementById("banner").innerHTML = `
-      <center>
-      mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
-      </center>
-      `;
+      Don't like the fixed calendar where the first day is always Monday? You can switch back in the Settings gear.
+    `;
+    // document.getElementById("banner").innerHTML = `
+    //   <center>
+    //   mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
+    //   </center>
+    //   `;
   }
 
   let greyOutTs = undefined;
