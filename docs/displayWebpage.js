@@ -28,7 +28,7 @@ function displaySchedule(fixSliders = true) {
       .tz(timeZone)
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
-  let end = new Date(Date.UTC(2024, 4, 28, 3, 30)).valueOf() / 1000;
+  let end = new Date(Date.UTC(2024, 6, 11, 15, 30)).valueOf() / 1000;
   if (new Date().getTime() < end * 1000) {
     // let start = new Date(Date.UTC(2024, 2, 29, 23, 30)).valueOf() / 1000;
     let timeFormat;
@@ -40,7 +40,7 @@ function displaySchedule(fixSliders = true) {
     // const day1 = moment.unix(start).tz(timeZone).format("D");
     // const suffix1 = "th";
     const day2 = moment.unix(end).tz(timeZone).format("D");
-    const suffix2 = (day2 === "22") ? "nd" : (day2 === "23" ? "rd" : "th");
+    const suffix2 = "th";
     document.getElementById("banner").innerHTML = `
       <center>There are 64-player Vintage Cube events every few hours until 
       ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>

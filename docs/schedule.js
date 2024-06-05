@@ -301,13 +301,19 @@ function addCurrentYearDSTDates(rcqs) {
 function addCubeEvents(rcqs) {
 	const cube = "Vintage Cube 64-player Single Elim";
 
+
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 4, 16), new Date(2024, 4, 17), new Date(2024, 4, 18),
-		new Date(2024, 4, 19), new Date(2024, 4, 20), new Date(2024, 4, 21), 
-		new Date(2024, 4, 22), new Date(2024, 4, 23), new Date(2024, 4, 24),
-		new Date(2024, 4, 25), new Date(2024, 4, 26), ],
+		[ new Date(2024, 5, 5)  ],
+		[ 10.5, 12.5, 14.5, 16.5, 18.5, 20.5, 22.5 ],
+	);
+
+	addBulkEvents(
+		rcqs,
+		cube,
+		[ new Date(2024, 5, 6), new Date(2024, 5, 7), new Date(2024, 5, 8),
+		new Date(2024, 5, 9), new Date(2024, 5, 10)  ],
 		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
 		14.5, 16.5, 18.5, 20.5, 22.5 ],
 	);
@@ -315,9 +321,8 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 4, 27), ],
-		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
-			14.5, 16.5, 18.5, 20.5 ],
+		[ new Date(2024, 5, 11)  ],
+		[ 0.5, 2.5, 4.5, 6.5, 8.5 ],
 	);
 }
 
