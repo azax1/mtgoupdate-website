@@ -7,7 +7,7 @@ function displaySchedule(fixSliders = true) {
     checkbox2.prop("checked", getHourMode() === "24");
 
     let checkbox3 = $("#rotatingCalendarCheckbox");
-    checkbox3.prop("checked", localStorage.getItem("calendarStyle") === "rotating");
+    checkbox3.prop("checked", localStorage.getItem("calendarStyle") !== "fixed");
   }
   let today, timeZone, eventFilter;
   [today, timeZone, eventFilter] = initializePageAndParameters();
@@ -62,7 +62,7 @@ function displaySchedule(fixSliders = true) {
   if (today.toDateString() === now.toDateString()) {
     greyOutTs = now.getTime() / 1000;
   }
-  if (localStorage.getItem("calendarStyle") !== "rotating") {
+  if (localStorage.getItem("calendarStyle") === "fixed") {
     while (today.getDay() !== 1) {
       today.setDate(today.getDate() - 1);
     }
