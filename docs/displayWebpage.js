@@ -47,14 +47,14 @@ function displaySchedule(fixSliders = true) {
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
   } else {
-    document.getElementById("banner").innerHTML = `
-      Don't like the fixed calendar where the first day is always Monday? You can switch back in the Settings gear.
-    `;
     // document.getElementById("banner").innerHTML = `
-    //   <center>
-    //   mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
-    //   </center>
-    //   `;
+    //   Don't like the fixed calendar where the first day is always Monday? You can switch back in the Settings gear.
+    // `;
+    document.getElementById("banner").innerHTML = `
+      <center>
+      mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
+      </center>
+      `;
   }
 
   let greyOutTs = undefined;
