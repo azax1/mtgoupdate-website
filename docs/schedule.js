@@ -241,10 +241,6 @@ function getShowcasesAndLCQs() {
 	);
 
 	ret.set(
-		new Date(2024, 5, 11).toDateString(), { 13 : null } // no Modern Challenge on MH3 release day
-	);
-
-	ret.set(
 		new Date(2024, 5, 22).toDateString(), {8: "Modern Showcase Challenge"}
 	);
 	
