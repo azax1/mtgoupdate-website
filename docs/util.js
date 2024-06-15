@@ -273,11 +273,11 @@ function addTooltip(event) {
                               <span class=\"tooltip\">
                               <span class=\"tooltip-text\">${tail}</span>
                               <div class=\"tooltip-content\">
-                              Limited ${tail} entry fee: 300 PPs or 30 tix.<fbr><fbr>
+                              Limited ${tail} entry fee: 400 PPs or 40 tix.<fbr><fbr>
 
-                              4-0: 40 QPs, 600 PPs.<fbr>
-                              3-1: 20 QPs, 300 PPs.<fbr>
-                              2-2: 10 QPs, 150 PPs.<fbr>
+                              4-0: 40 QPs, 800 PPs.<fbr>
+                              3-1: 20 QPs, 500 PPs.<fbr>
+                              2-2: 10 QPs, 250 PPs.<fbr>
                               </div>
                               </span>
                             `;
