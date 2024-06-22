@@ -52,7 +52,7 @@ function getBaseSchedule() {
 	let ch = "Challenge";
 	let pr = "Prelim";
 	let ret = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch}`, null,
-		`Limited ${ch} (32-player)`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Standard ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, null, null, null, null,
+		`Limited ${ch} (32-player)`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, null, null, null, null,
 		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, `Pauper ${pr}`, `Legacy ${pr}`,
 		null, null, `Standard ${pr}`, `Modern ${pr}`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
 		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, `Pauper ${pr}`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
