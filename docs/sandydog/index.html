@@ -138,6 +138,7 @@
           for (let j = 0; j < 24; j++) {
             let hour = sched.get(today.toDateString())[j];
             let events = hour ? hour.split("&") : [null];
+            let seenPlus = false;
             for (let index = 0; index < events.length; index++) {
               event = events[index];
               if (event != null) {
@@ -150,14 +151,17 @@
                 let time = `${today.getFullYear()}-${monthPadding}${
                   today.getMonth() + 1
                 }-${datePadding}${today.getDate()}`;
-                time += (j < 10 ? " 0" : " ") + j + ":00";
-                let format = "ha";
+                time += (j < 10 ? " 0" : " ") + j + (seenPlus ? ":30" : ":00");
+                let format = seenPlus ? "h:ma" : "ha";
                 let timestamp = moment.tz(time, "America/Los_Angeles").unix();
                 if (instant <= timestamp * 1000) {
                   if (event.includes("Super")) {
                     supers++;
                   } else if (event.includes("Showcase Qualifier") || event.includes("Showcase Open") || event.includes("Single Elim")
-                            || event.includes("plus") || event.includes("minus") || event.includes("Prelim")) {
+                            || event.includes("minus") || event.includes("Prelim")) {
+                    continue;
+                  } else if (event.includes("plus")) {
+                    seenPlus = true;
                     continue;
                   } else if (
                     event.includes("Qualifier") ||

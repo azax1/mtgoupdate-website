@@ -198,7 +198,7 @@ function getRCQs() {
 	);
 
 	addCurrentYearDSTDates(ret);
-	// addCubeEvents(ret);
+	addCubeEvents(ret);
 	
 	return ret;
 }
@@ -252,10 +252,6 @@ function getShowcasesAndLCQs() {
 		new Date(2024, 6, 6).toDateString(), {7: "Pauper Showcase Challenge"}
 	);
 
-	ret.set(
-		new Date(2024, 6, 7).toDateString(), {4: "Modern Challenge", 8: "Legacy Showcase Challenge"}
-	);
-
 	let schedule = getBaseSchedule();
 	// 9am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
@@ -263,15 +259,26 @@ function getShowcasesAndLCQs() {
 		if (day === 0) {
 			lcqs[4] = "Modern Challenge";
 			lcqs[8] = "Legacy Showcase Challenge";
-		}
-		for (let hour = 0; hour < 10 || (day < 3 && hour < 24); hour++) {
-			let event = schedule[24 * day + hour];
-			if (event && event.includes("Prelim") && isMocsFormat(event)) {
-				lcqs[hour] = event.replace("Prelim", "LCQ");
+			lcqs[9] = null;
+			lcqs[11] = "Modern LCQ";
+		} else {
+			for (let hour = 0; hour < 8 || (day < 3 && hour < 24); hour++) {
+				let event = schedule[24 * day + hour];
+				if (event && event.includes("Prelim") && isMocsFormat(event)) {
+					lcqs[hour] = event.replace("Prelim", "LCQ");
+				}
 			}
 		}
 		ret.set(new Date(2024, 6, 7 + day).toDateString(), lcqs);
 	}
+
+	ret.get(new Date(2024, 6, 8).toDateString())[15] = "Modern LCQ&plus&Pauper LCQ&minus";
+	ret.get(new Date(2024, 6, 9).toDateString())[11] = null;
+	ret.get(new Date(2024, 6, 9).toDateString())[12] = "plus&Legacy LCQ&minus";
+	ret.get(new Date(2024, 6, 9).toDateString())[16] = null;
+	ret.get(new Date(2024, 6, 9).toDateString())[18] = "Pauper LCQ";
+	ret.get(new Date(2024, 6, 10).toDateString())[2] = null;
+	ret.get(new Date(2024, 6, 10).toDateString())[5] = "Pauper LCQ";
 
 	return ret;
 }
@@ -305,15 +312,15 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 5, 5)  ],
-		[ 10.5, 12.5, 14.5, 16.5, 18.5, 20.5, 22.5 ],
+		[ new Date(2024, 6, 2)  ],
+		[ 12.5, 14.5, 16.5, 18.5, 20.5, 22.5 ],
 	);
 
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 5, 6), new Date(2024, 5, 7), new Date(2024, 5, 8),
-		new Date(2024, 5, 9), new Date(2024, 5, 10)  ],
+		[ new Date(2024, 6, 3), new Date(2024, 6, 4), new Date(2024, 6, 5),
+		new Date(2024, 6, 6), new Date(2024, 6, 7), new Date(2024, 6, 8) ],
 		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5,
 		14.5, 16.5, 18.5, 20.5, 22.5 ],
 	);
@@ -321,8 +328,8 @@ function addCubeEvents(rcqs) {
 	addBulkEvents(
 		rcqs,
 		cube,
-		[ new Date(2024, 5, 11)  ],
-		[ 0.5, 2.5, 4.5, 6.5, 8.5 ],
+		[ new Date(2024, 6, 9)  ],
+		[ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5, 14.5, 16.5, 18.5 ],
 	);
 }
 
