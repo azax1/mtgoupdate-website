@@ -32,7 +32,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 				if (todayEvents[j] !== undefined) {
 					let event = todayEvents[j];
 					index = 24 * i + j;
-					if (!isReplacement || (event != null && event.includes("Pauper"))) {
+					if (!isReplacement || (event != null && event.includes("Pauper Showcase"))) {
 						if (monster[index]) {
 							monster[index] = monster[index] + "&" + event;
 						} else {
