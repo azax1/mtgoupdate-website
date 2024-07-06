@@ -34,7 +34,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 					index = 24 * i + j;
 					if (!isReplacement || (event != null && event.includes("Pauper Showcase"))) {
 						if (monster[index]) {
-							monster[index] = monster[index] + "&" + event;
+							monster[index] = event + "&" + monster[index];
 						} else {
 							monster[index] = event;
 						}
@@ -249,7 +249,7 @@ function getShowcasesAndLCQs() {
 	);
 	
 	ret.set(
-		new Date(2024, 6, 6).toDateString(), {7: "Pauper Showcase Challenge"}
+		new Date(2024, 6, 6).toDateString(), {8: "Pauper Showcase Challenge"}
 	);
 
 	let schedule = getBaseSchedule();
