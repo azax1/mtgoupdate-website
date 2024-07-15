@@ -71,7 +71,8 @@ function getShowcasesAndLCQs() {
 		([year, month, day, events]) => ret.set(new Date(year, month, day).toDateString(), events)
 	);
 
-	let schedule = getBaseSchedule();
+	const schedule = getBaseSchedule();
+	const [lcqYear, lcqMonth, lcqDay] = getLCQStartDate();
 	// 9am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
 		let lcqs = {};
@@ -83,7 +84,7 @@ function getShowcasesAndLCQs() {
 				}
 			}
 		}
-		ret.set(new Date(2024, 6, 7 + day).toDateString(), lcqs);
+		ret.set(new Date(lcqYear, lcqMonth, lcqDay + day).toDateString(), lcqs);
 	}
 
 	getHackishLCQCorrections().forEach(

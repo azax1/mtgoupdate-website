@@ -1,25 +1,38 @@
 function getBaseSchedule() {
-	let ch = "Challenge";
-	let pr = "Prelim";
-	let ret = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null, `Pioneer ${ch}`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch}`, null,
-		`Limited ${ch} (32-player)`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, null, null, null, null,
-		`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null, null, `Modern ${pr}`, null, `Limited ${pr}`, `Pauper ${pr}`, `Legacy ${pr}`,
-		null, null, `Standard ${pr}`, `Modern ${pr}`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Vintage ${pr}`, `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null,
-		`Limited ${pr}`, null, null, `Modern ${pr}`, null, null, null, `Pioneer ${pr}`, `Pauper ${pr}`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
-		null, `Modern ${ch}&plus&Modern ${ch} (32-player)&minus`, null, `Pioneer ${pr}`, `Limited ${pr}`, `Modern ${pr}`, `Standard ${pr}`, `Legacy ${pr}`, null, null, null, null,
-		`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null, `Pioneer ${pr}`, `Limited ${pr}`, null, `Modern ${pr}`, null, `Limited ${pr}`,
-		`Standard ${pr}`, `Pioneer ${pr}`, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Limited ${pr}`, null, `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null,
-		`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null, `Modern ${ch} (32-player)`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Pauper ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
-		`Limited ${pr}`, null, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Legacy ${pr}`, `Limited ${pr}`, `Modern ${ch} (32-player)`, `Pauper ${pr}`, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null,
-		`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch} (32-player)`, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
-		null, `Modern ${pr}`, `Pioneer ${ch}`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`,
-		`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
-		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null, `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
-	return ret;
+	const ch = "Challenge";
+	const pr = "Prelim";
+	const sun = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null,
+        `Pioneer ${ch}`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch}`, null,
+		`Limited ${ch} (32-player)`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null,
+        `Modern ${ch}`, null, null, null, null, null];
+    const mon = [`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, null,
+        null, `Modern ${pr}`, null, `Limited ${pr}`, `Pauper ${pr}`, `Legacy ${pr}`,
+		null, null, `Standard ${pr}`, `Modern ${pr}`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Vintage ${pr}`,
+        `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null];
+    const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
+        null, `Pioneer ${pr}`, `Pauper ${pr}`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
+		null, `Modern ${ch}&plus&Modern ${ch} (32-player)&minus`, null, `Pioneer ${pr}`, `Limited ${pr}`, `Modern ${pr}`,
+        `Standard ${pr}`, `Legacy ${pr}`, null, null, null, null];
+    const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
+        `Pioneer ${pr}`, `Limited ${pr}`, null, `Modern ${pr}`, null, `Limited ${pr}`,
+		`Standard ${pr}`, `Pioneer ${pr}`, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Limited ${pr}`, null,
+        `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null];
+    const thur = [`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, null,
+        `Modern ${ch} (32-player)`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Pauper ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
+		`Limited ${pr}`, null, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Legacy ${pr}`, `Limited ${pr}`, `Modern ${ch} (32-player)`,
+        `Pauper ${pr}`, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null];
+    const fri = [`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
+        `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch} (32-player)`, `Standard ${pr}`, `Limited ${pr}`, `Vintage ${pr}`,
+		null, `Modern ${pr}`, `Pioneer ${ch}`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`,
+        `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
+    const sat = [`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null,
+        `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
+		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null,
+        `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
+	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
 
 function getRCQData() {
-    // TODO infer year data
     return [
             [2024, 2, 23, {8: "Modern Showcase Qualifier (invite-only)"}],
             [2024, 2, 24, {6: "Pioneer Showcase Qualifier (invite-only)"}],
@@ -56,7 +69,6 @@ function getRCQData() {
 }
 
 function getShowcaseData() {
-    // TODO infer year data
     return [
             [2024, 3, 13, {8: "Modern Showcase Challenge"}],
             [2024, 3, 14, {4: "Modern Challenge", 6: "Pioneer Showcase Challenge"}],
@@ -73,7 +85,6 @@ function getShowcaseData() {
 }
 
 function getHackishLCQCorrections() {
-    // TODO infer year data
     return [
         [2024, 6, 7, 4, "Modern Challenge"],
         [2024, 6, 7, 8, "Legacy Showcase Challenge"],
@@ -90,7 +101,6 @@ function getHackishLCQCorrections() {
 }
 
 function getCubeEvents() {
-    // TODO infer year data
     return [
             [
                 [ [2024, 6, 2] ],
@@ -107,9 +117,24 @@ function getCubeEvents() {
         ];
 }
 
+function getInferredYear(today, proposedMonth) {
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth() + 1;
+    if (proposedMonth - currentMonth > 5) {
+        return currentYear - 1;
+    } else if (currentMonth - proposedMonth > 5) {
+        return currentYear + 1;
+    }
+    return currentYear;
+}
+
 function getCurrentYearDSTDates() {
 	let year = new Date().getFullYear();
 	let march = new Date(year, 2, 8 + ((7 - new Date(year, 2, 1).getDay()) % 7));
 	let nov = new Date(year, 10, 1 + ((7 - new Date(year, 10, 1).getDay()) % 7));
     return [march, nov];
+}
+
+function getLCQStartDate() {
+    return [2024, 10, 24];
 }
