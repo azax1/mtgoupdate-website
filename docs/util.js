@@ -3,7 +3,9 @@ function isPremier(event) {
     event.includes("Qualifier") ||
     event.includes("Showcase") ||
     event.includes("LCQ") ||
-    event.includes("Eternal Weekend")
+    event.includes("Eternal Weekend") ||
+    event.includes("Single Elim") ||
+    event.includes("Vegas")
   );
 }
 
@@ -112,7 +114,9 @@ function initializePageAndParameters(
     formatSelector = (event) => {
       return (
         formatChoices.filter((format) => {
-          if (format !== "Vintage") {
+          if (format === "Cube") {
+            return event.includes(format) || event.includes("Vegas");
+          } else if (format !== "Vintage") {
             return event.includes(format);
           } else {
             return event.includes(format) && !event.includes("Cube");
@@ -253,14 +257,10 @@ function addTooltip(event) {
                             <span class=\"tooltip\">
                             <span class=\"tooltip-text\">${tail}</span>
                             <div class=\"tooltip-content\">
-                            ${tail} entry fee: 150 PPs or 15 tix.<fbr><fbr>
+                            ${tail} entry fee: Limited Championship token from a Cube Feeder league.<fbr><fbr>
 
                             Two back-to-back single-elim Vintage Cube drafts.<fbr><fbr>
-                            6 wins: 750 PPs, 24 QPs, 30 treasure chests.<fbr>
-                            5 wins: 600 PPs, 12 QPs, 20 treasure chests.<fbr>
-                            4 wins: 500 PPs, 6 QPs, 10 treasure chests.<fbr>
-                            3 wins: 400 PPs, 3 QPs, 6 treasure chests.<fbr>
-                            2 wins: 250 PPs, 1 QP, 3 treasure chests.<fbr>
+                            6 wins: Qualifier token for a Vegas qualifier.
                             </div>
                             </span>
                           `;
@@ -295,6 +295,16 @@ function addTooltip(event) {
                               </span>
                             `;
       }
+    } else if (arr[arr.length - 2] === "Vegas") {
+      arr[arr.length - 1] =  `
+                              <span class=\"tooltip\">
+                              <span class=\"tooltip-text\">${tail}</span>
+                              <div class=\"tooltip-content\">
+                              Entry fee: Vegas Qualifier invitation token.<fbr><fbr>
+                              Single-Elim draft. Winner qualifies for the in-person Vegas Cube event.
+                              </div>
+                              </span>
+                            `
     } else if (tail === "Qualifier") {
       arr[arr.length - 1] = `
                             <span class=\"tooltip\">

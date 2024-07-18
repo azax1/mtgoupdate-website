@@ -58,6 +58,7 @@ function getRCQs() {
 	);
 	addCurrentYearDSTDates(ret);
 	addCubeEvents(ret);
+	addVegasQualifiers(ret);
 	
 	return ret;
 }
@@ -114,7 +115,11 @@ function addCurrentYearDSTDates(rcqs) {
 }
 
 function addCubeEvents(rcqs) {
-	getCubeEvents().forEach(([dates, times]) => addBulkEvents(rcqs, "Vintage Cube 64-player Single Elim", dates, times));
+	getCubeEvents().forEach(([dates, times]) => addBulkEvents(rcqs, "Cube 64-player Single Elim", dates, times));
+}
+
+function addVegasQualifiers(rcqs) {
+	getVegasQualifiers().forEach(([dates, times]) => addBulkEvents(rcqs, "Vegas Qualifier", dates, times));
 }
 
 function addBulkEvents(map, eventName, dates, times) {
