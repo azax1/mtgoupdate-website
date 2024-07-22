@@ -34,7 +34,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 					index = 24 * i + j;
 					if (!isReplacement || (event != null && event.includes("Pauper Showcase"))) {
 						if (monster[index]) {
-							monster[index] =  monster[index] + "&" + event;
+							monster[index] =  insertEvent(monster[index], event);
 						} else {
 							monster[index] = event;
 						}
@@ -45,6 +45,21 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 			}
 		}
 		day.setDate(day.getDate() + 1);
+	}
+}
+
+function insertEvent(normal, special) {
+	const delim = "plus&";
+	if (!normal.includes(delim) && !special.includes(delim)) {
+		return normal + "&" + special;
+	} else if (normal.includes(delim) !== special.includes(delim)) {
+		if (normal.includes(delim)) {
+			return special + "&" + normal;
+		} else {
+			return normal + "&" + special;
+		}
+	} else {
+		return normal.split("&minus")[0] + "&" + special.split(delim)[1];
 	}
 }
 
