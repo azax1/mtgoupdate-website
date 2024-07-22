@@ -46,7 +46,7 @@ function getRCQData() {
             [8, 23, {14: "Limited (BLB) Super Qualifier"}],
             [8, 30, {14: "Modern Super Qualifier"}],
             [8, 31, {7: "Vintage Qualifier"}],
-            [9, 1, {7: "Limited (BLB) Super Qualifier"}],
+            [9, 1, {7: "Limited (BLB) Qualifier"}],
             [9, 2, {7: "Pioneer Qualifier"}],
             [9, 7, {7: "Limited (BLB) Qualifier"}],
             [9, 8, {7: "Modern Super Qualifier"}],
