@@ -29,6 +29,8 @@ function setColorMode(mode) {
     document.querySelector("html").style.setProperty("--text-color", yellow);
     document.querySelector("html").style.setProperty("--banner-color", "#023020");
 
+    document.querySelectorAll(".faqAnswer").forEach(elem => elem.style.color = "#DCDCDC");
+
     document
       .querySelector("html")
       .style.setProperty("--fresh-link-color", "#ADD8E6");
@@ -50,6 +52,8 @@ function setColorMode(mode) {
       .style.setProperty("--off-bg-color", "#f0f0f0");
     document.querySelector("html").style.setProperty("--text-color", black);
     document.querySelector("html").style.setProperty("--banner-color", red);
+
+    document.querySelectorAll(".faqAnswer").forEach(elem => elem.style.color = black);
 
     document
       .querySelector("html")
