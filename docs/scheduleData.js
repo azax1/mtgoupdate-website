@@ -60,6 +60,12 @@ function getRCQData() {
             [10, 25, {14: "Limited (DSK) Qualifier"}],
             [10, 26, {1: "Limited (DSK) Qualifier"}],
             [10, 27, {1: "Standard Qualifier"}],
+            [11, 30, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [12, 1, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            [12, 7, {6: "Standard Showcase Qualifier (invite-only)"}],
+            [12, 8, {6: "Pioneer Showcase Qualifier (invite-only)"}],
+            [12, 14, {7: "Limited (TBD) MOCS Showcase Open"}],
+            [12, 15, {7: "Limited (TBD) MOCS Showcase Open"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
