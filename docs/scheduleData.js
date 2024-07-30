@@ -74,15 +74,15 @@ function getShowcaseData() {
             [10, 20, {6: "Pioneer Showcase Challenge"}],
             [11, 2, {8: "Modern Showcase Challenge"}],
             [11, 16, {8: "Modern Showcase Challenge"}],
-            [11, 17, {6: "Pioneer Showcase Challenge"}],
+            [11, 17, {8: "Legacy Showcase Challenge"}],
             [11, 23, {6: "Standard Showcase Challenge"}],
-            [11, 24, {8: "Legacy Showcase Challenge"}],
+            [11, 24, {6: "Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getHackishLCQCorrections() {
     return [
-        [11, 24, 8, "Legacy Showcase Challenge"],
+        [11, 24, 6, "Pioneer Showcase Challenge"],
     ].map(supplyYearAndDecrementMonth);
 }
 
