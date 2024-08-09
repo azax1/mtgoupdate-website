@@ -1,7 +1,7 @@
 function getBaseSchedule() {
 	const ch = "Challenge";
 	const pr = "Prelim";
-	const sun = [`Vintage ${ch}`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null,
+	const sun = [`Vintage ${ch} (32-player)`, `Limited ${pr}`, null, `Limited ${ch} (32-player)`, `Modern ${ch}`, null,
         `Pioneer ${ch} (32-player)`, null, `Legacy ${ch}`, `Modern ${pr}`, `Pauper ${ch} (32-player)`, null,
 		`Limited ${ch} (32-player)`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Standard ${ch} (32-player)`, null, `Limited ${pr}`, null,
         `Modern ${ch}`, null, null, null, null, null];
@@ -21,12 +21,12 @@ function getBaseSchedule() {
         `Modern ${ch} (32-player)`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Pauper ${pr}`, `Standard ${pr}`, `Modern ${pr}`,
 		`Limited ${pr}`, null, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Legacy ${pr}`, `Limited ${pr}`, `Modern ${ch} (32-player)`,
         `Pauper ${pr}`, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null];
-    const fri = [`Limited ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
+    const fri = [`Modern ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch} (32-player)`, `Limited ${pr}`, `Standard ${ch} (32-player)`, `Vintage ${pr}`,
-		null, `Modern ${pr}`, `Pioneer ${ch}`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`,
+		`Limited ${pr}`, `Modern ${pr}`, `Pioneer ${ch}`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`,
         `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
     const sat = [`Pioneer ${pr}`, `Limited ${pr}`, `Pauper ${ch}`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`, null,
-        `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, null, `Vintage ${ch}`, null,
+        `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, null, `Vintage ${ch} (32-player)`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null,
         `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
