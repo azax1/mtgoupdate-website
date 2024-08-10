@@ -52,7 +52,7 @@ function displaySchedule(fixSliders = true) {
     // `;
     document.getElementById("banner").innerHTML = `
       <center>
-      mtgoupdate has a Patreon! <a href="https://www.patreon.com/mtgoupdate">Click here</a> to become a patron.
+      Thanks for using mtgoupdate! Please consider supporting this project via <a href="https://www.patreon.com/mtgoupdate">Patreon</a> or <a href="https://ko-fi.com/mtgoupdate">ko-fi</a>.
       </center>
       `;
   }
