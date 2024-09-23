@@ -78,6 +78,7 @@ function getShowcaseData() {
             [9, 16, {5: null, 8: null}],
             [9, 18, {8: null, 17: null}],
             [9, 19, {5: null, 9: null}],
+            [9, 23, {5: null, 8: null}],
             [9, 22, {8: "Legacy Showcase Challenge"}],
             [10, 19, {6: "Standard Showcase Challenge"}],
             [10, 20, {6: "Pioneer Showcase Challenge"}],
