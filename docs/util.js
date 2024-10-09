@@ -142,6 +142,10 @@ function initializePageAndParameters(
         {
           if (eventType === "Challenge") {
             return event.includes(eventType) && !event.includes("Showcase Challenge");
+          } else if (eventType === "Qualifier") {
+            return event.includes(eventType) && !event.includes("Showcase Qualifier");
+          } else if (eventType === "Showcase") {
+            return event.includes("Showcase Qualifier");
           } else if (eventType !== "Hide") {
             return event.includes(eventType) || (eventType === "Showcase Challenge" && event.includes("Showcase Open"));
           } else {
