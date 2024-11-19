@@ -95,6 +95,11 @@ function getShowcaseData() {
 function getHackishLCQCorrections() {
     return [
         [11, 24, 6, "Pioneer Showcase Challenge"],
+        [11, 24, 9, null],
+        [11, 24, 11, "Modern LCQ"],
+        [11, 26, 5, "Standard LCQ"],
+        [11, 26, 12, "Standard LCQ"],
+        [11, 27, 2, null],
     ].map(supplyYearAndDecrementMonth);
 }
 
