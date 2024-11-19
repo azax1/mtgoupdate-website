@@ -189,6 +189,7 @@ function verbosify(event) {
 }
 
 function addTooltip(event) {
+  return event;
   let arr = event.split(" ");
   tail = arr[arr.length - 2] + " " + arr[arr.length - 1];
   if (tail === "Showcase Challenge") {
