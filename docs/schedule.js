@@ -91,7 +91,7 @@ function getShowcasesAndLCQs() {
 	const [lcqYear, lcqMonth, lcqDay] = getLCQStartDate();
 	// 9am Sunday until 7am Wednesday
 	for (let day = 0; day < 4; day++) {
-		let lcqs = {};
+		let lcqs = ret.get(new Date(lcqYear, lcqMonth, lcqDay + day).toDateString()) || {};
 		if (day > 0) {
 			for (let hour = 0; hour < 9 || (day < 3 && hour < 24); hour++) {
 				let event = schedule[24 * day + hour];

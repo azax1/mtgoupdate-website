@@ -11,10 +11,10 @@ function isPremier(event) {
 
 function isMocsFormat(str) {
   return (
-    str.includes("Pioneer") ||
+    str.includes("Standard") ||
     str.includes("Modern") ||
     str.includes("Legacy") ||
-    str.includes("Standard")
+    str.includes("Vintage")
   );
 }
 
