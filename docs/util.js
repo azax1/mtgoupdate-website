@@ -18,6 +18,10 @@ function isMocsFormat(str) {
   );
 }
 
+function isCubeTime() {
+  return false;
+}
+
 function getHourMode() {
   if (localStorage.getItem("hourMode") === "24") {
     return "24";
