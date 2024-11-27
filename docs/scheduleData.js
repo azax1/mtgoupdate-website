@@ -73,6 +73,7 @@ function getRCQData() {
 
 function getShowcaseData() {
     return [
+            [11, 27, {3: "Legacy LCQ", 6: "Pioneer LCQ", 8: "Standard LCQ"}],
             [1, 25, {8: "Modern Showcase Challenge"}],
             [1, 26, {6: "Standard Showcase Challenge"}],
             [2, 1, {10: "Vintage Showcase Challenge"}],
