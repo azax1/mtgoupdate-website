@@ -18,8 +18,8 @@ function isMocsFormat(str) {
   );
 }
 
-function isCubeTime() {
-  return false;
+function getCubeEndTimestamp() {
+  return new Date(Date.UTC(2024, 11, 29, 2, 30)).valueOf();
 }
 
 function getHourMode() {
