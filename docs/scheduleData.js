@@ -7,7 +7,7 @@ function getBaseSchedule() {
         `Modern ${ch} (32-player)`, null, null, null, null, null];
     const mon = [`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
         null, `Modern ${pr}`, `Pioneer ${pr}`, `Limited ${pr}`, null, `Legacy ${pr}`,
-		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch}&plus&Pioneer ${ch} (32-player)&minus`, `Vintage ${pr}`,
+		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${pr}`,
         `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null];
     const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
         null, `Pioneer ${pr}`, null, `Limited ${pr}`, `Standard ${ch}`, `Modern ${pr}`,
