@@ -39,8 +39,8 @@ function displaySchedule(fixSliders = true) {
     }
     // const day1 = moment.unix(start).tz(timeZone).format("D");
     // const suffix1 = "th";
-    const day2 = moment.unix(end).tz(timeZone).format("D");
-    const suffix2 = "th";
+    const day2 = Number(moment.unix(end).tz(timeZone).format("D"));
+    const suffix2 = ((day2 + 19) % 20 < 3) ? ["st", "nd", "rd"][(day2 + 19) % 20] : (day2 == 31) ? "st" : "th";
     document.getElementById("banner").innerHTML = `
       <center>There are 64-player Vintage Cube events every few hours until 
       ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>
