@@ -100,11 +100,9 @@ function getHackishLCQCorrections() {
 function getCubeEvents() {
     return [
             [
-                [ [12, 21], [12, 22], [12, 23], [12, 24], [12, 25], [12, 26], [12, 27],
-                    [12, 28], [12, 29], [12, 30], [12, 31], [1, 1], [1, 2] ],
-                [ 0.5, 2.5, 4.5, 6.5, 8.5, 10.5,
-                12.5, 14.5, 16.5, 18.5, 20.5 ]
-            ],
+                [ ],
+                [ ]
+            ]
         ].map(([dates, times]) => [dates.map(supplyYearAndDecrementMonth), times]);
 }
 
