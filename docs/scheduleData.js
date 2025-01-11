@@ -77,20 +77,7 @@ function getShowcaseData() {
             [1, 10, { 18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
             [1, 11, { 0 : null, 1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 
                 6 : null, 7 : null, 8 : null, 9 : null, 10 : null, 11 : null,
-                12 : null, 13 : null, 14 : null, 15 : null, 16 : null, 17 : null,
-                18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
-            [1, 12, { 0 : null, 1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 
-                6 : null, 7 : null, 8 : null, 9 : null, 10 : null, 11 : null,
-                12 : null, 13 : null, 14 : null, 15 : null, 16 : null, 17 : null,
-                18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
-            [1, 13, { 0 : null, 1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 
-                6 : null, 7 : null, 8 : null, 9 : null, 10 : null, 11 : null,
-                12 : null, 13 : null, 14 : null, 15 : null, 16 : null, 17 : null,
-                18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
-            [1, 14, { 0 : null, 1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 
-                6 : null, 7 : null, 8 : null, 9 : null, 10 : null, 11 : null,
-                12 : null, 13 : null, 14 : null, 15 : null, 16 : null, 17 : null,
-                18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
+                12 : null, 13 : null, 14 : null }],
             [1, 25, {8: "Modern Showcase Challenge"}],
             [1, 26, {6: "Standard Showcase Challenge"}],
             [2, 1, {10: "Vintage Showcase Challenge"}],
@@ -116,11 +103,11 @@ function getHackishLCQCorrections() {
 
 function getCubeEvents() {
     return [
-            // [
-            //     [ [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8],
-            //         [1, 9], [1, 10], [1, 11], [1, 12], [1, 13], [1, 14] ],
-            //     [ 6.5, 10.5, 14.5, 18.5 ]
-            // ]
+            [
+                [ [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8],
+                    [1, 9], [1, 10], [1, 11], [1, 12], [1, 13], [1, 14] ],
+                [ 6.5, 10.5, 14.5, 18.5 ]
+            ]
         ].map(([dates, times]) => [dates.map(supplyYearAndDecrementMonth), times]);
 }
 
