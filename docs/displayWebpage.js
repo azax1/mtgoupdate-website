@@ -29,7 +29,7 @@ function displaySchedule(fixSliders = true) {
       .format("hh:mm:ss A") + ` (${timeZone})`;
 
   let end = getCubeEndTimestamp() / 1000;
-  if (new Date().getTime() < end * 1000) {
+  if (new Date().getTime() < end * 1000 && false) {
     // let start = new Date(Date.UTC(2024, 2, 29, 23, 30)).valueOf() / 1000;
     let timeFormat;
     if (getHourMode() === "12") {
@@ -46,13 +46,19 @@ function displaySchedule(fixSliders = true) {
       ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
-  } else {
+  } else if (false) {
     // document.getElementById("banner").innerHTML = `
     //   Don't like the fixed calendar where the first day is always Monday? You can switch back in the Settings gear.
     // `;
     document.getElementById("banner").innerHTML = `
       <center>
       Thanks for using mtgoupdate! Please consider supporting this project via <a href="https://www.patreon.com/mtgoupdate">Patreon</a> or <a href="https://ko-fi.com/mtgoupdate">ko-fi</a>.
+      </center>
+      `;
+  } else {
+    document.getElementById("banner").innerHTML = `
+      <center>
+      Scheduled events on MTGO are cancelled through Tuesday the 14th due to server issues.
       </center>
       `;
   }
