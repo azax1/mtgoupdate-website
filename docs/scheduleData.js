@@ -51,7 +51,7 @@ function getRCQData() {
             [12, 30, {7: "Modern Super Qualifier"}],
 
             [1, 4, {1: "Standard Qualifier"}],
-            [1, 12, {7: "Modern Super Qualifier"}],
+            [1, 18, {7: "Modern Super Qualifier"}],
             [1, 19, {1: "Limited (FDN) Qualifier"}],
             [1, 20, {7: "Modern Qualifier"}],
             [1, 31, {14: "Limited (INR) Qualifier"}],
