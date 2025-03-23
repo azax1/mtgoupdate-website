@@ -67,6 +67,7 @@ function getRCQData() {
             [3, 16, {7: "Limited (DFT) Super Qualifier"}],
             [3, 17, {7: "Limited (DFT) Qualifier"}],
             [3, 21, {14: "Legacy Qualifier"}],
+            [3, 23, {8: "Standard Showcase Challenge"}],
 
     ].map(supplyYearAndDecrementMonth);
 }
@@ -89,7 +90,6 @@ function getShowcaseData() {
             [3, 9, {8: "Legacy Showcase Challenge"}],
 
             [3, 22, {8: "Modern Showcase Challenge"}],
-            [3, 23, {6: "Standard Showcase Challenge"}],
             [3, 29, {10: "Vintage Showcase Challenge"}],
             [3, 30, {8: "Legacy Showcase Challenge"}]
     ].map(supplyYearAndDecrementMonth);
