@@ -120,6 +120,8 @@ function initializePageAndParameters(
         formatChoices.filter((format) => {
           if (format === "Cube") {
             return event.includes(format) || event.includes("Vegas");
+          } else if (format === "Limited") {
+            return event.includes(format) || event.includes("Sealed");
           } else if (format !== "Vintage") {
             return event.includes(format);
           } else {
