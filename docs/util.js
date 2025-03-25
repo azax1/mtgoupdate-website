@@ -19,7 +19,7 @@ function isMocsFormat(str) {
 }
 
 function getCubeEndTimestamp() {
-  return new Date(Date.UTC(2025, 2, 27, 1, 30)).valueOf();
+  return new Date(Date.UTC(2025, 3, 2, 17, 30)).valueOf();
 }
 
 function getHourMode() {

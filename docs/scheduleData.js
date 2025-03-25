@@ -97,7 +97,17 @@ function getShowcaseData() {
 
 function getHackishLCQCorrections() {
     return [
-        // [3, 30, 8, "Legacy Showcase Challenge"]
+        [3, 29, 15, "Standard LCQ"],
+        [3, 30, 15, "Vintage LCQ"],
+        [3, 31, 19, "Standard LCQ"],
+        [4, 1, 1, "Vintage LCQ"],
+        [4, 1, 3, "Modern Prelim"],
+        [4, 1, 4, "Modern LCQ"],
+        [4, 1, 7, "Vintage LCQ"],
+        [4, 1, 18, "Standard Prelim"],
+        [4, 2, 2, "Standard LCQ"],
+        [4, 2, 3, "Legacy LCQ"],
+        [4, 2, 8, "Standard Prelim"],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -105,8 +115,13 @@ function getCubeEvents() {
     return [
             [
                 [ [3, 12], [3, 13], [3, 14], [3, 15], [3, 16], [3, 17], [3, 18], [3, 19], [3, 20], 
-                [3, 21], [3, 22], [3, 23], [3, 24], [3, 25], [3, 26] ],
+                [3, 21], [3, 22], [3, 23], [3, 24], [3, 25], [3, 26], [3, 27], [3, 28], [3, 29],
+                [3, 30], [3, 31], [4, 1] ],
                 [ 6.5, 10.5, 14.5, 18.5 ]
+            ],
+            [
+                [ [4, 2] ],
+                [ 6.5, 10.5 ]
             ]
         ].map(([dates, times]) => [dates.map(supplyYearAndDecrementMonth), times]);
 }

@@ -136,7 +136,9 @@
       i < 200 && today.toDateString() !== "Wed Apr 2 2025";
       i++
     ) {
-      for (let k = 0; k < 3; k++) {
+      // get rid of placeholder LCQs once LCQ schedule is finalized
+      const limit = (getHackishLCQCorrections().length > 0) ? 2 : 3;
+      for (let k = 0; k < limit; k++) {
         let sched = [rcqSched, showcaseSched, getPlaceholderLCQs()][k];
         if (sched.get(today.toDateString()) != null) {
           for (let j = 0; j < 24; j++) {
