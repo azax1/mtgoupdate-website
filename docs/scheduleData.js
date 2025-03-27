@@ -70,6 +70,15 @@ function getRCQData() {
             [3, 21, {14: "Legacy Qualifier"}],
             [3, 23, {8: "Standard Showcase Challenge"}],
 
+            [4, 5, {8: "Vintage Showcase Qualifier (invite-only)"}],
+            [4, 6, {8: "Legacy Showcase Qualifier (invite-only)"}],
+
+            [4, 12, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [4, 13, {8: "Standard Showcase Qualifier (invite-only)"}],
+
+            [4, 19, {7: "Limited (TDM) MOCS Showcase Open"}],
+            [4, 20, {7: "Limited (TDM) MOCS Showcase Open"}],
+
     ].map(supplyYearAndDecrementMonth);
 }
 
