@@ -2,27 +2,28 @@ function getBaseSchedule() {
 	const ch = "Challenge";
 	const pr = "Prelim";
     const tr = "Trial";
+    const thr = "Throwdown";
 	const sun = [`Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null, null, `Modern ${ch} (32-player)`, `plus&Commander ${tr} (16-player)&minus`,
         `Pioneer ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Pauper ${ch} (32-player)`, null,
 		`Limited ${ch} (32-player)`, `Pioneer ${ch}`, `Standard ${ch}`, null, `Commander ${tr} (16-player)`, `Limited ${pr}`,
         `Modern ${ch} (32-player)`, null, null, null, null, null];
     const mon = [`Pioneer ${pr}`, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
         null, `Modern ${ch}`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Legacy ${pr}`,
-		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${pr}`,
+		null, `Standard ${ch}`, `Pauper ${thr}`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${pr}`,
         `Limited ${pr}`, `Pioneer ${pr}`, null, `Modern ${pr}`, null, null];
     const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
-        null, null, `Phantom Sealed ${tr} (24-player)`, null, `Standard ${ch}`, `Modern ${pr}`,
+        `Pauper ${thr}`, null, `Phantom Sealed ${tr} (24-player)`, null, `Standard ${ch}`, `Modern ${pr}`,
 		null, `Modern ${ch} (64-player)`, null, `Commander ${tr} (16-player)`, `Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`,
         `Standard ${pr}`, `Legacy ${pr}`, null, null, null, null];
     const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
         `Commander ${tr} (16-player)`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch}`, null, `Limited ${pr}`,
 		`Standard ${pr}`, `Commander ${tr} (16-player)`, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
-        `Vintage ${pr}`, null, null, `Limited ${pr}`, null, null];
+        `Pauper ${thr}`, null, null, `Limited ${pr}`, null, null];
     const thur = [`Modern ${pr}`, null, null, `Pioneer ${pr}`, null, `Standard ${pr}`,
         `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Commander ${tr} (16-player)`, `Standard ${pr}`, `Modern ${pr}`,
-		`Phantom Sealed ${tr} (24-player)`, null, `Pioneer ${ch}`, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${ch} (32-player)`,
+		`Phantom Sealed ${tr} (24-player)`, `Pauper ${thr}`, `Pioneer ${ch}`, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${ch} (32-player)`,
         null, `Modern ${pr}`, null, `Pioneer ${pr}`, null, null];
-    const fri = [`Modern ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
+    const fri = [`Modern ${pr}`, `Pauper ${thr}`, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, `Standard ${ch} (32-player)`, `Vintage ${pr}`,
 		`Commander ${tr} (16-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Limited ${ch} (32-player)`, `Legacy ${ch} (32-player)`,
         `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
