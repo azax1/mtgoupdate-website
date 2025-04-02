@@ -36,41 +36,6 @@ function getBaseSchedule() {
 
 function getRCQData() {
     return [
-            [11, 30, {8: "Modern Showcase Qualifier (invite-only)"}],
-            [12, 1, {8: "Legacy Showcase Qualifier (invite-only)"}],
-            [12, 7, {6: "Standard Showcase Qualifier (invite-only)"}],
-            [12, 8, {6: "Pioneer Showcase Qualifier (invite-only)"}],
-            [12, 14, {7: "Limited (DSK) MOCS Showcase Open"}],
-            [12, 15, {7: "Limited (DSK) MOCS Showcase Open"}],
-
-            [12, 20, {14: "Modern Qualifier"}],
-            [12, 21, {14: "Pioneer Qualifier"}],
-            [12, 22, {7: "Limited (FDN) Qualifier"}],
-            [12, 26, {7: "Legacy Super Qualifier"}],
-            [12, 27, {7: "Standard Super Qualifier"}],
-            [12, 28, {7: "Vintage Super Qualifier"}],
-            [12, 29, {7: "Limited (FDN) Super Qualifier"}],
-            [12, 30, {7: "Modern Super Qualifier"}],
-
-            [1, 4, {1: "Standard Qualifier"}],
-            [1, 18, {7: "Modern Super Qualifier"}],
-            [1, 19, {1: "Limited (FDN) Qualifier"}],
-            [1, 20, {7: "Modern Qualifier"}],
-            [1, 31, {14: "Limited (INR) Qualifier"}],
-            
-            [2, 8, {7: "Vintage Qualifier"}],
-            [2, 14, {7: "Pioneer Qualifier"}],
-            [2, 16, {7: "Limited (DFT) Super Qualifier"}],
-            [2, 17, {7: "Limited (DFT) Qualifier"}],
-            [2, 22, {7: "Pauper Qualifier"}],
-            [2, 23, {7: "Standard Super Qualifier"}],
-            [2, 28, {7: "Limited (DFT) Qualifier"}],
-            
-            [3, 16, {7: "Limited (DFT) Super Qualifier"}],
-            [3, 17, {7: "Limited (DFT) Qualifier"}],
-            [3, 21, {14: "Legacy Qualifier"}],
-            [3, 23, {8: "Standard Showcase Challenge"}],
-
             [4, 5, {8: "Vintage Showcase Qualifier (invite-only)"}],
             [4, 6, {8: "Legacy Showcase Qualifier (invite-only)"}],
 
@@ -80,45 +45,69 @@ function getRCQData() {
             [4, 19, {7: "Limited (TDM) MOCS Showcase Open"}],
             [4, 20, {7: "Limited (TDM) MOCS Showcase Open"}],
 
+            [4, 26, {7: "Standard Super Qualifier"}],
+            [5, 3, {1: "Limited (TDM) Super Qualifier"}],
+            [5, 10, {7: "Legacy Super Qualifier"}],
+            [5, 11, {7: "Limited (TDM) Super Qualifier"}],
+            [5, 16, {7: "Pauper Qualifier"}],
+            [5, 17, {7: "Pioneer Qualifier"}],
+            [5, 18, {7: "Vintage Qualifier"}],
+            [5, 23, {14: "Modern Super Qualifier"}],
+            [5, 26, {7: "Standard Qualifier"}],
+            [5, 31, {1: "Modern Super Qualifier"}],
+
+            [6, 1, {7: "Limited (TDM) Super Qualifier"}],
+            [6, 15, {7: "Standard Super Qualifier"}],
+            [6, 20, {7: "Legacy Qualifier"}],
+            [6, 21, {7: "Limited (FIN) Qualifier"}],
+            [6, 22, {7: "Limited (FIN) Qualifier"}],
+
+            [7, 4, {6: "Limited (FIN) Super Qualifier"}],
+            [7, 11, {7: "Standard Qualifier"}],
+            [7, 12, {7: "Pauper Super Qualifier"}],
+            [7, 13, {7: "Modern Super Qualifier"}],
+            [7, 20, {6: "Limited (FIN) Super Qualifier"}],
+
+            [8, 8, {14: "Limited (EOE) Qualifier"}],
+            [8, 15, {7: "Modern Qualifier"}],
+
+            [8, 16, {8: "Pauper Showcase Qualifier (invite-only)"}],
+            [8, 17, {8: "Legacy Showcase Qualifier (invite-only)"}],
+
+            [8, 22, {7: "Limited (EOE) Super Qualifier"}],
+            
+            [8, 23, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [8, 24, {8: "Standard Showcase Qualifier (invite-only)"}],
+
+            [9, 1, {7: "Modern Super Qualifier"}],
+
+            [9, 6, {7: "Limited (EOE) MOCS Showcase Open"}],
+            [9, 7, {7: "Limited (EOE) MOCS Showcase Open"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getShowcaseData() {
     return [
-            [11, 27, {3: "Legacy LCQ", 6: "Pioneer LCQ", 8: "Standard LCQ"}],
-            [1, 10, { 18 : null, 19 : null, 20 : null, 21 : null, 22 : null, 23 : null }],
-            [1, 11, { 0 : null, 1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 
-                6 : null, 7 : null, 8 : null, 9 : null, 10 : null, 11 : null,
-                12 : null, 13 : null, 14 : null }],
-            [2, 1, {10: "Vintage Showcase Challenge"}],
-            [2, 2, {8: "Legacy Showcase Challenge"}],
-            [2, 9, {6: "Standard Showcase Challenge"}],
-            [2, 15, {8: "Modern Showcase Challenge"}],
+        [5, 24, {8: "Modern Showcase Challenge"}],
+        [5, 25, {8: "Standard Showcase Challenge"}],
+        [6, 7, {8: "Pauper Showcase Challenge"}],
+        [6, 8, {8: "Legacy Showcase Challenge"}],
 
-            [3, 1, {8: "Modern Showcase Challenge"}],
-            [3, 2, {6: "Standard Showcase Challenge"}],
-            [3, 8, {10: "Vintage Showcase Challenge"}],
-            [3, 9, {8: "Legacy Showcase Challenge"}],
+        [6, 28, {8: "Modern Showcase Challenge"}],
+        [6, 29, {8: "Standard Showcase Challenge"}],
+        [7, 5, {8: "Pauper Showcase Challenge"}],
+        [7, 6, {8: "Legacy Showcase Challenge"}],
 
-            [3, 22, {8: "Modern Showcase Challenge"}],
-            [3, 29, {10: "Vintage Showcase Challenge"}],
-            [3, 30, {8: "Legacy Showcase Challenge"}]
+        [8, 2, {8: "Pauper Showcase Challenge"}],
+        [8, 3, {8: "Legacy Showcase Challenge"}],
+        [8, 9, {8: "Modern Showcase Challenge"}],
+        [8, 10, {8: "Standard Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getHackishLCQCorrections() {
     return [
-        [3, 29, 15, "Standard LCQ"],
-        [3, 30, 15, "Vintage LCQ"],
-        [3, 31, 19, "Standard LCQ"],
-        [4, 1, 1, "Vintage LCQ"],
-        [4, 1, 3, "Modern Prelim"],
-        [4, 1, 4, "Modern LCQ"],
-        [4, 1, 7, "Vintage LCQ"],
-        [4, 1, 18, "Standard Prelim"],
-        [4, 2, 2, "Standard LCQ"],
-        [4, 2, 3, "Legacy LCQ"],
-        [4, 2, 8, "Standard Prelim"],
+        // [3, 29, 15, "Standard LCQ"],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -193,5 +182,5 @@ function getCurrentYearDSTDates() {
 }
 
 function getLCQStartDate() {
-    return supplyYearAndDecrementMonth([3, 30]);
+    return supplyYearAndDecrementMonth([8, 10]);
 }

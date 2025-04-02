@@ -14,7 +14,7 @@ function isMocsFormat(str) {
     str.includes("Standard") ||
     str.includes("Modern") ||
     str.includes("Legacy") ||
-    str.includes("Vintage")
+    str.includes("Pauper")
   );
 }
 

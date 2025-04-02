@@ -39,7 +39,7 @@
   <body>
     <div id="everything">
       <p id="text">
-        Remaining in this MOCS season (ending April 2nd<span id="yearFiller"></span>) there are
+        Remaining in this MOCS season (ending September 1st<span id="yearFiller"></span>) there are
         <span id="showcases"></span>, <span id="supers"></span>,
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
@@ -133,7 +133,7 @@
     document.getElementById("tableBody").innerHTML = "";
     for (
       let i = 0;
-      i < 200 && today.toDateString() !== "Wed Apr 2 2025";
+      i < 200 && today.toDateString() !== "Mon Sep 1 2025";
       i++
     ) {
       // get rid of placeholder LCQs once LCQ schedule is finalized
@@ -240,15 +240,14 @@
     let ret = new Map();
 
     ret.set(
-		  new Date(2025, ...getPlaceholderLCQDate()).toDateString(), {1: "Vintage LCQ", 2: "Vintage LCQ", 3: "Vintage LCQ",
-                                              4: "Standard LCQ", 5: "Standard LCQ", 6: "Legacy LCQ"}
+		  new Date(2025, ...getPlaceholderLCQDate()).toDateString(), {1: "Pauper LCQ", 2: "Pauper LCQ", 3: "Pauper LCQ" }
 	  );
 
     return ret;
   }
 
   function getPlaceholderLCQDate() {
-    return [3, 3];
+    return [8, 14];
   }
 </script>
 <script>
