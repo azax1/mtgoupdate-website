@@ -238,7 +238,7 @@
       if (url.searchParams.get("events") === "premier") {
         url.searchParams.delete("events");
         history.pushState({}, "", url);
-        for (let i = 2; i < 5; i++) {
+        for (let i = 4; i < 7; i++) {
           document.getElementById("eventTypeDropdown").options[i].selected = true;
         }
       } else {
