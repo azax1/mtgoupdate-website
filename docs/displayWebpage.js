@@ -46,6 +46,12 @@ function displaySchedule(fixSliders = true) {
       ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
+  } else if (new Date().getTime() / 1000 < 1744848000) {
+    document.getElementById("banner").innerHTML = `
+      <center>
+      Scheduled events are temporarily cancelled due to server issues.
+      </center>
+      `;
   } else {
     // document.getElementById("banner").innerHTML = `
     //   Don't like the fixed calendar where the first day is always Monday? You can switch back in the Settings gear.
