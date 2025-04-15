@@ -238,8 +238,12 @@
       if (url.searchParams.get("events") === "premier") {
         url.searchParams.delete("events");
         history.pushState({}, "", url);
-        for (let i = 4; i < 7; i++) {
-          document.getElementById("eventTypeDropdown").options[i].selected = true;
+        const eventDropdown = document.getElementById("eventTypeDropdown");
+        for (let i = 0; i < eventDropdown.options.length; i++) {
+          if (eventDropdown.options[i].value === "Showcase Challenge" || eventDropdown.options[i].value === "Qualifier" ||
+              eventDropdown.options[i].value === "LCQ") {
+            eventDropdown.options[i].selected = true;
+          }
         }
       } else {
         const cubingTime = new Date().getTime() < getCubeEndTimestamp();
