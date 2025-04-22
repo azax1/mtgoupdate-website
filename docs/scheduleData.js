@@ -46,6 +46,7 @@ function getRCQData() {
             [4, 20, {7: "Limited (TDM) MOCS Showcase Open"}],
 
             [4, 26, {7: "Standard Super Qualifier"}],
+            [4, 27, {7: "Modern Madness Finals"}],
             [5, 3, {1: "Limited (TDM) Super Qualifier"}],
             [5, 10, {7: "Legacy Super Qualifier"}],
             [5, 11, {7: "Limited (TDM) Super Qualifier"}],

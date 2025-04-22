@@ -5,7 +5,8 @@ function isPremier(event) {
     event.includes("LCQ") ||
     event.includes("Eternal Weekend") ||
     event.includes("Single Elim") ||
-    event.includes("Vegas")
+    event.includes("Vegas") ||
+    event.includes("Madness") // I hate my life
   );
 }
 
