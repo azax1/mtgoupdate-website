@@ -63,9 +63,9 @@ function getRCQData() {
             [6, 22, {7: "Limited (FIN) Qualifier"}],
 
             [7, 4, {6: "Limited (FIN) Super Qualifier"}],
+            [7, 5, {7: "Modern Super Qualifier"}],
             [7, 11, {7: "Standard Qualifier"}],
-            [7, 12, {7: "Pauper Super Qualifier"}],
-            [7, 13, {7: "Modern Super Qualifier"}],
+            [7, 13, {7: "Pauper Super Qualifier"}],
             [7, 20, {6: "Limited (FIN) Super Qualifier"}],
 
             [8, 8, {14: "Limited (EOE) Qualifier"}],
@@ -97,8 +97,8 @@ function getShowcaseData() {
 
         [6, 28, {8: "Modern Showcase Challenge"}],
         [6, 29, {8: "Standard Showcase Challenge"}],
-        [7, 5, {8: "Pauper Showcase Challenge"}],
         [7, 6, {8: "Legacy Showcase Challenge"}],
+        [7, 12, {8: "Pauper Showcase Challenge"}],
 
         [8, 2, {8: "Pauper Showcase Challenge"}],
         [8, 3, {8: "Legacy Showcase Challenge"}],
