@@ -66,6 +66,9 @@ function getRCQData() {
             [7, 5, {7: "Modern Super Qualifier"}],
             [7, 11, {7: "Standard Qualifier"}],
             [7, 13, {7: "Pauper Super Qualifier"}],
+            [7, 15, {5: "Pioneer Prelim"}],
+            [7, 16, {5: "Pioneer Prelim"}],
+            [7, 19, {7: "Pioneer Championship Week Finals"}],
             [7, 20, {6: "Limited (FIN) Super Qualifier"}],
 
             [8, 8, {14: "Limited (EOE) Qualifier"}],
