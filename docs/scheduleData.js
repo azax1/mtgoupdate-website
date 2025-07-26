@@ -82,10 +82,35 @@ function getRCQData() {
             [8, 23, {8: "Modern Showcase Qualifier (invite-only)"}],
             [8, 24, {8: "Standard Showcase Qualifier (invite-only)"}],
 
-            [9, 1, {7: "Modern Super Qualifier"}],
-
             [9, 6, {7: "Limited (EOE) MOCS Showcase Open"}],
             [9, 7, {7: "Limited (EOE) MOCS Showcase Open"}],
+
+            // begin fake events
+            // [8, 30, {7: "Limited (EOE) Super Qualifier"}],
+            // [8, 31, {7: "Limited (EOE) Super Qualifier"}],
+            // [9, 1, {7: "Modern Super Qualifier"}],
+            // [9, 21, {7: "Vintage Super Qualifier"}],
+            // [9, 27, {14: "Limited (TBD) Super Qualifier"}],
+            // [9, 28, {3: "Limited (TBD) Super Qualifier"}],
+
+            // [10, 3, {7: "Standard Super Qualifier"}],
+            // [10, 18, {1: "Modern Super Qualifier"}],
+            // [10, 19, {7: "Standard Super Qualifier"}],
+            // [10, 25, {7: "Legacy Super Qualifier"}],
+
+            // [11, 1, {7: "Pioneer Super Qualifier"}],
+            // [11, 8, {7: "Limited (TBD) Super Qualifier"}],
+            // [11, 9, {7: "Pauper Super Qualifier"}],
+            // [11, 11, {7: "Pauper Super Qualifier"}],
+            // [11, 28, {7: "Limited (TLA) Super Qualifier"}],
+
+            // [12, 5, {7: "Limited (TLA) Super Qualifier"}],
+            // [12, 6, {8: "Modern Showcase Qualifier (invite-only)"}],
+            // [12, 7, {6: "Pioneer Showcase Qualifier (invite-only)"}],
+            // [12, 13, {6: "Standard Showcase Qualifier (invite-only)"}],
+            // [12, 14, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            // [12, 20, {7: "Limited (TLA) MOCS Showcase Open"}],
+            // [12, 21, {7: "Limited (TLA) MOCS Showcase Open"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -107,6 +132,23 @@ function getShowcaseData() {
         [8, 3, {8: "Legacy Showcase Challenge"}],
         [8, 9, {8: "Modern Showcase Challenge"}],
         [8, 10, {8: "Standard Showcase Challenge"}],
+
+        // begin fake events
+        // [9, 13, {6: "Standard Showcase Challenge"}],
+        // [9, 14, {8: "Modern Showcase Challenge"}],
+
+        // [10, 4, {8: "Modern Showcase Challenge"}],
+        // [10, 5, {8: "Legacy Showcase Challenge"}],
+        // [10, 11, {8: "Standard Showcase Challenge"}],
+        // [10, 12, {8: "Pioneer Showcase Challenge"}],
+
+        // [10, 26, {8: "Legacy Showcase Challenge"}],
+        // [11, 2, {8: "Pioneer Showcase Challenge"}],
+
+        // [11, 16, {8: "Legacy Showcase Challenge"}],
+        // [11, 23, {8: "Standard Showcase Challenge"}],
+        // [11, 29, {8: "Modern Showcase Challenge"}],
+        // [11, 30, {6: "Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
