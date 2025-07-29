@@ -156,7 +156,17 @@ function getShowcaseData() {
 
 function getHackishLCQCorrections() {
     return [
-        // [3, 29, 15, "Standard LCQ"],
+        [8, 9, 17, "Pauper LCQ"],
+        [8, 10, 15, "Standard LCQ"],
+        [8, 11, 8, "Pauper LCQ"],
+        [8, 11, 19, "Standard LCQ"],
+        [8, 12, 1, "Pauper LCQ"],
+        [8, 12, 3, null],
+        [8, 12, 4, "Modern LCQ"],
+        [8, 12, 7, "Pauper LCQ"],
+        [8, 12, 11, "Modern LCQ"],
+        [8, 12, 18, null],
+        [8, 13, 8, "Standard Prelim"]
     ].map(supplyYearAndDecrementMonth);
 }
 
