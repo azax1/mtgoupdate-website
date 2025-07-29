@@ -128,6 +128,8 @@ function getShowcaseData() {
         [7, 6, {8: "Legacy Showcase Challenge"}],
         [7, 12, {8: "Pauper Showcase Challenge"}],
 
+        [7, 29, {10: "plus&Limited Prelim&minus", 12: "Standard Challenge"}],
+
         [8, 2, {8: "Pauper Showcase Challenge"}],
         [8, 3, {8: "Legacy Showcase Challenge"}],
         [8, 9, {8: "Modern Showcase Challenge"}],
