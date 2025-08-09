@@ -133,7 +133,7 @@ function getShowcaseData() {
         [8, 2, {8: "Pauper Showcase Challenge"}],
         [8, 3, {8: "Legacy Showcase Challenge"}],
         [8, 9, {8: "Modern Showcase Challenge"}],
-        [8, 10, {8: "Standard Showcase Challenge"}],
+        [8, 10, {8: "Legacy Challenge&Standard Showcase Challenge"}],
 
         // begin fake events
         // [9, 13, {6: "Standard Showcase Challenge"}],
