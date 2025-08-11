@@ -166,6 +166,7 @@ function getHackishLCQCorrections() {
         [8, 12, 7, "Pauper LCQ"],
         [8, 12, 11, "Modern LCQ"],
         [8, 12, 18, null],
+        [8, 13, 2, "Standard LCQ"],
         [8, 13, 8, "Standard Prelim"]
     ].map(supplyYearAndDecrementMonth);
 }
