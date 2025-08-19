@@ -7,22 +7,22 @@ function getBaseSchedule() {
 		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch}`, null, `Commander ${tr} (16-player)`, `Limited ${pr}`,
         `Modern ${ch} (32-player)`, null, null, null, null, null];
     const mon = [null, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
-        null, `Modern ${ch}`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Legacy ${pr}`,
+        null, `Modern ${ch}`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Pioneer ${pr}`,
 		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, null,
         `Limited ${pr}`, null, null, `Modern ${pr}`, null, null];
     const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
         null, null, `Phantom Sealed ${tr} (24-player)`, null, `Standard ${ch}`, null,
 		null, `Modern ${ch} (32-player)`, null, `Commander ${tr} (16-player)`, `Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`,
-        `Standard ${pr}`, `Legacy ${pr}`, null, null, null, null];
+        `Standard ${pr}`, `Pioneer ${pr}`, null, null, null, null];
     const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
         `Commander ${tr} (16-player)`, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch}`, null, `Limited ${pr}`,
 		`Standard ${pr}`, `Commander ${tr} (16-player)`, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
         null, null, null, `Limited ${pr}`, null, null];
-    const thur = [`Modern ${pr}`, null, null, null, null, `Standard ${pr}`,
+    const thur = [`Modern ${pr}`, null, null, null, `Pioneer ${pr}`, null,
         `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Commander ${tr} (16-player)`, null, `Standard ${pr}`,
 		`Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${ch} (32-player)`,
         null, `Modern ${pr}`, null, null, null, null];
-    const fri = [`Modern ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
+    const fri = [`Pioneer ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, `Standard ${ch} (32-player)`, null,
 		`Commander ${tr} (16-player)`, null, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Legacy ${ch} (32-player)`,
         `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
@@ -135,7 +135,8 @@ function getShowcaseData() {
         [8, 9, {8: "Modern Showcase Challenge"}],
         [8, 10, {8: "Legacy Challenge&Standard Showcase Challenge"}],
 
-        // begin fake events
+        [8, 19, {19: "Legacy Prelim"}],
+
         // [9, 13, {6: "Standard Showcase Challenge"}],
         // [9, 14, {8: "Modern Showcase Challenge"}],
 
