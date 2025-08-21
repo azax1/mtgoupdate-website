@@ -39,7 +39,7 @@
   <body>
     <div id="everything">
       <p id="text">
-        Remaining in this MOCS season (ending August 22nd<span id="yearFiller"></span>) there are
+        Remaining in this MOCS season (ending December 5th<span id="yearFiller"></span>) there are
         <span id="showcases"></span>, <span id="supers"></span>,
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
@@ -133,7 +133,7 @@
     document.getElementById("tableBody").innerHTML = "";
     for (
       let i = 0;
-      i < 200 && today.toDateString() !== "Mon Sep 1 2025";
+      i < 150 && today.toDateString() !== "Fri Dec 5 2025";
       i++
     ) {
       // get rid of placeholder LCQs once LCQ schedule is finalized
@@ -240,14 +240,18 @@
     let ret = new Map();
 
     ret.set(
-		  new Date(2025, ...getPlaceholderLCQDate()).toDateString(), {1: "Pauper LCQ", 2: "Pauper LCQ", 3: "Pauper LCQ" }
+		  new Date(2025, ...getPlaceholderLCQDate()).toDateString(),
+        {0: "Modern LCQ", 2: "Modern LCQ", 3: "Modern LCQ", 4: "Modern LCQ", 5: "Modern LCQ",
+          6: "Standard LCQ", 7: "Standard LCQ", 8: "Standard LCQ", 9: "Standard LCQ",
+          10: "Pioneer LCQ", 11: "Pioneer LCQ", 12: "Pioneer LCQ", 13: "Pioneer LCQ",
+          14: "Legacy LCQ", 15: "Legacy LCQ" }
 	  );
 
     return ret;
   }
 
   function getPlaceholderLCQDate() {
-    return [8, 14];
+    return [11, 8];
   }
 </script>
 <script>
