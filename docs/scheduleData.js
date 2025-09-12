@@ -44,8 +44,8 @@ function getRCQData() {
             [9, 6, {7: "Limited (EOE) MOCS Showcase Open"}],
             [9, 7, {7: "Limited (EOE) MOCS Showcase Open"}],
             [9, 21, {7: "Vintage Super Qualifier"}],
-            [9, 27, {14: "Limited (TBD) Super Qualifier"}],
-            [9, 28, {3: "Limited (TBD) Super Qualifier"}],
+            [9, 27, {14: "Limited (EOE) Super Qualifier"}],
+            [9, 28, {3: "Limited (EOE) Super Qualifier"}],
 
             [10, 3, {7: "Standard Super Qualifier"}],
             [10, 18, {1: "Modern Super Qualifier"}],
