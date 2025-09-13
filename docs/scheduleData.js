@@ -43,6 +43,14 @@ function getRCQData() {
             [9, 1, {7: "Modern Super Qualifier"}],
             [9, 6, {7: "Limited (EOE) MOCS Showcase Open"}],
             [9, 7, {7: "Limited (EOE) MOCS Showcase Open"}],
+
+            [9, 15, {6: "Vintage Prelim Special", 12: "Vintage Prelim Special", 17: "Vintage Prelim Special"}],
+            [9, 16, {6: "Vintage Prelim Special", 12: "Vintage Prelim Special"},],
+            [9, 17, {1: "Vintage Prelim Special", 12: "plus&Vintage Prelim Special&minus", 18: "Vintage Prelim Special"}],
+            [9, 18, {3: "Vintage Prelim Special", 18: "Vintage Prelim Special"}],
+            [9, 19, {3: "Vintage Prelim Special", 11: "Vintage Prelim Special", 20: "Vintage Prelim Special"}],
+            [9, 20, {7: "Vintage Championship Week Finals"}],
+
             [9, 21, {7: "Vintage Super Qualifier"}],
             [9, 27, {14: "Limited (EOE) Super Qualifier"}],
             [9, 28, {3: "Limited (EOE) Super Qualifier"}],
