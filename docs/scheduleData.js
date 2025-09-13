@@ -72,8 +72,8 @@ function getShowcaseData() {
     return [
         [8, 19, {19: "Legacy Prelim"}],
 
-        [9, 13, {6: "Standard Showcase Challenge"}],
-        [9, 14, {8: "Legacy Challenge (32-player)&Modern Showcase Challenge"}],
+        [9, 13, {6: "Standard Showcase Challenge", 8: "Standard Challenge (32-player)", 9:"Commander Trial (24-player)&plus&Modern Challenge (32-player)&minus"}],
+        [9, 14, {8: "Modern Showcase Challenge", 9: "plus&Legacy Challenge (32-player)&minus"}],
 
         [10, 4, {8: "Modern Showcase Challenge"}],
         [10, 5, {8: "Legacy Showcase Challenge"}],
