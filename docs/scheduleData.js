@@ -61,9 +61,9 @@ function getRCQData() {
             [10, 25, {7: "Legacy Super Qualifier"}],
 
             [11, 1, {7: "Pioneer Super Qualifier"}],
-            [11, 8, {7: "Limited (TBD) Super Qualifier"}],
+            [11, 8, {7: "Limited (EOE) Super Qualifier"}],
             [11, 9, {7: "Pauper Super Qualifier"}],
-            [11, 11, {7: "Pauper Super Qualifier"}],
+            [11, 11, {7: "Modern Super Qualifier"}],
             [11, 28, {7: "Limited (TLA) Super Qualifier"}],
 
             [12, 5, {7: "Limited (TLA) Super Qualifier"}],
