@@ -62,7 +62,7 @@ function getRCQData() {
 
             [11, 1, {7: "Pioneer Super Qualifier"}],
             [11, 8, {7: "Limited (EOE) Super Qualifier"}],
-            [11, 9, {7: "Pauper Super Qualifier"}],
+            [11, 9, {7: "Pauper Super Qualifier&NRG Series MTGO Showdown"}],
             [11, 11, {7: "Modern Super Qualifier"}],
             [11, 28, {7: "Limited (TLA) Super Qualifier"}],
 
