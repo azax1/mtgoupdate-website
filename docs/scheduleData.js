@@ -64,6 +64,7 @@ function getRCQData() {
             [11, 8, {7: "Limited (EOE) Super Qualifier"}],
             [11, 9, {7: "Pauper Super Qualifier&NRG Series MTGO Showdown"}],
             [11, 11, {7: "Modern Super Qualifier"}],
+            [11, 23, {8: "Standard Showcase Challenge"}],
             [11, 28, {7: "Limited (TLA) Super Qualifier"}],
 
             [12, 5, {7: "Limited (TLA) Super Qualifier"}],
@@ -92,7 +93,6 @@ function getShowcaseData() {
         [11, 2, {6: "Pioneer Showcase Challenge"}],
 
         [11, 16, {8: "Legacy Showcase Challenge"}],
-        [11, 23, {6: "Standard Showcase Challenge"}],
         [11, 29, {8: "Modern Showcase Challenge"}],
         [11, 30, {6: "Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
