@@ -96,7 +96,7 @@ function getShowcasesAndLCQs() {
 			for (let hour = 0; hour < 9 || (day < 3 && hour < 24); hour++) {
 				let event = schedule[24 * day + hour];
 				if (event && event.includes("Prelim") && isMocsFormat(event)) {
-					lcqs[hour] = event.replace("Prelim", "LCQ");
+					lcqs[hour] = null;
 				}
 			}
 		}

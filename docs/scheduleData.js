@@ -100,7 +100,26 @@ function getShowcaseData() {
 
 function getHackishLCQCorrections() {
     return [
-        // [8, 13, 8, "Standard Prelim"]
+        [11, 30, 9, "Modern LCQ"],
+        [11, 30, 19, "Standard LCQ"],
+
+        [12, 1, 0, "Modern LCQ"],
+        [12, 1, 4, "Legacy LCQ"],
+        [12, 1, 8, "Standard LCQ"],
+        [12, 1, 12, "Pioneer LCQ"],
+        [12, 1, 16, "Modern LCQ"],
+        [12, 1, 20, "Legacy LCQ"],
+
+        [12, 2, 0, "Standard LCQ"],
+        [12, 2, 4, "Pioneer LCQ"],
+        [12, 2, 8, "Modern LCQ"],
+        [12, 2, 12, "Legacy LCQ"],
+        [12, 2, 16, "Pioneer LCQ"],
+        [12, 2, 20, "Standard LCQ"],
+
+        [12, 3, 0, "Pioneer LCQ"],
+        [12, 3, 4, "Legacy LCQ"]
+
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -170,5 +189,5 @@ function getCurrentYearDSTDates() {
 }
 
 function getLCQStartDate() {
-    return supplyYearAndDecrementMonth([8, 1]);
+    return supplyYearAndDecrementMonth([11, 30]);
 }
