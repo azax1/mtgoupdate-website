@@ -39,7 +39,7 @@
   <body>
     <div id="everything">
       <p id="text">
-        Remaining in this MOCS season (ending December 5th<span id="yearFiller"></span>) there are
+        Remaining in this MOCS season (ending March 25th<span id="yearFiller"></span>) there are
         <span id="showcases"></span>, <span id="supers"></span>,
         <span id="rcqs"></span>, and <span id="lcqs"></span
         ><span id="disclaimer"></span>.<br /><br />
@@ -111,8 +111,8 @@
       "dogEventTypeDropdown",
       today
     );
-    if (today.getFullYear() == 2024) {
-      document.getElementById("yearFiller").innerHTML = ", 2025";
+    if (today.getFullYear() == 2025) {
+      document.getElementById("yearFiller").innerHTML = ", 2026";
     }
     document.getElementById("superModifier").innerHTML = 
     `and <span id="qps2" style="color:red"></span> QPs to play all<span id="disclaimer3"></span>
@@ -133,7 +133,7 @@
     document.getElementById("tableBody").innerHTML = "";
     for (
       let i = 0;
-      i < 150 && today.toDateString() !== "Fri Dec 5 2025";
+      i < 150 && today.toDateString() !== "Wed Apr 1 2026";
       i++
     ) {
       // get rid of placeholder LCQs once LCQ schedule is finalized
