@@ -35,38 +35,6 @@ function getBaseSchedule() {
 
 function getRCQData() {
     return [
-            [8, 23, {8: "Modern Showcase Qualifier (invite-only)"}],
-            [8, 24, {8: "Standard Showcase Qualifier (invite-only)"}],
-            [8, 30, {7: "Limited (EOE) Super Qualifier"}],
-            [8, 31, {7: "Limited (EOE) Super Qualifier"}],
-
-            [9, 1, {7: "Modern Super Qualifier"}],
-            [9, 6, {7: "Limited (EOE) MOCS Showcase Open"}],
-            [9, 7, {7: "Limited (EOE) MOCS Showcase Open"}],
-
-            [9, 15, {6: "Vintage Prelim Special", 12: "Vintage Prelim Special", 17: "Vintage Prelim Special"}],
-            [9, 16, {6: "Vintage Prelim Special", 12: "Vintage Prelim Special"},],
-            [9, 17, {1: "Vintage Prelim Special", 12: "plus&Vintage Prelim Special&minus", 18: "Vintage Prelim Special"}],
-            [9, 18, {3: "Vintage Prelim Special", 18: "Vintage Prelim Special"}],
-            [9, 19, {3: "Vintage Prelim Special", 11: "Vintage Prelim Special", 20: "Vintage Prelim Special"}],
-            [9, 20, {7: "Vintage Championship Week Finals"}],
-
-            [9, 21, {7: "Vintage Super Qualifier"}],
-            [9, 27, {14: "Limited (EOE) Super Qualifier"}],
-            [9, 28, {3: "Limited (EOE) Super Qualifier"}],
-
-            [10, 3, {7: "Standard Super Qualifier"}],
-            [10, 18, {1: "Modern Super Qualifier"}],
-            [10, 19, {7: "Standard Super Qualifier"}],
-            [10, 25, {7: "Legacy Super Qualifier"}],
-
-            [11, 1, {7: "Pioneer Super Qualifier"}],
-            [11, 8, {7: "Limited (EOE) Super Qualifier"}],
-            [11, 9, {7: "Pauper Super Qualifier&NRG Series MTGO Showdown"}],
-            [11, 11, {7: "Modern Super Qualifier"}],
-            [11, 23, {8: "Standard Showcase Challenge"}],
-            [11, 28, {7: "Limited (TLA) Super Qualifier"}],
-
             [12, 5, {7: "Limited (TLA) Super Qualifier"}],
             [12, 6, {8: "Modern Showcase Qualifier (invite-only)"}],
             [12, 7, {6: "Pioneer Showcase Qualifier (invite-only)"}],
@@ -74,52 +42,59 @@ function getRCQData() {
             [12, 14, {8: "Legacy Showcase Qualifier (invite-only)"}],
             [12, 20, {7: "Limited (TLA) MOCS Showcase Open"}],
             [12, 21, {7: "Limited (TLA) MOCS Showcase Open"}],
+
+            [12, 26, {7: "Modern Super Qualifier"}],
+            [12, 27, {7: "Pioneer Super Qualifier"}],
+            [12, 28, {7: "Pauper Super Qualifier"}],
+            [12, 29, {7: "Standard Super Qualifier"}],
+            [12, 30, {7: "Limited (TLA) Super Qualifier"}],
+
+            [1, 16, {14: "Modern Qualifier"}],
+            [1, 19, {7: "Limited (TLA) Qualifier"}],
+            [1, 24, {1: "Modern Super Qualifier"}],
+            [1, 25, {7: "Vintage Super Qualifier"}],
+            [1, 30, {14: "Limited (ECL) Super Qualifier"}],
+            [1, 31, {1: "Limited (ECL) Super Qualifier"}],
+
+            [2, 1, {7: "Standard Super Qualifier"}],
+            [2, 6, {7: "Limited (ECL) Super Qualifier"}],
+            [2, 16, {7: "Limited (ECL) Super Qualifier"}],
+            [2, 21, {7: "Legacy Qualifier"}],
+            [2, 22, {7: "Pauper Qualifier"}],
+
+            [3, 8, {7: "Legacy Super Qualifier"}],
+
+            [3, 28, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [3, 29, {8: "Standard Showcase Qualifier (invite-only)"}],
+            [4, 4, {8: "Vintage Showcase Qualifier (invite-only)"}],
+            [4, 5, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            [4, 11, {7: "Limited (TBD) MOCS Showcase Open"}],
+            [4, 12, {7: "Limited (TBD) MOCS Showcase Open"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getShowcaseData() {
     return [
-        [8, 19, {19: "Legacy Prelim"}],
+        [1, 3, {10: "Vintage Showcase Challenge"}],
+        [1, 4, {8: "Legacy Showcase Challenge"}],
+        [1, 11, {6: "Standard Showcase Challenge"}],
 
-        [9, 13, {6: "Standard Showcase Challenge", 8: "Standard Challenge (32-player)", 9:"Commander Trial (24-player)&plus&Modern Challenge (32-player)&minus"}],
-        [9, 14, {8: "Modern Showcase Challenge", 9: "plus&Legacy Challenge (32-player)&minus"}],
+        [2, 7, {6: "Standard Showcase Challenge"}],
+        [2, 8, {8: "Vintage Showcase Challenge"}],
+        [2, 14, {8: "Modern Showcase Challenge"}],
+        [2, 15, {7: "Legacy Showcase Challenge"}],
 
-        [10, 4, {8: "Modern Showcase Challenge"}],
-        [10, 5, {8: "Legacy Showcase Challenge"}],
-        [10, 11, {6: "Standard Showcase Challenge"}],
-        [10, 12, {6: "Pioneer Showcase Challenge"}],
-
-        [10, 26, {8: "Legacy Showcase Challenge"}],
-        [11, 2, {6: "Pioneer Showcase Challenge"}],
-
-        [11, 16, {8: "Legacy Showcase Challenge"}],
-        [11, 29, {8: "Modern Showcase Challenge"}],
-        [11, 30, {6: "Pioneer Showcase Challenge"}],
+        [3, 1, {8: "Modern Showcase Challenge"}],
+        [3, 14, {8: "Vintage Showcase Challenge"}],
+        [3, 15, {8: "Legacy Showcase Challenge"}],
+        [3, 21, {8: "Modern Showcase Challenge"}],
+        [3, 22, {8: "Standard Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getHackishLCQCorrections() {
     return [
-        [11, 30, 9, "Modern LCQ"],
-        [11, 30, 19, "Standard LCQ"],
-
-        [12, 1, 0, "Modern LCQ"],
-        [12, 1, 4, "Legacy LCQ"],
-        [12, 1, 8, "Standard LCQ"],
-        [12, 1, 12, "Pioneer LCQ"],
-        [12, 1, 16, "Modern LCQ"],
-        [12, 1, 20, "Legacy LCQ"],
-
-        [12, 2, 0, "Standard LCQ"],
-        [12, 2, 4, "Pioneer LCQ"],
-        [12, 2, 8, "Modern LCQ"],
-        [12, 2, 12, "Legacy LCQ"],
-        [12, 2, 16, "Pioneer LCQ"],
-        [12, 2, 20, "Standard LCQ"],
-
-        [12, 3, 0, "Pioneer LCQ"],
-        [12, 3, 4, "Legacy LCQ"]
-
+        // [11, 30, 9, "Modern LCQ"],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -189,5 +164,5 @@ function getCurrentYearDSTDates() {
 }
 
 function getLCQStartDate() {
-    return supplyYearAndDecrementMonth([11, 30]);
+    return supplyYearAndDecrementMonth([3, 22]);
 }
