@@ -4,7 +4,7 @@ function getBaseSchedule() {
     const tr = "Trial";
 	const sun = [`Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null, null, `Modern ${ch} (32-player)`, `plus&Commander ${tr} (16-player)&minus`,
         `Pioneer ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Pauper ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Standard ${ch} (32-player)`, null, null, `Limited ${pr}`,
+		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, `Limited ${pr}`,
         `Modern ${ch} (32-player)`, null, null, null, null, null];
     const mon = [null, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
         null, `Modern ${ch}`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Pioneer ${pr}`,
