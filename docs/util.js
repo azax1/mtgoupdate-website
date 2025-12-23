@@ -21,7 +21,7 @@ function isMocsFormat(str) {
 }
 
 function getCubeEndTimestamp() {
-  return new Date(Date.UTC(2025, 6, 17, 1, 30)).valueOf();
+  return new Date(Date.UTC(2026, 0, 7, 6, 30)).valueOf();
 }
 
 function getHourMode() {
@@ -124,6 +124,8 @@ function initializePageAndParameters(
             return event.includes(format) || event.includes("Vegas");
           } else if (format === "Limited") {
             return event.includes(format) || event.includes("Sealed");
+          } else if (format === "Modern") {
+            return event.includes(format) && !event.includes("Premodern");
           } else if (format !== "Vintage") {
             return event.includes(format);
           } else {

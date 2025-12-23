@@ -42,7 +42,7 @@ function displaySchedule(fixSliders = true) {
     const day2 = Number(moment.unix(end).tz(timeZone).format("D"));
     const suffix2 = ((day2 + 19) % 20 < 3) ? ["st", "nd", "rd"][(day2 + 19) % 20] : (day2 == 31) ? "st" : "th";
     document.getElementById("banner").innerHTML = `
-      <center>There are 64-player Vintage Cube events every few hours until 
+      <center>There are 32-player Vintage Cube events every few hours until 
       ${moment.unix(end).tz(timeZone).format(timeFormat)}${suffix2}.<br>
       These are hidden to avoid clutter, but you can view them by unchecking "Hide Single Elim".</center>
       `;
