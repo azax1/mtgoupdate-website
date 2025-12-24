@@ -130,7 +130,7 @@ function addCurrentYearDSTDates(rcqs) {
 }
 
 function addCubeEvents(rcqs) {
-	getCubeEvents().forEach(([dates, times]) => addBulkEvents(rcqs, "Cube 32-player Single Elim", dates, times));
+	getCubeEvents().forEach(([dates, times]) => addBulkEvents(rcqs, "Cube 64-player Single Elim", dates, times));
 }
 
 function addVegasQualifiers(rcqs) {
