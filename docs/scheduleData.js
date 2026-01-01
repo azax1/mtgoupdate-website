@@ -20,7 +20,7 @@ function getBaseSchedule() {
         null, null, null, `Limited ${pr}`, null, null];
     const thur = [`Modern ${pr}`, null, null, null, `Vintage ${pr}`, null,
         `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Commander ${tr} (16-player)`, null, `Pauper ${ch} (32-player)`,
-		`Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, `Limited ${pr}`, `Standard ${ch} (32-player)`,
+		`Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, null, `Standard ${ch} (32-player)`,
         null, `Modern ${pr}`, null, null, null, null];
     const fri = [`Vintage ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, `Standard ${ch}`, null,
@@ -54,6 +54,7 @@ function getRCQData() {
             [1, 3, {15: "plus&Premodern Challenge&minus"}],
             [1, 4, {2: "Premodern Challenge"}],
             [1, 6, {9: "Premodern Challenge"}],
+            [1, 11, {6: "Standard Showcase Challenge"}],
             [1, 16, {14: "Modern Qualifier"}],
             [1, 19, {7: "Limited (TLA) Qualifier"}],
             [1, 24, {1: "Modern Super Qualifier"}],
@@ -82,7 +83,6 @@ function getShowcaseData() {
     return [
         [1, 3, {10: "Vintage Showcase Challenge"}],
         [1, 4, {8: "Legacy Showcase Challenge"}],
-        [1, 11, {6: "Standard Showcase Challenge"}],
 
         [2, 7, {6: "Standard Showcase Challenge"}],
         [2, 8, {8: "Vintage Showcase Challenge"}],
