@@ -11,7 +11,7 @@ function getBaseSchedule() {
 		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Vintage ${pr}`,
         `Limited ${pr}`, null, null, `Modern ${pr}`, null, null];
     const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
-        null, null, `Phantom Sealed ${tr} (24-player)`, null, `Standard ${ch}`, null,
+        null, null, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, `Standard ${ch}`, null,
 		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`,
         `Standard ${pr}`, `Vintage ${pr}`, null, null, null, null];
     const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
@@ -19,16 +19,16 @@ function getBaseSchedule() {
 		`Standard ${pr}`, null, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
         null, null, null, `Limited ${pr}`, null, null];
     const thur = [`Modern ${pr}`, null, null, null, `Vintage ${pr}`, null,
-        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Commander ${tr} (16-player)`, null, `Pauper ${ch} (32-player)`,
+        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Premodern ${ch} (32-player)`, null, `Pauper ${ch} (32-player)`,
 		`Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, null, `Standard ${ch} (32-player)`,
         null, `Modern ${pr}`, null, null, null, null];
     const fri = [`Vintage ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, `Standard ${ch}`, null,
-		`Commander ${tr} (16-player)`, null, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Legacy ${ch} (32-player)`,
+		`Commander ${tr} (16-player)`, `Premodern ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Legacy ${ch} (32-player)`,
         `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
     const sat = [null, `Phantom Sealed ${tr} (24-player)`, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
         `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, `Commander ${tr} (16-player)`, `Vintage ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, null, `Limited ${pr}`, null,
+		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, `Premodern ${ch} (32-player)`, `Limited ${pr}`, null,
         `Modern ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
@@ -42,19 +42,13 @@ function getRCQData() {
             [12, 14, {8: "Legacy Showcase Qualifier (invite-only)"}],
             [12, 21, {7: "Limited (TLA) MOCS Showcase Open"}],
 
-            [12, 25, {9: "Premodern Challenge"}],
-            [12, 26, {7: "Modern Super Qualifier", 13: "Premodern Challenge"}],
-            [12, 27, {7: "Limited (TLA) MOCS Showcase Open", 15: "plus&Premodern Challenge&minus"}],
-            [12, 28, {2: "Premodern Challenge", 7: "Pauper Super Qualifier"}],
+            [12, 26, {7: "Modern Super Qualifier"}],
+            [12, 27, {7: "Limited (TLA) MOCS Showcase Open"}],
             [12, 29, {7: "Standard Super Qualifier"}],
-            [12, 30, {7: "Limited (TLA) Super Qualifier", 9: "Premodern Challenge"}],
+            [12, 30, {7: "Limited (TLA) Super Qualifier"}],
 
-            [1, 1, {9: "Premodern Challenge"}],
-            [1, 2, {7: "Pioneer Super Qualifier", 13: "Premodern Challenge"}],
-            [1, 3, {15: "plus&Premodern Challenge&minus"}],
-            [1, 4, {2: "Premodern Challenge"}],
-            [1, 6, {9: "Premodern Challenge"}],
-            [1, 11, {6: "Standard Showcase Challenge"}],
+            [1, 2, {7: "Pioneer Super Qualifier"}],
+            [1, 11, {8: "Standard Showcase Challenge"}],
             [1, 16, {14: "Modern Qualifier"}],
             [1, 19, {7: "Limited (TLA) Qualifier"}],
             [1, 24, {1: "Modern Super Qualifier"}],
