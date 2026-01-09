@@ -20,10 +20,6 @@ function isMocsFormat(str) {
   );
 }
 
-function getCubeEndTimestamp() {
-  return new Date(Date.UTC(2026, 0, 13, 22, 30)).valueOf();
-}
-
 function getHourMode() {
   if (localStorage.getItem("hourMode") === "24") {
     return "24";

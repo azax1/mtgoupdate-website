@@ -101,7 +101,7 @@ function getCubeEvents() {
     return [
             [
                 [ [12, 23], [12, 24], [12, 25], [12, 26], [12, 27], [12, 28], [12, 29], [12, 30], [12, 31],
-                    [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6]  ],
+                    [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6] ],
                 [ 6.5, 10.5, 14.5 ]
             ],
             [
@@ -109,6 +109,10 @@ function getCubeEvents() {
                 [ 10.5, 14.5 ]
             ]
         ].map(([dates, times]) => [dates.map(supplyYearAndDecrementMonth), times]);
+}
+
+function getCubeEndTimestamp() {
+  return new Date(Date.UTC(2026, 0, 13, 22, 30)).valueOf();
 }
 
 function getVegasQualifiers() {
