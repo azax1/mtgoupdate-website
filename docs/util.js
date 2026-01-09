@@ -21,7 +21,7 @@ function isMocsFormat(str) {
 }
 
 function getCubeEndTimestamp() {
-  return new Date(Date.UTC(2026, 0, 7, 2, 30)).valueOf();
+  return new Date(Date.UTC(2026, 0, 13, 22, 30)).valueOf();
 }
 
 function getHourMode() {
