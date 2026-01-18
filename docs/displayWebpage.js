@@ -41,6 +41,26 @@ function displaySchedule(fixSliders = true) {
     document.getElementById('exportOpenGoogle').addEventListener('click', function(){
       openSelectedInGoogle();
     });
+    document.getElementById('exportSelectByFormat').addEventListener('click', function(){
+      // read chosen format selections and check matching event titles
+      const formatSelect = document.getElementById('formatDropdown');
+      const selected = Array.from(formatSelect.options).filter(o=>o.selected).map(o=>o.value);
+      if (selected.length === 0) {
+        alert('No formats selected in the Format dropdown.');
+        return;
+      }
+      const checks = Array.from(document.querySelectorAll('.export-checkbox'));
+      checks.forEach(cb => {
+        const title = (cb.getAttribute('data-title')||'').toLowerCase();
+        let match = false;
+        for (const f of selected) {
+          if (!f) continue;
+          if (title.includes(f.toLowerCase())) { match = true; break; }
+        }
+        cb.checked = match;
+      });
+      updateExportCount();
+    });
     function updateExportCount() {
       const count = document.querySelectorAll('.export-checkbox:checked').length;
       document.getElementById('exportCount').textContent = count > 0 ? `${count} selected` : 'none selected';
@@ -91,14 +111,17 @@ function displaySchedule(fixSliders = true) {
     function openSelectedInGoogle() {
       const checks = Array.from(document.querySelectorAll('.export-checkbox:checked'));
       if (checks.length === 0) { alert('No events selected'); return; }
-      checks.forEach(cb => {
-        const start = cb.getAttribute('data-start');
-        const end = cb.getAttribute('data-end');
-        const title = cb.getAttribute('data-title');
-        const dates = `${moment(start).format('YYYYMMDDTHHmmss')}/${moment(end).format('YYYYMMDDTHHmmss')}`;
-        const ctz = cb.getAttribute('data-tz') || Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const url = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(dates) + '&ctz=' + encodeURIComponent(ctz);
-        window.open(url, '_blank');
+      // open tabs with small delay to reduce popup blocking and rate-limit
+      checks.forEach((cb, idx) => {
+        setTimeout(() => {
+          const start = cb.getAttribute('data-start');
+          const end = cb.getAttribute('data-end');
+          const title = cb.getAttribute('data-title');
+          const dates = `${moment(start).format('YYYYMMDDTHHmmss')}/${moment(end).format('YYYYMMDDTHHmmss')}`;
+          const ctz = cb.getAttribute('data-tz') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+          const url = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(dates) + '&ctz=' + encodeURIComponent(ctz);
+          window.open(url, '_blank');
+        }, idx * 500);
       });
     }
   }
