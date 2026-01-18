@@ -386,20 +386,8 @@ function getSchedulesForWeek(
               "&details=" + encodeURIComponent(details) +
               "&ctz=" + encodeURIComponent(timeZone);
 
-            // Create anchor via DOM to avoid accidental escaping/rendering issues
-            try {
-              const a = document.createElement("a");
-              a.className = "calendar-link";
-              a.href = calendarUrl;
-              a.target = "_blank";
-              a.rel = "noopener";
-              a.title = "Add to Google Calendar";
-              a.setAttribute("aria-label", "Add to Google Calendar");
-              a.textContent = "📅";
-              var calendarAnchor = a.outerHTML;
-            } catch (e) {
-              var calendarAnchor = `<a class=\"calendar-link\" href=\"${calendarUrl}\" target=\"_blank\" rel=\"noopener\" title=\"Add to Google Calendar\" aria-label=\"Add to Google Calendar\">📅</a>`;
-            }
+            // No per-event calendar icon: batch export handled via checkboxes and toolbar
+            var calendarAnchor = "";
 
             // If export mode, prepend a checkbox with event metadata
             let checkboxHtml = '';
@@ -411,7 +399,7 @@ function getSchedulesForWeek(
             } catch (e) {
               checkboxHtml = '';
             }
-            var eventString = `<font color= #COLOR>${checkboxHtml}${getPrettyTime(hour, minute)} #EVENT ${calendarAnchor}</font><br>`;
+            var eventString = `<font color= #COLOR>${checkboxHtml}${getPrettyTime(hour, minute)} #EVENT</font><br>`;
           } catch (e) {
             var eventString = `<font color= #COLOR>${getPrettyTime(hour, minute)} #EVENT</font><br>`;
           }
