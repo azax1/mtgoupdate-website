@@ -221,13 +221,7 @@ td {
   transition-delay: 0s;
 }
 
-/* Calendar link styling to ensure consistent display */
-.calendar-link {
-  text-decoration: none;
-  margin-left: 6px;
-  font-size: 1.0em;
-  color: inherit;
-}
+/* (removed) per-event calendar link styling — using batch export checkboxes instead */
 
 #exportToolbar {
   display: flex;
