@@ -120,6 +120,20 @@
             <button id="exportOpenGoogle">Open in Google (one tab per event)</button>
             <span id="exportCount" style="margin-left:12px"></span>
           </div>
+          <!-- Export confirmation modal -->
+          <div id="exportConfirmModal" class="modal">
+            <div class="modal-content" id="exportConfirmContent" style="max-width:700px;">
+              <span id="exportConfirmClose" class="close">&times;</span>
+              <h3>Confirm export</h3>
+              <p id="exportConfirmSummary"></p>
+              <div id="exportConfirmList" style="max-height:300px; overflow:auto; border:1px solid #ccc; padding:8px; background:var(--bg-color);"></div>
+              <div style="margin-top:12px; display:flex; gap:8px;">
+                <button id="exportConfirmOpen">Open all in Google (rate-limited)</button>
+                <button id="exportConfirmDownload">Download .ics</button>
+                <button id="exportConfirmCancel">Cancel</button>
+              </div>
+            </div>
+          </div>
           <button id="info" class="infoButton">
             <div id="infoButtonText">&#8505;</div>
           </button>

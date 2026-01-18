@@ -238,3 +238,28 @@ td {
   margin-right: 6px;
 }
 
+/* Export toggle button emphasis */
+#exportToggle {
+  font-size: 18px;
+  line-height: 1;
+  background-color: #2b6baf;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+#exportToggle:hover {
+  background-color: #245a94;
+}
+
+/* Export confirmation modal tweaks (reuse .modal/.modal-content) */
+#exportConfirmContent {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+#exportConfirmList .export-item {
+  padding: 6px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+#exportConfirmList .export-item:last-child { border-bottom: none; }
+

@@ -111,6 +111,11 @@ function displaySchedule(fixSliders = true) {
     function openSelectedInGoogle() {
       const checks = Array.from(document.querySelectorAll('.export-checkbox:checked'));
       if (checks.length === 0) { alert('No events selected'); return; }
+      // If many events, show confirmation modal first
+      if (checks.length > 6) {
+        showExportConfirmation(Array.from(checks));
+        return;
+      }
       // open tabs with small delay to reduce popup blocking and rate-limit
       checks.forEach((cb, idx) => {
         setTimeout(() => {
@@ -123,6 +128,66 @@ function displaySchedule(fixSliders = true) {
           window.open(url, '_blank');
         }, idx * 500);
       });
+    }
+
+    // export confirmation modal helpers
+    function showExportConfirmation(checks) {
+      const modal = document.getElementById('exportConfirmModal');
+      const summary = document.getElementById('exportConfirmSummary');
+      const list = document.getElementById('exportConfirmList');
+      list.innerHTML = '';
+      summary.textContent = `${checks.length} events selected to open in Google Calendar.`;
+      checks.forEach((cb, idx) => {
+        const title = cb.getAttribute('data-title');
+        const start = cb.getAttribute('data-start');
+        const end = cb.getAttribute('data-end');
+        const item = document.createElement('div');
+        item.className = 'export-item';
+        item.innerHTML = `<input type="checkbox" class="export-confirm-checkbox" data-idx="${idx}" checked/> <strong>${moment(start).tz(cb.getAttribute('data-tz')||Intl.DateTimeFormat().resolvedOptions().timeZone).format('ddd HH:mm')}</strong> — ${title}`;
+        list.appendChild(item);
+      });
+      // show modal
+      modal.style.display = 'block';
+
+      // wire modal buttons
+      document.getElementById('exportConfirmClose').onclick = closeExportConfirm;
+      document.getElementById('exportConfirmCancel').onclick = closeExportConfirm;
+      document.getElementById('exportConfirmDownload').onclick = function(){
+        // build a temporary selection matching the modal checkboxes
+        const checked = Array.from(list.querySelectorAll('.export-confirm-checkbox')).filter(c=>c.checked).map(c=>checks[parseInt(c.getAttribute('data-idx'))]);
+        if (checked.length === 0) { alert('No events selected'); return; }
+        // create temporary checkboxes in DOM to reuse existing function
+        const temp = checked.map((cb, i) => {
+          const t = document.createElement('input');
+          t.type = 'checkbox'; t.className = 'export-checkbox';
+          t.setAttribute('data-title', cb.getAttribute('data-title'));
+          t.setAttribute('data-start', cb.getAttribute('data-start'));
+          t.setAttribute('data-end', cb.getAttribute('data-end'));
+          return t;
+        });
+        // append, call download, then remove
+        temp.forEach(t => document.body.appendChild(t));
+        downloadSelectedAsICS();
+        temp.forEach(t => t.remove());
+      };
+      document.getElementById('exportConfirmOpen').onclick = function(){
+        const selected = Array.from(list.querySelectorAll('.export-confirm-checkbox')).filter(c=>c.checked).map(c=>checks[parseInt(c.getAttribute('data-idx'))]);
+        if (selected.length === 0) { alert('No events selected'); return; }
+        selected.forEach((cb, idx) => {
+          setTimeout(() => {
+            const start = cb.getAttribute('data-start');
+            const end = cb.getAttribute('data-end');
+            const title = cb.getAttribute('data-title');
+            const dates = `${moment(start).format('YYYYMMDDTHHmmss')}/${moment(end).format('YYYYMMDDTHHmmss')}`;
+            const ctz = cb.getAttribute('data-tz') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const url = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(dates) + '&ctz=' + encodeURIComponent(ctz);
+            window.open(url, '_blank');
+          }, idx * 500);
+        });
+        closeExportConfirm();
+      };
+
+      function closeExportConfirm() { modal.style.display = 'none'; }
     }
   }
   if (
