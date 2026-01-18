@@ -2,6 +2,7 @@
 
 <html lang="en">
   <head>
+    <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -55,6 +56,10 @@
               <h4>
                 <button id="settings" class="infoButton" style="width:40px; height:40px;">
                 <span id="settingsButtonText" style="display: block; text-align: center; font-size: 29px;">&#9881;</span>
+                </button>
+                <button id="exportToggle" class="infoButton" style="width:auto; height:40px; margin-left:6px; display:flex; align-items:center; gap:8px; padding:6px 8px;" title="Batch export">
+                  <span class="export-icon">📅</span>
+                  <span id="exportLabel">Export to Google Calendar</span>
                 </button>
             </h4>
             </div>
@@ -110,6 +115,32 @@
           </div>
         </header>
         <div class="contentWrapper">
+          <div id="exportToolbar" style="display:none; margin:8px 0;">
+            <button id="exportSelectAll">Select all</button>
+            <button id="exportDeselectAll">Deselect all</button>
+            <button id="exportSelectByFormat">Select by format</button>
+            <button id="exportDownloadIcs">Download .ics</button>
+            <button id="exportOpenGoogle">Open in Google (one tab per event)</button>
+            <span id="exportCount" style="margin-left:12px"></span>
+          </div>
+          <!-- Export confirmation modal -->
+          <div id="exportConfirmModal" class="modal">
+            <div class="modal-content" id="exportConfirmContent" style="max-width:700px;">
+              <span id="exportConfirmClose" class="close">&times;</span>
+              <h3>Confirm export</h3>
+              <p id="exportConfirmSummary"></p>
+              <div id="exportConfirmList" style="max-height:300px; overflow:auto; border:1px solid #ccc; padding:8px; background:var(--bg-color);"></div>
+              <div style="margin-top:12px; display:flex; gap:8px;">
+                <button id="exportConfirmOpen">Open all in Google (rate-limited)</button>
+                <button id="exportConfirmDownload">Download .ics</button>
+                <button id="exportConfirmCancel">Cancel</button>
+              </div>
+              <div id="exportConfirmOptions">
+                <label><input type="checkbox" id="exportDontAsk"/> Don't ask me again for large exports</label>
+              </div>
+              <div id="exportConfirmPreview"></div>
+            </div>
+          </div>
           <button id="info" class="infoButton">
             <div id="infoButtonText">&#8505;</div>
           </button>
