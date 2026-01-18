@@ -263,3 +263,30 @@ td {
 }
 #exportConfirmList .export-item:last-child { border-bottom: none; }
 
+/* Truncate long titles in modal list */
+.export-item .export-item-title {
+  display: inline-block;
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.export-item .export-item-time {
+  display: inline-block;
+  width: 110px;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-right: 8px;
+}
+.export-item:hover { background: rgba(255,255,255,0.02); cursor: pointer; }
+
+#exportConfirmPreview {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.06);
+}
+
+#exportConfirmOptions { margin-top: 8px; display:flex; gap:12px; align-items:center; }
+

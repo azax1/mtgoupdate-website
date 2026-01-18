@@ -112,7 +112,7 @@ function displaySchedule(fixSliders = true) {
       const checks = Array.from(document.querySelectorAll('.export-checkbox:checked'));
       if (checks.length === 0) { alert('No events selected'); return; }
       // If many events, show confirmation modal first
-      if (checks.length > 6) {
+      if (checks.length > 6 && localStorage.getItem('exportDontAsk') !== 'true') {
         showExportConfirmation(Array.from(checks));
         return;
       }
@@ -148,6 +148,13 @@ function displaySchedule(fixSliders = true) {
       });
       // show modal
       modal.style.display = 'block';
+
+      // initialize don't ask checkbox from localStorage
+      const dontAsk = document.getElementById('exportDontAsk');
+      if (dontAsk) {
+        dontAsk.checked = localStorage.getItem('exportDontAsk') === 'true';
+        dontAsk.onchange = function() { localStorage.setItem('exportDontAsk', dontAsk.checked ? 'true' : 'false'); };
+      }
 
       // wire modal buttons
       document.getElementById('exportConfirmClose').onclick = closeExportConfirm;
