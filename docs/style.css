@@ -246,6 +246,9 @@ td {
   background-color: #245a94;
 }
 
+#exportToggle .export-icon { font-size: 18px; }
+#exportToggle #exportLabel { font-size: 14px; font-weight: 600; }
+
 /* Export confirmation modal tweaks (reuse .modal/.modal-content) */
 #exportConfirmContent {
   background-color: var(--bg-color);
