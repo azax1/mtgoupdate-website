@@ -57,6 +57,7 @@
                 <button id="settings" class="infoButton" style="width:40px; height:40px;">
                 <span id="settingsButtonText" style="display: block; text-align: center; font-size: 29px;">&#9881;</span>
                 </button>
+                <button id="exportToggle" class="infoButton" style="width:40px; height:40px; margin-left:6px;" title="Batch export">📅</button>
             </h4>
             </div>
             <div style="width: 5%"></div>
@@ -111,6 +112,13 @@
           </div>
         </header>
         <div class="contentWrapper">
+          <div id="exportToolbar" style="display:none; margin:8px 0;">
+            <button id="exportSelectAll">Select all</button>
+            <button id="exportDeselectAll">Deselect all</button>
+            <button id="exportDownloadIcs">Download .ics</button>
+            <button id="exportOpenGoogle">Open in Google (one tab per event)</button>
+            <span id="exportCount" style="margin-left:12px"></span>
+          </div>
           <button id="info" class="infoButton">
             <div id="infoButtonText">&#8505;</div>
           </button>

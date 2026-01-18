@@ -229,3 +229,12 @@ td {
   color: inherit;
 }
 
+#exportToolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.export-checkbox {
+  margin-right: 6px;
+}
+
