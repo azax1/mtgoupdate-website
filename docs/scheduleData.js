@@ -19,8 +19,8 @@ function getBaseSchedule() {
 		`Standard ${pr}`, null, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
         null, null, null, `Limited ${pr}`, null, null];
     const thur = [`Modern ${pr}`, null, null, null, `Vintage ${pr}`, null,
-        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Premodern ${ch} (32-player)`, null, `Pauper ${ch} (32-player)`,
-		`Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, null, `Standard ${ch} (32-player)`,
+        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, null,
+		`Pauper ${ch} (32-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, null, `Standard ${ch} (32-player)`,
         null, `Modern ${pr}`, null, null, null, null];
     const fri = [`Vintage ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, `Standard ${ch}`, null,
