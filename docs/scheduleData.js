@@ -54,7 +54,7 @@ function getRCQData() {
             [1, 24, {1: "Modern Super Qualifier"}],
             [1, 25, {7: "Vintage Super Qualifier"}],
             [1, 30, {14: "Limited (ECL) Super Qualifier"}],
-            [1, 31, {1: "Limited (ECL) Super Qualifier"}],
+            // [1, 31, {1: "Limited (ECL) Super Qualifier"}],
 
             [2, 1, {7: "Standard Super Qualifier"}],
             [2, 6, {7: "Limited (ECL) Super Qualifier"}],
