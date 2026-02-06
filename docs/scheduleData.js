@@ -61,6 +61,7 @@ function getRCQData() {
             [2, 16, {7: "Limited (ECL) Super Qualifier"}],
             [2, 21, {7: "Legacy Qualifier"}],
             [2, 22, {7: "Pauper Qualifier"}],
+            [2, 28, {1: "Limited (ECL) Super Qualifier"}],
 
             [3, 8, {7: "Legacy Super Qualifier"}],
 
