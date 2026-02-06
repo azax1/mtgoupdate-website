@@ -11,6 +11,192 @@ function displaySchedule(fixSliders = true) {
   }
   let today, timeZone, eventFilter;
   [today, timeZone, eventFilter] = initializePageAndParameters();
+  // Initialize export mode UI handlers (once)
+  if (typeof window.__exportModeInitialized === 'undefined') {
+    window.__exportModeInitialized = true;
+    window.exportMode = false;
+    document.addEventListener('click', function(e){
+      if (e.target && e.target.id === 'exportToggle') {
+        toggleExportMode();
+      }
+    });
+    function toggleExportMode() {
+      window.exportMode = !window.exportMode;
+      document.getElementById('exportToolbar').style.display = window.exportMode ? 'flex' : 'none';
+      displaySchedule(false);
+      updateExportCount();
+    }
+    // toolbar buttons
+    document.getElementById('exportSelectAll').addEventListener('click', function(){
+      document.querySelectorAll('.export-checkbox').forEach(cb => cb.checked = true);
+      updateExportCount();
+    });
+    document.getElementById('exportDeselectAll').addEventListener('click', function(){
+      document.querySelectorAll('.export-checkbox').forEach(cb => cb.checked = false);
+      updateExportCount();
+    });
+    document.getElementById('exportDownloadIcs').addEventListener('click', function(){
+      downloadSelectedAsICS();
+    });
+    document.getElementById('exportOpenGoogle').addEventListener('click', function(){
+      openSelectedInGoogle();
+    });
+    document.getElementById('exportSelectByFormat').addEventListener('click', function(){
+      // read chosen format selections and check matching event titles
+      const formatSelect = document.getElementById('formatDropdown');
+      const selected = Array.from(formatSelect.options).filter(o=>o.selected).map(o=>o.value);
+      if (selected.length === 0) {
+        alert('No formats selected in the Format dropdown.');
+        return;
+      }
+      const checks = Array.from(document.querySelectorAll('.export-checkbox'));
+      checks.forEach(cb => {
+        const title = (cb.getAttribute('data-title')||'').toLowerCase();
+        let match = false;
+        for (const f of selected) {
+          if (!f) continue;
+          if (title.includes(f.toLowerCase())) { match = true; break; }
+        }
+        cb.checked = match;
+      });
+      updateExportCount();
+    });
+    function updateExportCount() {
+      const count = document.querySelectorAll('.export-checkbox:checked').length;
+      document.getElementById('exportCount').textContent = count > 0 ? `${count} selected` : 'none selected';
+    }
+    // update count when checkboxes change
+    document.addEventListener('change', function(e){
+      if (e.target && e.target.classList && e.target.classList.contains('export-checkbox')) {
+        updateExportCount();
+      }
+    });
+
+    // ICS export implementation
+    function formatUtcForIcs(iso) {
+      return moment(iso).utc().format('YYYYMMDDTHHmmss') + 'Z';
+    }
+    function sanitizeTextForIcs(s) {
+      return (s||'').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+    }
+    function downloadSelectedAsICS() {
+      const checks = Array.from(document.querySelectorAll('.export-checkbox:checked'));
+      if (checks.length === 0) { alert('No events selected'); return; }
+      let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//mtgoupdate//EN\\r\\n';
+      checks.forEach((cb, idx) => {
+        const title = cb.getAttribute('data-title');
+        const start = cb.getAttribute('data-start');
+        const end = cb.getAttribute('data-end');
+        const uid = `mtgoupdate-${Date.now()}-${idx}@mtgoupdate`;
+        ics += 'BEGIN:VEVENT\r\n';
+        ics += `UID:${uid}\r\n`;
+        ics += `DTSTAMP:${formatUtcForIcs(new Date())}\r\n`;
+        ics += `DTSTART:${formatUtcForIcs(start)}\r\n`;
+        ics += `DTEND:${formatUtcForIcs(end)}\r\n`;
+        ics += `SUMMARY:${sanitizeTextForIcs(title)}\r\n`;
+        ics += 'END:VEVENT\r\n';
+      });
+      ics += 'END:VCALENDAR\r\n';
+      const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mtgoupdate-events.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function openSelectedInGoogle() {
+      const checks = Array.from(document.querySelectorAll('.export-checkbox:checked'));
+      if (checks.length === 0) { alert('No events selected'); return; }
+      // If many events, show confirmation modal first
+      if (checks.length > 6 && localStorage.getItem('exportDontAsk') !== 'true') {
+        showExportConfirmation(Array.from(checks));
+        return;
+      }
+      // open tabs with small delay to reduce popup blocking and rate-limit
+      checks.forEach((cb, idx) => {
+        setTimeout(() => {
+          const start = cb.getAttribute('data-start');
+          const end = cb.getAttribute('data-end');
+          const title = cb.getAttribute('data-title');
+          const dates = `${moment(start).format('YYYYMMDDTHHmmss')}/${moment(end).format('YYYYMMDDTHHmmss')}`;
+          const ctz = cb.getAttribute('data-tz') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+          const url = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(dates) + '&ctz=' + encodeURIComponent(ctz);
+          window.open(url, '_blank');
+        }, idx * 500);
+      });
+    }
+
+    // export confirmation modal helpers
+    function showExportConfirmation(checks) {
+      const modal = document.getElementById('exportConfirmModal');
+      const summary = document.getElementById('exportConfirmSummary');
+      const list = document.getElementById('exportConfirmList');
+      list.innerHTML = '';
+      summary.textContent = `${checks.length} events selected to open in Google Calendar.`;
+      checks.forEach((cb, idx) => {
+        const title = cb.getAttribute('data-title');
+        const start = cb.getAttribute('data-start');
+        const end = cb.getAttribute('data-end');
+        const item = document.createElement('div');
+        item.className = 'export-item';
+        item.innerHTML = `<input type="checkbox" class="export-confirm-checkbox" data-idx="${idx}" checked/> <strong>${moment(start).tz(cb.getAttribute('data-tz')||Intl.DateTimeFormat().resolvedOptions().timeZone).format('ddd HH:mm')}</strong> — ${title}`;
+        list.appendChild(item);
+      });
+      // show modal
+      modal.style.display = 'block';
+
+      // initialize don't ask checkbox from localStorage
+      const dontAsk = document.getElementById('exportDontAsk');
+      if (dontAsk) {
+        dontAsk.checked = localStorage.getItem('exportDontAsk') === 'true';
+        dontAsk.onchange = function() { localStorage.setItem('exportDontAsk', dontAsk.checked ? 'true' : 'false'); };
+      }
+
+      // wire modal buttons
+      document.getElementById('exportConfirmClose').onclick = closeExportConfirm;
+      document.getElementById('exportConfirmCancel').onclick = closeExportConfirm;
+      document.getElementById('exportConfirmDownload').onclick = function(){
+        // build a temporary selection matching the modal checkboxes
+        const checked = Array.from(list.querySelectorAll('.export-confirm-checkbox')).filter(c=>c.checked).map(c=>checks[parseInt(c.getAttribute('data-idx'))]);
+        if (checked.length === 0) { alert('No events selected'); return; }
+        // create temporary checkboxes in DOM to reuse existing function
+        const temp = checked.map((cb, i) => {
+          const t = document.createElement('input');
+          t.type = 'checkbox'; t.className = 'export-checkbox';
+          t.setAttribute('data-title', cb.getAttribute('data-title'));
+          t.setAttribute('data-start', cb.getAttribute('data-start'));
+          t.setAttribute('data-end', cb.getAttribute('data-end'));
+          return t;
+        });
+        // append, call download, then remove
+        temp.forEach(t => document.body.appendChild(t));
+        downloadSelectedAsICS();
+        temp.forEach(t => t.remove());
+      };
+      document.getElementById('exportConfirmOpen').onclick = function(){
+        const selected = Array.from(list.querySelectorAll('.export-confirm-checkbox')).filter(c=>c.checked).map(c=>checks[parseInt(c.getAttribute('data-idx'))]);
+        if (selected.length === 0) { alert('No events selected'); return; }
+        selected.forEach((cb, idx) => {
+          setTimeout(() => {
+            const start = cb.getAttribute('data-start');
+            const end = cb.getAttribute('data-end');
+            const title = cb.getAttribute('data-title');
+            const dates = `${moment(start).format('YYYYMMDDTHHmmss')}/${moment(end).format('YYYYMMDDTHHmmss')}`;
+            const ctz = cb.getAttribute('data-tz') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const url = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(dates) + '&ctz=' + encodeURIComponent(ctz);
+            window.open(url, '_blank');
+          }, idx * 500);
+        });
+        closeExportConfirm();
+      };
+
+      function closeExportConfirm() { modal.style.display = 'none'; }
+    }
+  }
   if (
     moment.tz(timeZone).utcOffset() ===
     moment.tz("America/Los_Angeles").utcOffset()
@@ -184,10 +370,39 @@ function getSchedulesForWeek(
           if (greyOutTs && timestamp < greyOutTs) {
               color = grey;
           }
-          let eventString = `<font color= #COLOR>${getPrettyTime(
-            hour,
-            minute
-          )} #EVENT</font><br>`;
+          // build a Google Calendar 'create event' link for this event (default 2h duration)
+          try {
+            const startMoment = keyDate.clone();
+            const endMoment = keyDate.clone().add(2, "hours");
+            const startStr = startMoment.format("YYYYMMDDTHHmmss");
+            const endStr = endMoment.format("YYYYMMDDTHHmmss");
+            const title = event;
+            const details = `${event} (from mtgoupdate)`;
+            const datesParam = `${startStr}/${endStr}`;
+            const calendarUrl =
+              "https://www.google.com/calendar/render?action=TEMPLATE&" +
+              "text=" + encodeURIComponent(title) +
+              "&dates=" + encodeURIComponent(datesParam) +
+              "&details=" + encodeURIComponent(details) +
+              "&ctz=" + encodeURIComponent(timeZone);
+
+            // No per-event calendar icon: batch export handled via checkboxes and toolbar
+            var calendarAnchor = "";
+
+            // If export mode, prepend a checkbox with event metadata
+            let checkboxHtml = '';
+            try {
+              if (window.exportMode) {
+                const escTitle = (event + '').replace(/"/g, '&quot;');
+                checkboxHtml = `<input type="checkbox" class="export-checkbox" data-title="${escTitle}" data-start="${startMoment.toISOString()}" data-end="${endMoment.toISOString()}" data-tz="${timeZone}" checked/> `;
+              }
+            } catch (e) {
+              checkboxHtml = '';
+            }
+            var eventString = `<font color= #COLOR>${checkboxHtml}${getPrettyTime(hour, minute)} #EVENT</font><br>`;
+          } catch (e) {
+            var eventString = `<font color= #COLOR>${getPrettyTime(hour, minute)} #EVENT</font><br>`;
+          }
           if (schedules[day] !== undefined) {
             schedules[day].push([eventString, event, color]);
           } else {
