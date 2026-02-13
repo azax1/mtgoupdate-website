@@ -58,6 +58,7 @@ function getRCQData() {
 
             [2, 1, {7: "Standard Super Qualifier"}],
             [2, 6, {7: "Limited (ECL) Super Qualifier"}],
+            [2, 15, {10: "NRG Series MTGO Showdown"}],
             [2, 16, {7: "Limited (ECL) Super Qualifier"}],
             [2, 21, {7: "Legacy Qualifier"}],
             [2, 22, {7: "Pauper Qualifier"}],
@@ -82,7 +83,7 @@ function getShowcaseData() {
         [2, 7, {6: "Standard Showcase Challenge"}],
         [2, 8, {8: "Vintage Showcase Challenge"}],
         [2, 14, {8: "Modern Showcase Challenge"}],
-        [2, 15, {7: "Legacy Showcase Challenge"}],
+        [2, 15, {7: "Legacy Showcase Challenge", 8: "plus&Legacy Challenge (32-player)&minus"}],
 
         [3, 1, {8: "Modern Showcase Challenge"}],
         [3, 14, {8: "Vintage Showcase Challenge"}],
