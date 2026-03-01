@@ -64,7 +64,7 @@ function getRCQData() {
             [2, 22, {7: "Pauper Qualifier"}],
             [2, 28, {1: "Limited (ECL) Super Qualifier"}],
 
-            [3, 8, {7: "Legacy Super Qualifier"}],
+            [3, 7, {7: "Legacy Super Qualifier"}],
 
             [3, 28, {8: "Modern Showcase Qualifier (invite-only)"}],
             [3, 29, {8: "Standard Showcase Qualifier (invite-only)"}],
@@ -86,6 +86,7 @@ function getShowcaseData() {
         [2, 15, {7: "Legacy Showcase Challenge", 8: "plus&Legacy Challenge (32-player)&minus"}],
 
         [3, 1, {8: "Modern Showcase Challenge"}],
+        [3, 8, {8: "Modern Showcase Challenge"}],
         [3, 14, {8: "Vintage Showcase Challenge"}],
         [3, 15, {8: "Legacy Showcase Challenge"}],
         [3, 21, {8: "Modern Showcase Challenge"}],
