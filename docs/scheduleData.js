@@ -28,7 +28,7 @@ function getBaseSchedule() {
         `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
     const sat = [null, `Phantom Sealed ${tr} (24-player)`, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
         `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, `Commander ${tr} (16-player)`, `Vintage ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, `Premodern ${ch} (32-player)`, `Limited ${pr}`, null,
+		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, `plus&Premodern ${ch} (32-player)&minus`, `Limited ${pr}`, null,
         `Modern ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
