@@ -66,6 +66,13 @@ function getRCQData() {
 
             [3, 7, {7: "Legacy Super Qualifier"}],
 
+            [3, 11, {12: "NBL Modern Challenge (32-player)"}],
+            [3, 13, {3: "NBL Modern Challenge (32-player)"}],
+            [3, 17, {7: "NBL Modern Challenge (32-player)"}],
+            [3, 18, {12: "NBL Modern Challenge (32-player)"}],
+            [3, 20, {3: "NBL Modern Challenge (32-player)"}],
+            [3, 24, {7: "NBL Modern Challenge (32-player)"}],
+
             [3, 28, {8: "Modern Showcase Qualifier (invite-only)"}],
             [3, 29, {8: "Standard Showcase Qualifier (invite-only)"}],
             [4, 4, {8: "Vintage Showcase Qualifier (invite-only)"}],

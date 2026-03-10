@@ -121,11 +121,11 @@ function initializePageAndParameters(
           } else if (format === "Limited") {
             return event.includes(format) || event.includes("Sealed");
           } else if (format === "Modern") {
-            return event.includes(format) && !event.includes("Premodern");
-          } else if (format !== "Vintage") {
-            return event.includes(format);
-          } else {
+            return event.includes(format) && !event.includes("Premodern") && !event.includes("NBL");
+          } else if (format === "Vintage") {
             return event.includes(format) && !event.includes("Cube");
+          } else {
+            return event.includes(format);
           }
         }).length > 0
       );
