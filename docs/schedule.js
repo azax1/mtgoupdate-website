@@ -34,12 +34,16 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 					index = 24 * i + j;
 					if (!isReplacement || (event != null && event.includes("Pauper Showcase"))) {
 						if (monster[index]) {
-							monster[index] =  insertEvent(monster[index], event);
+							monster[index] =  insertEvent(monster[index], event, false);
 						} else {
 							monster[index] = event;
 						}
 					} else {
-						monster[index] = event;
+						if (monster[index]) {
+							monster[index] =  insertEvent(monster[index], event, true);
+						} else {
+							monster[index] = event;
+						}
 					}
 				}
 			}
@@ -48,10 +52,14 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 	}
 }
 
-function insertEvent(normal, special) {
+function insertEvent(normal, special, isReplacement) {
 	const delim = "plus&";
 	if (!normal.includes(delim) && !special.includes(delim)) {
-		return normal + "&" + special;
+		if (isReplacement) {
+			return special;
+		} else {
+			return normal + "&" + special;
+		}
 	} else if (normal.includes(delim) !== special.includes(delim)) {
 		if (normal.includes(delim)) {
 			return special + "&" + normal;
@@ -59,7 +67,11 @@ function insertEvent(normal, special) {
 			return normal + "&" + special;
 		}
 	} else {
-		return normal.split("&minus")[0] + "&" + special.split(delim)[1];
+		if (isReplacement) {
+			return normal.split(delim)[0] + "&" + special;
+		} else {
+			return normal.split("&minus")[0] + "&" + special.split(delim)[1];
+		}
 	}
 }
 
