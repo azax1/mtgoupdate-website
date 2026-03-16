@@ -96,7 +96,7 @@ function getShowcaseData() {
         [3, 8, {8: "Modern Showcase Challenge"}],
         [3, 14, {8: "Vintage Showcase Challenge"}],
         [3, 15, {8: "Legacy Showcase Challenge"}],
-        [3, 21, {8: "Modern Showcase Challenge"}],
+        [3, 21, {8: "Modern Showcase Challenge&plus&minus"}],
         [3, 22, {8: "Standard Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
