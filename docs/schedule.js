@@ -40,7 +40,7 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 						}
 					} else {
 						if (monster[index]) {
-							monster[index] =  insertEvent(monster[index], event, true);
+							monster[index] =  insertEvent(monster[index], event == null ? "" : event, true);
 						} else {
 							monster[index] = event;
 						}
