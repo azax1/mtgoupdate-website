@@ -14,9 +14,9 @@ function isPremier(event) {
 function isMocsFormat(str) {
   return (
     str.includes("Standard") ||
-    str.includes("Modern") ||
+    (str.includes("Modern") && !str.includes("NBL") && !str.includes("Premodern")) ||
     str.includes("Legacy") ||
-    str.includes("Vintage")
+    (str.includes("Vintage") && !str.includes("Cube"))
   );
 }
 

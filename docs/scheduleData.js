@@ -103,6 +103,25 @@ function getShowcaseData() {
 
 function getHackishLCQCorrections() {
     return [
+        [3, 22, 11, "Modern"],
+        [3, 22, 19, "Standard"],
+
+        [3, 23, 0, "Modern"],
+        [3, 23, 4, "Legacy"],
+        [3, 23, 8, "Standard"],
+        [3, 23, 12, "Vintage"],
+        [3, 23, 16, "Modern"],
+        [3, 23, 20, "Legacy"],
+
+        [3, 24, 0, "Standard"],
+        [3, 24, 4, "Vintage"],
+        [3, 24, 8, "Modern"],
+        [3, 24, 12, "Legacy"],
+        [3, 24, 16, "Vintage"],
+        [3, 24, 20, "Standard"],
+
+        [3, 25, 0, "Vintage"],
+        [3, 25, 4, "Legacy"]
         // [11, 30, 9, "Modern LCQ"],
     ].map(supplyYearAndDecrementMonth);
 }
