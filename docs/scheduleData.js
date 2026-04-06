@@ -28,101 +28,76 @@ function getBaseSchedule() {
         `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
     const sat = [null, `Phantom Sealed ${tr} (24-player)`, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
         `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, `Commander ${tr} (16-player)`, `Vintage ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Pioneer ${ch}`, `plus&Premodern ${ch} (32-player)&minus`, `Limited ${pr}`, null,
+		`Limited ${ch} (32-player)`, null, `Pioneer ${ch} (32-player)`, `plus&Premodern ${ch} (32-player)&minus`, `Limited ${pr}`, null,
         `Modern ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
 
 function getRCQData() {
     return [
-            [12, 5, {7: "Limited (TLA) Super Qualifier"}],
-            [12, 6, {8: "Modern Showcase Qualifier (invite-only)"}],
-            [12, 7, {6: "Pioneer Showcase Qualifier (invite-only)"}],
-            [12, 13, {6: "Standard Showcase Qualifier (invite-only)"}],
-            [12, 14, {8: "Legacy Showcase Qualifier (invite-only)"}],
-            [12, 21, {7: "Limited (TLA) MOCS Showcase Open"}],
-
-            [12, 26, {7: "Modern Super Qualifier"}],
-            [12, 27, {7: "Limited (TLA) MOCS Showcase Open"}],
-            [12, 29, {7: "Standard Super Qualifier"}],
-            [12, 30, {7: "Limited (TLA) Super Qualifier"}],
-
-            [1, 2, {7: "Pioneer Super Qualifier"}],
-            [1, 11, {8: "Standard Showcase Challenge"}],
-            [1, 16, {14: "Modern Qualifier"}],
-            [1, 19, {7: "Limited (TLA) Qualifier"}],
-            [1, 24, {1: "Modern Super Qualifier"}],
-            [1, 25, {7: "Vintage Super Qualifier"}],
-            [1, 30, {14: "Limited (ECL) Super Qualifier"}],
-            // [1, 31, {1: "Limited (ECL) Super Qualifier"}],
-
-            [2, 1, {7: "Standard Super Qualifier"}],
-            [2, 6, {7: "Limited (ECL) Super Qualifier"}],
-            [2, 15, {10: "NRG Series MTGO Showdown"}],
-            [2, 16, {7: "Limited (ECL) Super Qualifier"}],
-            [2, 21, {7: "Legacy Qualifier"}],
-            [2, 22, {7: "Pauper Qualifier"}],
-            [2, 28, {1: "Limited (ECL) Super Qualifier"}],
-
-            [3, 7, {7: "Legacy Super Qualifier"}],
-
-            [3, 11, {12: "NBL Modern Challenge (32-player)"}],
-            [3, 13, {3: "NBL Modern Challenge (32-player)"}],
-            [3, 17, {7: "NBL Modern Challenge (32-player)"}],
-            [3, 18, {12: "NBL Modern Challenge (32-player)"}],
-            [3, 20, {3: "NBL Modern Challenge (32-player)"}],
-            [3, 24, {7: "NBL Modern Challenge (32-player)"}],
-
             [3, 28, {8: "Modern Showcase Qualifier (invite-only)"}],
             [3, 29, {8: "Standard Showcase Qualifier (invite-only)"}],
             [4, 4, {8: "Vintage Showcase Qualifier (invite-only)"}],
             [4, 5, {8: "Legacy Showcase Qualifier (invite-only)"}],
             [4, 11, {7: "Limited (ECL) MOCS Showcase Open"}],
             [4, 12, {7: "Limited (ECL) MOCS Showcase Open"}],
+
+            [4, 18, {7: "Legacy Qualifier"}],
+            [4, 19, {7: "Pioneer Qualifier"}],
+
+            [5, 1, {14: "Limited (SOS) Qualifier"}],
+            [5, 2, {1: "Limited (SOS) Qualifier"}],
+            [5, 3, {7: "Standard Super Qualifier"}],
+            [5, 15, {14: "Modern Qualifier"}],
+            [5, 16, {1: "Modern Super Qualifier"}],
+            [5, 17, {7: "Pauper Qualifier"}],
+            [5, 25, {7: "Limited (SOS) Super Qualifier"}],
+            [5, 31, {7: "Legacy Super Qualifier"}],
+
+            [6, 6, {7: "Limited (SOS) Super Qualifier"}],
+            [6, 7, {7: "Modern Super Qualifier"}],
+            [6, 21, {7: "Vintage Qualifier"}],
+            [6, 27, {7: "Pauper Super Qualifier"}],
+            [6, 28, {7: "Standard Super Qualifier"}],
+
+            [7, 3, {7: "Limited (MSH) Super Qualifier"}],
+            [7, 16, {7: "Limited (MSH) Super Qualifier"}],
+            [7, 17, {14: "Limited (MSH) Qualifier"}],
+            [7, 18, {7: "Limited (MSH) Qualifier"}],
+            [7, 19, {7: "Modern Super Qualifier"}],
+
+            [7, 25, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [7, 26, {8: "Pauper Showcase Qualifier (invite-only)"}],
+            [8, 1, {6: "Standard Showcase Qualifier (invite-only)"}],
+            [8, 2, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            [8, 8, {7: "Limited (MSH) MOCS Showcase Open"}],
+            [8, 9, {7: "Limited (MSH) MOCS Showcase Open"}]
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getShowcaseData() {
     return [
-        [1, 3, {10: "Vintage Showcase Challenge"}],
-        [1, 4, {8: "Legacy Showcase Challenge"}],
+        [4, 25, {8: "Legacy Showcase Challenge"}],
+        [4, 26, {7: "Standard Showcase Challenge"}],
 
-        [2, 7, {6: "Standard Showcase Challenge"}],
-        [2, 8, {8: "Vintage Showcase Challenge"}],
-        [2, 14, {8: "Modern Showcase Challenge"}],
-        [2, 15, {7: "Legacy Showcase Challenge", 8: "plus&Legacy Challenge (32-player)&minus"}],
+        [5, 9, {8: "Modern Showcase Challenge&plus&minus"}],
+        [5, 10, {8: "Pauper Showcase Challenge"}],
+        [5, 23, {6: "Standard Showcase Challenge"}],
+        [5, 24, {8: "Legacy Showcase Challenge"}],
 
-        [3, 1, {8: "Modern Showcase Challenge"}],
-        [3, 8, {8: "Modern Showcase Challenge"}],
-        [3, 14, {8: "Vintage Showcase Challenge"}],
-        [3, 15, {8: "Legacy Showcase Challenge"}],
-        [3, 21, {8: "Modern Showcase Challenge&plus&minus"}],
-        [3, 22, {8: "Standard Showcase Challenge"}],
+        [6, 13, {8: "Modern Showcase Challenge&plus&minus"}],
+        [6, 14, {8: "Pauper Showcase Challenge"}],
+
+        [7, 4, {8: "Legacy Showcase Challenge"}],
+        [7, 5, {8: "Pauper Showcase Challenge"}],
+        [7, 11, {6: "Standard Showcase Challenge"}],
+        [7, 12, {8: "Modern Showcase Challenge&plus&minus"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getHackishLCQCorrections() {
     return [
-        [3, 22, 11, "Modern"],
-        [3, 22, 19, "Standard"],
-
-        [3, 23, 0, "Modern"],
-        [3, 23, 4, "Legacy"],
-        [3, 23, 8, "Standard"],
-        [3, 23, 12, "Vintage"],
-        [3, 23, 16, "Modern"],
-        [3, 23, 20, "Legacy"],
-
-        [3, 24, 0, "Standard"],
-        [3, 24, 4, "Vintage"],
-        [3, 24, 8, "Modern"],
-        [3, 24, 12, "Legacy"],
-        [3, 24, 16, "Vintage"],
-        [3, 24, 20, "Standard"],
-
-        [3, 25, 0, "Vintage"],
-        [3, 25, 4, "Legacy"]
-        // [11, 30, 9, "Modern LCQ"],
+        // [3, 22, 11, "Modern"],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -200,5 +175,5 @@ function getCurrentYearDSTDates() {
 }
 
 function getLCQStartDate() {
-    return supplyYearAndDecrementMonth([3, 22]);
+    return supplyYearAndDecrementMonth([7, 19]);
 }
