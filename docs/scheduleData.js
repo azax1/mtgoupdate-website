@@ -56,6 +56,7 @@ function getRCQData() {
 
             [6, 6, {7: "Limited (SOS) Super Qualifier"}],
             [6, 7, {7: "Modern Super Qualifier"}],
+            [6, 12, {7: "Limited (SOS) Qualifier"}],
             [6, 21, {7: "Vintage Qualifier"}],
             [6, 27, {7: "Pauper Super Qualifier"}],
             [6, 28, {7: "Standard Super Qualifier"}],
