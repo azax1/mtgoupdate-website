@@ -2,20 +2,20 @@ function getBaseSchedule() {
 	const ch = "Challenge";
 	const pr = "Prelim";
     const tr = "Trial";
-	const sun = [`Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null, null, `Modern ${ch} (32-player)`, `plus&Commander ${tr} (16-player)&minus`,
+	const sun = [`Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null, null, `Modern ${ch}`, `plus&Commander ${tr} (16-player)&minus`,
         `Pioneer ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Pauper ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch}`, null, null, `Limited ${pr}`,
-        `Modern ${ch} (32-player)`, null, null, null, null, null];
+		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, `Limited ${pr}`,
+        `Modern ${ch}`, null, null, null, null, null];
     const mon = [null, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
-        null, `Modern ${ch}`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Pauper ${pr}`,
-		null, `Standard ${ch}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Pauper ${pr}`,
+        null, `Modern ${ch} (96-player)`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Pauper ${pr}`,
+		null, `Standard ${ch} (32-player)`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Pauper ${pr}`,
         `Limited ${pr}`, null, null, `Modern ${pr}`, null, null];
     const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
-        null, null, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, `Standard ${ch}`, null,
-		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `Modern ${pr}`,
+        null, null, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null,
+		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `Modern ${ch} (32-player)`,
         `Standard ${pr}`, `Pauper ${pr}`, null, null, null, null];
     const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
-        null, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch}`, null, `Limited ${pr}`,
+        null, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch} (96-player)`, null, `Limited ${pr}`,
 		`Standard ${pr}`, null, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
         null, null, null, `Limited ${pr}`, null, null];
     const thur = [`Modern ${pr}`, null, null, null, `Pauper ${pr}`, null,
@@ -25,11 +25,11 @@ function getBaseSchedule() {
     const fri = [`Pauper ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
         `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, null, `Standard ${ch} (32-player)`,
 		`Commander ${tr} (16-player)`, `Premodern ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Legacy ${ch} (32-player)`,
-        `Modern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
+        `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
     const sat = [null, `Phantom Sealed ${tr} (24-player)`, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
         `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, `Commander ${tr} (16-player)`, `Vintage ${ch} (32-player)`, null,
 		`Limited ${ch} (32-player)`, null, `Pioneer ${ch} (32-player)`, `plus&Premodern ${ch} (32-player)&minus`, `Limited ${pr}`, null,
-        `Modern ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null, null, null];
+        `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
 
