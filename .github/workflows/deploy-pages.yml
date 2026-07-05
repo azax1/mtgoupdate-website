@@ -1,0 +1,58 @@
+# .github/workflows/deploy-pages.yml
+#
+# Deploys the docs/ folder to GitHub Pages, appending ?v=<commit-sha> to all
+# local .js/.css references in HTML files so browsers fetch fresh assets after
+# every deploy. The repo source is never modified — the rewrite happens only
+# in the deployed artifact.
+#
+# SETUP REQUIRED: In the repo, go to Settings -> Pages -> "Build and
+# deployment" and change Source from "Deploy from a branch" to
+# "GitHub Actions". Otherwise this workflow and the old branch deploy
+# will fight each other.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: # allows manual re-runs from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If you push twice quickly, cancel the older in-flight deploy
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add cache-busting version to local JS/CSS references
+        run: |
+          SHA="${GITHUB_SHA::8}"
+          # Appends ?v=<sha> to src/href values ending in .js or .css.
+          # The [^":]+ pattern excludes any URL containing a colon,
+          # so https:// CDN references are left untouched.
+          find docs -name '*.html' -exec \
+            sed -i -E "s|(src\|href)=\"([^\":]+\.(js\|css))\"|\1=\"\2?v=${SHA}\"|g" {} +
+          echo "Stamped assets with v=${SHA}:"
+          grep -rhoE '(src|href)="[^"]*\?v=[^"]*"' docs --include='*.html' | sort -u
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
