@@ -97,8 +97,27 @@ function getShowcaseData() {
 }
 
 function getHackishLCQCorrections() {
+    const rotating = ["Vintage", "Pauper", "Pioneer"].find(isMocsFormat) ?? "Vintage";
     return [
-        // [3, 22, 11, "Modern"],
+        [7, 19, 11, "Modern"],
+        [7, 19, 19, "Standard"],
+
+        [7, 20, 0, "Modern"],
+        [7, 20, 4, "Legacy"],
+        [7, 20, 8, "Standard"],
+        [7, 20, 12, rotating],
+        [7, 20, 16, "Modern"],
+        [7, 20, 20, "Legacy"],
+
+        [7, 21, 0, "Standard"],
+        [7, 21, 4, rotating],
+        [7, 21, 8, "Modern"],
+        [7, 21, 12, "Legacy"],
+        [7, 21, 16, rotating],
+        [7, 21, 20, "Standard"],
+
+        [7, 22, 0, rotating],
+        [7, 22, 4, "Legacy"]
     ].map(supplyYearAndDecrementMonth);
 }
 
