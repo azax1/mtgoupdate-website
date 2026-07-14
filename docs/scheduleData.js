@@ -98,27 +98,28 @@ function getShowcaseData() {
 
 function getHackishLCQCorrections() {
     const rotating = ["Vintage", "Pauper", "Pioneer"].find(isMocsFormat) ?? "Vintage";
+	const [_, lcqMonth, lcqDay] = getLCQStartDate();
     return [
-        [7, 19, 11, "Modern"],
-        [7, 19, 19, "Standard"],
+        [lcqDay, 11, "Modern"],
+        [lcqDay, 19, "Standard"],
 
-        [7, 20, 0, "Modern"],
-        [7, 20, 4, "Legacy"],
-        [7, 20, 8, "Standard"],
-        [7, 20, 12, rotating],
-        [7, 20, 16, "Modern"],
-        [7, 20, 20, "Legacy"],
+        [lcqDay + 1, 0, "Modern"],
+        [lcqDay + 1, 4, "Legacy"],
+        [lcqDay + 1, 8, "Standard"],
+        [lcqDay + 1, 12, rotating],
+        [lcqDay + 1, 16, "Modern"],
+        [lcqDay + 1, 20, "Legacy"],
 
-        [7, 21, 0, "Standard"],
-        [7, 21, 4, rotating],
-        [7, 21, 8, "Modern"],
-        [7, 21, 12, "Legacy"],
-        [7, 21, 16, rotating],
-        [7, 21, 20, "Standard"],
+        [lcqDay + 2, 0, "Standard"],
+        [lcqDay + 2, 4, rotating],
+        [lcqDay + 2, 8, "Modern"],
+        [lcqDay + 2, 12, "Legacy"],
+        [lcqDay + 2, 16, rotating],
+        [lcqDay + 2, 20, "Standard"],
 
-        [7, 22, 0, rotating],
-        [7, 22, 4, "Legacy"]
-    ].map(supplyYearAndDecrementMonth);
+        [lcqDay + 3, 0, rotating],
+        [lcqDay + 3, 4, "Legacy"]
+    ].map(data => [ lcqMonth + 1, ...data.slice(0) ]).map(supplyYearAndDecrementMonth); // a beautiful game
 }
 
 function getCubeEvents() {
