@@ -35,64 +35,63 @@ function getBaseSchedule() {
 
 function getRCQData() {
     return [
-            [3, 28, {8: "Modern Showcase Qualifier (invite-only)"}],
-            [3, 29, {8: "Standard Showcase Qualifier (invite-only)"}],
-            [4, 4, {8: "Vintage Showcase Qualifier (invite-only)"}],
-            [4, 5, {8: "Legacy Showcase Qualifier (invite-only)"}],
-            [4, 11, {7: "Limited (ECL) MOCS Showcase Open"}],
-            [4, 12, {7: "Limited (ECL) MOCS Showcase Open"}],
-
-            [4, 18, {7: "Legacy Qualifier"}],
-            [4, 19, {7: "Pioneer Qualifier"}],
-
-            [5, 1, {14: "Limited (SOS) Qualifier"}],
-            [5, 2, {1: "Limited (SOS) Qualifier"}],
-            [5, 3, {7: "Standard Super Qualifier"}],
-            [5, 15, {14: "Modern Qualifier"}],
-            [5, 16, {1: "Modern Super Qualifier"}],
-            [5, 17, {7: "Pauper Qualifier"}],
-            [5, 25, {7: "Limited (SOS) Super Qualifier"}],
-            [5, 31, {7: "Legacy Super Qualifier"}],
-
-            [6, 6, {7: "Limited (SOS) Super Qualifier"}],
-            [6, 7, {7: "Modern Super Qualifier"}],
-            [6, 12, {7: "Limited (SOS) Qualifier"}],
-            [6, 21, {7: "Vintage Qualifier"}],
-            [6, 27, {7: "Pauper Super Qualifier"}],
-            [6, 28, {7: "Standard Super Qualifier"}],
-
-            [7, 3, {7: "Limited (MSH) Super Qualifier"}],
-            [7, 16, {7: "Limited (MSH) Super Qualifier"}],
-            [7, 17, {14: "Limited (MSH) Qualifier"}],
-            [7, 18, {7: "Limited (MSH) Qualifier"}],
-            [7, 19, {7: "Modern Super Qualifier"}],
-
             [7, 25, {8: "Modern Showcase Qualifier (invite-only)"}],
             [7, 26, {8: "Pauper Showcase Qualifier (invite-only)"}],
             [8, 1, {6: "Standard Showcase Qualifier (invite-only)"}],
             [8, 2, {8: "Legacy Showcase Qualifier (invite-only)"}],
             [8, 8, {7: "Limited (MSH) MOCS Showcase Open"}],
-            [8, 9, {7: "Limited (MSH) MOCS Showcase Open"}]
+            [8, 9, {7: "Limited (MSH) MOCS Showcase Open"}],
+
+            [8, 15, {7: "Modern Super Qualifier"}],
+            
+            [9, 5, {14: "Limited (MSH) Qualifier"}],
+            [9, 6, {7: "Pioneer Super Qualifier"}],
+            [9, 7, {7: "Limited (MSH) Super Qualifier"}],
+            [9, 13, {0: "Pioneer Qualifier"}],
+            [9, 19, {7: "Modern Qualifier"}],
+            [9, 20, {7: "Pauper Super Qualifier"}],
+            [9, 27, {7: "Vintage Qualifier"}],
+
+            [10, 3, {7: "Modern Super Qualifier"}],
+            [10, 4, {7: "Limited (FRA) Super Qualifier"}],
+            [10, 11, {7: "Limited (FRA) Qualifier"}],
+            [10, 16, {7: "Limited (RC) Super Qualifier"}],
+            [10, 18, {0: "Limited (FRA) Qualifier"}],
+            [10, 24, {1: "Limited (FRA) Super Qualifier"}],
+            [10, 30, {7: "Pioneer Super Qualifier"}],
+
+            [11, 8, {7: "Legacy Super Qualifier"}],
+            [11, 14, {1: "Standard Qualifier"}],
+            [11, 15, {7: "Standard Super Qualifier"}],
+            [11, 26, {7: "Modern Qualifier"}],
+            [11, 27, {7: "Limited (TRK) Super Qualifier"}],
+
+            [12, 5, {8: "Modern Showcase Qualifier (invite-only)"}],
+            [12, 6, {6: "Pioneer Showcase Qualifier (invite-only)"}],
+            [12, 12, {6: "Standard Showcase Qualifier (invite-only)"}],
+            [12, 13, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            [12, 19, {7: "Limited (TRK) MOCS Showcase Open"}],
+            [12, 20, {7: "Limited (TRK) MOCS Showcase Open"}],
+
     ].map(supplyYearAndDecrementMonth);
 }
 
 function getShowcaseData() {
     return [
-        [4, 25, {8: "Legacy Showcase Challenge"}],
-        [4, 26, {7: "Standard Showcase Challenge"}],
+        [8, 22, {6: "Standard Showcase Challenge"}],
+        [8, 23, {8: "Legacy Showcase Challenge"}],
+        [8, 29, {8: "Modern Showcase Challenge&plus&minus"}],
+        [8, 30, {6: "Pioneer Showcase Challenge"}],
 
-        [5, 9, {8: "Modern Showcase Challenge&plus&minus"}],
-        [5, 10, {8: "Pauper Showcase Challenge"}],
-        [5, 23, {6: "Standard Showcase Challenge"}],
-        [5, 24, {8: "Legacy Showcase Challenge"}],
+        [10, 17, {8: "Modern Showcase Challenge&plus&minus"}],
+        [10, 25, {8: "Legacy Showcase Challenge"}],
+        [10, 31, {6: "Standard Showcase Challenge"}],
+        [11, 1, {6: "Pioneer Showcase Challenge"}],
 
-        [6, 13, {8: "Modern Showcase Challenge&plus&minus"}],
-        [6, 14, {8: "Pauper Showcase Challenge"}],
-
-        [7, 4, {8: "Legacy Showcase Challenge"}],
-        [7, 5, {8: "Pauper Showcase Challenge"}],
-        [7, 11, {6: "Standard Showcase Challenge"}],
-        [7, 12, {8: "Modern Showcase Challenge&plus&minus"}],
+        [11, 21, {6: "Standard Showcase Challenge"}],
+        [11, 22, {8: "Legacy Showcase Challenge"}],
+        [11, 28, {8: "Modern Showcase Challenge&plus&minus"}],
+        [11, 29, {8: "Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 
@@ -196,5 +195,5 @@ function getCurrentYearDSTDates() {
 }
 
 function getLCQStartDate() {
-    return supplyYearAndDecrementMonth([7, 19]);
+    return supplyYearAndDecrementMonth([11, 29]);
 }

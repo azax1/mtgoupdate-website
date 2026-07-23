@@ -16,7 +16,7 @@ function isMocsFormat(str) {
     str.includes("Standard") ||
     (str.includes("Modern") && !str.includes("NBL") && !str.includes("Premodern")) ||
     str.includes("Legacy") ||
-    str.includes("Pauper")
+    str.includes("Pioneer")
     // (str.includes("Vintage") && !str.includes("Cube"))
   );
 }
