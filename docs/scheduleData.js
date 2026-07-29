@@ -14,7 +14,7 @@ function getBaseSchedule() {
         null, null, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null,
 		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `Modern ${ch} (32-player)`,
         `Standard ${pr}`, `Pauper ${pr}`, null, null, null, null];
-    const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, null,
+    const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, `Pauper ${ch} (32-player)`,
         null, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch} (96-player)`, null, `Limited ${pr}`,
 		`Standard ${pr}`, null, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
         null, null, null, `Limited ${pr}`, null, null];
