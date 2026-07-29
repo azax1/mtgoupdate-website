@@ -71,7 +71,7 @@ function getRCQData() {
             [12, 6, {6: "Pioneer Showcase Qualifier (invite-only)"}],
             [12, 12, {6: "Standard Showcase Qualifier (invite-only)"}],
             [12, 13, {8: "Legacy Showcase Qualifier (invite-only)"}],
-            
+
             [12, 19, {7: "Limited (TRK) MOCS Showcase Open"}],
             [12, 20, {7: "Limited (TRK) MOCS Showcase Open"}],
 
@@ -93,7 +93,7 @@ function getShowcaseData() {
         [11, 21, {6: "Standard Showcase Challenge"}],
         [11, 22, {8: "Legacy Showcase Challenge"}],
         [11, 28, {8: "Modern Showcase Challenge&plus&minus"}],
-        [11, 29, {8: "Pioneer Showcase Challenge"}],
+        [11, 29, {6: null, 8: "Legacy Challenge&Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
 }
 

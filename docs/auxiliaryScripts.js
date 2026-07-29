@@ -59,10 +59,10 @@ $(function () {
   $("#datepicker")
     .datepicker({
       dateFormat: "yy-mm-dd",
-      minDate: new Date(2026, 3, 1),
+      minDate: new Date(2026, 6, 1),
       defaultDate: new Date(),
       setDate: new Date(),
-      maxDate: new Date(2026, 8, 31),
+      maxDate: new Date(2026, 11, 31),
       onClose: function () {
         var input = $(this).datepicker("getDate");
         if (!input || !(input instanceof Date)) {
