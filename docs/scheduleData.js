@@ -43,6 +43,7 @@ function getRCQData() {
             [8, 9, {7: "Limited (MSH) MOCS Showcase Open"}],
 
             [8, 15, {7: "Modern Super Qualifier"}],
+            [8, 16, {10: "NRG Series MTGO Sealed Showdown"}],
             
             [9, 5, {14: "Limited (MSH) Qualifier"}],
             [9, 6, {7: "Pioneer Super Qualifier"}],
