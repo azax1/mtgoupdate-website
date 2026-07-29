@@ -56,7 +56,7 @@ function getRCQData() {
             [10, 3, {7: "Modern Super Qualifier"}],
             [10, 4, {7: "Limited (FRA) Super Qualifier"}],
             [10, 11, {7: "Limited (FRA) Qualifier"}],
-            [10, 16, {7: "Limited (RC) Super Qualifier"}],
+            [10, 16, {7: "Limited (FRA) Super Qualifier"}],
             [10, 18, {0: "Limited (FRA) Qualifier"}],
             [10, 24, {1: "Limited (FRA) Super Qualifier"}],
             [10, 30, {7: "Pioneer Super Qualifier"}],
@@ -71,6 +71,7 @@ function getRCQData() {
             [12, 6, {6: "Pioneer Showcase Qualifier (invite-only)"}],
             [12, 12, {6: "Standard Showcase Qualifier (invite-only)"}],
             [12, 13, {8: "Legacy Showcase Qualifier (invite-only)"}],
+            
             [12, 19, {7: "Limited (TRK) MOCS Showcase Open"}],
             [12, 20, {7: "Limited (TRK) MOCS Showcase Open"}],
 
