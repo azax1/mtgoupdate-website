@@ -48,6 +48,64 @@ a:visited {
   border: 1px solid #888;
   width: 40%;
 }
+.donation-modal-content {
+  background-color: var(--bg-color);
+  margin: 12vh auto;
+  padding: 20px 25px 25px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 420px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.donationHeader {
+  margin: 0 0 15px;
+}
+.donationBody {
+  margin: 0 0 20px;
+  text-align: left;
+  line-height: 1.45;
+}
+.donationButton {
+  display: block;
+  margin: 0 auto 10px;
+  padding: 11px 15px;
+  border: 1px solid var(--donation-button-border);
+  border-radius: 6px;
+  background-color: var(--donation-button-bg);
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.donationButton:link,
+.donationButton:visited {
+  color: var(--donation-button-text);
+}
+.donationButtonPrimary {
+  border-color: var(--donation-primary-border);
+  background-color: var(--donation-primary-bg);
+}
+.donationButtonPrimary:link,
+.donationButtonPrimary:visited {
+  color: var(--donation-primary-text);
+}
+.donationFinePrint {
+  margin: 20px 0 15px;
+  font-size: 14px;
+}
+.donationDismiss {
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.donationDismiss:hover {
+  opacity: 1;
+}
 .everything {
   display: flex;
   flex-direction: column;

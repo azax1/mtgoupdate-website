@@ -31,6 +31,15 @@ function setColorMode(mode) {
 
     document.querySelectorAll(".faqAnswer").forEach(elem => elem.style.color = "#DCDCDC");
 
+    setDonationColors({
+      buttonBg: "#303030",
+      buttonBorder: "#505050",
+      buttonText: "#DCDCDC",
+      primaryBg: "#023020",
+      primaryBorder: "#035035",
+      primaryText: "#DCDCDC",
+    });
+
     document
       .querySelector("html")
       .style.setProperty("--fresh-link-color", "#ADD8E6");
@@ -55,6 +64,15 @@ function setColorMode(mode) {
 
     document.querySelectorAll(".faqAnswer").forEach(elem => elem.style.color = black);
 
+    setDonationColors({
+      buttonBg: "#f0f0f0",
+      buttonBorder: "#d0d0d0",
+      buttonText: black,
+      primaryBg: "#1a7f37",
+      primaryBorder: "#166b2e",
+      primaryText: "white",
+    });
+
     document
       .querySelector("html")
       .style.setProperty("--fresh-link-color", "-webkit-link");
@@ -70,6 +88,16 @@ function setColorMode(mode) {
       document.getElementById(button + "ButtonText").style.transform = "rotate(0deg)";
     });
   }
+}
+
+function setDonationColors(colors) {
+  const html = document.querySelector("html");
+  html.style.setProperty("--donation-button-bg", colors.buttonBg);
+  html.style.setProperty("--donation-button-border", colors.buttonBorder);
+  html.style.setProperty("--donation-button-text", colors.buttonText);
+  html.style.setProperty("--donation-primary-bg", colors.primaryBg);
+  html.style.setProperty("--donation-primary-border", colors.primaryBorder);
+  html.style.setProperty("--donation-primary-text", colors.primaryText);
 }
 
 function getTextboxColor(today, isDarkMode) {

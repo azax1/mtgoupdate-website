@@ -1,3 +1,36 @@
+// Timestamp (ms since epoch) before which a recorded donation prompt no longer
+// counts as "recently asked". Anyone whose last prompt predates this -- which
+// includes everyone who has never been prompted at all -- gets the popup once,
+// after which their timestamp is reset to now. Bump this to the current time
+// to start a fresh round of begging.
+const DONATION_PROMPT_CUTOFF = 0;
+
+function shouldPromptForDonation() {
+  const lastPrompt = localStorage.getItem("lastDonationPrompt");
+  return lastPrompt === null || Number(lastPrompt) < DONATION_PROMPT_CUTOFF;
+}
+
+$(function () {
+  if (!shouldPromptForDonation()) {
+    return;
+  }
+  localStorage.setItem("lastDonationPrompt", String(Date.now()));
+
+  const modal = document.getElementById("donationModal");
+  modal.style.display = "block";
+
+  const dismiss = function () {
+    modal.style.display = "none";
+  };
+  document.getElementById("donationClose").onclick = dismiss;
+  document.getElementById("donationDismiss").onclick = dismiss;
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      dismiss();
+    }
+  });
+});
+
 $(function () {
   var modal = document.getElementById("faq");
   var button = document.getElementById("info");

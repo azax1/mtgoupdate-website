@@ -52,7 +52,7 @@ function displaySchedule(fixSliders = true) {
     // `;
     document.getElementById("banner").innerHTML = `
       <center>
-      Thank you for using mtgoupdate! Please consider supporting this project via <a href="https://www.patreon.com/mtgoupdate">Patreon</a> or <a href="https://ko-fi.com/mtgoupdate">ko-fi</a>.
+      Thank you for using mtgoupdate! Please consider supporting this project via <a href="https://www.paypal.com/donate/?hosted_button_id=X39WJG25KUL6L">PayPal</a>, <a href="https://www.patreon.com/mtgoupdate">Patreon</a>, or <a href="https://ko-fi.com/mtgoupdate">ko-fi</a>.
       </center>
       `;
   }
