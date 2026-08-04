@@ -1,19 +1,57 @@
-// Timestamp (ms since epoch) before which a recorded donation prompt no longer
-// counts as "recently asked". Anyone whose last prompt predates this -- which
-// includes everyone who has never been prompted at all -- gets the popup once,
-// after which their timestamp is reset to now. Bump this to the current time
-// to start a fresh round of begging.
+// Timestamp (ms since epoch) marking the start of the current round of
+// begging. Anyone whose last prompt predates this -- which includes everyone
+// who has never been prompted at all -- is due to see the popup again. Bump it
+// to the current time to start a fresh round.
 const DONATION_PROMPT_CUTOFF = 0;
 
-function shouldPromptForDonation() {
-  const lastPrompt = localStorage.getItem("lastDonationPrompt");
-  return lastPrompt === null || Number(lastPrompt) < DONATION_PROMPT_CUTOFF;
+// Visits within the current round before the popup may appear, so that nobody
+// gets asked for money the moment they land on the site. The tally is scoped
+// to the round rather than being lifetime, so a new round has to earn its
+// welcome from newcomers and regulars alike.
+const DONATION_PROMPT_MIN_VISITS = 3;
+
+// Counts this visit against the current round, starting the tally over if the
+// round has changed since last time, and returns the resulting visit count.
+function recordDonationRoundVisit() {
+  const round = String(DONATION_PROMPT_CUTOFF);
+  if (localStorage.getItem("donationVisitRound") !== round) {
+    localStorage.setItem("donationVisitRound", round);
+    localStorage.setItem("donationRoundVisits", "0");
+  }
+  // capped so the stored number can't run away over years of visits
+  const visits = Math.min(
+    Number(localStorage.getItem("donationRoundVisits")) + 1,
+    DONATION_PROMPT_MIN_VISITS
+  );
+  localStorage.setItem("donationRoundVisits", String(visits));
+  return visits;
+}
+
+function shouldPromptForDonation(roundVisits) {
+  if (roundVisits < DONATION_PROMPT_MIN_VISITS) {
+    return false;
+  }
+  // Whether we've begged yet is tracked by round rather than by comparing the
+  // stored timestamp against the cutoff. Those agree whenever the cutoff is in
+  // the past, but a cutoff accidentally set in the future would make every
+  // timestamp we write compare as older than it, and the popup would then come
+  // back on every single page load until that date arrived.
+  return (
+    localStorage.getItem("donationPromptedRound") !==
+    String(DONATION_PROMPT_CUTOFF)
+  );
 }
 
 $(function () {
-  if (!shouldPromptForDonation()) {
+  if (!shouldPromptForDonation(recordDonationRoundVisit())) {
     return;
   }
+  localStorage.setItem(
+    "donationPromptedRound",
+    String(DONATION_PROMPT_CUTOFF)
+  );
+  // not read by anything above; kept because it's the one piece of this state
+  // that's legible at a glance when poking at a real browser's localStorage
   localStorage.setItem("lastDonationPrompt", String(Date.now()));
 
   const modal = document.getElementById("donationModal");
