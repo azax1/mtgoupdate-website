@@ -50,7 +50,7 @@ a:visited {
 }
 .donation-modal-content {
   background-color: var(--bg-color);
-  margin: 12vh auto;
+  margin: 5vh auto;
   padding: 20px 25px 25px;
   border: 1px solid #888;
   border-radius: 8px;
@@ -58,6 +58,10 @@ a:visited {
   max-width: 420px;
   box-sizing: border-box;
   text-align: center;
+  /* the PayPal button makes this tall enough to overflow a short window, so
+     the card scrolls internally rather than running off the bottom */
+  max-height: 90vh;
+  overflow-y: auto;
 }
 .donationHeader {
   margin: 0 0 15px;
@@ -66,6 +70,15 @@ a:visited {
   margin: 0 0 20px;
   text-align: left;
   line-height: 1.45;
+  /* evens out the line lengths instead of greedily filling each line, which
+     left the paragraph ragged in a long-medium-short staircase. Browsers
+     without it just wrap the old way. */
+  text-wrap: balance;
+}
+/* PayPal renders into its own iframe, so it keeps its own look in both color
+   modes; the margin only applies once it has actually rendered something */
+.donationPaypal:not(:empty) {
+  margin-bottom: 12px;
 }
 .donationButton {
   display: block;

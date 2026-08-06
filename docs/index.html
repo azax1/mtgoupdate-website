@@ -153,13 +153,13 @@
                 more maintenance than you'd think. If you appreciate
                 it, please consider throwing a few bucks my way.
               </p>
-              <a
-                class="donationButton donationButtonPrimary"
-                href="https://ko-fi.com/mtgoupdate"
-                target="_blank"
-                rel="noopener"
-                >Chip in on ko-fi</a
-              >
+              <!-- filled in by renderPaypalButton() only when the popup is
+                   shown; stays empty and takes up no room if PayPal's SDK is
+                   blocked or fails to load -->
+              <div
+                id="paypal-container-3KLGGKZMTRBLU"
+                class="donationPaypal"
+              ></div>
               <a
                 class="donationButton"
                 href="https://www.patreon.com/mtgoupdate"
