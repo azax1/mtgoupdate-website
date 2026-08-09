@@ -18,6 +18,21 @@ const PAYPAL_DONATE_BUTTON_ID = "X39WJG25KUL6L";
 const PAYPAL_DONATE_SDK_SRC =
   "https://www.paypalobjects.com/donate/sdk/donate-sdk.js";
 
+// Blue holds up better against white and yellow against the dark background,
+// so the pill follows the color mode. The strip of accepted cards is its own
+// asset and pairs with either one; it's what tells people they don't need a
+// PayPal account to give.
+const PAYPAL_PILL_BUTTONS = {
+  light:
+    "https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/" +
+    "logos-buttons/optimize/34_Blue_PayPal_Pill_Button.png",
+  dark:
+    "https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/" +
+    "logos-buttons/optimize/44_Yellow_PayPal_Pill_Button.png",
+};
+const PAYPAL_CARD_STRIP =
+  "https://www.paypalobjects.com/images/Debit_Credit_APM.svg";
+
 // Fetches PayPal's SDK on demand, rather than on every page load, since most
 // visits never open the popup and the SDK is a third-party script that sets
 // its own cookies. If it's blocked or fails, the container is left empty and
@@ -27,15 +42,26 @@ function renderPaypalButton() {
   script.src = PAYPAL_DONATE_SDK_SRC;
   script.charset = "UTF-8";
   script.onload = function () {
+    // the popup can't be open while the color mode is toggled -- the gear is
+    // behind the overlay -- so reading the mode once here is enough
     PayPal.Donation.Button({
       env: "production",
       hosted_button_id: PAYPAL_DONATE_BUTTON_ID,
       image: {
-        src: "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif",
+        src: PAYPAL_PILL_BUTTONS[getColorMode()],
         title: "Donate with PayPal",
         alt: "Donate with PayPal",
       },
     }).render("#paypalDonateContainer");
+
+    // added after the button rather than sitting in the markup, so that an SDK
+    // that never loads leaves an empty container instead of a row of card
+    // logos with nothing to click
+    const cardStrip = document.createElement("img");
+    cardStrip.src = PAYPAL_CARD_STRIP;
+    cardStrip.className = "donationCardStrip";
+    cardStrip.alt = "Cards accepted, no PayPal account needed";
+    document.getElementById("paypalDonateContainer").appendChild(cardStrip);
   };
   document.head.appendChild(script);
 }

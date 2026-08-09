@@ -75,10 +75,24 @@ a:visited {
      without it just wrap the old way. */
   text-wrap: balance;
 }
-/* PayPal renders into its own iframe, so it keeps its own look in both color
-   modes; the margin only applies once it has actually rendered something */
+/* the margin only applies once the SDK has actually rendered something */
 .donationPaypal:not(:empty) {
   margin-bottom: 12px;
+}
+.donationPaypal img {
+  display: block;
+  margin: 0 auto;
+}
+/* the two pills differ in native size (145x44 yellow, 110x34 blue), so pinning
+   the height keeps the button identical between color modes. Selected by
+   elimination rather than by the id the SDK assigns, which isn't ours. */
+.donationPaypal img:not(.donationCardStrip) {
+  height: 44px;
+  cursor: pointer;
+}
+.donationCardStrip {
+  height: 20px;
+  margin-top: 6px;
 }
 .donationButton {
   display: block;
@@ -102,10 +116,6 @@ a:visited {
 .donationButtonPrimary:link,
 .donationButtonPrimary:visited {
   color: var(--donation-primary-text);
-}
-.donationFinePrint {
-  margin: 20px 0 15px;
-  font-size: 14px;
 }
 .donationDismiss {
   border: none;
