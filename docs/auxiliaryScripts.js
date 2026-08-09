@@ -19,9 +19,7 @@ const PAYPAL_DONATE_SDK_SRC =
   "https://www.paypalobjects.com/donate/sdk/donate-sdk.js";
 
 // Blue holds up better against white and yellow against the dark background,
-// so the pill follows the color mode. The strip of accepted cards is its own
-// asset and pairs with either one; it's what tells people they don't need a
-// PayPal account to give.
+// so the pill follows the color mode.
 const PAYPAL_PILL_BUTTONS = {
   light:
     "https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/" +
@@ -30,8 +28,11 @@ const PAYPAL_PILL_BUTTONS = {
     "https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/" +
     "logos-buttons/optimize/44_Yellow_PayPal_Pill_Button.png",
 };
-const PAYPAL_CARD_STRIP =
-  "https://www.paypalobjects.com/images/Debit_Credit_APM.svg";
+// Every card strip PayPal hosts leads with the PayPal mark, which is redundant
+// directly under a button already saying PayPal. This is the card row of their
+// acceptance mark with that top row cropped off, served from here so it can't
+// shift under us the way a crop of a remote image would.
+const PAYPAL_CARD_LOGOS = "cards-accepted.jpg";
 
 // Fetches PayPal's SDK on demand, rather than on every page load, since most
 // visits never open the popup and the SDK is a third-party script that sets
@@ -57,11 +58,12 @@ function renderPaypalButton() {
     // added after the button rather than sitting in the markup, so that an SDK
     // that never loads leaves an empty container instead of a row of card
     // logos with nothing to click
-    const cardStrip = document.createElement("img");
-    cardStrip.src = PAYPAL_CARD_STRIP;
-    cardStrip.className = "donationCardStrip";
-    cardStrip.alt = "Cards accepted, no PayPal account needed";
-    document.getElementById("paypalDonateContainer").appendChild(cardStrip);
+    const cardLogos = document.createElement("img");
+    cardLogos.src = PAYPAL_CARD_LOGOS;
+    cardLogos.className = "donationCardLogos";
+    cardLogos.alt =
+      "Visa, Mastercard, American Express and Discover accepted";
+    document.getElementById("paypalDonateContainer").appendChild(cardLogos);
   };
   document.head.appendChild(script);
 }

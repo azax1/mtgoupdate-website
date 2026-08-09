@@ -79,20 +79,24 @@ a:visited {
 .donationPaypal:not(:empty) {
   margin-bottom: 12px;
 }
-.donationPaypal img {
+/* the two pills differ in native size (145x44 yellow, 110x34 blue), so pinning
+   the height keeps the button identical between color modes */
+.donationPaypal img:not(.donationCardLogos) {
   display: block;
   margin: 0 auto;
-}
-/* the two pills differ in native size (145x44 yellow, 110x34 blue), so pinning
-   the height keeps the button identical between color modes. Selected by
-   elimination rather than by the id the SDK assigns, which isn't ours. */
-.donationPaypal img:not(.donationCardStrip) {
   height: 44px;
   cursor: pointer;
 }
-.donationCardStrip {
-  height: 20px;
-  margin-top: 6px;
+/* the logos come on white, so in dark mode this is a white strip either way --
+   the padding and rounded corners make that read as a deliberate card rather
+   than a rectangle someone forgot to cut out */
+.donationCardLogos {
+  display: block;
+  width: 148px;
+  margin: 9px auto 0;
+  padding: 3px 4px;
+  background-color: #fff;
+  border-radius: 4px;
 }
 .donationButton {
   display: block;
