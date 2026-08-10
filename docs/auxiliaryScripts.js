@@ -126,6 +126,14 @@ $(function () {
       dismiss();
     }
   });
+
+  // Counts the times the popup was actually put in front of someone, which is
+  // the denominator for however many donations PayPal reports. Last in the
+  // block and guarded, so that nothing here can leave a popup on screen with
+  // its dismiss handlers unwired.
+  if (typeof gtag === "function") {
+    gtag("event", "donation_prompt_shown");
+  }
 });
 
 $(function () {
