@@ -2,34 +2,34 @@ function getBaseSchedule() {
 	const ch = "Challenge";
 	const pr = "Prelim";
     const tr = "Trial";
-	const sun = [`Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null, null, `Modern ${ch}`, `plus&Commander ${tr} (16-player)&minus`,
-        `Pioneer ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, `Modern ${pr}`, `Pauper ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Standard ${ch} (32-player)`, null, null, `Limited ${pr}`,
+	const sun = [`Vintage ${ch} (16-player)`, null, `Limited ${pr}`, null, `Modern ${ch}`, null,
+        `Premodern ${ch} (32-player)`, null, `plus&Legacy ${ch} (32-player)&minus`, null, `Pauper ${ch} (32-player)`, null,
+		`Pioneer ${ch} (32-player)`, `plus&Vintage ${ch} (32-player)&minus`, null, `Standard ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, null,
         `Modern ${ch}`, null, null, null, null, null];
-    const mon = [null, null, null, `Limited ${pr}`, `Legacy ${pr}`, `Standard ${pr}`,
-        null, `Modern ${ch} (96-player)`, `Commander ${tr} (16-player)`, `Limited ${pr}`, null, `Pauper ${pr}`,
-		null, `Standard ${ch} (32-player)`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Pauper ${pr}`,
-        `Limited ${pr}`, null, null, `Modern ${pr}`, null, null];
-    const tues = [`Limited ${pr}`, null, null, `Modern ${pr}`, null, null,
-        null, null, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, `Standard ${ch} (32-player)`, null,
-		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `Modern ${ch} (32-player)`,
-        `Standard ${pr}`, `Pauper ${pr}`, null, null, null, null];
-    const wed = [`Limited ${pr}`, null, `Modern ${pr}`, `Legacy ${pr}`, null, `Pauper ${ch} (32-player)`,
-        null, `Limited ${pr}`, `Standard ${pr}`, `Modern ${ch} (96-player)`, null, `Limited ${pr}`,
-		`Standard ${pr}`, null, `Legacy ${ch} (32-player)`, null, `Phantom Sealed ${tr} (24-player)`, `Standard ${ch} (32-player)`,
-        null, null, null, `Limited ${pr}`, null, null];
-    const thur = [`Modern ${pr}`, null, null, null, `Pauper ${pr}`, null,
-        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (32-player)`, null,
-		`Pauper ${ch} (32-player)`, `Modern ${pr}`, `Pioneer ${ch} (32-player)`, `Legacy ${pr}`, null, `Standard ${ch} (32-player)`,
-        null, `Modern ${pr}`, null, null, null, null];
-    const fri = [`Pauper ${pr}`, null, `Limited ${pr}`, null, `Modern ${pr}`, `Pioneer ${ch} (32-player)`,
-        `Pauper ${ch} (32-player)`, `Legacy ${pr}`, `Modern ${ch}`, `Limited ${pr}`, null, `Standard ${ch} (32-player)`,
-		`Commander ${tr} (16-player)`, `Premodern ${ch} (32-player)`, `Pioneer ${ch} (32-player)`, `Vintage ${ch} (32-player)`, `Phantom Sealed ${tr} (24-player)`, `Legacy ${ch} (32-player)`,
-        `Modern ${ch}`, `Standard ${ch} (32-player)`, null, null, null, `Modern ${ch} (32-player)`];
-    const sat = [null, `Phantom Sealed ${tr} (24-player)`, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
-        `Standard ${ch} (32-player)`, null, `plus&Modern ${ch}&minus`, `Commander ${tr} (16-player)`, `Vintage ${ch} (32-player)`, null,
-		`Limited ${ch} (32-player)`, null, `Pioneer ${ch} (32-player)`, `plus&Premodern ${ch} (32-player)&minus`, `Limited ${pr}`, null,
-        `Modern ${ch}`, null, `Legacy ${ch} (32-player)`, null, null, null];
+    const mon = [null, null, null, `Limited ${pr}`, null, null,
+        null, `Modern ${ch} (96-player)`, `Commander ${ch} (16-player)`, null, `Pauper ${ch} (32-player)`, `plus&Phantom Sealed ${tr} (24-player)&minus`,
+		null, `Standard ${ch} (32-player)`, null, null, `Pioneer ${ch} (32-player)`, null,
+        `Limited ${pr}`, `Modern ${ch} (32-player)`, null, null, null, null];
+    const tues = [null, `Modern ${ch} (16-player)`, null, `Pauper ${ch} (32-player)`, null, null,
+        `Legacy ${ch} (32-player)`, `plus&Phantom Sealed ${tr} (24-player)&minus`, null, `Premodern ${ch} (32-player)`, `plus&Standard ${ch} (32-player)&minus`, null,
+		null, `Modern ${ch}`, null, null, `Phantom Sealed ${tr} (24-player)`, `plus&Modern ${ch} (32-player)&minus`,
+        null, null, null, null, null, null];
+    const wed = [`Standard ${ch} (16-player)`, null, null, null, null, `Pauper ${ch} (32-player)`,
+        null, null, null, `Modern ${ch} (96-player)`, null, `Limited ${pr}`,
+		null, null, `Legacy ${ch} (32-player)`, null, null, null,
+        `Phantom Sealed ${tr} (24-player)`, `Premodern ${ch} (16-player)`, null, `Limited ${pr}`, null, null];
+    const thur = [null, null, null, `Standard ${ch} (16-player)`, null, null,
+        `Modern ${ch}`, `Limited ${pr}`, `Vintage ${ch} (32-player)`, null, `Premodern ${ch} (32-player)`, null,
+		`Pauper ${ch} (32-player)`, null, null, `Pioneer ${ch} (32-player)`, `Limited ${pr}`, `Standard ${ch} (32-player)`,
+        null, null, null, null, null, null];
+    const fri = [null, null, `Limited ${pr}`, null, null, null,
+        `Pauper ${ch} (32-player)`, null, `Modern ${ch}`, `plus&Limited ${ch} (32-player)&minus`, null, `Standard ${ch} (32-player)`,
+		null, `Premodern ${ch} (32-player)`, null, null, `Legacy ${ch} (32-player)`, null,
+        `Modern ${ch}`, null, null, null, null, `Modern ${ch} (16-player)`];
+    const sat = [null, null, `Pauper ${ch} (32-player)`, null, `Legacy ${ch} (32-player)`, null,
+        `Standard ${ch} (32-player)`, `Commander ${ch} (16-player)`, `plus&Modern ${ch}&minus`, null, `Vintage ${ch} (32-player)`, `plus&Limited ${ch} (32-player)&minus`,
+		null, `Premodern ${ch} (32-player)`, null, `Pioneer ${ch} (32-player)`, null, null,
+        `Modern ${ch}`, `Limited ${pr}`, `Legacy ${ch} (32-player)`, null, null, null];
 	return sun.concat(mon).concat(tues).concat(wed).concat(thur).concat(fri).concat(sat);
 }
 
@@ -45,9 +45,9 @@ function getRCQData() {
             [8, 15, {7: "Modern Super Qualifier"}],
             [8, 16, {10: "NRG Series MTGO Sealed Showdown"}],
             
-            [9, 5, {14: "Limited (MSH) Qualifier"}],
+            [9, 5, {14: "Limited (HOB) Qualifier"}],
             [9, 6, {7: "Pioneer Super Qualifier"}],
-            [9, 7, {7: "Limited (MSH) Super Qualifier"}],
+            [9, 7, {7: "Limited (HOB) Super Qualifier"}],
             [9, 13, {0: "Pioneer Qualifier"}],
             [9, 19, {7: "Modern Qualifier"}],
             [9, 20, {7: "Pauper Super Qualifier"}],
@@ -81,17 +81,17 @@ function getRCQData() {
 function getShowcaseData() {
     return [
         [8, 22, {6: "Standard Showcase Challenge"}],
-        [8, 23, {8: "Legacy Showcase Challenge"}],
+        [8, 23, {8: "Legacy Showcase Challenge&plus&minus"}],
         [8, 29, {8: "Modern Showcase Challenge&plus&minus"}],
-        [8, 30, {6: "Pioneer Showcase Challenge"}],
+        [8, 30, {6: "Premodern Challenge (32-player)&Pioneer Showcase Challenge"}],
 
         [10, 17, {8: "Modern Showcase Challenge&plus&minus"}],
-        [10, 25, {8: "Legacy Showcase Challenge"}],
+        [10, 25, {8: "Legacy Showcase Challenge&plus&minus"}],
         [10, 31, {6: "Standard Showcase Challenge"}],
-        [11, 1, {6: "Pioneer Showcase Challenge"}],
+        [11, 1, {6: "Premodern Challenge (32-player)&Pioneer Showcase Challenge"}],
 
         [11, 21, {6: "Standard Showcase Challenge"}],
-        [11, 22, {8: "Legacy Showcase Challenge"}],
+        [11, 22, {8: "Legacy Showcase Challenge&plus&minus"}],
         [11, 28, {8: "Modern Showcase Challenge&plus&minus"}],
         [11, 29, {6: null, 8: "Legacy Challenge&Pioneer Showcase Challenge"}],
     ].map(supplyYearAndDecrementMonth);
