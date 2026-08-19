@@ -80,6 +80,10 @@ function getRCQData() {
 
 function getShowcaseData() {
     return [
+        [8, 19, {0: "Limited Prelim", 1: null, 2: "Modern Prelim", 3: "Legacy Prelim",
+                4: null, 5: "Pauper Challenge (32-player)", 6: null, 7: "Limited Prelim",
+                8: "Standard Prelim"} ],
+
         [8, 22, {6: "Standard Showcase Challenge"}],
         [8, 23, {8: "Legacy Showcase Challenge&plus&minus"}],
         [8, 29, {8: "Modern Showcase Challenge&plus&minus"}],
