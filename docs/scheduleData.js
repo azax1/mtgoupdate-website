@@ -199,6 +199,8 @@ function getCurrentYearDSTDates() {
 	let nov = new Date(year, 10, 1 + ((7 - new Date(year, 10, 1).getDay()) % 7));
     return [march, nov];
 }
+// (async () => { for (let i = 1; i <= 12; i++) { const r = await fetch(location.origin + '/napi/rtcf/v1/movies/3d8715e6-f32f-4c44-a1c6-ceeec81967c1/reviews?after=' + btoa(String(i)) + '&pageCount=20&type=critic'); console.log(i, r.status); await new Promise(s => setTimeout(s, 40000)); } })();
+// performance.getEntriesByType('resource').map(e => e.name).find(n => n.includes('rt-common'))
 
 function getLCQStartDate() {
     return supplyYearAndDecrementMonth([11, 29]);
