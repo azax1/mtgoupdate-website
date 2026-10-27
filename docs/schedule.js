@@ -33,7 +33,10 @@ function insertIntoMonsterSchedule(monster, today, specialEvents, isReplacement)
 					let event = todayEvents[j];
 					index = 24 * i + j;
 					if (!isReplacement || (event != null && event.includes("Pauper Showcase"))) {
-						if (monster[index]) {
+						if (monster[index] && event.startsWith("DST") && day.getMonth() > 6) {
+							// fall back: set the clock back before this hour's events render, or they show an hour early
+							monster[index] = event + "&" + monster[index];
+						} else if (monster[index]) {
 							monster[index] =  insertEvent(monster[index], event, false);
 						} else {
 							monster[index] = event;
